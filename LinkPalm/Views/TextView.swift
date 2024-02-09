@@ -11,7 +11,6 @@ struct TextView: View {
     
     @Binding var titleData : TitleCustomModel
     
-    
     var body: some View {
         ZStack{
             VStack{
@@ -49,7 +48,7 @@ struct TextView: View {
         
         ZStack{
             VStack{
-                Text("\(titleData.text)")
+                Text("\(titleData.title)")
                     .frame(maxWidth: .infinity, alignment: titleData.selectedAlignment.getAlignment)
             }
                 .font(.system(size: titleData.selectedSize, weight: titleData.selectedWeight.getWeight, design: titleData.selectedStyle.getFontStyel))

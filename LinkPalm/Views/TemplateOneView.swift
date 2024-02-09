@@ -15,8 +15,6 @@ struct TemplateOneView: View {
     
     @State var titleData : TitleCustomModel = TitleCustomModel()
     
-    @State var titleData2 : TextBoxDesignData = TextBoxDesignData()
-    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {

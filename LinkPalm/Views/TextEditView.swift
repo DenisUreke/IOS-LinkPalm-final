@@ -11,6 +11,10 @@ struct TextEditView: View {
     
     @Binding var titleData : TitleCustomModel
     
+    /*var titleShortcut: TitleType { // Replace TitleType with the actual type of `title`
+        return self.titleData.TextBoxDesign.title
+    }*/
+    
     var body: some View {
         VStack{
             HStack {
