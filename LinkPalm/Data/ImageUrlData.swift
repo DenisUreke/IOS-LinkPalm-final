@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ImageURLdata: Decodable{
+    let url: String
+}
+
+// link API https://random.imagecdn.app/v1/image?width=500&height=150&category=buildings&format=json

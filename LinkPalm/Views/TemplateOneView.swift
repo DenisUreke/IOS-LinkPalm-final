@@ -8,8 +8,52 @@
 import SwiftUI
 
 struct TemplateOneView: View {
+    
+    @State var textObject = QScreenTxtModel()
+    @State var test = QScreenTxtModel()
+    @State var color = Color.gray
+    
+    @State var titleData : TitleCustomModel = TitleCustomModel()
+    
+    @State var titleData2 : TextBoxDesignData = TextBoxDesignData()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            VStack(spacing: 5) {
+                HStack {
+                    WideBarView(color: .green)
+                }
+                HStack(spacing: 5) {
+                    NavigationLink(destination: TextView(titleData: $titleData)){
+                        QScreenTxtView(settings: $textObject)
+                    }
+                    .simultaneousGesture(TapGesture().onEnded { _ in
+                        textObject.backgroundColor = .red
+                        // Any pre-navigation action can be placed here
+                    })
+                    QScreenTxtView(settings: $test)
+                }
+                HStack {
+                    WideBarListView(color: .green)
+                        .frame(height: 60)
+                }
+                //.padding(.top, 5)
+                HStack(spacing: 5) {
+                    QScreenTxtView(settings: $test)
+                        .frame(width: geometry.size.width * 0.6)
+                    QScreenTxtView(settings: $test)
+                }
+                HStack {
+                    WideBarView(color: .green)
+                }
+                HStack(spacing: 5) {
+                    QScreenTxtView(settings: $test)
+                        .frame(height: geometry.size.height * 0.2)
+                }
+                
+            }
+            .padding(5)
+        }
     }
 }
 

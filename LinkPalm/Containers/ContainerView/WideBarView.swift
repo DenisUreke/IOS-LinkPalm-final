@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct WideBarView: View {
+    var color : Color
+    
     var body: some View {
         HStack{
-            
+            Color(color)
         }
+        .frame(height: 60)
     }
 }
 
 #Preview {
-    WideBarView()
+    WideBarView(color: .blue)
 }

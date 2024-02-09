@@ -11,9 +11,21 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
+    
+    @State var testing = DownloadDataModel()
+    
 
     var body: some View {
-        NavigationSplitView {
+        
+        //Text("Size \(testing.imagesData.count)")
+        
+        NavigationStack{
+            TemplateOneView()
+                .navigationTitle("contact")
+        }
+    
+        
+        /*NavigationSplitView {
             List {
                 ForEach(items) { item in
                     NavigationLink {
@@ -23,7 +35,9 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                
             }
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -34,10 +48,18 @@ struct ContentView: View {
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .task{
+                await fetchData()
+            }
         }
+        
+    detail: {
+            Text("Select an item")
+        }*/
+        
+        
     }
+    
 
     private func addItem() {
         withAnimation {
@@ -51,6 +73,18 @@ struct ContentView: View {
             for index in offsets {
                 modelContext.delete(items[index])
             }
+        }
+    }
+    func fetchData() async {
+        do {
+            try await testing.fetchPersonData()
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+        do {
+            try await testing.fetchImageData()
+        } catch {
+            print("Error fetching data: \(error)")
         }
     }
 }

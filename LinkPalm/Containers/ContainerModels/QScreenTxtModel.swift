@@ -10,7 +10,10 @@ import Observation
 import SwiftUI
 
 @Observable
-class QScreenTxtModel{
+class QScreenTxtModel: ContainerSuperClass{
     
-    var backgroundColor: Color = Color.white
+    var fontColor: StandardColors = .red
+    var text : String = """
+"""
+    
 }

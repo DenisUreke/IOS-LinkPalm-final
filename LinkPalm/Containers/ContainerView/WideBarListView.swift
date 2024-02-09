@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct WideBarListView: View {
+    
+    @State var model = WideBarListModel()
+    var color : Color
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        GeometryReader { geometry in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 5) {
+                    ForEach(model.listOfIcons) { item in
+                        Image(systemName: item.sfIcon)
+                            .frame(width: (geometry.size.width - (5 * CGFloat(model.listOfIcons.count - 1))) / CGFloat(model.listOfIcons.count), height: 60)
+                            .background(color)
+                            .cornerRadius(8)
+                            .font(.system(size: 36))
+                        
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    WideBarListView()
+    WideBarListView(color: .gray)
 }

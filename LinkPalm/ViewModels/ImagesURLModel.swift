@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import Observation
+
+@Observable
+class ImageURLModel{
+    
+    let url: URL?
+    
+    init(url: String){
+        self.url = URL(string: url)
+    }
+}

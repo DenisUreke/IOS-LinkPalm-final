@@ -7,22 +7,25 @@
 
 import SwiftUI
 
-struct QuarterScreenTextView: View {
+struct QScreenTxtView: View {
     
-    var settings : QScreenTxtModel = QScreenTxtModel()
+    @Binding var settings : QScreenTxtModel
     
     var body: some View {
         ZStack(alignment: .center){
-            Color(settings.backgroundColor)
             VStack{
                 Text("Title")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.black)
                 Spacer()
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .scaleEffect(1)
+            .background(settings.backgroundColor)
+            //.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         }
     }
 }
 
-#Preview {
-    QuarterScreenTextView()
-}
+/*#Preview {
+    QScreenTxtView()
+}*/
