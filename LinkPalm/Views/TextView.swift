@@ -53,7 +53,7 @@ struct TextView: View {
                                 NavigationLink(destination: BackgroundEditView(titleData: $titleData.TextBackgroundDesign)){
                                     Button("Design Background", action: {})
                                 }
-                                NavigationLink(destination: PhotoView(model: $titleData, viewToShow: viewPassedIntoPhotoSelector.textView )){
+                                NavigationLink(destination: PhotoView(textBoxDesignData: Binding<TextBoxDesignData?>.constant(titleData), viewToShow: .textView, imageData: $titleData.TextBackgroundDesign.imageData)) {
                                     Button("Insert Image", action: {})
                                 }
                                 Button("Save", action: {})

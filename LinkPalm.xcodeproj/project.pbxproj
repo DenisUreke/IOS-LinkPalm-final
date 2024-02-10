@@ -22,6 +22,12 @@
 		542EAC172B744B120044A038 /* ContainerSuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EAC162B744B120044A038 /* ContainerSuperClass.swift */; };
 		542EAC182B744B120044A038 /* ContainerSuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EAC162B744B120044A038 /* ContainerSuperClass.swift */; };
 		542EAC192B744B120044A038 /* ContainerSuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EAC162B744B120044A038 /* ContainerSuperClass.swift */; };
+		546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
+		546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
+		546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
+		546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92FC2B77EA79005AD2DC /* BoxData.swift */; };
+		546A92FE2B77EA79005AD2DC /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92FC2B77EA79005AD2DC /* BoxData.swift */; };
+		546A92FF2B77EA79005AD2DC /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92FC2B77EA79005AD2DC /* BoxData.swift */; };
 		5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */; };
 		5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090D2B73C2DB00F9836F /* ContentView.swift */; };
 		549409102B73C2DB00F9836F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090F2B73C2DB00F9836F /* Item.swift */; };
@@ -109,6 +115,8 @@
 		542EAC0B2B7440F90044A038 /* QScreenTxtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QScreenTxtView.swift; sourceTree = "<group>"; };
 		542EAC122B7442F00044A038 /* QScreenTxtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QScreenTxtModel.swift; sourceTree = "<group>"; };
 		542EAC162B744B120044A038 /* ContainerSuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSuperClass.swift; sourceTree = "<group>"; };
+		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
+		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
 		549409082B73C2DB00F9836F /* LinkPalm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkPalm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPalmApp.swift; sourceTree = "<group>"; };
 		5494090D2B73C2DB00F9836F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -281,6 +289,8 @@
 				542EAC072B7425780044A038 /* ImagesURLModel.swift */,
 				5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */,
 				549B67192B76E16A003124D4 /* TextBoxDesignData.swift */,
+				546A92FC2B77EA79005AD2DC /* BoxData.swift */,
+				546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -478,6 +488,7 @@
 				542EAC172B744B120044A038 /* ContainerSuperClass.swift in Sources */,
 				549B67162B76CDC5003124D4 /* TextView.swift in Sources */,
 				54BA431B2B77B4A50076E23D /* ImageConfigEnums.swift in Sources */,
+				546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				549C010E2B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
@@ -489,6 +500,7 @@
 				549409542B73FCF500F9836F /* PersonModel.swift in Sources */,
 				54C76FF32B762E03005EA680 /* TextConfigEnums.swift in Sources */,
 				549409102B73C2DB00F9836F /* Item.swift in Sources */,
+				546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5412D6962B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				549C01162B74DD66009223C3 /* WideBarModel.swift in Sources */,
 				5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */,
@@ -510,8 +522,10 @@
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
 				549B671B2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
+				546A92FE2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5494093E2B73E7A800F9836F /* PersonData.swift in Sources */,
 				54BA43142B77965C0076E23D /* PhotoView.swift in Sources */,
+				546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54C76FF42B762E03005EA680 /* TextConfigEnums.swift in Sources */,
 				549409422B73F37300F9836F /* ImageUrlData.swift in Sources */,
 				549C011F2B74DE55009223C3 /* WideBarListModel.swift in Sources */,
@@ -533,8 +547,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				549409472B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
+				546A92FF2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				549C01102B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
 				54BA431D2B77B4A50076E23D /* ImageConfigEnums.swift in Sources */,
+				546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				542EAC0A2B7425790044A038 /* ImagesURLModel.swift in Sources */,
 				549409562B73FCF500F9836F /* PersonModel.swift in Sources */,
 				542EAC192B744B120044A038 /* ContainerSuperClass.swift in Sources */,

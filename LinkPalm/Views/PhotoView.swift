@@ -10,8 +10,9 @@ import SwiftUI
 
 struct PhotoView: View {
     
-    @Binding var model: TextBoxDesignData
+    @Binding var textBoxDesignData: TextBoxDesignData?
     @State var viewToShow: viewPassedIntoPhotoSelector
+    @Binding var imageData: ImageData
     
     @State private var avatarItem: PhotosPickerItem?
     @State private var avatarImage: Image?
@@ -25,7 +26,10 @@ struct PhotoView: View {
             if viewToShow == .textView{
                 VStack{
                     VStack{
-                        TextView(titleData: $model)
+                        TextView(titleData: Binding<TextBoxDesignData>(
+                            get: { textBoxDesignData ?? TextBoxDesignData() },
+                            set: { textBoxDesignData = $0 }
+                        ))
                     }
                     .scaleEffect(0.5)
                     .offset(y: -200)
@@ -40,7 +44,7 @@ struct PhotoView: View {
                 if let loaded = try? await avatarItem?.loadTransferable(type: Image.self) {
                     avatarImage = loaded
                     ImageIsChosen.toggle()
-                    model.TextBackgroundDesign.imageData.selectedBackgroundImage = avatarImage
+                    imageData.selectedBackgroundImage = avatarImage
                 } else {
                     print("Failed")
                 }
