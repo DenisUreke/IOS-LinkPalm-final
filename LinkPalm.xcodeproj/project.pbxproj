@@ -28,6 +28,12 @@
 		546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92FC2B77EA79005AD2DC /* BoxData.swift */; };
 		546A92FE2B77EA79005AD2DC /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92FC2B77EA79005AD2DC /* BoxData.swift */; };
 		546A92FF2B77EA79005AD2DC /* BoxData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92FC2B77EA79005AD2DC /* BoxData.swift */; };
+		5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */; };
+		5479D6FD2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */; };
+		5479D6FE2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */; };
+		5479D7002B783BED002BAD0A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FF2B783BED002BAD0A /* Extensions.swift */; };
+		5479D7012B783BED002BAD0A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FF2B783BED002BAD0A /* Extensions.swift */; };
+		5479D7022B783BED002BAD0A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FF2B783BED002BAD0A /* Extensions.swift */; };
 		5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */; };
 		5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090D2B73C2DB00F9836F /* ContentView.swift */; };
 		549409102B73C2DB00F9836F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090F2B73C2DB00F9836F /* Item.swift */; };
@@ -117,6 +123,8 @@
 		542EAC162B744B120044A038 /* ContainerSuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSuperClass.swift; sourceTree = "<group>"; };
 		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
+		5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolEnum.swift; sourceTree = "<group>"; };
+		5479D6FF2B783BED002BAD0A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		549409082B73C2DB00F9836F /* LinkPalm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkPalm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPalmApp.swift; sourceTree = "<group>"; };
 		5494090D2B73C2DB00F9836F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -336,6 +344,7 @@
 				549C010B2B74D055009223C3 /* ContainerEnums.swift */,
 				54C76FF22B762E03005EA680 /* TextConfigEnums.swift */,
 				54BA431A2B77B4A50076E23D /* ImageConfigEnums.swift */,
+				5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -343,6 +352,7 @@
 		5494094A2B73F66E00F9836F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5479D6FF2B783BED002BAD0A /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -482,6 +492,7 @@
 				5494093D2B73E7A800F9836F /* PersonData.swift in Sources */,
 				549C011E2B74DE55009223C3 /* WideBarListModel.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
+				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549B671A2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				542EAC0C2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				549409452B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
@@ -503,6 +514,7 @@
 				546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5412D6962B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				549C01162B74DD66009223C3 /* WideBarModel.swift in Sources */,
+				5479D7002B783BED002BAD0A /* Extensions.swift in Sources */,
 				5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */,
 				542EAC132B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54BA43112B7784D00076E23D /* BackgroundEditView.swift in Sources */,
@@ -515,12 +527,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				542EAC182B744B120044A038 /* ContainerSuperClass.swift in Sources */,
+				5479D7012B783BED002BAD0A /* Extensions.swift in Sources */,
 				549409552B73FCF500F9836F /* PersonModel.swift in Sources */,
 				549409462B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				542EAC0D2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
+				5479D6FD2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549B671B2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				546A92FE2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5494093E2B73E7A800F9836F /* PersonData.swift in Sources */,
@@ -560,6 +574,7 @@
 				549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				5494093F2B73E7A800F9836F /* PersonData.swift in Sources */,
 				54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */,
+				5479D6FE2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549409432B73F37300F9836F /* ImageUrlData.swift in Sources */,
 				549C01142B74D48A009223C3 /* WideBarView.swift in Sources */,
 				549C01182B74DD66009223C3 /* WideBarModel.swift in Sources */,
@@ -572,6 +587,7 @@
 				549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				542EAC0E2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,
+				5479D7022B783BED002BAD0A /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

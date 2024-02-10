@@ -192,6 +192,49 @@ struct DrawColorPaletteBox: View {
     }
 }
 
+struct DrawSFSymbolPaletteBox: View {
+    @Binding var selectedSFSymbol: SFSymbolEnum
+    let title: String
+
+    var body: some View {
+        VStack {
+            Text(title)
+                .font(.system(size: 26, weight: .bold))
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()),  GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
+                ForEach(SFSymbolEnum.allCases, id: \.self) { option in
+                    Button(action: {
+                        self.selectedSFSymbol = option
+                    }) {
+                        VStack {
+                            // Display the SF Symbol within each button
+                            Image(systemName: option.rawValue)
+                                .font(.system(size: 20)) // Adjust the size as needed
+                                .foregroundColor(.black) // Set the symbol color
+
+                            // Optional: Text label for the symbol, if needed
+                            // Text(option.rawValue)
+                            //     .font(.caption)
+                            //     .foregroundColor(.black)
+                        }
+                        .frame(width: 50, height: 50) // Adjust the frame as needed
+                        .background(
+                            RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                .fill(Color.white)
+                                .overlay(
+                                    selectedSFSymbol == option ?
+                                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                        .stroke(Color.blue, lineWidth: 5) :
+                                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                        .stroke(Color.black, lineWidth: 1)
+                                )
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
 

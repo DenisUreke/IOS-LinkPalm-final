@@ -88,8 +88,16 @@ struct TextView: View {
                 if let image = titleData.boxOne.textBoxDesignData.backgroundData.imageData.selectedBackgroundImage {
                     image
                         .resizable()
+                        .clipped()
                         .scaledToFit()
-                        //.frame(width: geometry.size.width, height: geometry.size.height)
+                        .contrast(titleData.boxOne.textBoxDesignData.backgroundData.imageData.selectedContrast)
+                        .saturation(titleData.boxOne.textBoxDesignData.backgroundData.imageData.selectedSaturation)
+                        .opacity(titleData.boxOne.textBoxDesignData.backgroundData.imageData.selectedOpacity)
+                    /*if titleData.boxOne.textBoxDesignData.backgroundData.imageData.scaledToFill {
+                        image.scaledToFill()
+                    } else {
+                        image.scaledToFit()
+                    }*/
                 } else {
                     EmptyView()
                 }
