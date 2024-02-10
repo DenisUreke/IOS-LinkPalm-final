@@ -17,6 +17,7 @@ class TitleCustomModel{
     var selectedStyle: FontStyle = .defaults
     var selectedWeight: FontWeight = .regularWeight
     var selectedColorBackground: StandardColors = .clear
+    var selectedColorBackgroundTwo: StandardColors = .clear
     var selectedColorFont: StandardColors = .black
     var selectedOpacity: Double = 1
     var gradientIsClicked = false

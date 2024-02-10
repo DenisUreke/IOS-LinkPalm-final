@@ -103,5 +103,6 @@ enum headerTitleString: String{
     case setBorderColor = "Border"
     case alignment = "Alignment"
     case textAlignment = "Text Origin"
+    case backgroundColorsRadient = "Second Color"
     
 }

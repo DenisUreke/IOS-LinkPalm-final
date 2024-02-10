@@ -31,7 +31,8 @@ struct TemplateOneView: View {
                         textObject.backgroundColor = .red
                         // Any pre-navigation action can be placed here
                     })
-                    QScreenTxtView(settings: $test)
+                        QScreenTxtView(settings: $test)
+
                 }
                 HStack {
                     WideBarListView(color: .green)

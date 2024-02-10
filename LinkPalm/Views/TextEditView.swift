@@ -58,6 +58,7 @@ struct SelectableView<Option: RawRepresentable & Hashable, Content: View>: View 
     }
 }
 
+
 struct configurateTextObjects: View {
     
     @Binding var titleData : TitleCustomModel
@@ -77,7 +78,7 @@ struct configurateTextObjects: View {
                      radius: 2,x: 0, y: !titleData.shadowIsClicked ? 0 : 5)
                     .border(titleData.selectedBorderColor.color, width: titleData.selectedBorderWidth)
             }
-            .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, .white]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
+            .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackgroundTwo.color]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
             
             Divider()
             
@@ -123,6 +124,9 @@ struct configurateTextObjects: View {
                 .onTapGesture {
                     titleData.gradientIsClicked.toggle()
                 }
+                if titleData.gradientIsClicked {
+                    DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackgroundTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
+                }
                 VStack {
                     Slider(value: $titleData.selectedBackgroundOpacity, in: 0...1)
                         .padding()
@@ -145,7 +149,6 @@ struct configurateTextObjects: View {
                 
                 DrawColorPaletteBox(selectedColor: $titleData.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
                 Slider(value: $titleData.selectedBorderWidth, in: 0...10) // Range from 0 to 100, dont forget!
-                //Text("Thickness: \(titleData.selectedBorderWidth * 10, specifier: "%.0f")%")
                 
                 Spacer()
                 

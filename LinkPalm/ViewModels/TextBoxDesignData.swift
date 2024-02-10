@@ -13,4 +13,5 @@ import Observation
 class TextBoxDesignData{
     
     var TextBoxDesign = (title: TitleCustomModel(), text: TitleCustomModel())
+    var TextBackgroundDesign = BackgroundData()
 }

@@ -6,13 +6,19 @@
 //
 
 import SwiftUI
+import Foundation
+import Observation
 
-struct BackgroundDesignData {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
 
-#Preview {
-    BackgroundDesignData()
+@Observable
+class BackgroundData {
+
+    var gradientIsClicked = false
+    var selectedBackgroundOpacity: Double = 1
+    var selectedColorBackgroundOne: StandardColors = .clear
+    var selectedColorBackgroundTwo: StandardColors = .clear
+    var selectedBorderColor: StandardColors = .black
+    var selectedBorderWidth: Double = 0
+    var imageData = ImageData()
+    
 }
