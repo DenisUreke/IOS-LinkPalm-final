@@ -9,14 +9,14 @@ import SwiftUI
 
 struct TextView: View {
     
-    @Binding var titleData : TextBoxDesignData
+    @Binding var titleData : UserDesignModel
     
     var title: TitleCustomModel {
-        return self.titleData.TextBoxDesign.title
+        return self.titleData.boxOne.textBoxDesignData.TextBoxDesign.title
     }
     
     var text: TitleCustomModel {
-        return self.titleData.TextBoxDesign.text
+        return self.titleData.boxOne.textBoxDesignData.TextBoxDesign.text
     }
     
     var body: some View {
@@ -41,22 +41,22 @@ struct TextView: View {
                         // Define toolbar items here
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Menu {
-                                NavigationLink(destination: TextEditView(titleData: $titleData)){
+                                NavigationLink(destination: TextEditView(titleData: $titleData.boxOne.textBoxDesignData)){
                                     Button("Insert Text", action: {})
                                 }
-                                NavigationLink(destination: configurateTextObjects(titleData: $titleData.TextBoxDesign.title)){
+                                NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.title)){
                                     Button("Design Header", action: {})
                                 }
-                                NavigationLink(destination: configurateTextObjects(titleData: $titleData.TextBoxDesign.text)){
+                                NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.text)){
                                     Button("Design Text", action: {})
                                 }
-                                NavigationLink(destination: BackgroundEditView(titleData: $titleData.TextBackgroundDesign)){
+                                NavigationLink(destination: BackgroundEditView(titleData: $titleData.boxOne.textBoxDesignData.backgroundData)){
                                     Button("Design Background", action: {})
                                 }
-                                NavigationLink(destination: PhotoView(textBoxDesignData: Binding<TextBoxDesignData?>.constant(titleData), viewToShow: .textView, imageData: $titleData.TextBackgroundDesign.imageData)) {
+                                NavigationLink(destination: PhotoView(userDesignModel: $titleData, viewToShow: ViewPassedIntoPhotoSelector.textView, imageData: $titleData.boxOne.textBoxDesignData.backgroundData.imageData)) {
                                     Button("Insert Image", action: {})
                                 }
-                                Button("Save", action: {})
+                                    Button("Save", action: {})
                             } label: {
                                 Label("Menu", systemImage: "line.3.horizontal")
                             }
@@ -81,11 +81,11 @@ struct TextView: View {
                     
                     .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
                 }
-                .border(titleData.TextBackgroundDesign.selectedBorderColor.color, width: titleData.TextBackgroundDesign.selectedBorderWidth)
-                .background(titleData.TextBackgroundDesign.gradientIsClicked ? Gradient(colors: [titleData.TextBackgroundDesign.selectedColorBackgroundOne.color, titleData.TextBackgroundDesign.selectedColorBackgroundTwo.color]).opacity(titleData.TextBackgroundDesign.selectedBackgroundOpacity) : Gradient(colors: [titleData.TextBackgroundDesign.selectedColorBackgroundOne.color, titleData.TextBackgroundDesign.selectedColorBackgroundOne.color]).opacity(titleData.TextBackgroundDesign.selectedBackgroundOpacity) )
+                .border(titleData.boxOne.textBoxDesignData.backgroundData.selectedBorderColor.color, width: titleData.boxOne.textBoxDesignData.backgroundData.selectedBorderWidth)
+                .background(titleData.boxOne.textBoxDesignData.backgroundData.gradientIsClicked ? Gradient(colors: [titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundOne.color, titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundTwo.color]).opacity(titleData.boxOne.textBoxDesignData.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundOne.color, titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundOne.color]).opacity(titleData.boxOne.textBoxDesignData.backgroundData.selectedBackgroundOpacity) )
             }
             .background{
-                if let image = titleData.TextBackgroundDesign.imageData.selectedBackgroundImage {
+                if let image = titleData.boxOne.textBoxDesignData.backgroundData.imageData.selectedBackgroundImage {
                     image
                         .resizable()
                         .scaledToFit()

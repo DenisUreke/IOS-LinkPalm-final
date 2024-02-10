@@ -8,21 +8,8 @@
 import Foundation
 import SwiftUI
 
-enum viewPassedIntoPhotoSelector{
+enum ViewPassedIntoPhotoSelector{
     
     case textView
     
-}
-
-enum DynamicViewType {
-    case text(Binding<TextBoxDesignData>)
-}
-
-extension DynamicViewType {
-    @ViewBuilder var view: some View {
-        switch self {
-        case .text(let titleData):
-            TextView(titleData: titleData)
-        }
-    }
 }

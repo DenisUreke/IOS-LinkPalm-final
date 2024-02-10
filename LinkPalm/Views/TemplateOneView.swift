@@ -13,7 +13,7 @@ struct TemplateOneView: View {
     @State var test = QScreenTxtModel()
     @State var color = Color.gray
     
-    @State var titleData : TitleCustomModel = TitleCustomModel()
+    @State var titleData : UserDesignModel = UserDesignModel()
     
     @State var textBoxData : TextBoxDesignData = TextBoxDesignData()
     
@@ -24,7 +24,7 @@ struct TemplateOneView: View {
                     WideBarView(color: .green)
                 }
                 HStack(spacing: 5) {
-                    NavigationLink(destination: TextView(titleData: $textBoxData)){
+                    NavigationLink(destination: TextView(titleData: $titleData)){
                         QScreenTxtView(settings: $textObject)
                     }
                     .simultaneousGesture(TapGesture().onEnded { _ in

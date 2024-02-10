@@ -10,8 +10,9 @@ import SwiftUI
 
 struct PhotoView: View {
     
-    @Binding var textBoxDesignData: TextBoxDesignData?
-    @State var viewToShow: viewPassedIntoPhotoSelector
+    @Binding var userDesignModel: UserDesignModel
+    // ADD THE IMAGEDATE NEEDED <-------------------------------
+    @State var viewToShow: ViewPassedIntoPhotoSelector
     @Binding var imageData: ImageData
     
     @State private var avatarItem: PhotosPickerItem?
@@ -26,10 +27,7 @@ struct PhotoView: View {
             if viewToShow == .textView{
                 VStack{
                     VStack{
-                        TextView(titleData: Binding<TextBoxDesignData>(
-                            get: { textBoxDesignData ?? TextBoxDesignData() },
-                            set: { textBoxDesignData = $0 }
-                        ))
+                        TextView(titleData: $userDesignModel)
                     }
                     .scaleEffect(0.5)
                     .offset(y: -200)
