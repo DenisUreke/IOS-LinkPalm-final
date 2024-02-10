@@ -24,6 +24,7 @@ class TitleCustomModel{
     var selectedBackgroundOpacity: Double = 1
     var selectedFontOpacity: Double = 1
     var selectedAlignment: FontAlignment = .alignmentCenter
+    var selectedTextAlignment: FontTextAlignment = .TextAlignmentLeft
     
     var selectedBorderColor: StandardColors = .black
     var selectedBorderWidth: Double = 0
@@ -32,5 +33,6 @@ class TitleCustomModel{
     let styleOptions: [FontStyle] = [.defaults, .monoSpaced, .serif]
     let weightOptions: [FontWeight] = [.regularWeight, .semiBoldWeight, .boldWeight]
     let alignmentOptions: [FontAlignment] = [.alignmentCenter, .alignmentLeft, .alignmentRight]
+    let textAlignmentOptions: [FontTextAlignment] = [.TextAlignmentLeft, .TextAlignmentCenter, .TextAlignmentRight]
     
 }

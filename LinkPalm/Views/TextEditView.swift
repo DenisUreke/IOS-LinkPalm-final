@@ -9,22 +9,18 @@ import SwiftUI
 
 struct TextEditView: View {
     
-    @Binding var titleData : TitleCustomModel
-    
-    /*var titleShortcut: TitleType { // Replace TitleType with the actual type of `title`
-        return self.titleData.TextBoxDesign.title
-    }*/
+    @Binding var titleData : TextBoxDesignData
     
     var body: some View {
         VStack{
             HStack {
-                TextField("Title", text: $titleData.title)
+                TextField("Title", text: $titleData.TextBoxDesign.title.title)
              .padding()
              .border(Color.gray)
              }
              Spacer()
             VStack {
-                TextEditor(text: $titleData.text)
+                TextEditor(text: $titleData.TextBoxDesign.text.text)
              .padding()
              .border(Color.gray)
              }
@@ -99,7 +95,13 @@ struct configurateTextObjects: View {
                         .frame(width: 200)
                 }
                 Divider()
-                
+                //
+                SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.textAlignmentOptions, selectedOption: $titleData.selectedTextAlignment) { option in
+                    Text(option.rawValue)
+                        .frame(width: 200)
+                }
+                Divider()
+                //
                 SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.styleOptions, selectedOption: $titleData.selectedStyle) { option in
                     Text(option.rawValue)
                         .frame(width: 200)
@@ -171,8 +173,8 @@ struct DrawColorPaletteBox: View {
                         self.selectedColor = option
                     }) {
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                            .fill(option.color) // Here you need to implement a way to convert StandardColors to Color
-                            .frame(height: 50) // Set a fixed height for each box
+                            .fill(option.color)
+                            .frame(height: 50)
                             .overlay(
                                 selectedColor == option ?                                 
                                 RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))

@@ -15,6 +15,8 @@ struct TemplateOneView: View {
     
     @State var titleData : TitleCustomModel = TitleCustomModel()
     
+    @State var textBoxData : TextBoxDesignData = TextBoxDesignData()
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
@@ -22,7 +24,7 @@ struct TemplateOneView: View {
                     WideBarView(color: .green)
                 }
                 HStack(spacing: 5) {
-                    NavigationLink(destination: TextView(titleData: $titleData)){
+                    NavigationLink(destination: TextView(titleData: $textBoxData)){
                         QScreenTxtView(settings: $textObject)
                     }
                     .simultaneousGesture(TapGesture().onEnded { _ in

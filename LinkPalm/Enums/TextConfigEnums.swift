@@ -59,6 +59,23 @@ enum FontWeight: String{
     }
 }
 
+enum FontTextAlignment: String{
+    case TextAlignmentLeft = "Leading"
+    case TextAlignmentCenter = "Centered"
+    case TextAlignmentRight = "Trailing"
+    
+    var getTextAlignment: TextAlignment{
+        switch self{
+        case .TextAlignmentLeft:
+            return .leading
+        case .TextAlignmentCenter:
+            return .center
+        case .TextAlignmentRight:
+            return .trailing
+        }
+    }
+}
+
 enum FontAlignment: String{
     case alignmentLeft = "Left-Aligned"
     case alignmentCenter = "Centered"
@@ -85,5 +102,6 @@ enum headerTitleString: String{
     case backgroundColor = "Background-Color"
     case setBorderColor = "Border"
     case alignment = "Alignment"
+    case textAlignment = "Text Origin"
     
 }
