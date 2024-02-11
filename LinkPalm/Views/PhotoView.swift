@@ -25,15 +25,12 @@ struct PhotoView: View {
 
     var body: some View {
         VStack{
-            ZStack{
-                VStack{
                     if viewToShow == .textView{
                         TextView(titleData: $userDesignModel)
+                            //.scaleEffect(0.5)
+                            .frame(height: 250)
                     }
-                }
-            }
                     Divider()
-                    //Spacer()
                     
             ScrollView{
                 if imageData.selectedBackgroundImage != nil{
@@ -67,7 +64,6 @@ struct PhotoView: View {
                     
                 }
             }
-            Spacer()
             PhotosPicker("Select Image", selection: $avatarItem, matching: .images)
             
         }

@@ -14,6 +14,7 @@ class WideBarListDataicons: Identifiable{
     
     let id = UUID().uuidString
     var sfIcon: SFSymbolEnum = .house
+    var isWebLink: Bool = false
     var webAddress: String = ""
     var iconSize: Double = 24
     var iconColor: StandardColors = .black

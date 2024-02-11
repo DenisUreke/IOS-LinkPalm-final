@@ -34,6 +34,9 @@
 		5479D7002B783BED002BAD0A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FF2B783BED002BAD0A /* Extensions.swift */; };
 		5479D7012B783BED002BAD0A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FF2B783BED002BAD0A /* Extensions.swift */; };
 		5479D7022B783BED002BAD0A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5479D6FF2B783BED002BAD0A /* Extensions.swift */; };
+		54929E842B792FAE00DB1DED /* SFSafariWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54929E832B792FAE00DB1DED /* SFSafariWrapper.swift */; };
+		54929E852B792FAE00DB1DED /* SFSafariWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54929E832B792FAE00DB1DED /* SFSafariWrapper.swift */; };
+		54929E862B792FAE00DB1DED /* SFSafariWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54929E832B792FAE00DB1DED /* SFSafariWrapper.swift */; };
 		5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */; };
 		5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090D2B73C2DB00F9836F /* ContentView.swift */; };
 		549409102B73C2DB00F9836F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5494090F2B73C2DB00F9836F /* Item.swift */; };
@@ -126,6 +129,7 @@
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
 		5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolEnum.swift; sourceTree = "<group>"; };
 		5479D6FF2B783BED002BAD0A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		54929E832B792FAE00DB1DED /* SFSafariWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariWrapper.swift; sourceTree = "<group>"; };
 		549409082B73C2DB00F9836F /* LinkPalm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkPalm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPalmApp.swift; sourceTree = "<group>"; };
 		5494090D2B73C2DB00F9836F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,14 @@
 			path = ContainerView;
 			sourceTree = "<group>";
 		};
+		54929E822B792F9300DB1DED /* SafariWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				54929E832B792FAE00DB1DED /* SFSafariWrapper.swift */,
+			);
+			path = SafariWrapper;
+			sourceTree = "<group>";
+		};
 		549408FF2B73C2DB00F9836F = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +248,7 @@
 		5494090A2B73C2DB00F9836F /* LinkPalm */ = {
 			isa = PBXGroup;
 			children = (
+				54929E822B792F9300DB1DED /* SafariWrapper */,
 				5494094A2B73F66E00F9836F /* Extensions */,
 				549409492B73F65F00F9836F /* Enums */,
 				549409482B73F63700F9836F /* HelperFunctions */,
@@ -523,6 +536,7 @@
 				542EAC132B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54BA43112B7784D00076E23D /* BackgroundEditView.swift in Sources */,
 				549409502B73F76200F9836F /* DataDownloader.swift in Sources */,
+				54929E842B792FAE00DB1DED /* SFSafariWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +549,7 @@
 				549409552B73FCF500F9836F /* PersonModel.swift in Sources */,
 				549409462B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
+				54929E852B792FAE00DB1DED /* SFSafariWrapper.swift in Sources */,
 				542EAC0D2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
@@ -591,6 +606,7 @@
 				542EAC0E2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,
 				5479D7022B783BED002BAD0A /* Extensions.swift in Sources */,
+				54929E862B792FAE00DB1DED /* SFSafariWrapper.swift in Sources */,
 				54C7CF332B78EE2C00F29602 /* WideBarData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

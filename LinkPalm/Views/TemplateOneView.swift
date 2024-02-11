@@ -23,6 +23,14 @@ struct TemplateOneView: View {
                 HStack {
                     WideBarView(color: .green)
                 }
+                .onTapGesture {
+                    GlobalSettings.shared.startSafari.toggle()
+                }
+                .fullScreenCover(isPresented: GlobalSettings.$shared.startSafari, content: {
+                        SFSafariViewWrapper(url: URL(string: "https://www.designcode.io")!)
+                })
+                
+                
                 HStack(spacing: 5) {
                     NavigationLink(destination: TextView(titleData: $titleData)){
                         QScreenTxtView(settings: $textObject)
@@ -60,6 +68,6 @@ struct TemplateOneView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     TemplateOneView()
-}
+}*/
