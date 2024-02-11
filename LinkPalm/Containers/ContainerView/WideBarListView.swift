@@ -9,20 +9,21 @@ import SwiftUI
 
 struct WideBarListView: View {
     
-    @State var model = WideBarListModel()
-    var color : Color
+    @Binding var userDesign : WideBarListData
 
     var body: some View {
         
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 5) {
-                    ForEach(model.listOfIcons) { item in
-                        Image(systemName: item.sfIcon)
-                            .frame(width: (geometry.size.width - (5 * CGFloat(model.listOfIcons.count - 1))) / CGFloat(model.listOfIcons.count), height: 60)
-                            .background(color)
+                    ForEach(userDesign.listOfIcons) { item in
+                        Image(systemName: item.sfIcon.rawValue)
+                            .foregroundColor(item.iconColor.color.opacity(item.iconOpacity))
+                            .frame(width: (geometry.size.width - (5 * CGFloat(userDesign.listOfIcons.count - 1))) / CGFloat(userDesign.listOfIcons.count), height: 60)
+                            .background(item.gradientIsClicked ? Gradient(colors: [item.backgroundColor.color, item.backgroundColorTwo.color]).opacity(item.backgroundOpacity) : Gradient(colors: [item.backgroundColor.color,item.backgroundColor.color]).opacity(item.backgroundOpacity))
                             .cornerRadius(8)
-                            .font(.system(size: 36))
+                            .font(.system(size: item.iconSize))
+                            
                         
                     }
                 }
@@ -31,6 +32,6 @@ struct WideBarListView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     WideBarListView(color: .gray)
-}
+}*/

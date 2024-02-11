@@ -13,4 +13,6 @@ import Observation
 class UserDesignModel{
     
     var boxOne = BoxData()
+    var wideBarOne = WideBarData()
+    
 }

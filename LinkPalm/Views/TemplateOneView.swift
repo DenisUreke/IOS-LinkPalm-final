@@ -34,9 +34,11 @@ struct TemplateOneView: View {
                         QScreenTxtView(settings: $test)
 
                 }
-                HStack {
-                    WideBarListView(color: .green)
-                        .frame(height: 60)
+                NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarOne.wideBarListData)){
+                    HStack {
+                        WideBarListView(userDesign: $titleData.wideBarOne.wideBarListData)
+                            .frame(height: 60)
+                    }
                 }
                 //.padding(.top, 5)
                 HStack(spacing: 5) {

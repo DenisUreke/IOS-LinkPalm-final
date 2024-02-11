@@ -192,40 +192,35 @@ struct DrawColorPaletteBox: View {
     }
 }
 
-struct DrawSFSymbolPaletteBox: View {
-    @Binding var selectedSFSymbol: SFSymbolEnum
-    let title: String
+/*struct DrawMenuChoicesFromEnum<Option: RawRepresentable & Hashable, Content: View>: View where Option.RawValue == String {
+ 
+ let title: String
+ let options: [Option]
+ @Binding var selectedOption: Option
+ let label: (Option) -> Content
+    
 
     var body: some View {
         VStack {
             Text(title)
                 .font(.system(size: 26, weight: .bold))
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()),  GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
-                ForEach(SFSymbolEnum.allCases, id: \.self) { option in
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
+                ForEach(options, id: \.self) { option in
                     Button(action: {
-                        self.selectedSFSymbol = option
+                        self.selectedOption = option
                     }) {
                         VStack {
-                            // Display the SF Symbol within each button
                             Image(systemName: option.rawValue)
-                                .font(.system(size: 20)) // Adjust the size as needed
-                                .foregroundColor(.black) // Set the symbol color
-
-                            // Optional: Text label for the symbol, if needed
-                            // Text(option.rawValue)
-                            //     .font(.caption)
-                            //     .foregroundColor(.black)
+                                .font(.system(size: 20))
+                                .foregroundColor(.black)
                         }
-                        .frame(width: 50, height: 50) // Adjust the frame as needed
+                        .frame(width: 50, height: 50)
                         .background(
                             RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                                 .fill(Color.white)
                                 .overlay(
-                                    selectedSFSymbol == option ?
                                     RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                                        .stroke(Color.blue, lineWidth: 5) :
-                                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                                        .stroke(Color.black, lineWidth: 1)
+                                        .stroke(selectedOption == option ? Color.blue : Color.black, lineWidth: selectedOption == option ? 5 : 1)
                                 )
                         )
                     }
@@ -233,8 +228,79 @@ struct DrawSFSymbolPaletteBox: View {
             }
         }
     }
+}*/
+
+struct DrawSFSymbolsChoices: View {
+    
+    @Binding var selectedSFSymbol: SFSymbolEnum
+    let title: String
+
+    var body: some View {
+        VStack {
+            Text(title)
+                .font(.system(size: 26, weight: .bold))
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
+                ForEach(SFSymbolEnum.allCases, id: \.self) { option in
+                    Button(action: {
+                        self.selectedSFSymbol = option
+                    }) {
+                        Text(option.rawValue) // Use Text to display the emoji
+                            .font(.largeTitle) // Adjust font size as needed
+                            .frame(width: 50, height: 50)
+                            .background(
+                        RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                            .fill(Color.white)
+                            .frame(height: 50)
+                            .overlay(
+                                selectedSFSymbol == option ?
+                                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                    .stroke(Color.blue, lineWidth: 5) :
+                                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                    .stroke(Color.black, lineWidth: 1)
+                                )
+                            )
+                    }
+                }
+            }
+        }
+    }
 }
 
+struct DrawEmojis: View {
+    
+    @Binding var selectedEmoji: Emojis
+    let title: String
+
+    var body: some View {
+        VStack {
+            Text(title)
+                .font(.system(size: 26, weight: .bold))
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
+                ForEach(Emojis.allCases, id: \.self) { option in
+                    Button(action: {
+                        self.selectedEmoji = option
+                    }) {
+                        Text(option.rawValue) // Use Text to display the emoji
+                            .font(.largeTitle) // Adjust font size as needed
+                            .frame(width: 50, height: 50)
+                            .background(
+                        RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                            .fill(Color.white)
+                            .frame(height: 50)
+                            .overlay(
+                                selectedEmoji == option ?
+                                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                    .stroke(Color.blue, lineWidth: 5) :
+                                RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                                    .stroke(Color.black, lineWidth: 1)
+                                )
+                            )
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 

@@ -11,6 +11,7 @@ import SwiftUI
 struct PhotoView: View {
     
     @State var test = SFSymbolEnum.bell
+    @State var test2 = Emojis.airplane
     
     @Binding var userDesignModel: UserDesignModel
     @State var viewToShow: ViewPassedIntoPhotoSelector
@@ -63,8 +64,6 @@ struct PhotoView: View {
                     Text(EditImageString.opacity.rawValue)
                         .font(.system(size: 26, weight: .bold))
                     Slider(value: $imageData.selectedOpacity, in: 0...1)
-                    
-                    DrawSFSymbolPaletteBox(selectedSFSymbol: $test, title: "Test")
                     
                 }
             }

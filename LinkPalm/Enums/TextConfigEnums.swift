@@ -104,5 +104,8 @@ enum headerTitleString: String{
     case alignment = "Alignment"
     case textAlignment = "Text Origin"
     case backgroundColorsRadient = "Second Color"
+    case iconColor = "Icon-Color"
+    case iconSize = "Icon-Size"
+    case sfSymbolList = "Icon"
     
 }
