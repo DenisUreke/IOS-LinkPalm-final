@@ -244,8 +244,9 @@ struct DrawSFSymbolsChoices: View {
                     Button(action: {
                         self.selectedSFSymbol = option
                     }) {
-                        Text(option.rawValue) // Use Text to display the emoji
-                            .font(.largeTitle) // Adjust font size as needed
+                        Image(systemName: "\(option)")
+                            .foregroundColor(Color.black)
+                            .font(.largeTitle)
                             .frame(width: 50, height: 50)
                             .background(
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))

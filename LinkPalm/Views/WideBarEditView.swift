@@ -35,6 +35,8 @@ struct WideBarEditView: View {
                 Text(headerTitleString.iconSize.rawValue)
                     .font(.system(size: 26, weight: .bold))
                 
+                DrawSFSymbolsChoices(selectedSFSymbol: $userDesign.listOfIcons.last!.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
+                
                 Slider(value: $userDesign.listOfIcons.last!.iconSize, in: 10...36 )
                 
                 DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons.last!.iconColor, title: headerTitleString.iconColor.rawValue)
@@ -63,7 +65,19 @@ struct WideBarEditView: View {
                         .padding()
                 }
                 
-                DrawSFSymbolsChoices(selectedSFSymbol: $userDesign.listOfIcons.last!.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
+                Divider()
+                
+                VStack{
+                    Text("Button Link")
+                        .font(.system(size: 18))
+                }
+                
+                HStack {
+                    TextField("Web Adress", text: $userDesign.listOfIcons.last!.webAddress)
+                 .padding()
+                 .border(Color.gray)
+                 }
+                
                 
             }
         }

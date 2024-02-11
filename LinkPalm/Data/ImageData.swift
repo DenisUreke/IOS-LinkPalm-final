@@ -17,7 +17,5 @@ class ImageData{
     var selectedSaturation: Double = 1
     var selectedOpacity: Double = 1
     var scaledToFill: Bool = false
-    
-    let sfSymbolOptions: [SFSymbolEnum] = [.house, .heart, .person, .clock, .bell, .envelope, .gear, .trash, .pencil, .bookmark, .camera, .message, .phone, .photo, .video, .map, .airplane, .car, .leaf, .moon, .sunMax, .drop, .flame, .cloud, .snow, .tornado, .tropicalStorm, .thermometer, .umbrella, .none]
 
 }

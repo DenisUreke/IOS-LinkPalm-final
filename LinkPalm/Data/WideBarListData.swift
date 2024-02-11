@@ -13,7 +13,7 @@ import SwiftUI
 class WideBarListDataicons: Identifiable{
     
     let id = UUID().uuidString
-    var sfIcon: SFSymbolEnum = .camera
+    var sfIcon: SFSymbolEnum = .house
     var webAddress: String = ""
     var iconSize: Double = 24
     var iconColor: StandardColors = .black
@@ -22,7 +22,20 @@ class WideBarListDataicons: Identifiable{
     var backgroundColorTwo: StandardColors = .clear
     var backgroundOpacity: Double = 1
     var gradientIsClicked: Bool = false
-    //var url : URL
+
+    init(copying icon: WideBarListDataicons) {
+        self.sfIcon = icon.sfIcon
+        self.webAddress = icon.webAddress
+        self.iconSize = icon.iconSize
+        self.iconColor = icon.iconColor
+        self.iconOpacity = icon.iconOpacity
+        self.backgroundColor = icon.backgroundColor
+        self.backgroundColorTwo = icon.backgroundColorTwo
+        self.backgroundOpacity = icon.backgroundOpacity
+        self.gradientIsClicked = icon.gradientIsClicked
+    }
+
+    init() { }
 }
 
 @Observable
@@ -36,8 +49,9 @@ class WideBarListData: Identifiable{
     
     func addNewButtonToWideList(){
         
-        if buttonCount < 8 {
-            listOfIcons.append(WideBarListDataicons())
+        if buttonCount < 8, let lastButton = listOfIcons.last {
+            let newButton = WideBarListDataicons(copying: lastButton)
+            listOfIcons.append(newButton)
             buttonCount += 1
         }
     }
