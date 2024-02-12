@@ -1,0 +1,142 @@
+//
+//  ImageVideoListView.swift
+//  LinkPalm
+//
+//  Created by Denis Ureke on 2024-02-12.
+//
+
+import SwiftUI
+
+struct ImageVideoListView: View {
+    
+    var testing = ImageVideoDataList()
+    @Binding var designData : UserDesignModel
+    
+    var design: ImageVideoDataList {
+        return self.designData.boxOne.imageVideoListData
+    }
+    
+    var body: some View {
+        
+        List {
+            ForEach(testing.listOfEntries) { entry in
+                getDynamicView(imageVideoData: entry, type: entry.typeOfBox)
+            }
+        }
+    }
+}
+
+func getDynamicView(imageVideoData: ImageVideoData, type: ImageVideoEnum) -> some View {
+    
+    switch type {
+    case .none:
+        return AnyView(EmptyView())
+    case .title:
+        return AnyView(DynamicViewTitle(titleData: imageVideoData.textCustomModel))
+    case .text:
+        return AnyView(DynamicViewText(titleData: imageVideoData.textCustomModel))
+    case .video:
+        return AnyView(LoadVideoView(ID: imageVideoData.videoID))
+    case .picture:
+        return AnyView(DynamicPictureView(titleData: imageVideoData.imageData))
+    case .picturefromweb:
+        return AnyView(DynamicPictureViewFromWeb(titleData: imageVideoData))
+    }
+}
+
+
+struct DynamicViewTitle: View {
+    
+    let titleData : TitleCustomModel
+    
+    var body: some View {
+        
+        VStack{
+            Text("\(titleData.title)")
+                .frame(maxWidth: .infinity, alignment: titleData.selectedAlignment.getAlignment)
+        }
+        .font(.system(size: titleData.selectedSize, weight: titleData.selectedWeight.getWeight, design: titleData.selectedStyle.getFontStyel))
+        .opacity(titleData.selectedFontOpacity)
+        .foregroundColor(titleData.selectedColorFont.color)
+        .frame(maxWidth: .infinity, maxHeight: 80, alignment: .center)
+        .shadow(color: !titleData.shadowIsClicked ? .clear : .gray,
+                radius: 2,x: 0, y: !titleData.shadowIsClicked ? 0 : 5)
+        .border(titleData.selectedBorderColor.color, width: titleData.selectedBorderWidth)
+        
+        .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackgroundTwo.color]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
+    }
+}
+
+struct DynamicViewText: View {
+    
+    let titleData : TitleCustomModel
+    
+    var body: some View {
+        
+        ScrollView{
+            VStack{
+                Text("\(titleData.text)")
+                    .frame(maxWidth: .infinity, alignment: titleData.selectedAlignment.getAlignment)
+                    .multilineTextAlignment(titleData.selectedTextAlignment.getTextAlignment)
+                    .padding([.leading, .trailing], 10)
+                Spacer()
+            }
+            .font(.system(size: titleData.selectedSize, weight: titleData.selectedWeight.getWeight, design: titleData.selectedStyle.getFontStyel))
+            .opacity(titleData.selectedFontOpacity)
+            .foregroundColor(titleData.selectedColorFont.color)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .shadow(color: !titleData.shadowIsClicked ? .clear : .gray,
+                    radius: 2,x: 0, y: !titleData.shadowIsClicked ? 0 : 5)
+            .border(titleData.selectedBorderColor.color, width: titleData.selectedBorderWidth)
+            
+            .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackgroundTwo.color]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
+        }
+    }
+}
+
+struct DynamicPictureView: View {
+    
+    let titleData : ImageData
+
+    var body: some View {
+        if let image = titleData.selectedBackgroundImage{
+            image
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity)
+        }else{Text("Could not find Image")}
+    }
+}
+
+struct DynamicPictureViewFromWeb: View {
+    let titleData: ImageVideoData
+
+    var body: some View {
+        AsyncImage(url: titleData.imageURL) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+            case .failure:
+                Text("Unable to load image")
+            @unknown default:
+                EmptyView()
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/*#Preview {
+    ImageVideoListView()
+}*/
