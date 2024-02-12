@@ -15,6 +15,7 @@ struct WebURL: Identifiable {
 struct WideBarListView: View {
     @Binding var userDesign: WideBarListData
     @State private var webURL: WebURL? = nil
+    @State private var videoURL: WebURL? = nil
 
     var body: some View {
         GeometryReader { geometry in
@@ -28,7 +29,13 @@ struct WideBarListView: View {
                             }) {
                                 imageContent(for: item, in: geometry)
                             }
-                        } else {
+                        }else if item.isVideoLink {
+                            Button(action: {
+                                self.videoURL = WebURL(urlString: item.webAddress)
+                            }) {
+                                imageContent(for: item, in: geometry)
+                            }
+                        }else {
                             imageContent(for: item, in: geometry)
                         }
                     }
@@ -37,6 +44,9 @@ struct WideBarListView: View {
         }
         .sheet(item: $webURL, onDismiss: { self.webURL = nil }) { webURL in
             WebView(url: URL(string: webURL.urlString) ?? URL(string: "https://www.apple.com/se/")!)
+        }
+        .sheet(item: $videoURL, onDismiss: { self.videoURL = nil }) { videoURL in
+            LoadVideoView(ID: URL(string: videoURL.urlString) ?? URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!)
         }
     }
 

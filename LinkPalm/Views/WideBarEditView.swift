@@ -10,39 +10,54 @@ import SwiftUI
 struct WideBarEditView: View {
     
     @Binding var userDesign : WideBarListData
+    @State var choiceClicked : WideListViewEnumChoice = .none
     
     var body: some View {
         VStack{
             WideBarListView(userDesign: $userDesign)
                 .frame(height: 65)
-            Divider()
             
-            HStack{
-                Button(action: {userDesign.addNewButtonToWideList()}){
-                    Image(systemName: "plus.square")
-                        .font(.system(size: 36))
-                        .foregroundColor(Color.black)
-                }
-                Button(action: {userDesign.removeButtonFromWideList()}){
-                    Image(systemName: "minus.square")
-                        .font(.system(size: 36))
-                        .foregroundColor(Color.black)
-                }
-            }
-            Divider()
+            WideBarEditViewAddRemoveButton(userDesign: $userDesign)
+            
             ScrollView(showsIndicators: false){
                 WideBarEditViewIconChoice(userDesign: $userDesign)
                 Divider()
                 WideBarEditViewBackGroundChoice(userDesign: $userDesign)
                 Divider()
-                WideBarEditSetWebAddress(userDesign: $userDesign)
+                if userDesign.checkIfLinkExists(){  WideBarEditClearButton(userDesign: $userDesign, choiceClicked: $choiceClicked)
+                    Divider()
+                }
+                WideBarEditSetWebAddress(userDesign: $userDesign, choiceClicked: $choiceClicked)
                 Divider()
-                WideBarEditSetVideoAddress(userDesign: $userDesign)
+                WideBarEditSetVideoAddress(userDesign: $userDesign, choiceClicked: $choiceClicked)
             }
         }
         .padding()
     }
+}
+
+struct WideBarEditViewAddRemoveButton: View{
     
+    @Binding var userDesign : WideBarListData
+    
+    var body: some View {
+        
+        Divider()
+        
+        HStack{
+            Button(action: {userDesign.addNewButtonToWideList()}){
+                Image(systemName: "plus.square")
+                    .font(.system(size: 36))
+                    .foregroundColor(Color.black)
+            }
+            Button(action: {userDesign.removeButtonFromWideList()}){
+                Image(systemName: "minus.square")
+                    .font(.system(size: 36))
+                    .foregroundColor(Color.black)
+            }
+        }
+        Divider()
+    }
 }
 
 struct WideBarEditViewIconChoice: View{
@@ -94,37 +109,40 @@ struct WideBarEditViewBackGroundChoice: View{
 struct WideBarEditSetWebAddress: View {
     
     @Binding var userDesign : WideBarListData
-    @State var setWebAdress : Bool = false
+    //@State var setWebAdress : Bool = false
+    @Binding var choiceClicked : WideListViewEnumChoice
     
     var body: some View {
         
-        if !setWebAdress{
+        if choiceClicked == .none{
             VStack{
                 Text("Website")
-                Image(systemName: !setWebAdress && !userDesign.listOfIcons.last!.isWebLink  ? "square" : "square.fill")
+                Image(systemName: !userDesign.listOfIcons.last!.isWebLink  ? "square" : "square.fill")
                     .font(.system(size: 18))
             }
             .onTapGesture {
-                setWebAdress.toggle()
+                choiceClicked = .website
             }
         }
-        if setWebAdress{
+        if choiceClicked == .website{
             HStack {
-                TextField("https://www.example.com", text: $userDesign.listOfIcons.last!.webAddress)
+                TextField("Web Address", text: $userDesign.listOfIcons.last!.webAddress)
                     .padding()
                     .border(Color.gray)
                     .accentColor(.gray)
                     .foregroundColor(Color.black)
             }
             Button(action: {
+                userDesign.listOfIcons.last!.isVideoLink = false 
                 userDesign.listOfIcons.last!.isWebLink = true
-                setWebAdress.toggle()
+                choiceClicked = .none
             }){
                 Text("Save")
-                    .font(.system(size: 28))
+                    .font(.system(size: 18))
                     .foregroundColor(Color.white)
                     .padding(8)
             }
+            .frame(width: 200)
             .background(Color.blue)
             .border(.black, width: 1)
             .cornerRadius(10)
@@ -136,34 +154,37 @@ struct WideBarEditSetWebAddress: View {
 struct WideBarEditSetVideoAddress: View {
     
     @Binding var userDesign : WideBarListData
-    @State var setWebAdress : Bool = false
+    //@State var setVideoAdress : Bool = false
+    @Binding var choiceClicked : WideListViewEnumChoice
     
     var body: some View {
         
-        if !setWebAdress{
+        if choiceClicked == .none{
             VStack{
                 Text("Video")
-                Image(systemName: !setWebAdress && !userDesign.listOfIcons.last!.isVideoLink  ? "square" : "square.fill")
+                Image(systemName: !userDesign.listOfIcons.last!.isVideoLink  ? "square" : "square.fill")
                     .font(.system(size: 18))
             }
             .onTapGesture {
-                setWebAdress.toggle()
+                choiceClicked = .video
             }
         }
-        if setWebAdress{
+        if choiceClicked == .video{
             HStack {
-                TextField("ID for YouTube video", text: $userDesign.listOfIcons.last!.webAddress)
+                TextField("Web Address", text: $userDesign.listOfIcons.last!.webAddress)
                     .padding()
                     .border(Color.gray)
                     .accentColor(.gray)
                     .foregroundColor(Color.black)
             }
             Button(action: {
+                userDesign.listOfIcons.last!.isWebLink = false
                 userDesign.listOfIcons.last!.isVideoLink = true
-                setWebAdress.toggle()
+                choiceClicked = .none
             }){
                 Text("Save")
-                    .font(.system(size: 28))
+                    .frame(width: 200)
+                    .font(.system(size: 18))
                     .foregroundColor(Color.white)
                     .padding(8)
             }
@@ -171,12 +192,32 @@ struct WideBarEditSetVideoAddress: View {
             .border(.black, width: 1)
             .cornerRadius(10)
         }
-        
     }
 }
 
-
-
+struct WideBarEditClearButton: View {
+    
+    @Binding var userDesign : WideBarListData
+    @Binding var choiceClicked : WideListViewEnumChoice
+    
+    var body: some View {
+        
+        Button(action: {
+            userDesign.resetAdressValues()
+            choiceClicked = .none
+        }){
+            Text("Clear Links")
+                .frame(width: 200)
+                .font(.system(size: 18))
+                .foregroundColor(Color.white)
+                .padding(8)
+        }
+        .background(Color.blue)
+        .border(.black, width: 1)
+        .cornerRadius(10)
+        
+    }
+}
 
 #Preview {
     WideBarEditView(userDesign: .constant(WideBarListData()))

@@ -8,26 +8,28 @@
 import SwiftUI
 import WebKit
 
-struct TestingView: View{
+struct LoadVideoView: View{
     
-    let ID : String = "3uEbkUmS29A"
+    let ID : URL
     
     var body: some View{
         VideoView(videoIdentifier: ID)
-            .frame(width: 350, height: 190)
+            .frame(width: 300, height: 220)
+            .cornerRadius(12)
+            .padding(.horizontal, 24)
     }
     
 }
 
 struct VideoView: UIViewRepresentable {
-    let videoIdentifier: String
+    let videoIdentifier: URL
     
     func makeUIView(context: Context) -> WKWebView {
         return WKWebView()
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        guard let youTubeURL = URL(string: "https://www.youtube.com/embed/\(videoIdentifier)") else { return }
+        let youTubeURL = videoIdentifier
         
         uiView.scrollView.isScrollEnabled = false
         uiView.load(URLRequest(url: youTubeURL))

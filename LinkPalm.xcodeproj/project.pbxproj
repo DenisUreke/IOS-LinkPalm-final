@@ -25,6 +25,9 @@
 		543266052B7A293800574EF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266042B7A293800574EF5 /* VideoView.swift */; };
 		543266062B7A293800574EF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266042B7A293800574EF5 /* VideoView.swift */; };
 		543266072B7A293800574EF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266042B7A293800574EF5 /* VideoView.swift */; };
+		543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266082B7A453200574EF5 /* WideListViewEnum.swift */; };
+		5432660A2B7A453200574EF5 /* WideListViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266082B7A453200574EF5 /* WideListViewEnum.swift */; };
+		5432660B2B7A453200574EF5 /* WideListViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266082B7A453200574EF5 /* WideListViewEnum.swift */; };
 		546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
 		546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
 		546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
@@ -130,6 +133,7 @@
 		542EAC122B7442F00044A038 /* QScreenTxtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QScreenTxtModel.swift; sourceTree = "<group>"; };
 		542EAC162B744B120044A038 /* ContainerSuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSuperClass.swift; sourceTree = "<group>"; };
 		543266042B7A293800574EF5 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		543266082B7A453200574EF5 /* WideListViewEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideListViewEnum.swift; sourceTree = "<group>"; };
 		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
 		5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolEnum.swift; sourceTree = "<group>"; };
@@ -224,13 +228,13 @@
 			path = ContainerView;
 			sourceTree = "<group>";
 		};
-		54929E822B792F9300DB1DED /* WebView */ = {
+		54929E822B792F9300DB1DED /* ExternalViews */ = {
 			isa = PBXGroup;
 			children = (
 				54929E832B792FAE00DB1DED /* WebView.swift */,
 				543266042B7A293800574EF5 /* VideoView.swift */,
 			);
-			path = WebView;
+			path = ExternalViews;
 			sourceTree = "<group>";
 		};
 		549408FF2B73C2DB00F9836F = {
@@ -256,7 +260,7 @@
 		5494090A2B73C2DB00F9836F /* LinkPalm */ = {
 			isa = PBXGroup;
 			children = (
-				54929E822B792F9300DB1DED /* WebView */,
+				54929E822B792F9300DB1DED /* ExternalViews */,
 				5494094A2B73F66E00F9836F /* Extensions */,
 				549409492B73F65F00F9836F /* Enums */,
 				549409482B73F63700F9836F /* HelperFunctions */,
@@ -371,6 +375,7 @@
 				54C76FF22B762E03005EA680 /* TextConfigEnums.swift */,
 				54BA431A2B77B4A50076E23D /* ImageConfigEnums.swift */,
 				5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */,
+				543266082B7A453200574EF5 /* WideListViewEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				549C01122B74D48A009223C3 /* WideBarView.swift in Sources */,
+				543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54BA43132B77965C0076E23D /* PhotoView.swift in Sources */,
 				5494093D2B73E7A800F9836F /* PersonData.swift in Sources */,
 				549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */,
@@ -564,6 +570,7 @@
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				54929E852B792FAE00DB1DED /* WebView.swift in Sources */,
 				542EAC0D2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
+				5432660A2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
 				5479D6FD2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
@@ -604,6 +611,7 @@
 				54BA43152B77965C0076E23D /* PhotoView.swift in Sources */,
 				54C76FF52B762E03005EA680 /* TextConfigEnums.swift in Sources */,
 				549B67182B76CDC5003124D4 /* TextView.swift in Sources */,
+				5432660B2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				5494093F2B73E7A800F9836F /* PersonData.swift in Sources */,
 				54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */,

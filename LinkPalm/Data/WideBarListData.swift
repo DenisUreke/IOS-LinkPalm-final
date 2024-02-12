@@ -13,7 +13,6 @@ import SwiftUI
 class WideBarListDataicons: Identifiable{
     
     let id = UUID().uuidString
-    var text : String = ""
     var sfIcon: SFSymbolEnum = .house
     var isWebLink: Bool = false
     var isVideoLink: Bool = false
@@ -67,8 +66,14 @@ class WideBarListData: Identifiable{
         }
     }
     
-    func openWebsitewithButton(){
-        
+    func resetAdressValues(){
+        self.listOfIcons.last!.isWebLink = false
+        self.listOfIcons.last!.isVideoLink = false
+        self.listOfIcons.last!.webAddress = ""
+    }
+    
+    func checkIfLinkExists() -> Bool{
+        return self.listOfIcons.last!.isWebLink || self.listOfIcons.last!.isVideoLink
     }
     
 }
