@@ -36,7 +36,6 @@ struct WideBarListView: View {
             }
         }
         .sheet(item: $webURL, onDismiss: { self.webURL = nil }) { webURL in
-            // Corrected this closure to use `webURL.urlString`
             WebView(url: URL(string: webURL.urlString) ?? URL(string: "https://www.apple.com/se/")!)
         }
     }

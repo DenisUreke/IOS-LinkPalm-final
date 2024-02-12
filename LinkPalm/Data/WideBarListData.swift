@@ -16,6 +16,7 @@ class WideBarListDataicons: Identifiable{
     var text : String = ""
     var sfIcon: SFSymbolEnum = .house
     var isWebLink: Bool = false
+    var isVideoLink: Bool = false
     var webAddress: String = ""
     var iconSize: Double = 24
     var iconColor: StandardColors = .black

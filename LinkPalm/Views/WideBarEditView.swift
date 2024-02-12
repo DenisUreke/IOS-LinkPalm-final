@@ -10,7 +10,6 @@ import SwiftUI
 struct WideBarEditView: View {
     
     @Binding var userDesign : WideBarListData
-    @State var setWebAdress : Bool = false
     
     var body: some View {
         VStack{
@@ -37,6 +36,8 @@ struct WideBarEditView: View {
                 WideBarEditViewBackGroundChoice(userDesign: $userDesign)
                 Divider()
                 WideBarEditSetWebAddress(userDesign: $userDesign)
+                Divider()
+                WideBarEditSetVideoAddress(userDesign: $userDesign)
             }
         }
         .padding()
@@ -97,12 +98,9 @@ struct WideBarEditSetWebAddress: View {
     
     var body: some View {
         
-        /*Text("The WebLink = \(userDesign.listOfIcons.last!.webAddress)")
-        Text("Weblink Status = \(userDesign.listOfIcons.last?.isWebLink ?? false ? "Yes" : "No")")*/
-        
         if !setWebAdress{
             VStack{
-                Text("Is Weblink")
+                Text("Website")
                 Image(systemName: !setWebAdress && !userDesign.listOfIcons.last!.isWebLink  ? "square" : "square.fill")
                     .font(.system(size: 18))
             }
@@ -120,6 +118,48 @@ struct WideBarEditSetWebAddress: View {
             }
             Button(action: {
                 userDesign.listOfIcons.last!.isWebLink = true
+                setWebAdress.toggle()
+            }){
+                Text("Save")
+                    .font(.system(size: 28))
+                    .foregroundColor(Color.white)
+                    .padding(8)
+            }
+            .background(Color.blue)
+            .border(.black, width: 1)
+            .cornerRadius(10)
+        }
+        
+    }
+}
+
+struct WideBarEditSetVideoAddress: View {
+    
+    @Binding var userDesign : WideBarListData
+    @State var setWebAdress : Bool = false
+    
+    var body: some View {
+        
+        if !setWebAdress{
+            VStack{
+                Text("Video")
+                Image(systemName: !setWebAdress && !userDesign.listOfIcons.last!.isVideoLink  ? "square" : "square.fill")
+                    .font(.system(size: 18))
+            }
+            .onTapGesture {
+                setWebAdress.toggle()
+            }
+        }
+        if setWebAdress{
+            HStack {
+                TextField("ID for YouTube video", text: $userDesign.listOfIcons.last!.webAddress)
+                    .padding()
+                    .border(Color.gray)
+                    .accentColor(.gray)
+                    .foregroundColor(Color.black)
+            }
+            Button(action: {
+                userDesign.listOfIcons.last!.isVideoLink = true
                 setWebAdress.toggle()
             }){
                 Text("Save")
