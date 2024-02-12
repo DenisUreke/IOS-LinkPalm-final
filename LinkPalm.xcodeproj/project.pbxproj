@@ -22,6 +22,9 @@
 		542EAC172B744B120044A038 /* ContainerSuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EAC162B744B120044A038 /* ContainerSuperClass.swift */; };
 		542EAC182B744B120044A038 /* ContainerSuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EAC162B744B120044A038 /* ContainerSuperClass.swift */; };
 		542EAC192B744B120044A038 /* ContainerSuperClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542EAC162B744B120044A038 /* ContainerSuperClass.swift */; };
+		543266052B7A293800574EF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266042B7A293800574EF5 /* VideoView.swift */; };
+		543266062B7A293800574EF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266042B7A293800574EF5 /* VideoView.swift */; };
+		543266072B7A293800574EF5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266042B7A293800574EF5 /* VideoView.swift */; };
 		546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
 		546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
 		546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
@@ -126,6 +129,7 @@
 		542EAC0B2B7440F90044A038 /* QScreenTxtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QScreenTxtView.swift; sourceTree = "<group>"; };
 		542EAC122B7442F00044A038 /* QScreenTxtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QScreenTxtModel.swift; sourceTree = "<group>"; };
 		542EAC162B744B120044A038 /* ContainerSuperClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSuperClass.swift; sourceTree = "<group>"; };
+		543266042B7A293800574EF5 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
 		5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolEnum.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				54929E832B792FAE00DB1DED /* WebView.swift */,
+				543266042B7A293800574EF5 /* VideoView.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 				549C01222B750311009223C3 /* TextEditView.swift in Sources */,
 				549C010C2B74D055009223C3 /* ContainerEnums.swift in Sources */,
 				549409412B73F37300F9836F /* ImageUrlData.swift in Sources */,
+				543266052B7A293800574EF5 /* VideoView.swift in Sources */,
 				549409542B73FCF500F9836F /* PersonModel.swift in Sources */,
 				54C76FF32B762E03005EA680 /* TextConfigEnums.swift in Sources */,
 				549409102B73C2DB00F9836F /* Item.swift in Sources */,
@@ -552,6 +558,7 @@
 			files = (
 				542EAC182B744B120044A038 /* ContainerSuperClass.swift in Sources */,
 				5479D7012B783BED002BAD0A /* Extensions.swift in Sources */,
+				543266062B7A293800574EF5 /* VideoView.swift in Sources */,
 				549409552B73FCF500F9836F /* PersonModel.swift in Sources */,
 				549409462B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
@@ -591,6 +598,7 @@
 				54BA431D2B77B4A50076E23D /* ImageConfigEnums.swift in Sources */,
 				546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				542EAC0A2B7425790044A038 /* ImagesURLModel.swift in Sources */,
+				543266072B7A293800574EF5 /* VideoView.swift in Sources */,
 				549409562B73FCF500F9836F /* PersonModel.swift in Sources */,
 				542EAC192B744B120044A038 /* ContainerSuperClass.swift in Sources */,
 				54BA43152B77965C0076E23D /* PhotoView.swift in Sources */,

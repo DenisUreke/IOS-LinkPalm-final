@@ -20,16 +20,11 @@ struct TemplateOneView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
-                HStack {
-                    WideBarView(color: .green)
+                NavigationLink(destination: TestingView()){
+                    HStack {
+                        WideBarView(color: .green)
+                    }
                 }
-                /*.onTapGesture {
-                    GlobalSettings.shared.startSafari.toggle()
-                }
-                .fullScreenCover(isPresented: GlobalSettings.$shared.startSafari, content: {
-                        SFSafariViewWrapper(url: URL(string: "https://www.designcode.io")!)
-                })*/
-                
                 
                 HStack(spacing: 5) {
                     NavigationLink(destination: TextView(titleData: $titleData)){

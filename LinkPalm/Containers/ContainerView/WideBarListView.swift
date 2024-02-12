@@ -24,7 +24,7 @@ struct WideBarListView: View {
                         // Conditional rendering based on isWebLink
                         if item.isWebLink {
                             Button(action: {
-                                self.webURL = WebURL(urlString: item.webAddress) // Corrected this line
+                                self.webURL = WebURL(urlString: item.webAddress)
                             }) {
                                 imageContent(for: item, in: geometry)
                             }
@@ -47,7 +47,7 @@ struct WideBarListView: View {
         Image(systemName: item.sfIcon.rawValue)
             .foregroundColor(item.iconColor.color.opacity(item.iconOpacity))
             .frame(width: (geometry.size.width - (5 * CGFloat(userDesign.listOfIcons.count - 1))) / CGFloat(userDesign.listOfIcons.count), height: 60)
-            .background(item.gradientIsClicked ? LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColorTwo.color]), startPoint: .leading, endPoint: .trailing).opacity(item.backgroundOpacity) : LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColor.color]), startPoint: .leading, endPoint: .trailing).opacity(item.backgroundOpacity))
+            .background(item.gradientIsClicked ? LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColorTwo.color]), startPoint: .top, endPoint: .bottom).opacity(item.backgroundOpacity) : LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColor.color]), startPoint: .top, endPoint: .bottom).opacity(item.backgroundOpacity))
             .cornerRadius(8)
             .font(.system(size: item.iconSize))
     }

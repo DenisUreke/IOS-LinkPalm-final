@@ -13,6 +13,7 @@ import SwiftUI
 class WideBarListDataicons: Identifiable{
     
     let id = UUID().uuidString
+    var text : String = ""
     var sfIcon: SFSymbolEnum = .house
     var isWebLink: Bool = false
     var webAddress: String = ""
