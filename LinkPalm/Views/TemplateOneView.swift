@@ -20,11 +20,11 @@ struct TemplateOneView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
-                //NavigationLink(destination: TestingView()){
+                NavigationLink(destination: ImageVideoListView(designData: $titleData)){
                     HStack {
                         WideBarView(color: .green)
                     }
-                //}
+                }
                 
                 HStack(spacing: 5) {
                     NavigationLink(destination: TextView(titleData: $titleData)){
@@ -45,9 +45,10 @@ struct TemplateOneView: View {
                 }
                 //.padding(.top, 5)
                 HStack(spacing: 5) {
-                    QScreenTxtView(settings: $test)
+                    TextView(titleData: $titleData)
                         .frame(width: geometry.size.width * 0.6)
                     QScreenTxtView(settings: $test)
+                        .frame(width: geometry.size.width * 0.4 - 15)
                 }
                 HStack {
                     WideBarView(color: .green)

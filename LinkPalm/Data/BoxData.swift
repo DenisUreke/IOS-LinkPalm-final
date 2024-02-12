@@ -11,5 +11,7 @@ import Observation
 
 @Observable
 class BoxData{
-     var textBoxDesignData = TextBoxDesignData()
+    
+    var textBoxDesignData = TextBoxDesignData()
+    var imageVideoListData = ImageVideoDataList()
 }

@@ -47,9 +47,7 @@ class WideBarListData: Identifiable{
     
     var buttonCount: Int = 1
     
-        var listOfIcons: [WideBarListDataicons] = [
-            WideBarListDataicons()
-        ]
+        var listOfIcons: [WideBarListDataicons] = [WideBarListDataicons()]
     
     func addNewButtonToWideList(){
         
