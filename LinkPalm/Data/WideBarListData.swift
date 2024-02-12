@@ -25,8 +25,10 @@ class WideBarListDataicons: Identifiable{
     var gradientIsClicked: Bool = false
 
     init(copying icon: WideBarListDataicons) {
+        
         self.sfIcon = icon.sfIcon
-        self.webAddress = icon.webAddress
+        self.isWebLink = false
+        self.webAddress = ""
         self.iconSize = icon.iconSize
         self.iconColor = icon.iconColor
         self.iconOpacity = icon.iconOpacity
@@ -61,6 +63,10 @@ class WideBarListData: Identifiable{
         if buttonCount > 1{ listOfIcons.removeLast()
             buttonCount -= 1
         }
+    }
+    
+    func openWebsitewithButton(){
+        
     }
     
 }

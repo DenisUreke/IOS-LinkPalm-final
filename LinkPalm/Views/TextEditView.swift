@@ -82,82 +82,121 @@ struct configurateTextObjects: View {
             
             Divider()
             
-            ScrollView{
-                Text(headerTitleString.fontSize.rawValue)
-                    .font(.system(size: 26, weight: .bold))
+            ScrollView(showsIndicators: false){
                 
-                VStack {
-                    Slider(value: $titleData.selectedSize, in: 0...60)
-                }
+                configurateTextObjectsFontStyling(titleData: $titleData)
                 Divider()
-                
-                SelectableView(title: headerTitleString.alignment.rawValue, options: titleData.alignmentOptions, selectedOption: $titleData.selectedAlignment) { option in
-                    Text(option.rawValue)
-                        .frame(width: 200)
-                }
+                configurateTextObjectsBackGround(titleData: $titleData)
                 Divider()
-                //
-                SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.textAlignmentOptions, selectedOption: $titleData.selectedTextAlignment) { option in
-                    Text(option.rawValue)
-                        .frame(width: 200)
-                }
+                configurateTextObjectsFontColor(titleData: $titleData)
                 Divider()
-                //
-                SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.styleOptions, selectedOption: $titleData.selectedStyle) { option in
-                    Text(option.rawValue)
-                        .frame(width: 200)
-                }
-                Divider()
-                
-                SelectableView(title: headerTitleString.fontWeight.rawValue, options: titleData.weightOptions, selectedOption: $titleData.selectedWeight) { option in
-                    Text(option.rawValue)
-                        .frame(width: 200)
-                }
-                Divider()
-                
-                DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackground, title: headerTitleString.backgroundColor.rawValue)
-                VStack{
-                    Text("Gradient")
-                    Image(systemName: !titleData.gradientIsClicked ? "square" : "square.fill")
-                        .font(.system(size: 18))
-                }
-                .onTapGesture {
-                    titleData.gradientIsClicked.toggle()
-                }
-                if titleData.gradientIsClicked {
-                    DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackgroundTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
-                }
-                VStack {
-                    Slider(value: $titleData.selectedBackgroundOpacity, in: 0...1)
-                        .padding()
-                }
-                Divider()
-                
-                DrawColorPaletteBox(selectedColor: $titleData.selectedColorFont, title: headerTitleString.fontColor.rawValue)
-                VStack{
-                    Text("Shadow")
-                    Image(systemName: !titleData.shadowIsClicked ? "square" : "square.fill")
-                        .font(.system(size: 18))
-                }
-                .onTapGesture {
-                    titleData.shadowIsClicked.toggle()
-                }
-                VStack {
-                    Slider(value: $titleData.selectedFontOpacity, in: 0...1)
-                }
-                Divider()
-                
-                DrawColorPaletteBox(selectedColor: $titleData.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
-                Slider(value: $titleData.selectedBorderWidth, in: 0...10) // Range from 0 to 100, dont forget!
-                
+                configurateTextObjectsBorderDesign(titleData: $titleData)
                 Spacer()
                 
             }
-            .scrollIndicators(.hidden)
+        }
+        .padding()
+    }
+    
+}
+
+struct configurateTextObjectsFontStyling: View{
+    
+    @Binding var titleData : TitleCustomModel
+    
+    var body: some View {
+        
+        Text(headerTitleString.fontSize.rawValue)
+            .font(.system(size: 26, weight: .bold))
+        
+        VStack {
+            Slider(value: $titleData.selectedSize, in: 0...60)
+        }
+        Divider()
+        
+        SelectableView(title: headerTitleString.alignment.rawValue, options: titleData.alignmentOptions, selectedOption: $titleData.selectedAlignment) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        Divider()
+        //
+        SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.textAlignmentOptions, selectedOption: $titleData.selectedTextAlignment) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        Divider()
+        //
+        SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.styleOptions, selectedOption: $titleData.selectedStyle) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        Divider()
+        
+        SelectableView(title: headerTitleString.fontWeight.rawValue, options: titleData.weightOptions, selectedOption: $titleData.selectedWeight) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
         }
     }
     
 }
+
+struct configurateTextObjectsBackGround: View{
+    
+    @Binding var titleData : TitleCustomModel
+    
+    var body: some View {
+        
+        DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackground, title: headerTitleString.backgroundColor.rawValue)
+        VStack{
+            Text("Gradient")
+            Image(systemName: !titleData.gradientIsClicked ? "square" : "square.fill")
+                .font(.system(size: 18))
+        }
+        .onTapGesture {
+            titleData.gradientIsClicked.toggle()
+        }
+        if titleData.gradientIsClicked {
+            DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackgroundTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
+        }
+        VStack {
+            Slider(value: $titleData.selectedBackgroundOpacity, in: 0...1)
+                .padding()
+        }
+    }
+}
+
+struct configurateTextObjectsFontColor: View{
+    
+    @Binding var titleData : TitleCustomModel
+    
+    var body: some View {
+        
+        DrawColorPaletteBox(selectedColor: $titleData.selectedColorFont, title: headerTitleString.fontColor.rawValue)
+        VStack{
+            Text("Shadow")
+            Image(systemName: !titleData.shadowIsClicked ? "square" : "square.fill")
+                .font(.system(size: 18))
+        }
+        .onTapGesture {
+            titleData.shadowIsClicked.toggle()
+        }
+        VStack {
+            Slider(value: $titleData.selectedFontOpacity, in: 0...1)
+        }
+    }
+}
+
+struct configurateTextObjectsBorderDesign: View{
+    
+    @Binding var titleData : TitleCustomModel
+    
+    var body: some View {
+        
+        DrawColorPaletteBox(selectedColor: $titleData.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
+        Slider(value: $titleData.selectedBorderWidth, in: 0...10) // Range from 0 to 100, dont forget!
+    }
+}
+        
 
 struct DrawColorPaletteBox: View {
     
@@ -191,44 +230,6 @@ struct DrawColorPaletteBox: View {
         }
     }
 }
-
-/*struct DrawMenuChoicesFromEnum<Option: RawRepresentable & Hashable, Content: View>: View where Option.RawValue == String {
- 
- let title: String
- let options: [Option]
- @Binding var selectedOption: Option
- let label: (Option) -> Content
-    
-
-    var body: some View {
-        VStack {
-            Text(title)
-                .font(.system(size: 26, weight: .bold))
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
-                ForEach(options, id: \.self) { option in
-                    Button(action: {
-                        self.selectedOption = option
-                    }) {
-                        VStack {
-                            Image(systemName: option.rawValue)
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
-                        }
-                        .frame(width: 50, height: 50)
-                        .background(
-                            RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                                .fill(Color.white)
-                                .overlay(
-                                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                                        .stroke(selectedOption == option ? Color.blue : Color.black, lineWidth: selectedOption == option ? 5 : 1)
-                                )
-                        )
-                    }
-                }
-            }
-        }
-    }
-}*/
 
 struct DrawSFSymbolsChoices: View {
     

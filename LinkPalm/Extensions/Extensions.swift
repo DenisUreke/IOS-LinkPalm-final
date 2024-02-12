@@ -13,3 +13,13 @@ extension Image {
         self.init(systemName: sfSymbol.rawValue)
     }
 }
+
+extension View {
+    @ViewBuilder func conditionalTapGesture(apply: Bool, action: @escaping () -> Void) -> some View {
+        if apply {
+            self.onTapGesture(perform: action)
+        } else {
+            self
+        }
+    }
+}

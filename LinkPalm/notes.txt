@@ -1,0 +1,4 @@
+Fix Image scale
+
+error on SFSafari Class
+
