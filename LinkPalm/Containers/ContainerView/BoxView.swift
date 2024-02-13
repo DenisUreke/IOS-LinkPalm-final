@@ -7,24 +7,52 @@
 
 import SwiftUI
 
-struct ImageVideoListView: View {
+struct BoxView: View {
     
-    var testing = ImageVideoDataList()
-    @Binding var designData : UserDesignModel
-    
-    var design: ImageVideoDataList {
-        return self.designData.boxOne.imageVideoListData
-    }
+    @Binding var titleData : UserDesignModel
     
     var body: some View {
+        VStack(spacing: 0){
+            ImageVideoListView(list: titleData.boxOne.imageVideoListData , designData: $titleData)
+        }
+        .padding(.horizontal, -20) 
+        .border(titleData.boxOne.textBoxDesignData.backgroundData.selectedBorderColor.color, width: titleData.boxOne.textBoxDesignData.backgroundData.selectedBorderWidth)
+        .background(titleData.boxOne.textBoxDesignData.backgroundData.gradientIsClicked ? Gradient(colors: [titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundOne.color, titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundTwo.color]).opacity(titleData.boxOne.textBoxDesignData.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundOne.color, titleData.boxOne.textBoxDesignData.backgroundData.selectedColorBackgroundOne.color]).opacity(titleData.boxOne.textBoxDesignData.backgroundData.selectedBackgroundOpacity) )
         
+        NavigationLink(destination: BoxDesignView(designData: $titleData)){
+
+                Text("Edit")
+                    .frame(width: 200)
+                    .font(.system(size: 18))
+                    .foregroundColor(Color.white)
+                    .padding(8)
+                    .background(Color.blue)
+                    .border(.black, width: 1)
+                    .cornerRadius(10)
+        }
+        
+        /*if titleData.isEditMode{
+            BoxDesignButton(viewToNavigate: BoxDesignView(designData: $titleData), buttonText: "testing")
+        }*/
+    }
+    
+    
+}
+
+struct ImageVideoListView: View {
+    
+    var list : ImageVideoDataList
+    @Binding var designData : UserDesignModel
+    
+    var body: some View {
         List {
-            ForEach(testing.listOfEntries) { entry in
+            ForEach(list.listOfEntries) { entry in
                 getDynamicView(imageVideoData: entry, type: entry.typeOfBox)
             }
         }
     }
 }
+
 
 func getDynamicView(imageVideoData: ImageVideoData, type: ImageVideoEnum) -> some View {
     

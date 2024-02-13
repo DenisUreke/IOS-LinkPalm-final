@@ -20,7 +20,7 @@ struct TemplateOneView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
-                NavigationLink(destination: ImageVideoListView(designData: $titleData)){
+                NavigationLink(destination: BoxView(titleData: $titleData)){
                     HStack {
                         WideBarView(color: .green)
                     }

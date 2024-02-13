@@ -9,23 +9,15 @@ import SwiftUI
 
 struct TextEditView: View {
     
-    @Binding var titleData : TextBoxDesignData
+    @Binding var titleData : ImageVideoData
     
     var body: some View {
-        VStack{
-            HStack {
-                TextField("Title", text: $titleData.TextBoxDesign.title.title)
-             .padding()
-             .border(Color.gray)
-             }
-             Spacer()
+        
             VStack {
-                TextEditor(text: $titleData.TextBoxDesign.text.text)
+                TextEditor(text: $titleData.textCustomModel.text)
              .padding()
              .border(Color.gray)
              }
-            //configurateTextObjects()
-        }
         .padding()
         
     }
@@ -61,39 +53,49 @@ struct SelectableView<Option: RawRepresentable & Hashable, Content: View>: View 
 
 struct configurateTextObjects: View {
     
-    @Binding var titleData : TitleCustomModel
-
+    @Binding var titleData : ImageVideoData
+    @State private var isButtonNavigationActive = false
+    
+    var text: TitleCustomModel {
+        return self.titleData.textCustomModel
+    }
     var body: some View {
         VStack {
             ZStack{
                 VStack{
-                    Text("Sample Text")
-                        .frame(maxWidth: .infinity, alignment: titleData.selectedAlignment.getAlignment)
+                    Text("\(titleData.textCustomModel.text)")
+                        .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
                 }
-                    .font(.system(size: titleData.selectedSize, weight: titleData.selectedWeight.getWeight, design: titleData.selectedStyle.getFontStyel))
-                    .opacity(titleData.selectedFontOpacity)
-                    .foregroundColor(titleData.selectedColorFont.color)
+                    .font(.system(size: text.selectedSize, weight: text.selectedWeight.getWeight, design: text.selectedStyle.getFontStyel))
+                    .opacity(text.selectedFontOpacity)
+                    .foregroundColor(text.selectedColorFont.color)
                     .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
-                    .shadow(color: !titleData.shadowIsClicked ? .clear : .gray,
-                     radius: 2,x: 0, y: !titleData.shadowIsClicked ? 0 : 5)
-                    .border(titleData.selectedBorderColor.color, width: titleData.selectedBorderWidth)
+                    .shadow(color: !text.shadowIsClicked ? .clear : .gray,
+                     radius: 2,x: 0, y: !text.shadowIsClicked ? 0 : 5)
+                    .border(text.selectedBorderColor.color, width: text.selectedBorderWidth)
             }
-            .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackgroundTwo.color]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
+            .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
+  
+            Divider()
             
             Divider()
             
             ScrollView(showsIndicators: false){
                 
-                configurateTextObjectsFontStyling(titleData: $titleData)
+                configurateTextObjectsFontStyling(titleData: $titleData.textCustomModel)
                 Divider()
-                configurateTextObjectsBackGround(titleData: $titleData)
+                configurateTextObjectsBackGround(titleData: $titleData.textCustomModel)
                 Divider()
-                configurateTextObjectsFontColor(titleData: $titleData)
+                configurateTextObjectsFontColor(titleData: $titleData.textCustomModel)
                 Divider()
-                configurateTextObjectsBorderDesign(titleData: $titleData)
+                configurateTextObjectsBorderDesign(titleData: $titleData.textCustomModel)
                 Spacer()
                 
             }
+            
+            Divider()
+            
+            DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.setTypeOfBox(type: ImageVideoEnum.text) })
         }
         .padding()
     }

@@ -2,3 +2,4 @@ Fix Image scale
 
 Why text wont scale
 
+How to check current loction in navigationStack

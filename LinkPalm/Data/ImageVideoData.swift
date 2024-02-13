@@ -17,14 +17,17 @@ class ImageVideoData: Identifiable{
     var imageURL: URL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bulldog_inglese.jpg")!
     var webAdress: String = ""
     var imageData: ImageData = ImageData()
-    var typeOfBox: ImageVideoEnum = ImageVideoEnum.none
+    var typeOfBox: ImageVideoEnum = ImageVideoEnum.none // Decides what View to be called from the list writer
     var textCustomModel: TitleCustomModel = TitleCustomModel()
+    
+    func setTypeOfBox(type: ImageVideoEnum){
+        self.typeOfBox = type
+    }
 }
 
 @Observable
 class ImageVideoDataList{
     
-    var entryCount: Int = 1
     var listOfEntries: [ImageVideoData] = [ImageVideoData()]
     
     init() {
@@ -61,9 +64,12 @@ class ImageVideoDataList{
         imageItem.typeOfBox = .picturefromweb
         
         self.listOfEntries.append(imageItem)
-        
-        // Update the entry count
-        self.entryCount = self.listOfEntries.count
+    }
+    
+    var buttonsForMenu : [MenuEnum] = [.text, .image, .video, .background]
+    
+    func addNewItemToBoxList(){
+        self.listOfEntries.append(ImageVideoData())
     }
     
 }

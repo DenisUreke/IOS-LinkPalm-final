@@ -44,15 +44,15 @@ struct TextView: View {
     private func drawToolBar()-> some ToolbarContent{
         ToolbarItemGroup(placement: .navigationBarTrailing) {
             Menu {
-                NavigationLink(destination: TextEditView(titleData: $titleData.boxOne.textBoxDesignData)){
+                /*NavigationLink(destination: TextEditView(titleData: $titleData.boxOne.textBoxDesignData)){
                     Label("Insert Text", systemImage: "text.insert")
-                }
-                NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.title)){
+                }*/
+                /*NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.title)){
                     Label("Design Header", systemImage: "header")
                 }
                 NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.text)){
                     Label("Design Text", systemImage: "textformat")
-                }
+                }*/
                 NavigationLink(destination: BackgroundEditView(titleData: $titleData.boxOne.textBoxDesignData.backgroundData)){
                     Label("Design Background", systemImage: "paintpalette")
                 }

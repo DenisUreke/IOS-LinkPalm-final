@@ -12,6 +12,8 @@ import Observation
 @Observable
 class UserDesignModel{
     
+    var isEditMode = true
+    
     var boxOne = BoxData()
     var wideBarOne = WideBarData()
     

@@ -52,6 +52,9 @@
 		548581E02B7AC0680000BFD9 /* BoxDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */; };
 		548581E12B7AC0680000BFD9 /* BoxDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */; };
 		548581E22B7AC0680000BFD9 /* BoxDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */; };
+		548581E42B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548581E32B7AD8380000BFD9 /* BoxDesignEnum.swift */; };
+		548581E52B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548581E32B7AD8380000BFD9 /* BoxDesignEnum.swift */; };
+		548581E62B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548581E32B7AD8380000BFD9 /* BoxDesignEnum.swift */; };
 		54929E842B792FAE00DB1DED /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54929E832B792FAE00DB1DED /* WebView.swift */; };
 		54929E852B792FAE00DB1DED /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54929E832B792FAE00DB1DED /* WebView.swift */; };
 		54929E862B792FAE00DB1DED /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54929E832B792FAE00DB1DED /* WebView.swift */; };
@@ -154,6 +157,7 @@
 		5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolEnum.swift; sourceTree = "<group>"; };
 		5479D6FF2B783BED002BAD0A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDesignView.swift; sourceTree = "<group>"; };
+		548581E32B7AD8380000BFD9 /* BoxDesignEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDesignEnum.swift; sourceTree = "<group>"; };
 		54929E832B792FAE00DB1DED /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		549409082B73C2DB00F9836F /* LinkPalm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkPalm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494090B2B73C2DB00F9836F /* LinkPalmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPalmApp.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */,
 				543266082B7A453200574EF5 /* WideListViewEnum.swift */,
 				543266142B7A73B400574EF5 /* ImageVideoEnum.swift */,
+				548581E32B7AD8380000BFD9 /* BoxDesignEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -574,6 +579,7 @@
 				546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5412D6962B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				5479D7002B783BED002BAD0A /* Extensions.swift in Sources */,
+				548581E42B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */,
 				542EAC132B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54BA43112B7784D00076E23D /* BackgroundEditView.swift in Sources */,
@@ -608,6 +614,7 @@
 				546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54C76FF42B762E03005EA680 /* TextConfigEnum.swift in Sources */,
 				543266162B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
+				548581E52B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				549409422B73F37300F9836F /* ImageUrlData.swift in Sources */,
 				549C011F2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				5494091F2B73C2E100F9836F /* LinkPalmTests.swift in Sources */,
@@ -657,6 +664,7 @@
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,
 				549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
+				548581E62B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				542EAC0E2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,
 				5479D7022B783BED002BAD0A /* Extensions.swift in Sources */,
