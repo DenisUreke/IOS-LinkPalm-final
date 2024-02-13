@@ -54,7 +54,7 @@ struct SelectableView<Option: RawRepresentable & Hashable, Content: View>: View 
 struct configurateTextObjects: View {
     
     @Binding var titleData : ImageVideoData
-    @State private var isButtonNavigationActive = false
+    @Binding var designData : UserDesignModel
     
     var text: TitleCustomModel {
         return self.titleData.textCustomModel
@@ -77,7 +77,7 @@ struct configurateTextObjects: View {
                 }
             }
             .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
-  
+            
             Divider()
                 .padding(1)
             
@@ -96,13 +96,13 @@ struct configurateTextObjects: View {
             
             Divider()
                 .padding(1)
-            
-            DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.setTypeOfBox(type: ImageVideoEnum.text) })
-                .padding(.all, -20)
+            NavigationLink(destination: BoxView(titleData: $designData)) {
+                DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.setTypeOfBox(type: ImageVideoEnum.text) })
+            }
+            .padding()
         }
-        .padding()
+        
     }
-    
 }
 
 struct configurateTextObjectsFontStyling: View{

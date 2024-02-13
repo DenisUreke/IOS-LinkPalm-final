@@ -13,5 +13,17 @@ enum EditImageString: String{
     case saturation = "Saturation"
     case contrast = "Contrast"
     case opacity = "Opacity"
+    case rotation = "Rotation"
+    case hueRotation = "Hue Rotation"
+}
+
+enum PhotoPickerChoice: Identifiable{
     
+    case nothingClicked
+    case ImageClicked
+    case DeviceClicked
+    case URLclicked
+    case saveClicked
+    
+    var id: Self { self }
 }

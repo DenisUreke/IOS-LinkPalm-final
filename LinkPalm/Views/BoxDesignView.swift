@@ -15,7 +15,7 @@ struct BoxDesignView: View {
     var body: some View {
         VStack() {
             ScrollView(showsIndicators: false){
-                DrawMenuForBoxDesignView(designData: $designData.boxOne.imageVideoListData, title: "Add New Item")
+                DrawMenuForBoxDesignView(userDesignData: $designData, designData: $designData.boxOne.imageVideoListData, title: "Add New Item")
             }
             
         }
@@ -24,6 +24,7 @@ struct BoxDesignView: View {
 
 
 struct DrawMenuForBoxDesignView: View {
+    @Binding var userDesignData : UserDesignModel
     @Binding var designData: ImageVideoDataList
     let title: String
 
@@ -52,7 +53,7 @@ struct DrawMenuForBoxDesignView: View {
         case .image:
             PhotoView(designData: $designData.listOfEntries.last!)
         case .text:
-            configurateTextObjects(titleData: $designData.listOfEntries.last!)
+            configurateTextObjects(titleData: $designData.listOfEntries.last!, designData: $userDesignData  )
         case .video:
             EmptyView()
         case .background:
@@ -109,7 +110,7 @@ struct DynamicButtonWithNavigation: View {
         Button(action: {
             print("Button was tapped")
         }) {
-            ButtonDesign(icon: icon, title: title)
+            ButtonDesign(icon: icon, title: title, borderColor: Color.black, borderThickness: 2)
         }
     }
 }
@@ -121,14 +122,16 @@ struct DynamicButtonWithFunction: View {
     
     var body: some View {
         Button(action: action) {
-            ButtonDesign(icon: icon, title: title)
+            ButtonDesign(icon: icon, title: title, borderColor: Color.black, borderThickness: 2 )
         }
     }
 }
 
 struct ButtonDesign: View {
-    var icon: String
-    var title: String
+    let icon: String
+    let title: String
+    let borderColor: Color
+    let borderThickness: Double
 
     var body: some View {
         HStack(spacing: 40) {
@@ -145,7 +148,8 @@ struct ButtonDesign: View {
                                 .stroke(Color.black, lineWidth: 1)))
                 .shadow(color: .gray, radius: 10, x: 0, y: 4)
             Text(title)
-                .font(.title2)
+                .frame(width: 50)
+                .font(.system(size: 16))
                 .foregroundStyle(Color.black)
         }
         .padding(.horizontal, 30)
@@ -156,10 +160,11 @@ struct ButtonDesign: View {
                 .frame(width: 180, height: 50)
                 .overlay(
                     RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                        .stroke(Color.blue, lineWidth: 2)))
+                        .stroke(borderColor, lineWidth: borderThickness)))
         .padding()
     }
 }
+
 
 #Preview {
     BoxDesignView(designData: .constant(UserDesignModel()))

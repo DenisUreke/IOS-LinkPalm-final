@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540287482B7C22FC00282654 /* VideoDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540287472B7C22FC00282654 /* VideoDesignView.swift */; };
+		540287492B7C22FC00282654 /* VideoDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540287472B7C22FC00282654 /* VideoDesignView.swift */; };
+		5402874A2B7C22FC00282654 /* VideoDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540287472B7C22FC00282654 /* VideoDesignView.swift */; };
 		5412D6962B758B9800D6AF9B /* TitleCustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */; };
 		5412D6972B758B9800D6AF9B /* TitleCustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */; };
 		5412D6982B758B9800D6AF9B /* TitleCustomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */; };
@@ -142,6 +145,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		540287472B7C22FC00282654 /* VideoDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDesignView.swift; sourceTree = "<group>"; };
 		5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCustomModel.swift; sourceTree = "<group>"; };
 		542EAC072B7425780044A038 /* ImagesURLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesURLModel.swift; sourceTree = "<group>"; };
 		542EAC0B2B7440F90044A038 /* QScreenTxtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QScreenTxtView.swift; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 				54BA43102B7784D00076E23D /* BackgroundEditView.swift */,
 				54BA43122B77965C0076E23D /* PhotoView.swift */,
 				54C7CF2E2B78E92B00F29602 /* WideBarEditView.swift */,
+				540287472B7C22FC00282654 /* VideoDesignView.swift */,
 				548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */,
 			);
 			path = Views;
@@ -547,6 +552,7 @@
 				543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54BA43132B77965C0076E23D /* PhotoView.swift in Sources */,
 				5494093D2B73E7A800F9836F /* PersonData.swift in Sources */,
+				540287482B7C22FC00282654 /* VideoDesignView.swift in Sources */,
 				549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
 				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
@@ -596,6 +602,7 @@
 				5479D7012B783BED002BAD0A /* Extensions.swift in Sources */,
 				543266062B7A293800574EF5 /* VideoView.swift in Sources */,
 				543266122B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
+				540287492B7C22FC00282654 /* VideoDesignView.swift in Sources */,
 				549409552B73FCF500F9836F /* PersonModel.swift in Sources */,
 				549409462B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
@@ -664,6 +671,7 @@
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,
 				549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
+				5402874A2B7C22FC00282654 /* VideoDesignView.swift in Sources */,
 				548581E62B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				542EAC0E2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,

@@ -14,14 +14,27 @@ class ImageVideoData: Identifiable{
     
     let id = UUID().uuidString
     var videoID: URL = URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!
-    var imageURL: URL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bulldog_inglese.jpg")!
     var webAdress: String = ""
     var imageData: ImageData = ImageData()
     var typeOfBox: ImageVideoEnum = ImageVideoEnum.none // Decides what View to be called from the list writer
     var textCustomModel: TitleCustomModel = TitleCustomModel()
+    var wideBarListData: WideBarListData = WideBarListData()
     
     func setTypeOfBox(type: ImageVideoEnum){
         self.typeOfBox = type
+    }
+    
+    func setImageUrlFromString(string: String) {
+        if let url = URL(string: string) {
+            self.imageData.imageURL = url
+            self.typeOfBox = .picturefromweb
+        } else {
+            return
+        }
+    }
+    
+    func setImageFromDevice(){
+        self.typeOfBox = .picture
     }
 }
 

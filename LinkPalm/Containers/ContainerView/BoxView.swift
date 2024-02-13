@@ -132,6 +132,8 @@ struct DynamicPictureView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
+                .rotationEffect(.degrees(imageData.selectedRotation))
+                .hueRotation(.degrees(imageData.selectedHueRotation))
                 .opacity(imageData.selectedOpacity)
                 .saturation(imageData.selectedSaturation)
                 .contrast(imageData.selectedContrast)
@@ -140,10 +142,11 @@ struct DynamicPictureView: View {
 }
 
 struct DynamicPictureViewFromWeb: View {
+    
     let imageData: ImageVideoData
 
     var body: some View {
-        AsyncImage(url: imageData.imageURL) { phase in
+        AsyncImage(url: imageData.imageData.imageURL) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -152,6 +155,8 @@ struct DynamicPictureViewFromWeb: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
+                    .rotationEffect(.degrees(imageData.imageData.selectedRotation))
+                    .hueRotation(.degrees(imageData.imageData.selectedHueRotation))
                     .opacity(imageData.imageData.selectedOpacity)
                     .saturation(imageData.imageData.selectedSaturation)
                     .contrast(imageData.imageData.selectedContrast)

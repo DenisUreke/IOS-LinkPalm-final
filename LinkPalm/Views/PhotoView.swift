@@ -11,83 +11,90 @@ import SwiftUI
 struct PhotoView: View {
     
     @Binding var designData: ImageVideoData
+    @State var enteredText: String = ""
+    @State var isURL = false
+    @State var isDevice = false
+    @State var openSave = false
     
-    @State private var photopickerItem: PhotosPickerItem?
-    @State private var selectedImage: Image?
-    @State private var ImageIsChosen = false
-    @State private var editImageClicked = false
-    @State private var contrast: Double = 0
+    @State var photopickerItem: PhotosPickerItem?
+    @State var selectedImage: Image?
 
     var body: some View {
         
         VStack{
-            if designData.imageData.selectedBackgroundImage != nil {
-                designData.imageData.selectedBackgroundImage!
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .opacity(designData.imageData.selectedOpacity)
-                    .saturation(designData.imageData.selectedSaturation)
-                    .contrast(designData.imageData.selectedContrast)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-            } else {
-                Text("Select a Image")
-                    .foregroundColor(.gray)
-                    .frame(width: 200, height: 200) // Set the same size for consistency
-                    .background(Color.white) // Optional: Set a background color to make the placeholder more visible
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
+            if isURL {
+                DynamicPictureViewFromWeb(imageData: designData)
+            }
+            if isDevice {
+                DynamicPictureView(imageData: designData.imageData)
             }
                     Divider()
-                    
-            ScrollView{
-                if designData.imageData.selectedBackgroundImage != nil{
-                    VStack{
-                        Text("Scale to Fill")
-                            .font(.system(size: 26, weight: .bold))
-                        Image(systemName: !designData.imageData.scaledToFill ? "square" : "square.fill")
-                            .font(.system(size: 26))
-                    }
-                    .onTapGesture {
-                        designData.imageData.scaledToFill.toggle()
-                    }
-                    
-                    Divider()
-                    
-                    Text(EditImageString.contrast.rawValue)
-                        .font(.system(size: 26, weight: .bold))
-                    Slider(value: $designData.imageData.selectedContrast , in: 0...10)
-                    
-                    Divider()
-                    
-                    Text(EditImageString.saturation.rawValue)
-                        .font(.system(size: 26, weight: .bold))
-                    Slider(value: $designData.imageData.selectedSaturation, in: 0...10)
-                    
-                    Divider()
-                    
-                    Text(EditImageString.opacity.rawValue)
-                        .font(.system(size: 26, weight: .bold))
-                    Slider(value: $designData.imageData.selectedOpacity, in: 0...1)
-                    
+
+            ScrollView(showsIndicators: false){
+                PhotoEditingTools(designData: $designData)
+            }
+            
+            if isURL {
+                VStack {
+                    TextField("Enter URL", text: $enteredText)
+                        .frame(width: 300)
+                 .padding()
+                 .multilineTextAlignment(.center)
+                 .border(Color.gray)
+                 }
+            }
+            
+            if isDevice{
+                VStack{
+                    PhotosPicker("Or select from device", selection: $photopickerItem, matching: .images)
                 }
             }
-            DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { designData.setTypeOfBox(type: ImageVideoEnum.picture) })
-                .padding(.all, -20)
             
-            PhotosPicker("Select Image", selection: $photopickerItem, matching: .images)
-            
+            HStack{
+                HStack{
+                    isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2)
+
+                }
+                .onTapGesture {
+                    isDevice.toggle()
+                    isURL = false
+                    openSave = true
+                }
+                    .padding(.trailing, -20)
+                
+                HStack{
+                    isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2)
+
+                }
+                .onTapGesture {
+                    isURL.toggle()
+                    isDevice = false
+                    openSave = true
+                }
+            }
+            if openSave{
+                if isURL || isDevice{
+                    HStack{
+                        ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2)
+                            }
+                    .onTapGesture{
+                        if isURL{
+                            designData.setImageUrlFromString(string: enteredText)
+                            openSave = false
+                        }
+                        else{
+                            designData.setImageFromDevice()
+                            openSave = false
+                        }
+                    }
+                }
+            }
         }
+        .padding()
         .onChange(of: photopickerItem) {
             Task {
                 if let loaded = try? await photopickerItem?.loadTransferable(type: Image.self) {
                     selectedImage = loaded
-                    ImageIsChosen.toggle()
                     designData.imageData.selectedBackgroundImage = selectedImage
                 } else {
                     print("Failed")
@@ -96,3 +103,138 @@ struct PhotoView: View {
         }
     }
 }
+
+struct PhotoEditingTools: View{
+    
+    @Binding var designData: ImageVideoData
+    
+    var body: some View{
+        
+        if designData.imageData.selectedBackgroundImage != nil || !designData.imageData.imageURL.absoluteString.isEmpty{
+            
+            Text(EditImageString.contrast.rawValue)
+                .font(.system(size: 26, weight: .bold))
+            Slider(value: $designData.imageData.selectedContrast , in: 0...10)
+            
+            Divider()
+            
+            Text(EditImageString.saturation.rawValue)
+                .font(.system(size: 26, weight: .bold))
+            Slider(value: $designData.imageData.selectedSaturation, in: 0...10)
+            
+            Divider()
+            
+            Text(EditImageString.rotation.rawValue)
+                .font(.system(size: 26, weight: .bold))
+            Slider(value: $designData.imageData.selectedRotation, in: 0...360)
+            
+            Divider()
+            
+            Text(EditImageString.hueRotation.rawValue)
+                .font(.system(size: 26, weight: .bold))
+            Slider(value: $designData.imageData.selectedHueRotation, in: 0...360)
+            
+            Divider()
+            
+            Text(EditImageString.opacity.rawValue)
+                .font(.system(size: 26, weight: .bold))
+            Slider(value: $designData.imageData.selectedOpacity, in: 0...1)
+            
+        }
+    }
+}
+
+struct PhotoEditingButtons: View{
+    
+    @Binding var designData: ImageVideoData
+    @Binding var enteredText: String
+    @Binding var isURL: Bool
+    @Binding var isDevice: Bool
+    @Binding var openSave: Bool
+    
+    @Binding var photopickerItem: PhotosPickerItem?
+    @Binding var selectedImage: Image?
+    
+    var body: some View{
+        if isURL {
+            VStack {
+                TextField("Enter URL", text: $enteredText)
+                    .frame(width: 300)
+             .padding()
+             .multilineTextAlignment(.center)
+             .border(Color.gray)
+             }
+        }
+        
+        if isDevice{
+            VStack{
+                PhotosPicker("Or select from device", selection: $photopickerItem, matching: .images)
+            }
+        }
+        
+        HStack{
+            HStack{
+                isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2)
+
+            }
+            .onTapGesture {
+                isDevice.toggle()
+                isURL = false
+                openSave = true
+            }
+                .padding(.trailing, -20)
+            
+            HStack{
+                isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2)
+
+            }
+            .onTapGesture {
+                isURL.toggle()
+                isDevice = false
+                openSave = true
+            }
+        }
+        if openSave{
+            if isURL || isDevice{
+                HStack{
+                    ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2)
+                        }
+                .onTapGesture{
+                    if isURL{
+                        designData.setImageUrlFromString(string: enteredText)
+                        openSave = false
+                    }
+                    else{
+                        designData.setImageFromDevice()
+                        openSave = false
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*
+ if designData.imageData.selectedBackgroundImage != nil && isDevice {
+     designData.imageData.selectedBackgroundImage!
+         .resizable()
+         .scaledToFit()
+         .frame(width: 200, height: 200)
+         .opacity(designData.imageData.selectedOpacity)
+         .saturation(designData.imageData.selectedSaturation)
+         .contrast(designData.imageData.selectedContrast)
+         .overlay(
+             RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
+                 .stroke(Color.gray, lineWidth: 1)
+         )
+ } else {
+     Text("Select a Image")
+         .foregroundColor(.gray)
+         .frame(width: 200, height: 200) // Set the same size for consistency
+         .background(Color.white) // Optional: Set a background color to make the placeholder more visible
+         .overlay(
+             RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
+                 .stroke(Color.gray, lineWidth: 1)
+         )
+ }*/
