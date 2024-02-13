@@ -61,24 +61,25 @@ struct configurateTextObjects: View {
     }
     var body: some View {
         VStack {
-            ZStack{
-                VStack{
-                    Text("\(titleData.textCustomModel.text)")
-                        .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
-                }
+            NavigationLink(destination: TextEditView(titleData: $titleData)){
+                ZStack{
+                    VStack{
+                        Text("\(titleData.textCustomModel.text)")
+                            .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
+                    }
                     .font(.system(size: text.selectedSize, weight: text.selectedWeight.getWeight, design: text.selectedStyle.getFontStyel))
                     .opacity(text.selectedFontOpacity)
                     .foregroundColor(text.selectedColorFont.color)
                     .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
                     .shadow(color: !text.shadowIsClicked ? .clear : .gray,
-                     radius: 2,x: 0, y: !text.shadowIsClicked ? 0 : 5)
+                            radius: 2,x: 0, y: !text.shadowIsClicked ? 0 : 5)
                     .border(text.selectedBorderColor.color, width: text.selectedBorderWidth)
+                }
             }
             .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
   
             Divider()
-            
-            Divider()
+                .padding(1)
             
             ScrollView(showsIndicators: false){
                 
@@ -94,8 +95,10 @@ struct configurateTextObjects: View {
             }
             
             Divider()
+                .padding(1)
             
             DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.setTypeOfBox(type: ImageVideoEnum.text) })
+                .padding(.all, -20)
         }
         .padding()
     }

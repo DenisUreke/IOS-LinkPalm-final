@@ -10,69 +10,85 @@ import SwiftUI
 
 struct PhotoView: View {
     
-    @State var test = SFSymbolEnum.bell
-    @State var test2 = Emojis.airplane
+    @Binding var designData: ImageVideoData
     
-    @Binding var userDesignModel: UserDesignModel
-    @State var viewToShow: ViewPassedIntoPhotoSelector
-    @Binding var imageData: ImageData
-    
-    @State private var avatarItem: PhotosPickerItem?
-    @State private var avatarImage: Image?
+    @State private var photopickerItem: PhotosPickerItem?
+    @State private var selectedImage: Image?
     @State private var ImageIsChosen = false
     @State private var editImageClicked = false
     @State private var contrast: Double = 0
 
     var body: some View {
+        
         VStack{
-                    if viewToShow == .textView{
-                        TextView(titleData: $userDesignModel)
-                            //.scaleEffect(0.5)
-                            .frame(height: 250)
-                    }
+            if designData.imageData.selectedBackgroundImage != nil {
+                designData.imageData.selectedBackgroundImage!
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .opacity(designData.imageData.selectedOpacity)
+                    .saturation(designData.imageData.selectedSaturation)
+                    .contrast(designData.imageData.selectedContrast)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+            } else {
+                Text("Select a Image")
+                    .foregroundColor(.gray)
+                    .frame(width: 200, height: 200) // Set the same size for consistency
+                    .background(Color.white) // Optional: Set a background color to make the placeholder more visible
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+            }
                     Divider()
                     
             ScrollView{
-                if imageData.selectedBackgroundImage != nil{
+                if designData.imageData.selectedBackgroundImage != nil{
                     VStack{
                         Text("Scale to Fill")
                             .font(.system(size: 26, weight: .bold))
-                        Image(systemName: !imageData.scaledToFill ? "square" : "square.fill")
+                        Image(systemName: !designData.imageData.scaledToFill ? "square" : "square.fill")
                             .font(.system(size: 26))
                     }
                     .onTapGesture {
-                        imageData.scaledToFill.toggle()
+                        designData.imageData.scaledToFill.toggle()
                     }
                     
                     Divider()
                     
                     Text(EditImageString.contrast.rawValue)
                         .font(.system(size: 26, weight: .bold))
-                    Slider(value: $imageData.selectedContrast , in: 0...10)
+                    Slider(value: $designData.imageData.selectedContrast , in: 0...10)
                     
                     Divider()
                     
                     Text(EditImageString.saturation.rawValue)
                         .font(.system(size: 26, weight: .bold))
-                    Slider(value: $imageData.selectedSaturation, in: 0...10)
+                    Slider(value: $designData.imageData.selectedSaturation, in: 0...10)
                     
                     Divider()
                     
                     Text(EditImageString.opacity.rawValue)
                         .font(.system(size: 26, weight: .bold))
-                    Slider(value: $imageData.selectedOpacity, in: 0...1)
+                    Slider(value: $designData.imageData.selectedOpacity, in: 0...1)
                     
                 }
             }
-            PhotosPicker("Select Image", selection: $avatarItem, matching: .images)
+            DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { designData.setTypeOfBox(type: ImageVideoEnum.picture) })
+                .padding(.all, -20)
+            
+            PhotosPicker("Select Image", selection: $photopickerItem, matching: .images)
             
         }
-        .onChange(of: avatarItem) {
+        .onChange(of: photopickerItem) {
             Task {
-                if let loaded = try? await avatarItem?.loadTransferable(type: Image.self) {
-                    avatarImage = loaded
+                if let loaded = try? await photopickerItem?.loadTransferable(type: Image.self) {
+                    selectedImage = loaded
                     ImageIsChosen.toggle()
-                    imageData.selectedBackgroundImage = avatarImage
+                    designData.imageData.selectedBackgroundImage = selectedImage
                 } else {
                     print("Failed")
                 }

@@ -66,9 +66,9 @@ func getDynamicView(imageVideoData: ImageVideoData, type: ImageVideoEnum) -> som
     case .video:
         return AnyView(LoadVideoView(ID: imageVideoData.videoID))
     case .picture:
-        return AnyView(DynamicPictureView(titleData: imageVideoData.imageData))
+        return AnyView(DynamicPictureView(imageData: imageVideoData.imageData))
     case .picturefromweb:
-        return AnyView(DynamicPictureViewFromWeb(titleData: imageVideoData))
+        return AnyView(DynamicPictureViewFromWeb(imageData: imageVideoData))
     }
 }
 
@@ -124,23 +124,26 @@ struct DynamicViewText: View {
 
 struct DynamicPictureView: View {
     
-    let titleData : ImageData
+    let imageData : ImageData
 
     var body: some View {
-        if let image = titleData.selectedBackgroundImage{
+        if let image = imageData.selectedBackgroundImage{
             image
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
+                .opacity(imageData.selectedOpacity)
+                .saturation(imageData.selectedSaturation)
+                .contrast(imageData.selectedContrast)
         }else{Text("Could not find Image")}
     }
 }
 
 struct DynamicPictureViewFromWeb: View {
-    let titleData: ImageVideoData
+    let imageData: ImageVideoData
 
     var body: some View {
-        AsyncImage(url: titleData.imageURL) { phase in
+        AsyncImage(url: imageData.imageURL) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -149,6 +152,9 @@ struct DynamicPictureViewFromWeb: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
+                    .opacity(imageData.imageData.selectedOpacity)
+                    .saturation(imageData.imageData.selectedSaturation)
+                    .contrast(imageData.imageData.selectedContrast)
             case .failure:
                 Text("Unable to load image")
             @unknown default:

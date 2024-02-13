@@ -50,7 +50,7 @@ struct DrawMenuForBoxDesignView: View {
     private func destinationView(for option: MenuEnum) -> some View {
         switch option {
         case .image:
-            EmptyView()
+            PhotoView(designData: $designData.listOfEntries.last!)
         case .text:
             configurateTextObjects(titleData: $designData.listOfEntries.last!)
         case .video:

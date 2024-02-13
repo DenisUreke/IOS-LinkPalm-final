@@ -56,9 +56,9 @@ struct TextView: View {
                 NavigationLink(destination: BackgroundEditView(titleData: $titleData.boxOne.textBoxDesignData.backgroundData)){
                     Label("Design Background", systemImage: "paintpalette")
                 }
-                NavigationLink(destination: PhotoView(userDesignModel: $titleData, viewToShow: ViewPassedIntoPhotoSelector.textView, imageData: $titleData.boxOne.textBoxDesignData.backgroundData.imageData)) {
+                /*NavigationLink(destination: PhotoView(userDesignModel: $titleData, viewToShow: ViewPassedIntoPhotoSelector.textView, imageData: $titleData.boxOne.textBoxDesignData.backgroundData.imageData)) {
                     Label("Insert Image", systemImage: "photo")
-                }
+                }*/
                 Button("Save", action: {
                     // Your save action here
                 })
