@@ -61,19 +61,8 @@ struct configurateTextObjects: View {
     var body: some View {
         VStack {
             NavigationLink(destination: TextEditView(titleData: $titleData.listOfEntries.last!)){
-                ZStack{
-                    VStack{
-                        Text("\(titleData.listOfEntries.last!.textCustomModel.text)")
-                            .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
-                    }
-                    .font(.system(size: text.selectedSize, weight: text.selectedWeight.getWeight, design: text.selectedStyle.getFontStyel))
-                    .opacity(text.selectedFontOpacity)
-                    .foregroundColor(text.selectedColorFont.color)
-                    .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
-                    .shadow(color: !text.shadowIsClicked ? .clear : .gray,
-                            radius: 2,x: 0, y: !text.shadowIsClicked ? 0 : 5)
-                    .border(text.selectedBorderColor.color, width: text.selectedBorderWidth)
-                }
+                
+                configurateTextObjectsPreview(titleData: $titleData)
             }
             .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
             
@@ -102,6 +91,33 @@ struct configurateTextObjects: View {
         }
         
     }
+}
+
+struct configurateTextObjectsPreview: View {
+    
+    @Binding var titleData : ImageVideoDataList
+    
+    var text: TitleCustomModel {
+        return self.titleData.listOfEntries.last!.textCustomModel
+    }
+    
+    var body: some View{
+        
+        ZStack{
+            VStack{
+                Text("\(titleData.listOfEntries.last!.textCustomModel.text)")
+                    .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
+            }
+            .font(.system(size: text.selectedSize, weight: text.selectedWeight.getWeight, design: text.selectedStyle.getFontStyel))
+            .opacity(text.selectedFontOpacity)
+            .foregroundColor(text.selectedColorFont.color)
+            .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
+            .shadow(color: !text.shadowIsClicked ? .clear : .gray,
+                    radius: 2,x: 0, y: !text.shadowIsClicked ? 0 : 5)
+            .border(text.selectedBorderColor.color, width: text.selectedBorderWidth)
+        }
+    }
+    
 }
 
 struct configurateTextObjectsFontStyling: View{

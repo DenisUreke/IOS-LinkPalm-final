@@ -50,10 +50,8 @@ struct TemplateOneView: View {
                     QScreenTxtView(settings: $test)
                         .frame(width: geometry.size.width * 0.4 - 15)
                 }
-                NavigationLink(destination: SessionView()){
                     HStack {
                         WideBarView(color: .green)
-                    }
                 }
                 HStack(spacing: 5) {
                     QScreenTxtView(settings: $test)

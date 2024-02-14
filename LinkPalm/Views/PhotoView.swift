@@ -114,33 +114,23 @@ struct PhotoEditingTools: View{
         
         if designData.imageData.selectedBackgroundImage != nil || !designData.imageData.imageURL.absoluteString.isEmpty{
             
-            Text(EditImageString.contrast.rawValue)
-                .font(.system(size: 26, weight: .bold))
-            Slider(value: $designData.imageData.selectedContrast , in: 0...10)
+            SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.selectedContrast, title: EditImageString.contrast)
             
             Divider()
             
-            Text(EditImageString.saturation.rawValue)
-                .font(.system(size: 26, weight: .bold))
-            Slider(value: $designData.imageData.selectedSaturation, in: 0...10)
+            SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.selectedSaturation, title: EditImageString.saturation)
             
             Divider()
             
-            Text(EditImageString.rotation.rawValue)
-                .font(.system(size: 26, weight: .bold))
-            Slider(value: $designData.imageData.selectedRotation, in: 0...360)
+            SliderDoubleView(minValue: 0, maxValue: 360, objectToChange: $designData.imageData.selectedRotation, title: EditImageString.rotation)
+            
+            Divider()
+
+            SliderDoubleView(minValue: 0, maxValue: 360, objectToChange: $designData.imageData.selectedHueRotation, title: EditImageString.hueRotation)
             
             Divider()
             
-            Text(EditImageString.hueRotation.rawValue)
-                .font(.system(size: 26, weight: .bold))
-            Slider(value: $designData.imageData.selectedHueRotation, in: 0...360)
-            
-            Divider()
-            
-            Text(EditImageString.opacity.rawValue)
-                .font(.system(size: 26, weight: .bold))
-            Slider(value: $designData.imageData.selectedOpacity, in: 0...1)
+            SliderDoubleView(minValue: 0, maxValue: 1, objectToChange: $designData.imageData.selectedOpacity, title: EditImageString.opacity)
             
             Divider()
             
@@ -148,35 +138,23 @@ struct PhotoEditingTools: View{
             
             Divider()
             
-            Text(EditImageString.imageCornerRadius.rawValue)
-                .font(.system(size: 26, weight: .bold))
-            Slider(value: $designData.textCustomModel.selectedImageCornerRadius, in: 0...50)
+            SliderDoubleView(minValue: 0, maxValue: 50, objectToChange: $designData.textCustomModel.selectedImageCornerRadius, title: EditImageString.imageCornerRadius)
+            
             
         }
     }
 }
 
-
-/*
- if designData.imageData.selectedBackgroundImage != nil && isDevice {
-     designData.imageData.selectedBackgroundImage!
-         .resizable()
-         .scaledToFit()
-         .frame(width: 200, height: 200)
-         .opacity(designData.imageData.selectedOpacity)
-         .saturation(designData.imageData.selectedSaturation)
-         .contrast(designData.imageData.selectedContrast)
-         .overlay(
-             RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
-                 .stroke(Color.gray, lineWidth: 1)
-         )
- } else {
-     Text("Select a Image")
-         .foregroundColor(.gray)
-         .frame(width: 200, height: 200) // Set the same size for consistency
-         .background(Color.white) // Optional: Set a background color to make the placeholder more visible
-         .overlay(
-             RoundedRectangle(cornerRadius: 10) // Optional: Add a border to the placeholder
-                 .stroke(Color.gray, lineWidth: 1)
-         )
- }*/
+struct SliderDoubleView: View{
+    
+    @State var minValue: Double
+    @State var maxValue: Double
+    @Binding var objectToChange: Double
+    let title : EditImageString
+    
+    var body: some View{
+        Text(title.rawValue)
+            .font(.system(size: 26, weight: .bold))
+        Slider(value: $objectToChange, in: minValue...maxValue)
+    }
+}

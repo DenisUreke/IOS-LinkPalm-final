@@ -9,7 +9,7 @@ import Foundation
 import Observation
 import SwiftData
 
-@Model
+//@Model
 @Observable
 final class UserDesignModel{
     

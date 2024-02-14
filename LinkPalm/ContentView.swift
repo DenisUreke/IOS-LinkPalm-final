@@ -10,10 +10,6 @@ import SwiftData
 
 struct ContentView: View {
     
-    
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-    
     @State var testing = DownloadDataModel()
     
 
@@ -25,8 +21,8 @@ struct ContentView: View {
             TemplateOneView()
                 .navigationTitle("contact")
         }
-    
         
+    }
         /*NavigationSplitView {
             List {
                 ForEach(items) { item in
@@ -62,7 +58,7 @@ struct ContentView: View {
         
     }
     
-
+/*
     private func addItem() {
         withAnimation {
             let newItem = Item(timestamp: Date())
@@ -90,8 +86,8 @@ struct ContentView: View {
         }
     }
 }
-
-#Preview {
+*/
+/*#Preview {
     ContentView()
         .modelContainer(for: Item.self, inMemory: true)
-}
+}*/
