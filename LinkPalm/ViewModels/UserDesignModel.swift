@@ -7,15 +7,19 @@
 
 import Foundation
 import Observation
+import SwiftData
 
-
+@Model
 @Observable
-class UserDesignModel{
+final class UserDesignModel{
     
-    var userID = UUID().uuidString
+    @Attribute(.unique) let userID = UUID().uuidString
     var isEditMode = true
     
     var boxOne = BoxData()
     var wideBarOne = WideBarData()
+    
+    init(userID: String = UUID().uuidString, isEditMode: Bool = true, boxOne: BoxData = BoxData(), wideBarOne: WideBarData = WideBarData()) {
+    }
     
 }

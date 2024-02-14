@@ -50,7 +50,7 @@ struct TemplateOneView: View {
                     QScreenTxtView(settings: $test)
                         .frame(width: geometry.size.width * 0.4 - 15)
                 }
-                NavigationLink(destination: QRcodeView(personID: titleData)){
+                NavigationLink(destination: SessionView()){
                     HStack {
                         WideBarView(color: .green)
                     }

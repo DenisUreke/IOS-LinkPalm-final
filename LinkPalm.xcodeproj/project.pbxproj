@@ -131,6 +131,10 @@
 		54D462F02B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
 		54D462F12B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
 		54D462F22B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
+		54D462F52B7CDADA006C27F4 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 54D462F42B7CDADA006C27F4 /* CodeScanner */; };
+		54D462F72B7CDD9C006C27F4 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462F62B7CDD9C006C27F4 /* QRScanView.swift */; };
+		54D462F82B7CDD9C006C27F4 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462F62B7CDD9C006C27F4 /* QRScanView.swift */; };
+		54D462F92B7CDD9C006C27F4 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462F62B7CDD9C006C27F4 /* QRScanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +209,8 @@
 		54C7CF302B78EE2C00F29602 /* WideBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarData.swift; sourceTree = "<group>"; };
 		54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDesignView.swift; sourceTree = "<group>"; };
 		54D462EF2B7CD456006C27F4 /* QRcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeView.swift; sourceTree = "<group>"; };
+		54D462F62B7CDD9C006C27F4 /* QRScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanView.swift; sourceTree = "<group>"; };
+		54D462FA2B7CDF3B006C27F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54D462F52B7CDADA006C27F4 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +274,7 @@
 				54929E832B792FAE00DB1DED /* WebView.swift */,
 				543266042B7A293800574EF5 /* VideoView.swift */,
 				54D462EF2B7CD456006C27F4 /* QRcodeView.swift */,
+				54D462F62B7CDD9C006C27F4 /* QRScanView.swift */,
 			);
 			path = ExternalViews;
 			sourceTree = "<group>";
@@ -294,6 +302,7 @@
 		5494090A2B73C2DB00F9836F /* LinkPalm */ = {
 			isa = PBXGroup;
 			children = (
+				54D462FA2B7CDF3B006C27F4 /* Info.plist */,
 				54929E822B792F9300DB1DED /* ExternalViews */,
 				5494094A2B73F66E00F9836F /* Extensions */,
 				549409492B73F65F00F9836F /* Enums */,
@@ -444,6 +453,9 @@
 			dependencies = (
 			);
 			name = LinkPalm;
+			packageProductDependencies = (
+				54D462F42B7CDADA006C27F4 /* CodeScanner */,
+			);
 			productName = LinkPalm;
 			productReference = 549409082B73C2DB00F9836F /* LinkPalm.app */;
 			productType = "com.apple.product-type.application";
@@ -516,6 +528,9 @@
 				Base,
 			);
 			mainGroup = 549408FF2B73C2DB00F9836F;
+			packageReferences = (
+				54D462F32B7CDADA006C27F4 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 549409092B73C2DB00F9836F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -562,6 +577,7 @@
 				543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54BA43132B77965C0076E23D /* PhotoView.swift in Sources */,
 				5494093D2B73E7A800F9836F /* PersonData.swift in Sources */,
+				54D462F72B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
 				540287482B7C22FC00282654 /* VideoDesignView.swift in Sources */,
 				549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
@@ -623,6 +639,7 @@
 				54D462F12B7CD456006C27F4 /* QRcodeView.swift in Sources */,
 				542EAC0D2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				5432660A2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
+				54D462F82B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
 				5479D6FD2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
@@ -685,6 +702,7 @@
 				5412D6982B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				549409522B73F76200F9836F /* DataDownloader.swift in Sources */,
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,
+				54D462F92B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
 				549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
 				5402874A2B7C22FC00282654 /* VideoDesignView.swift in Sources */,
@@ -843,6 +861,9 @@
 				DEVELOPMENT_TEAM = XGW54Y4MXM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinkPalm/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To scan QR codes";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "For multipeer connectivity.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -872,6 +893,9 @@
 				DEVELOPMENT_TEAM = XGW54Y4MXM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinkPalm/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To scan QR codes";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "For multipeer connectivity.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1006,6 +1030,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		54D462F32B7CDADA006C27F4 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54D462F42B7CDADA006C27F4 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54D462F32B7CDADA006C27F4 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 549409002B73C2DB00F9836F /* Project object */;
 }
