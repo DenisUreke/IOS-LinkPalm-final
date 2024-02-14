@@ -20,7 +20,7 @@ struct TemplateOneView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
-                NavigationLink(destination: BoxView(titleData: $titleData)){
+                NavigationLink(destination: BoxView(titleData: $titleData.boxOne.imageVideoListData)){
                     HStack {
                         WideBarView(color: .green)
                     }
@@ -50,8 +50,10 @@ struct TemplateOneView: View {
                     QScreenTxtView(settings: $test)
                         .frame(width: geometry.size.width * 0.4 - 15)
                 }
-                HStack {
-                    WideBarView(color: .green)
+                NavigationLink(destination: QRcodeView(personID: titleData)){
+                    HStack {
+                        WideBarView(color: .green)
+                    }
                 }
                 HStack(spacing: 5) {
                     QScreenTxtView(settings: $test)

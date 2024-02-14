@@ -12,6 +12,7 @@ import Observation
 @Observable
 class UserDesignModel{
     
+    var userID = UUID().uuidString
     var isEditMode = true
     
     var boxOne = BoxData()

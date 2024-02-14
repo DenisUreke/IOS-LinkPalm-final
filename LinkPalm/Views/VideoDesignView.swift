@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct VideoDesignView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    @Binding var designData: ImageVideoData
+    @State var enteredText: String = ""
+    
+    var body: some View{
+    
+        
+        LoadVideoView(ID: designData.videoID)
+        
+        Divider()
+        
+        VStack {
+            TextField("Enter URL", text: $enteredText)
+                .frame(width: 300)
+         .padding()
+         .multilineTextAlignment(.center)
+         .border(Color.gray)
+         }
+        
+        DynamicButtonWithFunction(
+            icon: "square.and.arrow.down", title: "Save",action: {designData.setVideoUrlFromString(string: enteredText)})
+        
     }
 }
 
-#Preview {
+/*#Preview {
     VideoDesignView()
-}
+}*/

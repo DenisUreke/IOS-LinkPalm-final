@@ -9,13 +9,13 @@ import SwiftUI
 
 struct BoxDesignView: View {
     
-    @Binding var designData : UserDesignModel
+    @Binding var designData : ImageVideoDataList
     @State var choice = MenuEnum.image
     
     var body: some View {
         VStack() {
             ScrollView(showsIndicators: false){
-                DrawMenuForBoxDesignView(userDesignData: $designData, designData: $designData.boxOne.imageVideoListData, title: "Add New Item")
+                DrawMenuForBoxDesignView(designData: $designData, title: "Add New Item")
             }
             
         }
@@ -24,7 +24,6 @@ struct BoxDesignView: View {
 
 
 struct DrawMenuForBoxDesignView: View {
-    @Binding var userDesignData : UserDesignModel
     @Binding var designData: ImageVideoDataList
     let title: String
 
@@ -53,11 +52,11 @@ struct DrawMenuForBoxDesignView: View {
         case .image:
             PhotoView(designData: $designData.listOfEntries.last!)
         case .text:
-            configurateTextObjects(titleData: $designData.listOfEntries.last!, designData: $userDesignData  )
+            configurateTextObjects(titleData: $designData)
         case .video:
-            EmptyView()
+            VideoDesignView(designData: $designData.listOfEntries.last!)
         case .background:
-            EmptyView()
+            BackgroundDesignView(designData: $designData.backgroundData)
         }
     }
 }
@@ -69,7 +68,7 @@ struct drawButtonForBoxDesing : View{
     var body: some View {
         HStack{
             Image(systemName: "\(selectedMenuButton.sfSymbol)")
-                .foregroundColor(.black)
+                .foregroundColor(.blue)
                 .font(.largeTitle)
                 .frame(width: 50, height: 50)
                 .background(
@@ -166,6 +165,6 @@ struct ButtonDesign: View {
 }
 
 
-#Preview {
+/*#Preview {
     BoxDesignView(designData: .constant(UserDesignModel()))
-}
+}*/

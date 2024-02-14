@@ -19,4 +19,5 @@ class ImageData{
     var selectedOpacity: Double = 1
     var selectedRotation: Double = 0
     var selectedHueRotation: Double = 0
+    var selectedCornerRadius: Double = 0
 }

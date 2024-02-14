@@ -17,6 +17,7 @@ struct LoadVideoView: View{
             .frame(width: 300, height: 220)
             .cornerRadius(12)
             .padding(.horizontal, 24)
+            .background(Color.clear)
     }
     
 }

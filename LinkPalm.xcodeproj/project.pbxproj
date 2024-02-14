@@ -125,6 +125,12 @@
 		54C7CF312B78EE2C00F29602 /* WideBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7CF302B78EE2C00F29602 /* WideBarData.swift */; };
 		54C7CF322B78EE2C00F29602 /* WideBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7CF302B78EE2C00F29602 /* WideBarData.swift */; };
 		54C7CF332B78EE2C00F29602 /* WideBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7CF302B78EE2C00F29602 /* WideBarData.swift */; };
+		54D462EC2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
+		54D462ED2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
+		54D462EE2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
+		54D462F02B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
+		54D462F12B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
+		54D462F22B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +203,8 @@
 		54C76FF22B762E03005EA680 /* TextConfigEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConfigEnum.swift; sourceTree = "<group>"; };
 		54C7CF2E2B78E92B00F29602 /* WideBarEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarEditView.swift; sourceTree = "<group>"; };
 		54C7CF302B78EE2C00F29602 /* WideBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarData.swift; sourceTree = "<group>"; };
+		54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDesignView.swift; sourceTree = "<group>"; };
+		54D462EF2B7CD456006C27F4 /* QRcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +266,7 @@
 			children = (
 				54929E832B792FAE00DB1DED /* WebView.swift */,
 				543266042B7A293800574EF5 /* VideoView.swift */,
+				54D462EF2B7CD456006C27F4 /* QRcodeView.swift */,
 			);
 			path = ExternalViews;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 				54BA43122B77965C0076E23D /* PhotoView.swift */,
 				54C7CF2E2B78E92B00F29602 /* WideBarEditView.swift */,
 				540287472B7C22FC00282654 /* VideoDesignView.swift */,
+				54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */,
 				548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */,
 			);
 			path = Views;
@@ -558,6 +568,7 @@
 				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549B671A2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				5432660D2B7A712F00574EF5 /* BoxView.swift in Sources */,
+				54D462EC2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
 				542EAC0C2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				549409452B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				542EAC172B744B120044A038 /* ContainerSuperClass.swift in Sources */,
@@ -566,6 +577,7 @@
 				546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
+				54D462F02B7CD456006C27F4 /* QRcodeView.swift in Sources */,
 				549C010E2B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
 				54C7CF312B78EE2C00F29602 /* WideBarData.swift in Sources */,
 				542EAC082B7425790044A038 /* ImagesURLModel.swift in Sources */,
@@ -606,7 +618,9 @@
 				549409552B73FCF500F9836F /* PersonModel.swift in Sources */,
 				549409462B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
+				54D462ED2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
 				54929E852B792FAE00DB1DED /* WebView.swift in Sources */,
+				54D462F12B7CD456006C27F4 /* QRcodeView.swift in Sources */,
 				542EAC0D2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				5432660A2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
@@ -645,6 +659,7 @@
 				546A92FF2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				549C01102B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
 				54BA431D2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
+				54D462F22B7CD456006C27F4 /* QRcodeView.swift in Sources */,
 				5432660F2B7A712F00574EF5 /* BoxView.swift in Sources */,
 				546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				548581E22B7AC0680000BFD9 /* BoxDesignView.swift in Sources */,
@@ -659,6 +674,7 @@
 				549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				5494093F2B73E7A800F9836F /* PersonData.swift in Sources */,
 				543266132B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
+				54D462EE2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
 				54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				5479D6FE2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549409432B73F37300F9836F /* ImageUrlData.swift in Sources */,

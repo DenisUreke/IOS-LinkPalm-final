@@ -15,6 +15,8 @@ enum EditImageString: String{
     case opacity = "Opacity"
     case rotation = "Rotation"
     case hueRotation = "Hue Rotation"
+    case cornerRadius = "Border corner radius"
+    case imageCornerRadius = "Image corner radius"
 }
 
 enum PhotoPickerChoice: Identifiable{

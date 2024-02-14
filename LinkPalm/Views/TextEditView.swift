@@ -53,18 +53,17 @@ struct SelectableView<Option: RawRepresentable & Hashable, Content: View>: View 
 
 struct configurateTextObjects: View {
     
-    @Binding var titleData : ImageVideoData
-    @Binding var designData : UserDesignModel
+    @Binding var titleData : ImageVideoDataList
     
     var text: TitleCustomModel {
-        return self.titleData.textCustomModel
+        return self.titleData.listOfEntries.last!.textCustomModel
     }
     var body: some View {
         VStack {
-            NavigationLink(destination: TextEditView(titleData: $titleData)){
+            NavigationLink(destination: TextEditView(titleData: $titleData.listOfEntries.last!)){
                 ZStack{
                     VStack{
-                        Text("\(titleData.textCustomModel.text)")
+                        Text("\(titleData.listOfEntries.last!.textCustomModel.text)")
                             .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
                     }
                     .font(.system(size: text.selectedSize, weight: text.selectedWeight.getWeight, design: text.selectedStyle.getFontStyel))
@@ -83,21 +82,21 @@ struct configurateTextObjects: View {
             
             ScrollView(showsIndicators: false){
                 
-                configurateTextObjectsFontStyling(titleData: $titleData.textCustomModel)
+                configurateTextObjectsFontStyling(titleData: $titleData.listOfEntries.last!.textCustomModel)
                 Divider()
-                configurateTextObjectsBackGround(titleData: $titleData.textCustomModel)
+                configurateTextObjectsBackGround(titleData: $titleData.listOfEntries.last!.textCustomModel)
                 Divider()
-                configurateTextObjectsFontColor(titleData: $titleData.textCustomModel)
+                configurateTextObjectsFontColor(titleData: $titleData.listOfEntries.last!.textCustomModel)
                 Divider()
-                configurateTextObjectsBorderDesign(titleData: $titleData.textCustomModel)
+                configurateTextObjectsBorderDesign(titleData: $titleData.listOfEntries.last!.textCustomModel)
                 Spacer()
                 
             }
             
             Divider()
                 .padding(1)
-            NavigationLink(destination: BoxView(titleData: $designData)) {
-                DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.setTypeOfBox(type: ImageVideoEnum.text) })
+            NavigationLink(destination: BoxView(titleData: $titleData)) {
+                DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.listOfEntries.last!.setTypeOfBox(type: ImageVideoEnum.text) })
             }
             .padding()
         }
@@ -113,7 +112,6 @@ struct configurateTextObjectsFontStyling: View{
         
         Text(headerTitleString.fontSize.rawValue)
             .font(.system(size: 26, weight: .bold))
-        
         VStack {
             Slider(value: $titleData.selectedSize, in: 0...60)
         }
@@ -198,7 +196,12 @@ struct configurateTextObjectsBorderDesign: View{
     var body: some View {
         
         DrawColorPaletteBox(selectedColor: $titleData.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
-        Slider(value: $titleData.selectedBorderWidth, in: 0...10) // Range from 0 to 100, dont forget!
+        Slider(value: $titleData.selectedBorderWidth, in: 0...20) // Range from 0 to 100, dont forget!
+        
+        Text(EditImageString.cornerRadius.rawValue)
+            .font(.system(size: 26, weight: .bold))
+        Slider(value: $titleData.selectedCornerRadius, in: 0...50)
+        
     }
 }
         

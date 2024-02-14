@@ -3,3 +3,9 @@ Fix Image scale
 Why text wont scale
 
 How to check current loction in navigationStack
+
+why corner radius wont overlay on images
+
+ask about dynamic button with function
+
+why text isnt .clear

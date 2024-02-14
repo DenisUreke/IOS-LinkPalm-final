@@ -26,9 +26,10 @@ class TitleCustomModel{
     var selectedFontOpacity: Double = 1
     var selectedAlignment: FontAlignment = .alignmentCenter
     var selectedTextAlignment: FontTextAlignment = .TextAlignmentLeft
-    
     var selectedBorderColor: StandardColors = .black
     var selectedBorderWidth: Double = 0
+    var selectedCornerRadius: Double = 0
+    var selectedImageCornerRadius: Double = 0
     
     let sizeOptions: [FontSize] = [.title1, .title2, .title3]
     let styleOptions: [FontStyle] = [.defaults, .monoSpaced, .serif]

@@ -18,7 +18,6 @@ class ImageVideoData: Identifiable{
     var imageData: ImageData = ImageData()
     var typeOfBox: ImageVideoEnum = ImageVideoEnum.none // Decides what View to be called from the list writer
     var textCustomModel: TitleCustomModel = TitleCustomModel()
-    var wideBarListData: WideBarListData = WideBarListData()
     
     func setTypeOfBox(type: ImageVideoEnum){
         self.typeOfBox = type
@@ -33,6 +32,15 @@ class ImageVideoData: Identifiable{
         }
     }
     
+    func setVideoUrlFromString(string: String) {
+        if let url = URL(string: string) {
+            self.videoID = url
+            self.typeOfBox = .video
+        } else {
+            return
+        }
+    }
+    
     func setImageFromDevice(){
         self.typeOfBox = .picture
     }
@@ -41,6 +49,7 @@ class ImageVideoData: Identifiable{
 @Observable
 class ImageVideoDataList{
     
+    var backgroundData: BackgroundData = BackgroundData()
     var listOfEntries: [ImageVideoData] = [ImageVideoData()]
     
     init() {

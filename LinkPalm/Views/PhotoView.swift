@@ -26,12 +26,14 @@ struct PhotoView: View {
                 DynamicPictureViewFromWeb(imageData: designData)
             }
             if isDevice {
-                DynamicPictureView(imageData: designData.imageData)
+                DynamicPictureView(imageData: designData)
             }
                     Divider()
 
             ScrollView(showsIndicators: false){
-                PhotoEditingTools(designData: $designData)
+                if isURL || isDevice{
+                    PhotoEditingTools(designData: $designData)
+                }
             }
             
             if isURL {
@@ -140,76 +142,16 @@ struct PhotoEditingTools: View{
                 .font(.system(size: 26, weight: .bold))
             Slider(value: $designData.imageData.selectedOpacity, in: 0...1)
             
-        }
-    }
-}
-
-struct PhotoEditingButtons: View{
-    
-    @Binding var designData: ImageVideoData
-    @Binding var enteredText: String
-    @Binding var isURL: Bool
-    @Binding var isDevice: Bool
-    @Binding var openSave: Bool
-    
-    @Binding var photopickerItem: PhotosPickerItem?
-    @Binding var selectedImage: Image?
-    
-    var body: some View{
-        if isURL {
-            VStack {
-                TextField("Enter URL", text: $enteredText)
-                    .frame(width: 300)
-             .padding()
-             .multilineTextAlignment(.center)
-             .border(Color.gray)
-             }
-        }
-        
-        if isDevice{
-            VStack{
-                PhotosPicker("Or select from device", selection: $photopickerItem, matching: .images)
-            }
-        }
-        
-        HStack{
-            HStack{
-                isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2)
-
-            }
-            .onTapGesture {
-                isDevice.toggle()
-                isURL = false
-                openSave = true
-            }
-                .padding(.trailing, -20)
+            Divider()
             
-            HStack{
-                isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2)
-
-            }
-            .onTapGesture {
-                isURL.toggle()
-                isDevice = false
-                openSave = true
-            }
-        }
-        if openSave{
-            if isURL || isDevice{
-                HStack{
-                    ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2)
-                        }
-                .onTapGesture{
-                    if isURL{
-                        designData.setImageUrlFromString(string: enteredText)
-                        openSave = false
-                    }
-                    else{
-                        designData.setImageFromDevice()
-                        openSave = false
-                    }
-                }
-            }
+            configurateTextObjectsBorderDesign(titleData: $designData.textCustomModel)
+            
+            Divider()
+            
+            Text(EditImageString.imageCornerRadius.rawValue)
+                .font(.system(size: 26, weight: .bold))
+            Slider(value: $designData.textCustomModel.selectedImageCornerRadius, in: 0...50)
+            
         }
     }
 }

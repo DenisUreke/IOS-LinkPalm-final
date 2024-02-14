@@ -12,6 +12,5 @@ enum ImageVideoEnum{
     case video
     case picture
     case picturefromweb
-    case title
     case text
 }
