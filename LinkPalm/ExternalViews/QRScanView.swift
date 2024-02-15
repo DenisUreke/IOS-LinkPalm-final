@@ -10,10 +10,10 @@
 import CodeScanner
 import SwiftUI
 
-struct QrCodeReader: View {
+struct QRScanView: View {
     @State private var isPresentingScanner = false
     @State private var scannedCode: String?
-    @Binding var QRCodeModelList : QRCodeModel
+    let QRCodeModelList : QRCodeModel
 
     var body: some View {
         VStack {

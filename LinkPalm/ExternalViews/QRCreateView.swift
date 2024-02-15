@@ -10,7 +10,7 @@
 import CoreImage.CIFilterBuiltins
 import SwiftUI
 
-struct QRcodeView: View {
+struct QRCreateView: View {
     
     let personID : UserDesignModel
     

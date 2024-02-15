@@ -17,10 +17,11 @@ struct ContactsListView: View {
             ForEach(QRList.listOfContacts) { contact in
                 let index = findUserDesignModel(forID: contact.ID)
                 if index != -666 {
-                    NavigationLink(destination: CardView(titleData: designList.userList[index], textBoxData: designList.userList[index].boxOne.textBoxDesignData, QRCodeModelList: QRList)) {
+                    NavigationLink(destination: CardView(titleData: $designList.userList[index], textBoxData: $designList.userList[index].boxOne.textBoxDesignData, QRCodeModelList: $QRList)) {
                         drawButtonForContactListView(person: contact)
                             .padding(.vertical, -12)
                     }
+                    .listRowBackground(Color.clear)
                 } else {
                     EmptyView()
                 }
@@ -56,18 +57,17 @@ struct drawButtonForContactListView : View{
                             RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
                                 .stroke(Color.black, lineWidth: 1)))
                 .shadow(color: .gray, radius: 10, x: 0, y: 4)
-            Spacer()
+                .padding(.trailing, 20)
+                .padding(.leading, -20)
             VStack(alignment: .leading){
                     Text("\(person.firstName)")
-                        .font(.system(size: 14))
+                        .font(.system(size: 16))
                         .foregroundStyle(Color.black)
                     Text("\(person.lastName)")
                         .font(.system(size: 14))
                         .foregroundStyle(Color.black)
                 }
             Spacer()
-            Image(systemName: "arrowtriangle.right")
-                .foregroundColor(.black)
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 10)

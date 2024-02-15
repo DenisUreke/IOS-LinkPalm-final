@@ -37,7 +37,7 @@ enum MenuEnum: String, CaseIterable{
 
 enum MainMenuEnum: String, CaseIterable{
     
-    case person = "Your Contacts"
+    case person = "Contacts"
     case share = "Share Contact"
     case yourProfile = "Your Profile"
     
@@ -49,6 +49,24 @@ enum MainMenuEnum: String, CaseIterable{
             return "iphone.gen1.radiowaves.left.and.right"
         case .yourProfile:
             return "square.and.pencil"
+        }
+    }
+}
+
+enum ShareContactEnum: String, CaseIterable{
+    
+    case create = "Create QR"
+    case read = "Read QR"
+    case peer = "Connect"
+    
+    var sfSymbol : String{
+        switch self{
+        case .create:
+            return "qrcode"
+        case .read:
+            return "qrcode.viewfinder"
+        case.peer:
+            return "iphone.gen1.radiowaves.left.and.right"
         }
     }
 }

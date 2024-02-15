@@ -13,11 +13,11 @@ struct CardView: View {
     @State var test = QScreenTxtModel()
     @State var color = Color.gray
     
-    @State var titleData : UserDesignModel
+    @Binding var titleData : UserDesignModel
     
-    @State var textBoxData : TextBoxDesignData
+    @Binding var textBoxData : TextBoxDesignData
     
-    @State var QRCodeModelList : QRCodeModel
+    @Binding var QRCodeModelList : QRCodeModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -46,23 +46,19 @@ struct CardView: View {
                     }
                 }
                 //.padding(.top, 5)
-                NavigationLink(destination: QRcodeView(personID: titleData)){
                     HStack(spacing: 5) {
                         TextView(titleData: $titleData)
                             .frame(width: geometry.size.width * 0.6)
-                    }
                     QScreenTxtView(settings: $test)
                         .frame(width: geometry.size.width * 0.4 - 15)
                 }
                     HStack {
                         WideBarView(color: .green)
                     }
-                NavigationLink(destination: QrCodeReader(QRCodeModelList: $QRCodeModelList)){
                     HStack(spacing: 5) {
                         QScreenTxtView(settings: $test)
                             .frame(height: geometry.size.height * 0.2)
                     }
-                }
                 
             }
             .padding(5)

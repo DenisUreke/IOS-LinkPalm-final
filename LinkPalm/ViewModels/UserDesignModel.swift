@@ -13,16 +13,23 @@ import SwiftData
 @Observable
 final class UserDesignModel{
     
-    @Attribute(.unique) let userID = UUID().uuidString
+    //@Attribute(.unique) let userID = UUID().uuidString
+    let userID : String
     var isEditMode = true
     
     var boxOne = BoxData()
     var wideBarOne = WideBarData()
-    var firstName = "John"
-    var lastName = "Doe"
-    var typeOfContact = "person"
+    var firstName : String
+    var lastName : String
+    var typeOfContact : String
     
-    init(userID: String = UUID().uuidString, isEditMode: Bool = true, boxOne: BoxData = BoxData(), wideBarOne: WideBarData = WideBarData()) {
+    init(userID: String = "1234", isEditMode: Bool = true, firstName: String = "John", lastName: String = "Doe", typeOfContact: String = "person") {
+        
+        self.userID = userID
+        self.isEditMode = isEditMode
+        self.firstName = firstName
+        self.lastName = lastName
+        self.typeOfContact = typeOfContact
     }
     
 }
@@ -30,6 +37,6 @@ final class UserDesignModel{
 @Observable
 class UserDesignList{
     
-    var userList: [UserDesignModel] = [UserDesignModel()]
+    var userList: [UserDesignModel] = [UserDesignModel(), UserDesignModel(userID: "4321")]
     
 }

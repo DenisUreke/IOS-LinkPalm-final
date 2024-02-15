@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  QRSwitchView.swift
 //  LinkPalm
 //
 //  Created by Denis Ureke on 2024-02-15.
@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct MainView: View {
-    
-    @State var titleData: UserDesignList = UserDesignList()
-    @State var QRmodel: QRCodeModel = QRCodeModel()
-    @State var user: UserDesignModel = UserDesignModel(userID: "12345678", firstName: "Rick", lastName: "Morty")
+struct ShareContactView: View {
+
+    var user: UserDesignModel
+    var QRmodel: QRCodeModel
     
     var body: some View {
         
         HStack{
             LazyVGrid(columns: [GridItem(.flexible())]) {
-                ForEach(MainMenuEnum.allCases, id: \.self) { object in
+                ForEach(ShareContactEnum.allCases, id: \.self) { object in
                     NavigationLink(destination: self.destinationView(menu: object)) {
-                        drawButtonForMenu(selectedMenuButton: object)
+                        drawButtonForQRSwitchMenu(selectedMenuButton: object)
                     }
                 }
             }
@@ -27,24 +26,21 @@ struct MainView: View {
         
     }
     @ViewBuilder
-    private func destinationView(menu: MainMenuEnum) -> some View {
+    private func destinationView(menu: ShareContactEnum) -> some View {
         switch menu {
-        case .person:
-            ContactsListView(QRList: $QRmodel, designList: $titleData)
-                .navigationTitle("contacts")
-        case .share:
-            ShareContactView(user: user, QRmodel: QRmodel)
-                .navigationTitle("share contact")
-        case .yourProfile:
-            CardView(titleData: $user, textBoxData: $user.boxOne.textBoxDesignData, QRCodeModelList: $QRmodel)
-                .navigationTitle("your profile")
+        case .create:
+            QRCreateView(personID: user)
+        case .read:
+            QRScanView(QRCodeModelList: QRmodel)
+        case .peer:
+            QRScanView(QRCodeModelList: QRmodel)
         }
     }
-}
-
-struct drawButtonForMenu : View{
     
-    var selectedMenuButton: MainMenuEnum
+}
+struct drawButtonForQRSwitchMenu : View{
+    
+    var selectedMenuButton: ShareContactEnum
     
     var body: some View {
         HStack{
@@ -81,10 +77,6 @@ struct drawButtonForMenu : View{
     }
     
 }
-
-
-
-
 /*#Preview {
-    MainView()
+    QRSwitchView()
 }*/

@@ -48,7 +48,7 @@ class QRCodeData: Identifiable{
     var lastName: String
     var typeOfContact: TypeOfContact = .none
     
-    init(ID: String = "1", firstName: String = "First", lastName: String = "Second", typeOfContact: String = "person") {
+    init(ID: String = "1234", firstName: String = "First", lastName: String = "Second", typeOfContact: String = "person") {
         self.ID = ID
         self.firstName = firstName
         self.lastName = lastName
@@ -61,7 +61,7 @@ class QRCodeData: Identifiable{
 @Observable
 class QRCodeModel{
     
-    var listOfContacts : [QRCodeData] = [QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData(), QRCodeData()]
+    var listOfContacts : [QRCodeData] = [QRCodeData()]
     
     func createContactAndAppend(components: [String]){
         
