@@ -143,7 +143,6 @@ struct WideBarEditViewBackGroundChoice: View{
 struct WideBarEditSetWebAddress: View {
     
     @Binding var userDesign : WideBarListData
-    //@State var setWebAdress : Bool = false
     @Binding var choiceClicked : WideListViewEnumChoice
     
     var body: some View {
@@ -181,7 +180,6 @@ struct WideBarEditSetWebAddress: View {
 struct WideBarEditSetVideoAddress: View {
     
     @Binding var userDesign : WideBarListData
-    //@State var setVideoAdress : Bool = false
     @Binding var choiceClicked : WideListViewEnumChoice
     
     var body: some View {

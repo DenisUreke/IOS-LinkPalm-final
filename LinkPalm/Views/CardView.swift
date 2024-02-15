@@ -19,10 +19,10 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
-                NavigationLink(destination: BoxView(titleData: $titleData.boxOne.imageVideoListData)){
-                    HStack {
-                        WideBarView(color: .green)
-                    }
+                
+                NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarOne.wideBarListData)){
+                    WideBarListView(userDesign: $titleData.wideBarOne.wideBarListData)
+                        .frame(height: 60)
                 }
                 
                 HStack(spacing: 5) {
@@ -34,21 +34,19 @@ struct CardView: View {
                         QScreenTxtView(settings: $test)
 
                 }
-                NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarOne.wideBarListData)){
-                    HStack {
-                        WideBarListView(userDesign: $titleData.wideBarOne.wideBarListData)
+                NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarTwo.wideBarListData)){
+                        WideBarListView(userDesign: $titleData.wideBarTwo.wideBarListData)
                             .frame(height: 60)
-                    }
                 }
-                //.padding(.top, 5)
                     HStack(spacing: 5) {
                         BoxView(titleData: $titleData.boxThree.imageVideoListData)
                             .frame(width: geometry.size.width * 0.6)
                         QScreenTxtView(settings: $test)
                             .frame(width: geometry.size.width * 0.4 - 15)
                 }
-                    HStack {
-                        WideBarView(color: .green)
+                NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $titleData.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $titleData.wideBarThree.wideBarListData)){
+                        WideBarListView(userDesign: $titleData.wideBarThree.wideBarListData)
+                            .frame(height: 60)
                     }
                     HStack(spacing: 5) {
                         QScreenTxtView(settings: $test)

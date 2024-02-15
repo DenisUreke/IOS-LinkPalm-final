@@ -8,5 +8,11 @@
   &lt;string&gt;_nearby-devices._upd&lt;/string&gt;
  &lt;/array&gt;</key>
 	<string></string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

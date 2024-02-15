@@ -20,6 +20,13 @@ struct CardViewBox: View {
     }
 }
 
+struct CardDesignView: View{
+    
+    var body: some View{
+        Text("")
+    }
+}
+
 /*#Preview {
     CardViewBox()
 }*/

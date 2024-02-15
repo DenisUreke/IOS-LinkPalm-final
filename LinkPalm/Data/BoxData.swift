@@ -12,5 +12,6 @@ import Observation
 @Observable
 class BoxData{
     
-    var imageVideoListData = ImageVideoDataList()
+    var boxDesign: (background: BackgroundData , text: TitleCustomModel) = (BackgroundData(), TitleCustomModel())
+    var imageVideoListData: ImageVideoDataList = ImageVideoDataList()
 }
