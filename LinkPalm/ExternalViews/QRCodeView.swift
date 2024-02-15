@@ -18,7 +18,7 @@ struct QRcodeView: View {
     let imageFilter = CIFilter.qrCodeGenerator()
     
     var body: some View {
-        Image(uiImage: generateQRCode(from: "\(personID.userID)"))
+        Image(uiImage: generateQRCode(from: "\(personID.userID) \(personID.firstName) \(personID.lastName) \(personID.typeOfContact)"))
             .interpolation(.none)
             .resizable()
             .scaledToFit()
@@ -41,5 +41,5 @@ struct QRcodeView: View {
 
 
 /*#Preview {
-    QRcodeView()
+    QRcodeView(personID: UserDesignModel())
 }*/

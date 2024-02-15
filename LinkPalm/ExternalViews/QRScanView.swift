@@ -13,6 +13,7 @@ import SwiftUI
 struct QrCodeReader: View {
     @State private var isPresentingScanner = false
     @State private var scannedCode: String?
+    @Binding var QRCodeModelList : QRCodeModel
 
     var body: some View {
         VStack {
@@ -35,6 +36,8 @@ struct QrCodeReader: View {
         isPresentingScanner = false
         switch result {
         case .success(let scanResult):
+            let components = scanResult.string.split(separator: " ").map(String.init)
+            QRCodeModelList.createContactAndAppend(components: components)
             scannedCode = scanResult.string
         case .failure(let error):
             // Handle the scanning error

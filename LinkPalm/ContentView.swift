@@ -18,7 +18,7 @@ struct ContentView: View {
         //Text("Size \(testing.imagesData.count)")
         
         NavigationStack{
-            TemplateOneView()
+            MainView()
                 .navigationTitle("contact")
         }
         

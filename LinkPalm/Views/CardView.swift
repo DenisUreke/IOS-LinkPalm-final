@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct TemplateOneView: View {
+struct CardView: View {
     
     @State var textObject = QScreenTxtModel()
     @State var test = QScreenTxtModel()
     @State var color = Color.gray
     
-    @State var titleData : UserDesignModel = UserDesignModel()
+    @State var titleData : UserDesignModel
     
-    @State var textBoxData : TextBoxDesignData = TextBoxDesignData()
+    @State var textBoxData : TextBoxDesignData
+    
+    @State var QRCodeModelList : QRCodeModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -44,18 +46,22 @@ struct TemplateOneView: View {
                     }
                 }
                 //.padding(.top, 5)
-                HStack(spacing: 5) {
-                    TextView(titleData: $titleData)
-                        .frame(width: geometry.size.width * 0.6)
+                NavigationLink(destination: QRcodeView(personID: titleData)){
+                    HStack(spacing: 5) {
+                        TextView(titleData: $titleData)
+                            .frame(width: geometry.size.width * 0.6)
+                    }
                     QScreenTxtView(settings: $test)
                         .frame(width: geometry.size.width * 0.4 - 15)
                 }
                     HStack {
                         WideBarView(color: .green)
-                }
-                HStack(spacing: 5) {
-                    QScreenTxtView(settings: $test)
-                        .frame(height: geometry.size.height * 0.2)
+                    }
+                NavigationLink(destination: QrCodeReader(QRCodeModelList: $QRCodeModelList)){
+                    HStack(spacing: 5) {
+                        QScreenTxtView(settings: $test)
+                            .frame(height: geometry.size.height * 0.2)
+                    }
                 }
                 
             }

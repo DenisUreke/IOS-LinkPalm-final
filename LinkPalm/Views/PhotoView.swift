@@ -23,13 +23,13 @@ struct PhotoView: View {
         
         VStack{
             if isURL {
-                DynamicPictureViewFromWeb(imageData: designData)
+                DynamicPictureViewFromWeb(imageData: $designData)
             }
             if isDevice {
-                DynamicPictureView(imageData: designData)
+                DynamicPictureView(imageData: $designData)
             }
-                    Divider()
-
+            Divider()
+            
             ScrollView(showsIndicators: false){
                 if isURL || isDevice{
                     PhotoEditingTools(designData: $designData)
@@ -40,54 +40,59 @@ struct PhotoView: View {
                 VStack {
                     TextField("Enter URL", text: $enteredText)
                         .frame(width: 300)
-                 .padding()
-                 .multilineTextAlignment(.center)
-                 .border(Color.gray)
-                 }
+                        .padding()
+                        .multilineTextAlignment(.center)
+                        .border(Color.gray)
+                }
             }
             
             if isDevice{
                 VStack{
-                    PhotosPicker("Or select from device", selection: $photopickerItem, matching: .images)
+                    PhotosPicker("Select from device", selection: $photopickerItem, matching: .images)
                 }
             }
             
             HStack{
                 HStack{
-                    isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2)
-
+                    Button(action: {
+                        isDevice.toggle()
+                        isURL = false
+                        openSave = true
+                    })
+                    {
+                        isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2)
+                    }
                 }
-                .onTapGesture {
-                    isDevice.toggle()
-                    isURL = false
-                    openSave = true
-                }
-                    .padding(.trailing, -20)
+                .padding(.trailing, -20)
                 
                 HStack{
-                    isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2)
-
-                }
-                .onTapGesture {
-                    isURL.toggle()
-                    isDevice = false
-                    openSave = true
+                    Button(action: {
+                        isURL.toggle()
+                        isDevice = false
+                        openSave = true
+                    })
+                    {
+                        isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2)
+                    }
                 }
             }
             if openSave{
                 if isURL || isDevice{
                     HStack{
-                        ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2)
+                        
+                        Button(action:{
+                            if isURL{
+                                designData.setImageUrlFromString(string: enteredText)
+                                openSave = false
                             }
-                    .onTapGesture{
-                        if isURL{
-                            designData.setImageUrlFromString(string: enteredText)
-                            openSave = false
+                            else{
+                                designData.setImageFromDevice()
+                                openSave = false
+                            }
+                        }){
+                            ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2)
                         }
-                        else{
-                            designData.setImageFromDevice()
-                            openSave = false
-                        }
+                        
                     }
                 }
             }

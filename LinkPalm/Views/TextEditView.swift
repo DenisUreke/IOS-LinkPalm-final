@@ -126,11 +126,8 @@ struct configurateTextObjectsFontStyling: View{
     
     var body: some View {
         
-        Text(headerTitleString.fontSize.rawValue)
-            .font(.system(size: 26, weight: .bold))
-        VStack {
-            Slider(value: $titleData.selectedSize, in: 0...60)
-        }
+        SliderDoubleView(minValue: 0, maxValue: 60, objectToChange: $titleData.selectedSize, title: EditImageString.fontSize)
+        
         Divider()
         
         SelectableView(title: headerTitleString.alignment.rawValue, options: titleData.alignmentOptions, selectedOption: $titleData.selectedAlignment) { option in
@@ -212,11 +209,9 @@ struct configurateTextObjectsBorderDesign: View{
     var body: some View {
         
         DrawColorPaletteBox(selectedColor: $titleData.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
-        Slider(value: $titleData.selectedBorderWidth, in: 0...20) // Range from 0 to 100, dont forget!
+        Slider(value: $titleData.selectedBorderWidth, in: 0...20)
         
-        Text(EditImageString.cornerRadius.rawValue)
-            .font(.system(size: 26, weight: .bold))
-        Slider(value: $titleData.selectedCornerRadius, in: 0...50)
+        SliderDoubleView(minValue: 0, maxValue: 50, objectToChange: $titleData.selectedCornerRadius, title: EditImageString.cornerRadius)
         
     }
 }

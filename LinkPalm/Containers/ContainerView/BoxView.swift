@@ -11,10 +11,9 @@ struct BoxView: View {
     
     @Binding var titleData : ImageVideoDataList
     
-    
     var body: some View {
         VStack(spacing: 0){
-            ImageVideoListView(list: titleData)
+            ImageVideoListView(list: $titleData)
         }
         .padding(.horizontal, -20) 
         .border(titleData.backgroundData.selectedBorderColor.color, width: titleData.backgroundData.selectedBorderWidth)
@@ -32,30 +31,39 @@ struct BoxView: View {
                     .border(.black, width: 1)
                     .cornerRadius(10)
         }
-        
-        /*if titleData.isEditMode{
-            BoxDesignButton(viewToNavigate: BoxDesignView(designData: $titleData), buttonText: "testing")
-        }*/
     }
-    
-    
 }
 
 struct ImageVideoListView: View {
     
-    var list : ImageVideoDataList
+    @Binding var list : ImageVideoDataList
     
     var body: some View {
         List {
-            ForEach(list.listOfEntries) { entry in
-                getDynamicView(imageVideoData: entry, type: entry.typeOfBox)
+            ForEach(Array(list.listOfEntries.enumerated()), id: \.element.id) { index, entry in
+                VStack{
+                    getDynamicView(imageVideoData: $list.listOfEntries[index], type: entry.typeOfBox)
+                        .background(list.backgroundData.gradientIsClicked ? Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]).opacity(list.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]).opacity(list.backgroundData.selectedBackgroundOpacity) )
+                        .listRowBackground(list.backgroundData.selectedColorBackgroundOne.color)
+                    
+                    Button(action: {
+                        if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
+                            list.listOfEntries.remove(at: atIndex)
+                        }
+                    })
+                    {
+                        ButtonDesign(icon: "trash.square", title: "Delete", borderColor: .black, borderThickness: 2)
+                    }
+                    
+                    //DynamicButtonForEditing(list: $list, current: $list.listOfEntries[index])
+                }
             }
         }
     }
 }
 
 
-func getDynamicView(imageVideoData: ImageVideoData, type: ImageVideoEnum) -> some View {
+func getDynamicView(imageVideoData: Binding<ImageVideoData>, type: ImageVideoEnum) -> some View {
     
     switch type {
     case .none:
@@ -63,7 +71,7 @@ func getDynamicView(imageVideoData: ImageVideoData, type: ImageVideoEnum) -> som
     case .text:
         return AnyView(DynamicViewText(titleData: imageVideoData.textCustomModel))
     case .video:
-        return AnyView(LoadVideoView(ID: imageVideoData.videoID))
+        return AnyView(LoadVideoView(ID: imageVideoData.videoID.wrappedValue))
     case .picture:
         return AnyView(DynamicPictureView(imageData: imageVideoData))
     case .picturefromweb:
@@ -71,9 +79,73 @@ func getDynamicView(imageVideoData: ImageVideoData, type: ImageVideoEnum) -> som
     }
 }
 
+enum ViewState {
+    case viewA
+    case viewB
+    case viewC
+    case viewD
+}
+
+struct DynamicButtonForEditing: View {
+    
+    @Binding var list: ImageVideoDataList
+    @Binding var current: ImageVideoData
+    @State private var currentState: ViewState = .viewD
+    
+    var body: some View {
+        
+        VStack {
+
+            Button(action: {
+                switch current.typeOfBox {
+                case .none:
+                    currentState = .viewD
+                case .picture, .picturefromweb:
+                    currentState = .viewA
+                case .text:
+                    currentState = .viewB
+                case .video:
+                    currentState = .viewC
+                }
+            })
+            {
+                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2)
+            }
+            Text("\(current.typeOfBox.rawValue)")
+            getView(for: currentState)
+        }
+    }
+    
+    @ViewBuilder
+    func getView(for state: ViewState) -> some View {
+        switch state {
+        case .viewA:
+            PhotoView(designData: $current)
+        case .viewB:
+            Text("View B") // Replace with your actual view
+        case .viewC:
+            VideoDesignView(designData: $current)
+        case .viewD:
+            Text("View D") // Assume a new case for `.none`
+        }
+    }
+}
+
+/*
+ if let specificItem = list.listOfEntries.firstIndex(where: id == entry.id){
+     // Use `specificItem`
+ }
+ 
+ Button("Button \(entry.id)") {
+     // Action for the button, possibly navigating or performing an operation with entry.id
+     print("Button tapped for item with ID: \(entry.id)")
+ }
+ */
+
+
 struct DynamicViewText: View {
     
-    let titleData : TitleCustomModel
+    @Binding var titleData : TitleCustomModel
     
     var body: some View {
         
@@ -101,7 +173,7 @@ struct DynamicViewText: View {
 
 struct DynamicPictureView: View {
     
-    let imageData : ImageVideoData
+    @Binding var imageData : ImageVideoData
 
     var body: some View {
         if let image = imageData.imageData.selectedBackgroundImage{
@@ -126,7 +198,7 @@ struct DynamicPictureView: View {
 
 struct DynamicPictureViewFromWeb: View {
     
-    let imageData: ImageVideoData
+    @Binding var imageData: ImageVideoData
 
     var body: some View {
         AsyncImage(url: imageData.imageData.imageURL) { phase in

@@ -91,9 +91,9 @@
 		549B671B2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67192B76E16A003124D4 /* TextBoxDesignData.swift */; };
 		549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67192B76E16A003124D4 /* TextBoxDesignData.swift */; };
 		549C010C2B74D055009223C3 /* ContainerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010B2B74D055009223C3 /* ContainerEnum.swift */; };
-		549C010E2B74D2AF009223C3 /* TemplateOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* TemplateOneView.swift */; };
-		549C010F2B74D2AF009223C3 /* TemplateOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* TemplateOneView.swift */; };
-		549C01102B74D2AF009223C3 /* TemplateOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* TemplateOneView.swift */; };
+		549C010E2B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
+		549C010F2B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
+		549C01102B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
 		549C01122B74D48A009223C3 /* WideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01112B74D48A009223C3 /* WideBarView.swift */; };
 		549C01132B74D48A009223C3 /* WideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01112B74D48A009223C3 /* WideBarView.swift */; };
 		549C01142B74D48A009223C3 /* WideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01112B74D48A009223C3 /* WideBarView.swift */; };
@@ -118,6 +118,15 @@
 		54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
 		54BD8E352B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
 		54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
+		54C1813A2B7E16F50055138A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181392B7E16F40055138A /* MainView.swift */; };
+		54C1813B2B7E16F50055138A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181392B7E16F40055138A /* MainView.swift */; };
+		54C1813C2B7E16F50055138A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181392B7E16F40055138A /* MainView.swift */; };
+		54C1813E2B7E2B990055138A /* QRCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1813D2B7E2B990055138A /* QRCodeData.swift */; };
+		54C1813F2B7E2B990055138A /* QRCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1813D2B7E2B990055138A /* QRCodeData.swift */; };
+		54C181402B7E2B990055138A /* QRCodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C1813D2B7E2B990055138A /* QRCodeData.swift */; };
+		54C181422B7E2E3D0055138A /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181412B7E2E3D0055138A /* ContactListView.swift */; };
+		54C181432B7E2E3D0055138A /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181412B7E2E3D0055138A /* ContactListView.swift */; };
+		54C181442B7E2E3D0055138A /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181412B7E2E3D0055138A /* ContactListView.swift */; };
 		54C76FF32B762E03005EA680 /* TextConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C76FF22B762E03005EA680 /* TextConfigEnum.swift */; };
 		54C76FF42B762E03005EA680 /* TextConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C76FF22B762E03005EA680 /* TextConfigEnum.swift */; };
 		54C76FF52B762E03005EA680 /* TextConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C76FF22B762E03005EA680 /* TextConfigEnum.swift */; };
@@ -128,9 +137,9 @@
 		54D462EC2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
 		54D462ED2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
 		54D462EE2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
-		54D462F02B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
-		54D462F12B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
-		54D462F22B7CD456006C27F4 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRcodeView.swift */; };
+		54D462F02B7CD456006C27F4 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRCodeView.swift */; };
+		54D462F12B7CD456006C27F4 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRCodeView.swift */; };
+		54D462F22B7CD456006C27F4 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRCodeView.swift */; };
 		54D462F52B7CDADA006C27F4 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 54D462F42B7CDADA006C27F4 /* CodeScanner */; };
 		54D462F72B7CDD9C006C27F4 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462F62B7CDD9C006C27F4 /* QRScanView.swift */; };
 		54D462F82B7CDD9C006C27F4 /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462F62B7CDD9C006C27F4 /* QRScanView.swift */; };
@@ -192,7 +201,7 @@
 		549B67152B76CDC5003124D4 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		549B67192B76E16A003124D4 /* TextBoxDesignData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxDesignData.swift; sourceTree = "<group>"; };
 		549C010B2B74D055009223C3 /* ContainerEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerEnum.swift; sourceTree = "<group>"; };
-		549C010D2B74D2AF009223C3 /* TemplateOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateOneView.swift; sourceTree = "<group>"; };
+		549C010D2B74D2AF009223C3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		549C01112B74D48A009223C3 /* WideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarView.swift; sourceTree = "<group>"; };
 		549C01192B74DE3A009223C3 /* WideBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListView.swift; sourceTree = "<group>"; };
 		549C011D2B74DE55009223C3 /* WideBarListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListData.swift; sourceTree = "<group>"; };
@@ -204,11 +213,14 @@
 		54BA43162B77AB630076E23D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		54BA431A2B77B4A50076E23D /* ImageConfigEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConfigEnum.swift; sourceTree = "<group>"; };
 		54BD8E332B777EE700B2BC26 /* BackgroundData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundData.swift; sourceTree = "<group>"; };
+		54C181392B7E16F40055138A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		54C1813D2B7E2B990055138A /* QRCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeData.swift; sourceTree = "<group>"; };
+		54C181412B7E2E3D0055138A /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		54C76FF22B762E03005EA680 /* TextConfigEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConfigEnum.swift; sourceTree = "<group>"; };
 		54C7CF2E2B78E92B00F29602 /* WideBarEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarEditView.swift; sourceTree = "<group>"; };
 		54C7CF302B78EE2C00F29602 /* WideBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarData.swift; sourceTree = "<group>"; };
 		54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDesignView.swift; sourceTree = "<group>"; };
-		54D462EF2B7CD456006C27F4 /* QRcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeView.swift; sourceTree = "<group>"; };
+		54D462EF2B7CD456006C27F4 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		54D462F62B7CDD9C006C27F4 /* QRScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanView.swift; sourceTree = "<group>"; };
 		54D462FA2B7CDF3B006C27F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,7 +285,7 @@
 			children = (
 				54929E832B792FAE00DB1DED /* WebView.swift */,
 				543266042B7A293800574EF5 /* VideoView.swift */,
-				54D462EF2B7CD456006C27F4 /* QRcodeView.swift */,
+				54D462EF2B7CD456006C27F4 /* QRCodeView.swift */,
 				54D462F62B7CDD9C006C27F4 /* QRScanView.swift */,
 			);
 			path = ExternalViews;
@@ -360,6 +372,7 @@
 				549C011D2B74DE55009223C3 /* WideBarListData.swift */,
 				54C7CF302B78EE2C00F29602 /* WideBarData.swift */,
 				543266102B7A714B00574EF5 /* ImageVideoData.swift */,
+				54C1813D2B7E2B990055138A /* QRCodeData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -386,7 +399,7 @@
 		5494093A2B73C5A900F9836F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				549C010D2B74D2AF009223C3 /* TemplateOneView.swift */,
+				549C010D2B74D2AF009223C3 /* CardView.swift */,
 				549B67152B76CDC5003124D4 /* TextView.swift */,
 				549C01212B750311009223C3 /* TextEditView.swift */,
 				54BA43102B7784D00076E23D /* BackgroundEditView.swift */,
@@ -395,6 +408,8 @@
 				540287472B7C22FC00282654 /* VideoDesignView.swift */,
 				54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */,
 				548581DF2B7AC0680000BFD9 /* BoxDesignView.swift */,
+				54C181392B7E16F40055138A /* MainView.swift */,
+				54C181412B7E2E3D0055138A /* ContactListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -576,10 +591,13 @@
 				549C01122B74D48A009223C3 /* WideBarView.swift in Sources */,
 				543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54BA43132B77965C0076E23D /* PhotoView.swift in Sources */,
+				54C1813E2B7E2B990055138A /* QRCodeData.swift in Sources */,
 				5494093D2B73E7A800F9836F /* PersonData.swift in Sources */,
 				54D462F72B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
 				540287482B7C22FC00282654 /* VideoDesignView.swift in Sources */,
+				54C1813A2B7E16F50055138A /* MainView.swift in Sources */,
 				549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */,
+				54C181422B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
 				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549B671A2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
@@ -593,8 +611,8 @@
 				546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
-				54D462F02B7CD456006C27F4 /* QRcodeView.swift in Sources */,
-				549C010E2B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
+				54D462F02B7CD456006C27F4 /* QRCodeView.swift in Sources */,
+				549C010E2B74D2AF009223C3 /* CardView.swift in Sources */,
 				54C7CF312B78EE2C00F29602 /* WideBarData.swift in Sources */,
 				542EAC082B7425790044A038 /* ImagesURLModel.swift in Sources */,
 				548581E02B7AC0680000BFD9 /* BoxDesignView.swift in Sources */,
@@ -636,9 +654,10 @@
 				549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				54D462ED2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
 				54929E852B792FAE00DB1DED /* WebView.swift in Sources */,
-				54D462F12B7CD456006C27F4 /* QRcodeView.swift in Sources */,
+				54D462F12B7CD456006C27F4 /* QRCodeView.swift in Sources */,
 				542EAC0D2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				5432660A2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
+				54C1813F2B7E2B990055138A /* QRCodeData.swift in Sources */,
 				54D462F82B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
 				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
@@ -657,10 +676,12 @@
 				549C011F2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				5494091F2B73C2E100F9836F /* LinkPalmTests.swift in Sources */,
 				54BA431C2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
-				549C010F2B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
+				549C010F2B74D2AF009223C3 /* CardView.swift in Sources */,
 				549C01132B74D48A009223C3 /* WideBarView.swift in Sources */,
+				54C1813B2B7E16F50055138A /* MainView.swift in Sources */,
 				542EAC142B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54BA43182B77AB630076E23D /* ImageData.swift in Sources */,
+				54C181432B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				54C7CF322B78EE2C00F29602 /* WideBarData.swift in Sources */,
 				54BD8E352B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				542EAC092B7425790044A038 /* ImagesURLModel.swift in Sources */,
@@ -674,13 +695,14 @@
 			files = (
 				549409472B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				546A92FF2B77EA79005AD2DC /* BoxData.swift in Sources */,
-				549C01102B74D2AF009223C3 /* TemplateOneView.swift in Sources */,
+				549C01102B74D2AF009223C3 /* CardView.swift in Sources */,
 				54BA431D2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
-				54D462F22B7CD456006C27F4 /* QRcodeView.swift in Sources */,
+				54D462F22B7CD456006C27F4 /* QRCodeView.swift in Sources */,
 				5432660F2B7A712F00574EF5 /* BoxView.swift in Sources */,
 				546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				548581E22B7AC0680000BFD9 /* BoxDesignView.swift in Sources */,
 				542EAC0A2B7425790044A038 /* ImagesURLModel.swift in Sources */,
+				54C181402B7E2B990055138A /* QRCodeData.swift in Sources */,
 				543266072B7A293800574EF5 /* VideoView.swift in Sources */,
 				549409562B73FCF500F9836F /* PersonModel.swift in Sources */,
 				542EAC192B744B120044A038 /* ContainerSuperClass.swift in Sources */,
@@ -689,6 +711,7 @@
 				549B67182B76CDC5003124D4 /* TextView.swift in Sources */,
 				5432660B2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
+				54C1813C2B7E16F50055138A /* MainView.swift in Sources */,
 				5494093F2B73E7A800F9836F /* PersonData.swift in Sources */,
 				543266132B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
 				54D462EE2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
@@ -699,6 +722,7 @@
 				542EAC152B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				5494092B2B73C2E100F9836F /* LinkPalmUITestsLaunchTests.swift in Sources */,
 				549C01202B74DE55009223C3 /* WideBarListData.swift in Sources */,
+				54C181442B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				5412D6982B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				549409522B73F76200F9836F /* DataDownloader.swift in Sources */,
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,

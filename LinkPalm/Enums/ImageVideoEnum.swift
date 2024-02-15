@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum ImageVideoEnum{
-    case none
-    case video
-    case picture
-    case picturefromweb
-    case text
+enum ImageVideoEnum: String{
+    case none = "A"
+    case video = "B"
+    case picture = "C"
+    case picturefromweb = "D"
+    case text = "E"
 }

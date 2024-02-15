@@ -18,8 +18,18 @@ final class UserDesignModel{
     
     var boxOne = BoxData()
     var wideBarOne = WideBarData()
+    var firstName = "John"
+    var lastName = "Doe"
+    var typeOfContact = "person"
     
     init(userID: String = UUID().uuidString, isEditMode: Bool = true, boxOne: BoxData = BoxData(), wideBarOne: WideBarData = WideBarData()) {
     }
+    
+}
+
+@Observable
+class UserDesignList{
+    
+    var userList: [UserDesignModel] = [UserDesignModel()]
     
 }

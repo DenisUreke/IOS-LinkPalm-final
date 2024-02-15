@@ -34,3 +34,21 @@ enum MenuEnum: String, CaseIterable{
     }
     
 }
+
+enum MainMenuEnum: String, CaseIterable{
+    
+    case person = "Your Contacts"
+    case share = "Share Contact"
+    case yourProfile = "Your Profile"
+    
+    var sfSymbol : String{
+        switch self{
+        case .person:
+            return "person.3"
+        case .share:
+            return "iphone.gen1.radiowaves.left.and.right"
+        case .yourProfile:
+            return "square.and.pencil"
+        }
+    }
+}
