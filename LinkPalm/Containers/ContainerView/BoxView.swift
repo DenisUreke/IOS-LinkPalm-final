@@ -20,7 +20,7 @@ struct BoxView: View {
         .background(titleData.backgroundData.gradientIsClicked ? Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundTwo.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundOne.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) )
         .cornerRadius(titleData.backgroundData.selectedCornerRadius)
         
-        NavigationLink(destination: BoxDesignView(designData: $titleData)){
+        /*NavigationLink(destination: BoxDesignView(designData: $titleData)){
 
                 Text("Edit")
                     .frame(width: 200)
@@ -30,7 +30,7 @@ struct BoxView: View {
                     .background(Color.blue)
                     .border(.black, width: 1)
                     .cornerRadius(10)
-        }
+        }*/
     }
 }
 
@@ -46,14 +46,14 @@ struct ImageVideoListView: View {
                         .background(list.backgroundData.gradientIsClicked ? Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]).opacity(list.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]).opacity(list.backgroundData.selectedBackgroundOpacity) )
                         .listRowBackground(list.backgroundData.selectedColorBackgroundOne.color)
                     
-                    Button(action: {
+                    /*Button(action: {
                         if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
                             list.listOfEntries.remove(at: atIndex)
                         }
                     })
                     {
                         ButtonDesign(icon: "trash.square", title: "Delete", borderColor: .black, borderThickness: 2)
-                    }
+                    }*/
                     
                     //DynamicButtonForEditing(list: $list, current: $list.listOfEntries[index])
                 }
@@ -109,7 +109,7 @@ struct DynamicButtonForEditing: View {
                 }
             })
             {
-                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2)
+                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2, width: 180, height:50)
             }
             Text("\(current.typeOfBox.rawValue)")
             getView(for: currentState)

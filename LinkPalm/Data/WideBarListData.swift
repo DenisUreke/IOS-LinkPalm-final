@@ -24,6 +24,25 @@ class WideBarListDataicons: Identifiable{
     var backgroundColorTwo: StandardColors = .clear
     var backgroundOpacity: Double = 1
     var gradientIsClicked: Bool = false
+    var text: String = ""
+    
+    var selectedSize: Double = 24
+    var selectedStyle: FontStyle = .defaults
+    var selectedWeight: FontWeight = .regularWeight
+    var selectedColorBackground: StandardColors = .clear
+    var selectedColorBackgroundTwo: StandardColors = .clear
+    var selectedColorFont: StandardColors = .black
+    var selectedOpacity: Double = 1
+    var shadowIsClicked = false
+    var selectedFontOpacity: Double = 1
+    var selectedAlignment: FontAlignment = .alignmentCenter
+    var selectedTextAlignment: FontTextAlignment = .TextAlignmentLeft
+    
+    let sizeOptions: [FontSize] = [.title1, .title2, .title3]
+    let styleOptions: [FontStyle] = [.defaults, .monoSpaced, .serif]
+    let weightOptions: [FontWeight] = [.regularWeight, .semiBoldWeight, .boldWeight]
+    let alignmentOptions: [FontAlignment] = [.alignmentCenter, .alignmentLeft, .alignmentRight]
+    let textAlignmentOptions: [FontTextAlignment] = [.TextAlignmentLeft, .TextAlignmentCenter, .TextAlignmentRight]
 
     init(copying icon: WideBarListDataicons) {
         
@@ -37,6 +56,19 @@ class WideBarListDataicons: Identifiable{
         self.backgroundColorTwo = icon.backgroundColorTwo
         self.backgroundOpacity = icon.backgroundOpacity
         self.gradientIsClicked = icon.gradientIsClicked
+        self.text = icon.text
+        
+        self.selectedSize = icon.selectedSize
+        self.selectedStyle = icon.selectedStyle
+        self.selectedWeight = icon.selectedWeight
+        self.selectedColorBackground = icon.selectedColorBackground
+        self.selectedColorBackgroundTwo = icon.selectedColorBackgroundTwo
+        self.selectedColorFont = icon.selectedColorFont
+        self.selectedOpacity = icon.selectedOpacity
+        self.shadowIsClicked = icon.shadowIsClicked
+        self.selectedFontOpacity = icon.selectedFontOpacity
+        self.selectedAlignment = icon.selectedAlignment
+        self.selectedTextAlignment = icon.selectedTextAlignment
     }
 
     init() { }

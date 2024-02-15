@@ -43,6 +43,9 @@
 		543266152B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266142B7A73B400574EF5 /* ImageVideoEnum.swift */; };
 		543266162B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266142B7A73B400574EF5 /* ImageVideoEnum.swift */; };
 		543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266142B7A73B400574EF5 /* ImageVideoEnum.swift */; };
+		5458FBFD2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
+		5458FBFE2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
+		5458FBFF2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
 		546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
 		546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
 		546A92FB2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */; };
@@ -87,12 +90,6 @@
 		549409542B73FCF500F9836F /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549409532B73FCF500F9836F /* PersonModel.swift */; };
 		549409552B73FCF500F9836F /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549409532B73FCF500F9836F /* PersonModel.swift */; };
 		549409562B73FCF500F9836F /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549409532B73FCF500F9836F /* PersonModel.swift */; };
-		549B67162B76CDC5003124D4 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67152B76CDC5003124D4 /* TextView.swift */; };
-		549B67172B76CDC5003124D4 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67152B76CDC5003124D4 /* TextView.swift */; };
-		549B67182B76CDC5003124D4 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67152B76CDC5003124D4 /* TextView.swift */; };
-		549B671A2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67192B76E16A003124D4 /* TextBoxDesignData.swift */; };
-		549B671B2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67192B76E16A003124D4 /* TextBoxDesignData.swift */; };
-		549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549B67192B76E16A003124D4 /* TextBoxDesignData.swift */; };
 		549C010C2B74D055009223C3 /* ContainerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010B2B74D055009223C3 /* ContainerEnum.swift */; };
 		549C010E2B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
 		549C010F2B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
@@ -179,6 +176,7 @@
 		5432660C2B7A712F00574EF5 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		543266102B7A714B00574EF5 /* ImageVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoData.swift; sourceTree = "<group>"; };
 		543266142B7A73B400574EF5 /* ImageVideoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoEnum.swift; sourceTree = "<group>"; };
+		5458FBFC2B7EA23800C61404 /* CardViewBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewBox.swift; sourceTree = "<group>"; };
 		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
 		5479D6FB2B783B7E002BAD0A /* SFSymbolEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolEnum.swift; sourceTree = "<group>"; };
@@ -202,8 +200,6 @@
 		549409442B73F4AA00F9836F /* LoremIpsum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremIpsum.swift; sourceTree = "<group>"; };
 		5494094F2B73F76200F9836F /* DataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDownloader.swift; sourceTree = "<group>"; };
 		549409532B73FCF500F9836F /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
-		549B67152B76CDC5003124D4 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		549B67192B76E16A003124D4 /* TextBoxDesignData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxDesignData.swift; sourceTree = "<group>"; };
 		549C010B2B74D055009223C3 /* ContainerEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerEnum.swift; sourceTree = "<group>"; };
 		549C010D2B74D2AF009223C3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		549C01112B74D48A009223C3 /* WideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarView.swift; sourceTree = "<group>"; };
@@ -387,7 +383,6 @@
 				549409532B73FCF500F9836F /* PersonModel.swift */,
 				542EAC072B7425780044A038 /* ImagesURLModel.swift */,
 				5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */,
-				549B67192B76E16A003124D4 /* TextBoxDesignData.swift */,
 				546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */,
 			);
 			path = ViewModels;
@@ -396,6 +391,7 @@
 		549409392B73C59800F9836F /* PartialViews */ = {
 			isa = PBXGroup;
 			children = (
+				5458FBFC2B7EA23800C61404 /* CardViewBox.swift */,
 			);
 			path = PartialViews;
 			sourceTree = "<group>";
@@ -404,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				549C010D2B74D2AF009223C3 /* CardView.swift */,
-				549B67152B76CDC5003124D4 /* TextView.swift */,
 				549C01212B750311009223C3 /* TextEditView.swift */,
 				54BA43102B7784D00076E23D /* BackgroundEditView.swift */,
 				54BA43122B77965C0076E23D /* PhotoView.swift */,
@@ -605,13 +600,11 @@
 				54C181422B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
 				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
-				549B671A2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				5432660D2B7A712F00574EF5 /* BoxView.swift in Sources */,
 				54D462EC2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
 				542EAC0C2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				549409452B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				542EAC172B744B120044A038 /* ContainerSuperClass.swift in Sources */,
-				549B67162B76CDC5003124D4 /* TextView.swift in Sources */,
 				54BA431B2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
 				546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */,
@@ -625,6 +618,7 @@
 				54C7CF2F2B78E92B00F29602 /* WideBarEditView.swift in Sources */,
 				543266112B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
 				54A2FC732B797C0A00C715CC /* Dumper.swift in Sources */,
+				5458FBFD2B7EA23800C61404 /* CardViewBox.swift in Sources */,
 				549C01222B750311009223C3 /* TextEditView.swift in Sources */,
 				549C010C2B74D055009223C3 /* ContainerEnum.swift in Sources */,
 				543266152B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
@@ -665,11 +659,9 @@
 				5432660A2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54C1813F2B7E2B990055138A /* QRCodeData.swift in Sources */,
 				54D462F82B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
-				549B67172B76CDC5003124D4 /* TextView.swift in Sources */,
 				549409512B73F76200F9836F /* DataDownloader.swift in Sources */,
 				5479D6FD2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				5414DE962B7E7E7D00949FCD /* ShareContactView.swift in Sources */,
-				549B671B2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				548581E12B7AC0680000BFD9 /* BoxDesignView.swift in Sources */,
 				546A92FE2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5432660E2B7A712F00574EF5 /* BoxView.swift in Sources */,
@@ -682,6 +674,7 @@
 				549409422B73F37300F9836F /* ImageUrlData.swift in Sources */,
 				549C011F2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				5494091F2B73C2E100F9836F /* LinkPalmTests.swift in Sources */,
+				5458FBFE2B7EA23800C61404 /* CardViewBox.swift in Sources */,
 				54BA431C2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
 				549C010F2B74D2AF009223C3 /* CardView.swift in Sources */,
 				549C01132B74D48A009223C3 /* WideBarView.swift in Sources */,
@@ -715,7 +708,6 @@
 				542EAC192B744B120044A038 /* ContainerSuperClass.swift in Sources */,
 				54BA43152B77965C0076E23D /* PhotoView.swift in Sources */,
 				54C76FF52B762E03005EA680 /* TextConfigEnum.swift in Sources */,
-				549B67182B76CDC5003124D4 /* TextView.swift in Sources */,
 				5432660B2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				54C1813C2B7E16F50055138A /* MainView.swift in Sources */,
@@ -734,11 +726,11 @@
 				549409522B73F76200F9836F /* DataDownloader.swift in Sources */,
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,
 				54D462F92B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
-				549B671C2B76E16A003124D4 /* TextBoxDesignData.swift in Sources */,
 				543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
 				5402874A2B7C22FC00282654 /* VideoDesignView.swift in Sources */,
 				548581E62B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				542EAC0E2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
+				5458FBFF2B7EA23800C61404 /* CardViewBox.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,
 				5479D7022B783BED002BAD0A /* Extensions.swift in Sources */,
 				5414DE972B7E7E7D00949FCD /* ShareContactView.swift in Sources */,

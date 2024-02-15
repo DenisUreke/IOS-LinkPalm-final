@@ -36,7 +36,7 @@ struct MainView: View {
             ShareContactView(user: user, QRmodel: QRmodel)
                 .navigationTitle("share contact")
         case .yourProfile:
-            CardView(titleData: $user, textBoxData: $user.boxOne.textBoxDesignData, QRCodeModelList: $QRmodel)
+            CardView(titleData: $user, QRCodeModelList: $QRmodel)
                 .navigationTitle("your profile")
         }
     }

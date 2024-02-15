@@ -109,7 +109,7 @@ struct DynamicButtonWithNavigation: View {
         Button(action: {
             print("Button was tapped")
         }) {
-            ButtonDesign(icon: icon, title: title, borderColor: Color.black, borderThickness: 2)
+            ButtonDesign(icon: icon, title: title, borderColor: Color.black, borderThickness: 2, width: 180, height:50 )
         }
     }
 }
@@ -121,7 +121,7 @@ struct DynamicButtonWithFunction: View {
     
     var body: some View {
         Button(action: action) {
-            ButtonDesign(icon: icon, title: title, borderColor: Color.black, borderThickness: 2 )
+            ButtonDesign(icon: icon, title: title, borderColor: Color.black, borderThickness: 2, width: 180, height:50 )
         }
     }
 }
@@ -131,6 +131,8 @@ struct ButtonDesign: View {
     let title: String
     let borderColor: Color
     let borderThickness: Double
+    let width: Double
+    let height: Double
 
     var body: some View {
         HStack(spacing: 40) {
@@ -156,7 +158,7 @@ struct ButtonDesign: View {
         .background(
             RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                 .fill(Color.gray.opacity(0.1))
-                .frame(width: 180, height: 50)
+                .frame(width: width, height: height)
                 .overlay(
                     RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                         .stroke(borderColor, lineWidth: borderThickness)))

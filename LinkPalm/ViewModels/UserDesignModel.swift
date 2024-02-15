@@ -17,18 +17,21 @@ final class UserDesignModel{
     
     //@Attribute(.unique) let userID = UUID().uuidString
     let userID : String
-    var isEditMode = true
     
     var boxOne = BoxData()
+    var boxTwo = BoxData()
+    var boxThree = BoxData()
+    var boxFour = BoxData()
     var wideBarOne = WideBarData()
+    var wideBarTwo = WideBarData()
+    var wideBarThree = WideBarData()
     var firstName : String
     var lastName : String
     var typeOfContact : String
     
-    init(userID: String = "1234", isEditMode: Bool = true, firstName: String = "John", lastName: String = "Doe", typeOfContact: String = "person") {
+    init(userID: String = "1234", firstName: String = "John", lastName: String = "Doe", typeOfContact: String = "person") {
         
         self.userID = userID
-        self.isEditMode = isEditMode
         self.firstName = firstName
         self.lastName = lastName
         self.typeOfContact = typeOfContact

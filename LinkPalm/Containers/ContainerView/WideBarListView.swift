@@ -53,12 +53,26 @@ struct WideBarListView: View {
     
     @ViewBuilder
     private func imageContent(for item: WideBarListDataicons, in geometry: GeometryProxy) -> some View {
-        Image(systemName: item.sfIcon.rawValue)
-            .foregroundColor(item.iconColor.color.opacity(item.iconOpacity))
-            .frame(width: (geometry.size.width - (5 * CGFloat(userDesign.listOfIcons.count - 1))) / CGFloat(userDesign.listOfIcons.count), height: 60)
-            .background(item.gradientIsClicked ? LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColorTwo.color]), startPoint: .top, endPoint: .bottom).opacity(item.backgroundOpacity) : LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColor.color]), startPoint: .top, endPoint: .bottom).opacity(item.backgroundOpacity))
-            .cornerRadius(8)
-            .font(.system(size: item.iconSize))
+        ZStack{
+            Image(systemName: item.sfIcon.rawValue)
+                .foregroundColor(item.iconColor.color.opacity(item.iconOpacity))
+                .frame(width: (geometry.size.width - (5 * CGFloat(userDesign.listOfIcons.count - 1))) / CGFloat(userDesign.listOfIcons.count), height: 60)
+                .background(item.gradientIsClicked ? LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColorTwo.color]), startPoint: .top, endPoint: .bottom).opacity(item.backgroundOpacity) : LinearGradient(gradient: Gradient(colors: [item.backgroundColor.color, item.backgroundColor.color]), startPoint: .top, endPoint: .bottom).opacity(item.backgroundOpacity))
+                .cornerRadius(8)
+                .font(.system(size: item.iconSize))
+
+                Text("\(item.text)")
+                    .frame(maxWidth: .infinity, alignment: item.selectedAlignment.getAlignment)
+                    .multilineTextAlignment(item.selectedTextAlignment.getTextAlignment)
+                    .padding([.leading, .trailing], 10)
+            .font(.system(size: item.selectedSize, weight: item.selectedWeight.getWeight, design: item.selectedStyle.getFontStyel))
+            .opacity(item.selectedFontOpacity)
+            .foregroundColor(item.selectedColorFont.color)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .shadow(color: !item.shadowIsClicked ? .clear : .gray,
+                    radius: 2,x: 0, y: !item.shadowIsClicked ? 0 : 5)
+
+        }
     }
 }
 

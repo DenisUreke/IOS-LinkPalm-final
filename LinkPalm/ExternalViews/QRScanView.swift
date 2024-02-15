@@ -20,7 +20,7 @@ struct QRScanView: View {
             if let scannedCode = scannedCode {
                 Text("Scanned code: \(scannedCode)")
             } else {
-                ButtonDesign(icon: "qrcode.viewfinder", title: "Scan", borderColor: .black, borderThickness: 2)
+                ButtonDesign(icon: "qrcode.viewfinder", title: "Scan", borderColor: .black, borderThickness: 2, width: 180, height:50)
                     .onTapGesture {
                         isPresentingScanner = true
                     }

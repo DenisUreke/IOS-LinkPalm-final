@@ -17,7 +17,7 @@ struct ContactsListView: View {
             ForEach(QRList.listOfContacts) { contact in
                 let index = findUserDesignModel(forID: contact.ID)
                 if index != -666 {
-                    NavigationLink(destination: CardView(titleData: $designList.userList[index], textBoxData: $designList.userList[index].boxOne.textBoxDesignData, QRCodeModelList: $QRList)) {
+                    NavigationLink(destination: CardView(titleData: $designList.userList[index], QRCodeModelList: $QRList)) {
                         drawButtonForContactListView(person: contact)
                             .padding(.vertical, -12)
                     }

@@ -11,12 +11,9 @@ struct CardView: View {
     
     @State var textObject = QScreenTxtModel()
     @State var test = QScreenTxtModel()
-    @State var color = Color.gray
+    @State var isEditMode: Bool = false
     
     @Binding var titleData : UserDesignModel
-    
-    @Binding var textBoxData : TextBoxDesignData
-    
     @Binding var QRCodeModelList : QRCodeModel
     
     var body: some View {
@@ -29,9 +26,7 @@ struct CardView: View {
                 }
                 
                 HStack(spacing: 5) {
-                    NavigationLink(destination: TextView(titleData: $titleData)){
                         QScreenTxtView(settings: $textObject)
-                    }
                     .simultaneousGesture(TapGesture().onEnded { _ in
                         textObject.backgroundColor = .red
                         // Any pre-navigation action can be placed here
@@ -47,10 +42,10 @@ struct CardView: View {
                 }
                 //.padding(.top, 5)
                     HStack(spacing: 5) {
-                        TextView(titleData: $titleData)
+                        BoxView(titleData: $titleData.boxThree.imageVideoListData)
                             .frame(width: geometry.size.width * 0.6)
-                    QScreenTxtView(settings: $test)
-                        .frame(width: geometry.size.width * 0.4 - 15)
+                        QScreenTxtView(settings: $test)
+                            .frame(width: geometry.size.width * 0.4 - 15)
                 }
                     HStack {
                         WideBarView(color: .green)
@@ -61,7 +56,39 @@ struct CardView: View {
                     }
                 
             }
+            .toolbar {
+                drawToolBar()
+            }
             .padding(5)
+        }
+    }
+    private func drawToolBar()-> some ToolbarContent{
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+            Menu {
+                Button(action: {
+                    self.isEditMode
+                        .toggle()
+                }) {
+                    Label("Design Mode", systemImage: "paintpalette")
+                }
+                /*NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.title)){
+                 Label("Design Header", systemImage: "header")
+                 }
+                 NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.text)){
+                 Label("Design Text", systemImage: "textformat")
+                 }*/
+                /*NavigationLink(destination: BackgroundEditView(titleData: $titleData.boxOne.textBoxDesignData.backgroundData)){
+                 Label("Design Background", systemImage: "paintpalette")
+                 }*/
+                /*NavigationLink(destination: PhotoView(userDesignModel: $titleData, viewToShow: ViewPassedIntoPhotoSelector.textView, imageData: $titleData.boxOne.textBoxDesignData.backgroundData.imageData)) {
+                 Label("Insert Image", systemImage: "photo")
+                 }*/
+                Button("Save", action: {
+                    // Your save action here
+                })
+            } label: {
+                Label("Menu", systemImage: "line.3.horizontal")
+            }
         }
     }
 }

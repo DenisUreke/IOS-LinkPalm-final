@@ -11,6 +11,7 @@ struct WideBarEditView: View {
     
     @Binding var userDesign : WideBarListData
     @State var choiceClicked : WideListViewEnumChoice = .none
+    @State var isIcon: Bool = true
     
     var body: some View {
         VStack{
@@ -20,7 +21,15 @@ struct WideBarEditView: View {
             WideBarEditViewAddRemoveButton(userDesign: $userDesign)
             
             ScrollView(showsIndicators: false){
-                WideBarEditViewIconChoice(userDesign: $userDesign)
+                
+                drawToggleButtons(icon: "popcorn.circle", icon2: "textformat", title: "Icons", title2: "Text", toggleBool: $isIcon)
+                
+                if isIcon{
+                    WideBarEditViewIconChoice(userDesign: $userDesign)
+                }else{
+                    DrawTextFieldForWideBar(title: $userDesign.listOfIcons.last!.text)
+                    configureWideBarTextObjects(titleData: $userDesign.listOfIcons.last!)
+                }
                 Divider()
                 WideBarEditViewBackGroundChoice(userDesign: $userDesign)
                 Divider()
@@ -33,6 +42,33 @@ struct WideBarEditView: View {
             }
         }
         .padding()
+    }
+}
+
+struct drawToggleButtons: View{
+    
+    let icon: String
+    let icon2:String
+    let title: String
+    let title2: String
+    @Binding var toggleBool: Bool
+    
+    var body: some View{
+        
+        HStack{
+            Button(action:{
+                toggleBool = true
+            }){
+                toggleBool ? ButtonDesign(icon: "\(icon)", title: "\(title)", borderColor: Color.blue, borderThickness: 5, width: 150, height:50) : ButtonDesign(icon: "\(icon)", title: "\(title)", borderColor: Color.black, borderThickness: 2, width: 150, height:50)
+            }
+            .frame(maxWidth: 150)
+            Button(action:{
+                toggleBool = false
+            }){
+                !toggleBool ? ButtonDesign(icon: "\(icon2)", title: "\(title2)", borderColor: Color.blue, borderThickness: 5, width: 150, height:50) : ButtonDesign(icon: "\(icon2)", title: "\(title2)", borderColor: Color.black, borderThickness: 2 , width: 150, height:50)
+            }
+            .frame(maxWidth: 150)
+        }
     }
 }
 
@@ -66,11 +102,9 @@ struct WideBarEditViewIconChoice: View{
     
     var body: some View {
         
+        DrawSFSymbolsChoices(selectedSFSymbol: $userDesign.listOfIcons.last!.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
         Text(headerTitleString.iconSize.rawValue)
             .font(.system(size: 26, weight: .bold))
-        
-        DrawSFSymbolsChoices(selectedSFSymbol: $userDesign.listOfIcons.last!.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
-        
         Slider(value: $userDesign.listOfIcons.last!.iconSize, in: 10...36 )
         
         DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons.last!.iconColor, title: headerTitleString.iconColor.rawValue)
@@ -137,15 +171,8 @@ struct WideBarEditSetWebAddress: View {
                 userDesign.listOfIcons.last!.isWebLink = true
                 choiceClicked = .none
             }){
-                Text("Save")
-                    .font(.system(size: 18))
-                    .foregroundColor(Color.white)
-                    .padding(8)
+                ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2, width: 150, height:50)
             }
-            .frame(width: 200)
-            .background(Color.blue)
-            .border(.black, width: 1)
-            .cornerRadius(10)
         }
         
     }
@@ -182,15 +209,8 @@ struct WideBarEditSetVideoAddress: View {
                 userDesign.listOfIcons.last!.isVideoLink = true
                 choiceClicked = .none
             }){
-                Text("Save")
-                    .frame(width: 200)
-                    .font(.system(size: 18))
-                    .foregroundColor(Color.white)
-                    .padding(8)
+                ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2, width: 150, height:50)
             }
-            .background(Color.blue)
-            .border(.black, width: 1)
-            .cornerRadius(10)
         }
     }
 }
@@ -206,16 +226,71 @@ struct WideBarEditClearButton: View {
             userDesign.resetAdressValues()
             choiceClicked = .none
         }){
-            Text("Clear Links")
-                .frame(width: 200)
-                .font(.system(size: 18))
-                .foregroundColor(Color.white)
-                .padding(8)
+            ButtonDesign(icon: "clear", title: "Clear links", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
         }
-        .background(Color.blue)
-        .border(.black, width: 1)
-        .cornerRadius(10)
+    }
+}
+
+struct configureWideBarTextObjects : View{
+    
+    @Binding var titleData : WideBarListDataicons
+    
+    var body: some View {
         
+        SliderDoubleView(minValue: 0, maxValue: 40, objectToChange: $titleData.selectedSize, title: EditImageString.fontSize)
+        
+        Divider()
+        
+        SelectableView(title: headerTitleString.alignment.rawValue, options: titleData.alignmentOptions, selectedOption: $titleData.selectedAlignment) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        Divider()
+        //
+        SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.textAlignmentOptions, selectedOption: $titleData.selectedTextAlignment) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        Divider()
+        //
+        SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.styleOptions, selectedOption: $titleData.selectedStyle) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        Divider()
+        
+        SelectableView(title: headerTitleString.fontWeight.rawValue, options: titleData.weightOptions, selectedOption: $titleData.selectedWeight) { option in
+            Text(option.rawValue)
+                .frame(width: 200)
+        }
+        
+        DrawColorPaletteBox(selectedColor: $titleData.selectedColorFont, title: headerTitleString.fontColor.rawValue)
+        VStack{
+            Text("Shadow")
+            Image(systemName: !titleData.shadowIsClicked ? "square" : "square.fill")
+                .font(.system(size: 18))
+        }
+        .onTapGesture {
+            titleData.shadowIsClicked.toggle()
+        }
+        VStack {
+            Slider(value: $titleData.selectedFontOpacity, in: 0...1)
+        }
+    }
+    
+}
+
+struct DrawTextFieldForWideBar: View {
+    
+    @Binding var title: String
+
+    var body: some View {
+        VStack {
+            TextField("Enter text", text: $title)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+        }
     }
 }
 
