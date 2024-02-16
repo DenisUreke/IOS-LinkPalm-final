@@ -13,21 +13,27 @@ struct CardView: View {
     @State var test = QScreenTxtModel()
     @State var isEditMode: Bool = false
     
-    @Binding var titleData : UserDesignModel
+    @Binding var user : UserDesignModel
     @Binding var QRCodeModelList : QRCodeModel
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 5) {
                 
-                NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarOne.wideBarListData)){
-                    WideBarListView(userDesign: $titleData.wideBarOne.wideBarListData)
-                        .frame(height: 60)
+                //WideBar 1
+                if isEditMode{
+                    NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarOne.wideBarListData)){
+                        WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
+                            .frame(height: 60)
+                    }
+                }else{
+                    WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
                 }
                 
+                //Box 1, 2
                 HStack(spacing: 5) {
-                    NavigationLink(destination: CardViewBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)){
-                        CardViewBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)
+                    NavigationLink(destination: BoxView(titleData: $user.boxOne.imageVideoListData)){
+                        CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
                         .simultaneousGesture(TapGesture().onEnded { _ in
                             textObject.backgroundColor = .red
                         })
@@ -35,25 +41,25 @@ struct CardView: View {
                     
                 }
             }
-                NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarTwo.wideBarListData)){
-                        WideBarListView(userDesign: $titleData.wideBarTwo.wideBarListData)
+                NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
+                        WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
                             .frame(height: 60)
                 }
                     HStack(spacing: 5) {
-                        BoxView(titleData: $titleData.boxOne.imageVideoListData)
+                        BoxView(titleData: $user.boxOne.imageVideoListData)
                             .frame(width: geometry.size.width * 0.6)
-                        NavigationLink(destination: BoxDesignView(designData: $titleData.boxOne.imageVideoListData)){
+                        NavigationLink(destination: BoxDesignView(designData: $user.boxOne.imageVideoListData)){
                             QScreenTxtView(settings: $test)
                                 .frame(width: geometry.size.width * 0.4 - 15)
                         }
                 }
-                NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $titleData.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $titleData.wideBarThree.wideBarListData)){
-                        WideBarListView(userDesign: $titleData.wideBarThree.wideBarListData)
+                NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $user.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $user.wideBarThree.wideBarListData)){
+                        WideBarListView(userDesign: $user.wideBarThree.wideBarListData)
                             .frame(height: 60)
                     }
-                NavigationLink(destination: CardViewDesignBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)){
+                NavigationLink(destination: CardViewDesignBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)){
                     HStack(spacing: 5) {
-                        CardViewBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)
+                        CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
                             .frame(height: geometry.size.height * 0.2)
                     }
                 }

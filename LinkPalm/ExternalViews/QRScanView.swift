@@ -13,7 +13,10 @@ import SwiftUI
 struct QRScanView: View {
     @State private var isPresentingScanner = false
     @State private var scannedCode: String?
-    let QRCodeModelList : QRCodeModel
+    var QRCodeModelList : QRCodeModel
+    
+// To fake a proper API
+    var UserDesignList: UserDesignList
 
     var body: some View {
         VStack {
@@ -40,7 +43,7 @@ struct QRScanView: View {
             QRCodeModelList.createContactAndAppend(components: components)
             scannedCode = scanResult.string
         case .failure(let error):
-            // Handle the scanning error
+            // Handle the scanning error amybe new screen but do if time is over
             print("Scanning Error: \(error)")
         }
     }

@@ -44,7 +44,6 @@ struct ImageVideoListView: View {
                 VStack{
                     getDynamicView(imageVideoData: $list.listOfEntries[index], type: entry.typeOfBox)
                         .background(list.backgroundData.gradientIsClicked ? Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]).opacity(list.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]).opacity(list.backgroundData.selectedBackgroundOpacity) )
-                        .listRowBackground(list.backgroundData.selectedColorBackgroundOne.color)
                     
                     /*Button(action: {
                         if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
@@ -58,8 +57,10 @@ struct ImageVideoListView: View {
                     //DynamicButtonForEditing(list: $list, current: $list.listOfEntries[index])
                 }
             }
+            .listRowBackground(list.backgroundData.selectedColorBackgroundOne.color)
         }
     }
+    
 }
 
 
@@ -195,6 +196,7 @@ struct DynamicPictureView: View {
                     RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius)
                         .stroke(imageData.textCustomModel.selectedBorderColor.color, lineWidth: imageData.textCustomModel.selectedBorderWidth)
                 )
+                .clipped()
         }else{Text("Could not find Image")}
     }
 }
@@ -223,6 +225,7 @@ struct DynamicPictureViewFromWeb: View {
                     .contrast(imageData.imageData.selectedContrast)
                     .border(imageData.textCustomModel.selectedBorderColor.color, width: imageData.textCustomModel.selectedBorderWidth)
                     .cornerRadius(imageData.textCustomModel.selectedCornerRadius)
+                    .clipped()
             case .failure:
                 Text("Unable to load image")
             @unknown default:

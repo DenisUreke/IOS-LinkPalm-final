@@ -33,10 +33,10 @@ struct MainView: View {
             ContactsListView(QRList: $QRmodel, designList: $titleData)
                 .navigationTitle("contacts")
         case .share:
-            ShareContactView(user: user, QRmodel: QRmodel)
+            ShareContactView(user: user, userList: titleData, QRmodel: QRmodel)
                 .navigationTitle("share contact")
         case .yourProfile:
-            CardView(titleData: $user, QRCodeModelList: $QRmodel)
+            CardView(user: $user, QRCodeModelList: $QRmodel)
                 .navigationTitle("your profile")
         }
     }

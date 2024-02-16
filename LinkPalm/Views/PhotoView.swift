@@ -24,9 +24,11 @@ struct PhotoView: View {
         VStack{
             if isURL {
                 DynamicPictureViewFromWeb(imageData: $designData)
+                    .clipped()
             }
             if isDevice {
                 DynamicPictureView(imageData: $designData)
+                    .clipped()
             }
             Divider()
             

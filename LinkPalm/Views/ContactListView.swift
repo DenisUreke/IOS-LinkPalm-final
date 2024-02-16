@@ -14,17 +14,12 @@ struct ContactsListView: View {
     
     var body: some View {
         List {
-            ForEach(QRList.listOfContacts) { contact in
-                let index = findUserDesignModel(forID: contact.ID)
-                if index != -666 {
-                    NavigationLink(destination: CardView(titleData: $designList.userList[index], QRCodeModelList: $QRList)) {
-                        drawButtonForContactListView(person: contact)
-                            .padding(.vertical, -12)
-                    }
-                    .listRowBackground(Color.clear)
-                } else {
-                    EmptyView()
+            ForEach(designList.userList.indices, id: \.self) { index in
+                NavigationLink(destination: CardView(user: $designList.userList[index], QRCodeModelList: $QRList)) {
+                    drawButtonForContactListView(contact: designList.userList[index])
+                        .padding(.vertical, -12)
                 }
+                .listRowBackground(Color.clear)
             }
             .onDelete(perform: { indexSet in
                 indexSet.forEach { index in
@@ -33,15 +28,11 @@ struct ContactsListView: View {
             })
         }
     }
-
-    private func findUserDesignModel(forID id: String) -> Int {
-        return designList.userList.firstIndex(where: { $0.userID == id }) ?? -666
-    }
 }
 
 struct drawButtonForContactListView : View{
     
-    let person: QRCodeData
+    let contact : UserDesignModel
     
     var body: some View {
         HStack{
@@ -60,10 +51,10 @@ struct drawButtonForContactListView : View{
                 .padding(.trailing, 20)
                 .padding(.leading, -20)
             VStack(alignment: .leading){
-                    Text("\(person.firstName)")
+                Text("\(contact.firstName)")
                         .font(.system(size: 16))
                         .foregroundStyle(Color.black)
-                    Text("\(person.lastName)")
+                    Text("\(contact.lastName)")
                         .font(.system(size: 14))
                         .foregroundStyle(Color.black)
                 }

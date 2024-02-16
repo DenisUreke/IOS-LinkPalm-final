@@ -13,9 +13,9 @@ import SwiftData
 
 //@Model
 @Observable
-final class UserDesignModel{
+final class UserDesignModel: Identifiable{
     
-    //@Attribute(.unique) let userID = UUID().uuidString
+    let ID = UUID().uuidString
     let userID : String
     
     var boxOne = BoxData()
@@ -42,6 +42,14 @@ final class UserDesignModel{
 @Observable
 class UserDesignList{
     
-    var userList: [UserDesignModel] = [UserDesignModel(), UserDesignModel(userID: "4321")]
+    var userList: [UserDesignModel] = [UserDesignModel(), UserDesignModel(firstName: "Rick", lastName: "Morty")]
+    
+    func createAndPopulateUserDesign(){
+        
+        var newUser: UserDesignModel = UserDesignModel()
+        
+    }
+    
+    
     
 }

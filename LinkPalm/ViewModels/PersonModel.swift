@@ -140,10 +140,10 @@ class ResultModel{
 @Observable
 class PersonDataModel {
     
-    var results: [Result]
+    var result: Result
     
-    init(results: [Result]) {
-        self.results = results
+    init(result: Result) {
+        self.result = result
     }
     
 }

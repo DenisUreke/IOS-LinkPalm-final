@@ -11,7 +11,7 @@ import Observation
 @Observable
 class DownloadDataModel{
     
-    private let baseURLpersons = "https://randomuser.me/api/?results=10"
+    private let baseURLpersons = "https://randomuser.me/api"
     private let baseURLimages = "https://random.imagecdn.app/v1/image?width=500&height=500&category=buildings&format=json"
     
     
@@ -32,9 +32,9 @@ class DownloadDataModel{
         let(data, _) = try await URLSession.shared.data(from: url)
         do{
             let feed = try decoder.decode(PersonData.self, from: data)
-            self.personData = PersonDataModel(results: feed.results)
-            //print(feed)
-            //printFirstEntry()
+            if let firstResult = feed.results.first {
+                self.personData = PersonDataModel(result: firstResult)
+            }
         } catch {
             print(error)
         }
@@ -68,9 +68,9 @@ class DownloadDataModel{
     }
     
     func printFirstEntry() {
-        if let firstResult = personData?.results.first {
+        if let firstResult = personData {
             print("AAAAAAAAAAAAA First entry: \(firstResult)")
-            print("AAAAAName: \(firstResult.name.first) \(firstResult.name.last) CLOSED")
+            print("AAAAAName: \(firstResult.result.name ) \(firstResult.result.nat) CLOSED")
         } else {
             print("No data available or list is empty.")
         }
