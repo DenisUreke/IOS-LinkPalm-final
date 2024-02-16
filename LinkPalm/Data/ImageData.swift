@@ -20,4 +20,8 @@ class ImageData{
     var selectedRotation: Double = 0
     var selectedHueRotation: Double = 0
     var selectedCornerRadius: Double = 0
+    var selectedScale: Double = 1
+    var selectedXAxisOffset: Double = 0
+    var selectedYAxisOffset: Double = 0
+    
 }

@@ -24,6 +24,7 @@ struct BoxDesignView: View {
 
 
 struct DrawMenuForBoxDesignView: View {
+    
     @Binding var designData: ImageVideoDataList
     let title: String
 

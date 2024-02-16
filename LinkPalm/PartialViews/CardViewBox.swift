@@ -19,11 +19,14 @@ struct CardViewBox: View {
 
             DrawBackGroundForBoxDesign(backgroundDesign: $boxData.boxDesign.background)
             
+            
+            if boxData.boxDesign.imageVideoData.typeOfBox == ImageVideoEnum.picture {DynamicPictureView(imageData: $boxData.boxDesign.imageVideoData)} else{
+                DynamicPictureViewFromWeb(imageData: $boxData.boxDesign.imageVideoData)
+            }
+            
             DrawSFSymbolForDesingBox(sfSymbolData: $boxData.boxDesign.sfSymbol)
             
             DynamicViewText(titleData: $boxData.boxDesign.text)
-                .background(Color.clear)
-                .offset(y: boxData.boxDesign.text.selectedXOffsetText)
         }
         .clipped()
     }
@@ -87,14 +90,14 @@ struct CardViewDesignBox: View{
                 }
                 
                 Divider()
-                
-                Button(action: {
-                    
-                }){
-                    ButtonDesign(icon: "photo", title: "Image", borderColor: .black, borderThickness: 2, width: 150, height: 50)
-                }
 
                 drawSettingButtonForBackground(designData: $boxData.boxDesign.background)
+                
+                NavigationLink(destination: PhotoView(designData: $boxData.boxDesign.imageVideoData)){
+                    VStack{
+                        ButtonDesign(icon: "photo", title: "Image", borderColor: .black, borderThickness: 2, width: 150, height: 50)
+                    }
+                }
             }
         }
         .padding()

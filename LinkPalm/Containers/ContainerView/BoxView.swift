@@ -159,6 +159,7 @@ struct DynamicViewText: View {
             }
             .font(.system(size: titleData.selectedSize, weight: titleData.selectedWeight.getWeight, design: titleData.selectedStyle.getFontStyel))
             .opacity(titleData.selectedFontOpacity)
+            .offset(y: titleData.selectedXOffsetText)
             .foregroundColor(titleData.selectedColorFont.color)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             .shadow(color: !titleData.shadowIsClicked ? .clear : .gray,
@@ -180,6 +181,8 @@ struct DynamicPictureView: View {
             image
                 .resizable()
                 .scaledToFit()
+                .scaleEffect(imageData.imageData.selectedScale)
+                .offset(x: imageData.imageData.selectedXAxisOffset, y: imageData.imageData.selectedYAxisOffset)
                 .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius))
                 .frame(maxWidth: .infinity)
                 .rotationEffect(.degrees(imageData.imageData.selectedRotation))
@@ -209,6 +212,8 @@ struct DynamicPictureViewFromWeb: View {
                 image
                     .resizable()
                     .scaledToFit()
+                    .scaleEffect(imageData.imageData.selectedScale)
+                    .offset(x: imageData.imageData.selectedXAxisOffset, y: imageData.imageData.selectedYAxisOffset)
                     .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius))
                     .frame(maxWidth: .infinity)
                     .rotationEffect(.degrees(imageData.imageData.selectedRotation))

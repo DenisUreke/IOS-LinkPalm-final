@@ -11,7 +11,7 @@ import Observation
 @Observable
 class BoxData{
     
-    var boxDesign: (background: BackgroundData , text: TitleCustomModel , sfSymbol: SFSymbolData ) = (BackgroundData(), TitleCustomModel(), SFSymbolData())
+    var boxDesign: (background: BackgroundData , text: TitleCustomModel , sfSymbol: SFSymbolData, imageVideoData: ImageVideoData ) = (BackgroundData(), TitleCustomModel(), SFSymbolData(), ImageVideoData())
     
     var imageVideoListData: ImageVideoDataList = ImageVideoDataList()
 }

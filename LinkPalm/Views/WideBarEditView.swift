@@ -284,8 +284,10 @@ struct DrawTextFieldForWideBar: View {
     var body: some View {
         VStack {
             TextField("Enter text", text: $title)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 300)
                 .padding()
+                .multilineTextAlignment(.center)
+                .border(Color.gray)
         }
     }
 }

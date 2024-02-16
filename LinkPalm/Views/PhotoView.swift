@@ -37,19 +37,11 @@ struct PhotoView: View {
             }
             
             if isURL {
-                VStack {
-                    TextField("Enter URL", text: $enteredText)
-                        .frame(width: 300)
-                        .padding()
-                        .multilineTextAlignment(.center)
-                        .border(Color.gray)
-                }
+                    DrawTextFieldForWideBar(title: $enteredText)
             }
             
             if isDevice{
-                VStack{
                     PhotosPicker("Select from device", selection: $photopickerItem, matching: .images)
-                }
             }
             
             HStack{
@@ -118,6 +110,15 @@ struct PhotoEditingTools: View{
     var body: some View{
         
         if designData.imageData.selectedBackgroundImage != nil || !designData.imageData.imageURL.absoluteString.isEmpty{
+            
+            SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.selectedXAxisOffset, title: EditImageString.xOffsetImage)
+            SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.selectedYAxisOffset, title: EditImageString.yOffsetImage)
+            
+            Divider()
+            
+            SliderDoubleView(minValue: 0, maxValue: 3, objectToChange: $designData.imageData.selectedScale, title: EditImageString.imageScale)
+            
+            Divider()
             
             SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.selectedContrast, title: EditImageString.contrast)
             

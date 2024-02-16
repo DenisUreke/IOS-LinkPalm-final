@@ -20,6 +20,9 @@ enum EditImageString: String{
     case fontSize = "Size"
     case xOffset = "Text Y-axis"
     case xOffsetIcon = "Icon Y-axis"
+    case imageScale = "Scale Image"
+    case yOffsetImage = "Image Y-axis"
+    case xOffsetImage = "Image X-axis"
 }
 
 enum PhotoPickerChoice: Identifiable{

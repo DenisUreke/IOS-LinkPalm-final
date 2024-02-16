@@ -40,10 +40,12 @@ struct CardView: View {
                             .frame(height: 60)
                 }
                     HStack(spacing: 5) {
-                        BoxView(titleData: $titleData.boxThree.imageVideoListData)
+                        BoxView(titleData: $titleData.boxOne.imageVideoListData)
                             .frame(width: geometry.size.width * 0.6)
-                        QScreenTxtView(settings: $test)
-                            .frame(width: geometry.size.width * 0.4 - 15)
+                        NavigationLink(destination: BoxDesignView(designData: $titleData.boxOne.imageVideoListData)){
+                            QScreenTxtView(settings: $test)
+                                .frame(width: geometry.size.width * 0.4 - 15)
+                        }
                 }
                 NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $titleData.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $titleData.wideBarThree.wideBarListData)){
                         WideBarListView(userDesign: $titleData.wideBarThree.wideBarListData)
