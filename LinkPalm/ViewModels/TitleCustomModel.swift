@@ -11,7 +11,6 @@ import Observation
 @Observable
 class TitleCustomModel{
     
-    var title: String = "Title Here"
     var text: String = "Your Text"
     var selectedSize: Double = 24
     var selectedStyle: FontStyle = .defaults
@@ -30,6 +29,7 @@ class TitleCustomModel{
     var selectedBorderWidth: Double = 0
     var selectedCornerRadius: Double = 0
     var selectedImageCornerRadius: Double = 0
+    var selectedXOffsetText: Double = 0
     
     let sizeOptions: [FontSize] = [.title1, .title2, .title3]
     let styleOptions: [FontStyle] = [.defaults, .monoSpaced, .serif]

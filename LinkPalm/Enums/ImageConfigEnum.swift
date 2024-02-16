@@ -18,6 +18,8 @@ enum EditImageString: String{
     case cornerRadius = "Border corner radius"
     case imageCornerRadius = "Image corner radius"
     case fontSize = "Size"
+    case xOffset = "Text Y-axis"
+    case xOffsetIcon = "Icon Y-axis"
 }
 
 enum PhotoPickerChoice: Identifiable{

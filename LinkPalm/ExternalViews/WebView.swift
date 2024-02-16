@@ -14,7 +14,10 @@ struct WebView: UIViewRepresentable {
     let url: URL
     
     func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+        let webView = WKWebView()
+           webView.allowsBackForwardNavigationGestures = true
+           webView.allowsLinkPreview = true
+        return webView
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
@@ -22,6 +25,13 @@ struct WebView: UIViewRepresentable {
         uiView.load(request)
     }
 }
+
+/*
+ first ensure background processing and fetch is enabled
+ ensure all the following actions are called on webview
+      webView.uiDelegate = self     webView.allowsBackForwardNavigationGestures = true     webView.allowsLinkPreview = true     webView.navigationDelegate = self
+ then u are good to go
+ */
 
 
 //WebView(url: "https://www.google.com/")

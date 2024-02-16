@@ -43,6 +43,9 @@
 		543266152B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266142B7A73B400574EF5 /* ImageVideoEnum.swift */; };
 		543266162B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266142B7A73B400574EF5 /* ImageVideoEnum.swift */; };
 		543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543266142B7A73B400574EF5 /* ImageVideoEnum.swift */; };
+		543505852B7F6B640023742F /* SFSymbolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543505842B7F6B640023742F /* SFSymbolData.swift */; };
+		543505862B7F6B640023742F /* SFSymbolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543505842B7F6B640023742F /* SFSymbolData.swift */; };
+		543505872B7F6B640023742F /* SFSymbolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543505842B7F6B640023742F /* SFSymbolData.swift */; };
 		5458FBFD2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
 		5458FBFE2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
 		5458FBFF2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
@@ -176,6 +179,7 @@
 		5432660C2B7A712F00574EF5 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		543266102B7A714B00574EF5 /* ImageVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoData.swift; sourceTree = "<group>"; };
 		543266142B7A73B400574EF5 /* ImageVideoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoEnum.swift; sourceTree = "<group>"; };
+		543505842B7F6B640023742F /* SFSymbolData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolData.swift; sourceTree = "<group>"; };
 		5458FBFC2B7EA23800C61404 /* CardViewBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewBox.swift; sourceTree = "<group>"; };
 		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 				54C7CF302B78EE2C00F29602 /* WideBarData.swift */,
 				543266102B7A714B00574EF5 /* ImageVideoData.swift */,
 				54C1813D2B7E2B990055138A /* QRCodeData.swift */,
+				543505842B7F6B640023742F /* SFSymbolData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				54BA431B2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
 				546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */,
+				543505852B7F6B640023742F /* SFSymbolData.swift in Sources */,
 				549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
 				54D462F02B7CD456006C27F4 /* QRCreateView.swift in Sources */,
 				549C010E2B74D2AF009223C3 /* CardView.swift in Sources */,
@@ -681,6 +687,7 @@
 				54C1813B2B7E16F50055138A /* MainView.swift in Sources */,
 				542EAC142B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54BA43182B77AB630076E23D /* ImageData.swift in Sources */,
+				543505862B7F6B640023742F /* SFSymbolData.swift in Sources */,
 				54C181432B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				54C7CF322B78EE2C00F29602 /* WideBarData.swift in Sources */,
 				54BD8E352B777EE700B2BC26 /* BackgroundData.swift in Sources */,
@@ -731,6 +738,7 @@
 				548581E62B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				542EAC0E2B7440F90044A038 /* QScreenTxtView.swift in Sources */,
 				5458FBFF2B7EA23800C61404 /* CardViewBox.swift in Sources */,
+				543505872B7F6B640023742F /* SFSymbolData.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,
 				5479D7022B783BED002BAD0A /* Extensions.swift in Sources */,
 				5414DE972B7E7E7D00949FCD /* ShareContactView.swift in Sources */,

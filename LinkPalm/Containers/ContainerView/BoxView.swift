@@ -149,7 +149,7 @@ struct DynamicViewText: View {
     
     var body: some View {
         
-        ScrollView{
+        //ScrollView{
             VStack{
                 Text("\(titleData.text)")
                     .frame(maxWidth: .infinity, alignment: titleData.selectedAlignment.getAlignment)
@@ -167,7 +167,7 @@ struct DynamicViewText: View {
             
             .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackgroundTwo.color]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
             .cornerRadius(titleData.selectedCornerRadius)
-        }
+        //}
     }
 }
 

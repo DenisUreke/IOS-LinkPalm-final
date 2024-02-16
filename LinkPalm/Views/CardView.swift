@@ -26,14 +26,15 @@ struct CardView: View {
                 }
                 
                 HStack(spacing: 5) {
-                        QScreenTxtView(settings: $textObject)
-                    .simultaneousGesture(TapGesture().onEnded { _ in
-                        textObject.backgroundColor = .red
-                        // Any pre-navigation action can be placed here
-                    })
-                        QScreenTxtView(settings: $test)
-
+                    NavigationLink(destination: CardViewBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)){
+                        CardViewBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)
+                        .simultaneousGesture(TapGesture().onEnded { _ in
+                            textObject.backgroundColor = .red
+                        })
+                    QScreenTxtView(settings: $test)
+                    
                 }
+            }
                 NavigationLink(destination: WideBarEditView(userDesign: $titleData.wideBarTwo.wideBarListData)){
                         WideBarListView(userDesign: $titleData.wideBarTwo.wideBarListData)
                             .frame(height: 60)
@@ -48,10 +49,12 @@ struct CardView: View {
                         WideBarListView(userDesign: $titleData.wideBarThree.wideBarListData)
                             .frame(height: 60)
                     }
+                NavigationLink(destination: CardViewDesignBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)){
                     HStack(spacing: 5) {
-                        QScreenTxtView(settings: $test)
+                        CardViewBox(boxData: $titleData.boxOne, userDesign: $titleData.boxOne.imageVideoListData)
                             .frame(height: geometry.size.height * 0.2)
                     }
+                }
                 
             }
             .toolbar {
@@ -71,15 +74,6 @@ struct CardView: View {
                 }
                 /*NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.title)){
                  Label("Design Header", systemImage: "header")
-                 }
-                 NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.text)){
-                 Label("Design Text", systemImage: "textformat")
-                 }*/
-                /*NavigationLink(destination: BackgroundEditView(titleData: $titleData.boxOne.textBoxDesignData.backgroundData)){
-                 Label("Design Background", systemImage: "paintpalette")
-                 }*/
-                /*NavigationLink(destination: PhotoView(userDesignModel: $titleData, viewToShow: ViewPassedIntoPhotoSelector.textView, imageData: $titleData.boxOne.textBoxDesignData.backgroundData.imageData)) {
-                 Label("Insert Image", systemImage: "photo")
                  }*/
                 Button("Save", action: {
                     // Your save action here

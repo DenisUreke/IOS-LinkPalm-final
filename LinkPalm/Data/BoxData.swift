@@ -8,10 +8,10 @@
 import Foundation
 import Observation
 
-
 @Observable
 class BoxData{
     
-    var boxDesign: (background: BackgroundData , text: TitleCustomModel) = (BackgroundData(), TitleCustomModel())
+    var boxDesign: (background: BackgroundData , text: TitleCustomModel , sfSymbol: SFSymbolData ) = (BackgroundData(), TitleCustomModel(), SFSymbolData())
+    
     var imageVideoListData: ImageVideoDataList = ImageVideoDataList()
 }

@@ -244,13 +244,13 @@ struct configureWideBarTextObjects : View{
                 .frame(width: 200)
         }
         Divider()
-        //
+
         SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.textAlignmentOptions, selectedOption: $titleData.selectedTextAlignment) { option in
             Text(option.rawValue)
                 .frame(width: 200)
         }
         Divider()
-        //
+
         SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.styleOptions, selectedOption: $titleData.selectedStyle) { option in
             Text(option.rawValue)
                 .frame(width: 200)
@@ -261,7 +261,6 @@ struct configureWideBarTextObjects : View{
             Text(option.rawValue)
                 .frame(width: 200)
         }
-        
         DrawColorPaletteBox(selectedColor: $titleData.selectedColorFont, title: headerTitleString.fontColor.rawValue)
         VStack{
             Text("Shadow")
@@ -287,7 +286,6 @@ struct DrawTextFieldForWideBar: View {
             TextField("Enter text", text: $title)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-
         }
     }
 }
