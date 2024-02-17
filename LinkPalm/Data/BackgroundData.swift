@@ -15,7 +15,7 @@ class BackgroundData {
 
     var gradientIsClicked = false
     var selectedBackgroundOpacity: Double = 1
-    var selectedColorBackgroundOne: StandardColors = .clear
+    var selectedColorBackgroundOne: StandardColors = .gray
     var selectedColorBackgroundTwo: StandardColors = .clear
     var selectedBorderColor: StandardColors = .black
     var selectedBorderWidth: Double = 0

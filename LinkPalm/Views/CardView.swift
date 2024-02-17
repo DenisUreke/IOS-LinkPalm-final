@@ -26,11 +26,15 @@ struct CardView: View {
                 if isEditMode{
                     NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarOne.wideBarListData)){
                         WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1))
+                            .fixedSize()
+                            .clipped()
                     }
                 }else{
                     WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
-                        .frame(height: 60)
+                        .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1))
+                        .fixedSize()
+                        .clipped()
                 }
                 // Box 1, 2
                 HStack(spacing: 5) {
@@ -68,10 +72,20 @@ struct CardView: View {
                     }
                 }
                 // WideBar 2
-                NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
+                if isEditMode{
+                    NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
+                        WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
+                            .fixedSize()
+                            .clipped()
+                    }
+                }else{
                     WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
                         .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
+                        .fixedSize()
+                        .clipped()
                 }
+                
                 // Box 3, 4
                 HStack(spacing: 5) {
                     if isEditMode{
@@ -111,7 +125,7 @@ struct CardView: View {
                 if isEditMode{
                     NavigationLink(destination: CardViewDesignBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)){
                         CardViewBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.25) - 15)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.35) - 20)
                             .fixedSize()
                             .clipped()
                     }

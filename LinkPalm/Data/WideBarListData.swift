@@ -13,14 +13,14 @@ import SwiftUI
 class WideBarListDataicons: Identifiable{
     
     let id = UUID().uuidString
-    var sfIcon: SFSymbolEnum = .house
+    var sfIcon: SFSymbolEnum = .none
     var isWebLink: Bool = false
     var isVideoLink: Bool = false
     var webAddress: String = ""
     var iconSize: Double = 24
     var iconColor: StandardColors = .black
     var iconOpacity: Double = 1
-    var backgroundColor: StandardColors = .green
+    var backgroundColor: StandardColors = .gray
     var backgroundColorTwo: StandardColors = .clear
     var backgroundOpacity: Double = 1
     var gradientIsClicked: Bool = false
@@ -74,6 +74,93 @@ class WideBarListDataicons: Identifiable{
     init() { }
 }
 
+extension WideBarListDataicons{
+    
+    func createHeaderWithName(firstName: String, lastName: String){
+        self.text = "\(firstName) \(lastName)"
+        self.designTextWideBar()
+        self.selectedSize = 32
+    }
+    
+    func createButton(){
+        self.chooseSymbolOrText()
+        self.linkVideoOrWebite()
+    }
+    
+    func chooseSymbolOrText(){
+        let random = Bool.random()
+        
+        if random {
+            self.sfIcon = randomSFSymbol()
+            self.designIconWideBar()
+        }else{
+            self.text = generatePlaceholderText(wordCount: 1)
+            self.designTextWideBar()
+        }
+    }
+    
+    func linkVideoOrWebite(){
+        
+        let random = Bool.random()
+        
+        let videoArray : [String] =
+        [
+            "https://www.youtube.com/watch?v=xGmyTaCsv0c",
+            "https://www.youtube.com/watch?v=qRdzw2Osl8o",
+            "https://www.youtube.com/watch?v=I1188GO4p1E",
+            "https://www.youtube.com/watch?v=yDsMZn3olF",
+            "https://www.youtube.com/watch?v=ybYvfw4HJVQ",
+            "https://www.youtube.com/watch?v=nAchMctX4YA",
+            "https://www.youtube.com/watch?v=CwA1VWP0Ldw",
+            "https://www.youtube.com/watch?v=-TkoO8Z07hI",
+            "https://www.youtube.com/watch?v=3qwPAwahTWI",
+            "https://www.youtube.com/watch?v=EExSSotojVI",
+            "https://www.youtube.com/watch?v=tPFNnnASAJs"
+        ]
+        
+        if random{
+            self.isVideoLink = true
+            self.webAddress = videoArray.randomElement()!
+        }else{
+            self.isWebLink = true
+            self.webAddress = "https://picsum.photos/300/300.jpg"
+        }
+    }
+    
+    func designTextWideBar(){
+
+        self.selectedSize = 24
+        self.selectedStyle = .defaults
+        self.selectedWeight = .regularWeight
+        self.selectedColorBackground = randomStandardColor()
+        self.selectedColorBackgroundTwo = randomStandardColor()
+        self.backgroundColor = randomStandardColor()
+        self.backgroundColorTwo = randomStandardColor()
+        self.selectedColorFont = randomStandardColor()
+        self.selectedOpacity = 1
+        self.shadowIsClicked = Bool.random()
+        self.selectedFontOpacity = 1
+        self.selectedAlignment = .alignmentCenter
+        self.selectedTextAlignment = .TextAlignmentLeft
+        
+    }
+    
+    func designIconWideBar(){
+        
+        self.iconSize = generateNumber(24, 48)
+        self.iconColor = randomStandardColor()
+        self.iconOpacity = 1
+        self.backgroundColor = randomStandardColor()
+        self.backgroundColorTwo = randomStandardColor()
+        self.selectedColorBackground = randomStandardColor()
+        self.selectedColorBackgroundTwo = randomStandardColor()
+        self.backgroundOpacity = 1
+        self.gradientIsClicked = Bool.random()
+    }
+        
+    
+}
+
 @Observable
 class WideBarListData: Identifiable{
     
@@ -106,4 +193,25 @@ class WideBarListData: Identifiable{
         return self.listOfIcons.last!.isWebLink || self.listOfIcons.last!.isVideoLink
     }
     
+}
+
+extension WideBarListData{
+    
+    func createButtonsForWideBar(){
+        
+        self.listOfIcons.first!.createButton()
+        let randomNumber = Int(generateNumber(2, 4))
+        
+        for _ in 0...randomNumber{
+            self.addNewButtonToWideList()
+            resetValues()
+            self.listOfIcons.last!.createButton()
+        }
+        
+        func resetValues(){
+            self.listOfIcons.last!.text = ""
+            self.listOfIcons.last!.sfIcon = .none
+        }
+        
+    }
 }

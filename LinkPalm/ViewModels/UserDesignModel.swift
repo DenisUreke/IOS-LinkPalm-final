@@ -26,7 +26,6 @@ final class UserDesignModel: Identifiable{
     var boxFive = BoxData()
     var wideBarOne = WideBarData()
     var wideBarTwo = WideBarData()
-    var wideBarThree = WideBarData()
     var typeOfContact : String
     var personData : PersonDataModel?
     
@@ -109,6 +108,8 @@ extension UserDesignList{
                         var newUser = UserDesignModel(userID: components[0], typeOfContact: components[1], personData: personDataDownload)
                         newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "")
                         self.userList.append(newUser)
+                        self.userList.last!.wideBarOne.wideBarListData.listOfIcons.last!.createHeaderWithName(firstName: personDataDownload.result.name.first, lastName: personDataDownload.result.name.last)
+                        self.userList.last!.wideBarTwo.wideBarListData.createButtonsForWideBar()
                         
                         print("Testing download person: Person Name: \(personDataDownload)")
                     } else {

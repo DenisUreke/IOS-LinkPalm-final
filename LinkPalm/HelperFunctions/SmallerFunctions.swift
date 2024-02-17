@@ -21,15 +21,20 @@ func randomFontStyle() -> FontStyle {
 func randomWeight() -> FontWeight {
     return FontWeight.allCases.randomElement() ?? .regularWeight
 }
+
 func randomStandardColor() -> StandardColors {
     return StandardColors.allCases.randomElement() ?? .black
 }
+
 func randomSFSymbol() -> SFSymbolEnum {
     return SFSymbolEnum.allCases.randomElement() ?? .heart
 }
+
 func randomAlignment() -> FontAlignment {
     return FontAlignment.allCases.randomElement() ?? .alignmentCenter
 }
+
 func randomTextAlignment() -> FontTextAlignment {
     return FontTextAlignment.allCases.randomElement() ?? .TextAlignmentLeft
 }
+

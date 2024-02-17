@@ -27,7 +27,6 @@ struct QRScanView: View {
                     .onTapGesture {
                         isPresentingScanner = true
                     }
-                    .scaleEffect(2)
                 .sheet(isPresented: $isPresentingScanner) {
                     CodeScannerView(codeTypes: [.qr], completion: handleScan)
                 }
