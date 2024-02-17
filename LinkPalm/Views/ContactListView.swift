@@ -36,20 +36,37 @@ struct drawButtonForContactListView : View{
     
     var body: some View {
         HStack{
-            Image(systemName: "person.circle")
-                .foregroundColor(.blue)
-                .font(.largeTitle)
-                .frame(width: 40, height: 40)
-                .background(
-                    RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
-                        .fill(Color.white)
-                        .frame(width: 64, height: 64)
-                        .overlay(
-                            RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
-                                .stroke(Color.black, lineWidth: 1)))
-                .shadow(color: .gray, radius: 10, x: 0, y: 4)
-                .padding(.trailing, 20)
-                .padding(.leading, -20)
+            
+            if let urlString = contact.personData?.result.picture.thumbnail, let url = URL(string: urlString) {
+                AsyncImage(url: url)
+                    .frame(width: 40, height: 40)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .background(
+                        RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                            .fill(Color.white)
+                            .frame(width: 64, height: 64)
+                            .overlay(
+                                RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                                    .stroke(Color.black, lineWidth: 1)))
+                    .shadow(color: .gray, radius: 10, x: 0, y: 4)
+                    .padding(.trailing, 20)
+                    .padding(.leading, -20)
+            } else {
+                Image(systemName: "person.circle")
+                    .foregroundColor(.blue)
+                    .font(.largeTitle)
+                    .frame(width: 40, height: 40)
+                    .background(
+                        RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                            .fill(Color.white)
+                            .frame(width: 64, height: 64)
+                            .overlay(
+                                RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                                    .stroke(Color.black, lineWidth: 1)))
+                    .shadow(color: .gray, radius: 10, x: 0, y: 4)
+                    .padding(.trailing, 20)
+                    .padding(.leading, -20)
+            }
             VStack(alignment: .leading){
                 Text("\(contact.personData?.result.name.first ?? "Name not found")")
                         .font(.system(size: 16))

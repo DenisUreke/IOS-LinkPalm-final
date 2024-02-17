@@ -31,6 +31,11 @@ extension ImageData{
     func createImage(){
         
         self.imageURL = URL(string:"https://picsum.photos/300/300.jpg")!
+        self.createDesignImage()
+    }
+    
+    func createDesignImage(){
+        
         self.selectedContrast = 1
         self.selectedSaturation = 1
         self.selectedOpacity = 1

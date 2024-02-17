@@ -38,6 +38,25 @@ final class UserDesignModel: Identifiable{
     
 }
 
+extension UserDesignModel{
+    
+    func designBox(imageURL: String){
+        
+        self.boxOne.fillBoxDesignImageOnly(imageURL: imageURL)
+        self.boxTwo.fillBoxDesign()
+        self.boxThree.fillBoxDesignImageOnly(imageURL: "https://picsum.photos/300/300.jpg")
+        self.boxFour.fillBoxDesign()
+    }
+    
+    func populateBoxes(){
+        
+        self.boxOne.populateContentInBoxesImage()
+        self.boxTwo.populateContentInBoxesVideo()
+        self.boxThree.populateContentInBoxesImage()
+        self.boxFour.populateContentInBoxesVideo()
+    }
+}
+
 @Observable
 class UserDesignList{
     
@@ -70,6 +89,8 @@ extension UserDesignList{
                 try await downloader.fetchPersonData()
                 if let personDataDownload = downloader.personData {
                     var newUser = UserDesignModel(userID: personID, typeOfContact: typeOfContact, personData: personDataDownload)
+                    newUser.populateBoxes()
+                    newUser.designBox(imageURL: newUser.personData?.result.picture.large ?? "")
                     self.userList.append(newUser)
                                 
                     print("Testing download person: Person Name: \(personDataDownload)")
@@ -80,17 +101,8 @@ extension UserDesignList{
                 print("Error fetching person data: \(error)")
             }
         }
-        /*Task {
-         do {
-         try await downloader.fetchImageData()
-         print("Image path \(downloader.imagesData.last!.url)")
-         // After fetching, you might want to do something with the data
-         } catch {
-         print("Error fetching image data: \(error)")
-         }
-         }*/
     }
-    //-----------------
+
 }
 
 

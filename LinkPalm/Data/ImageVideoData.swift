@@ -46,37 +46,6 @@ class ImageVideoData: Identifiable{
     }
 }
 
-extension ImageVideoData{
-    
-    
-    
-    func createVideo(){
-        
-        let videoArray : [String] =
-        [
-            "https://www.youtube.com/watch?v=xGmyTaCsv0c",
-            "https://www.youtube.com/watch?v=qRdzw2Osl8o",
-            "https://www.youtube.com/watch?v=I1188GO4p1E",
-            "https://www.youtube.com/watch?v=yDsMZn3olF",
-            "https://www.youtube.com/watch?v=ybYvfw4HJVQ",
-            "https://www.youtube.com/watch?v=nAchMctX4YA",
-            "https://www.youtube.com/watch?v=CwA1VWP0Ldw",
-            "https://www.youtube.com/watch?v=-TkoO8Z07hI",
-            "https://www.youtube.com/watch?v=3qwPAwahTWI",
-            "https://www.youtube.com/watch?v=EExSSotojVI",
-            "https://www.youtube.com/watch?v=tPFNnnASAJs"
-        ]
-        
-        if let randomURLString = videoArray.randomElement(), let url = URL(string: randomURLString) {
-            self.videoID = url
-        } else {
-            print("Failed to create a URL in video.")
-        }
-    }
-
-}
-
-
 @Observable
 class ImageVideoDataList{
     
@@ -85,13 +54,9 @@ class ImageVideoDataList{
     
     init() {
         // Example URLs - replace these with actual URLs you want to use
-        let videoURLs = [
+        /*let videoURLs = [
             URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!,
-            URL(string: "https://www.youtube.com/watch?v=lmiuwcqwT_M")!,
-            URL(string: "https://www.youtube.com/watch?v=Zh_7VjoXALI")!,
-            URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!,
-            URL(string: "https://www.youtube.com/watch?v=lmiuwcqwT_M")!,
-            URL(string: "https://www.youtube.com/watch?v=Zh_7VjoXALI")!
+            URL(string: "https://www.youtube.com/watch?v=lmiuwcqwT_M")!
         ]
         
         self.listOfEntries = videoURLs.map { url in
@@ -116,7 +81,7 @@ class ImageVideoDataList{
         let imageItem = ImageVideoData()
         imageItem.typeOfBox = .picturefromweb
         
-        self.listOfEntries.append(imageItem)
+        self.listOfEntries.append(imageItem)*/
         
     }
     
@@ -127,6 +92,68 @@ class ImageVideoDataList{
     }
     
 }
+
+extension ImageVideoDataList{
+    
+    func createNewImageForList(){
+        
+        var newImage = ImageVideoData()
+        newImage.imageData.createImage()
+        newImage.setTypeOfBox(type: .picturefromweb)
+        self.listOfEntries.append(newImage)
+    }
+    
+    func createNewTitleForList(){
+        
+        var newTitle = ImageVideoData()
+        newTitle.textCustomModel.createNewTextBox(isTitle:  true)
+        newTitle.setTypeOfBox(type: .text)
+        self.listOfEntries.append(newTitle)
+    }
+    
+    func createNewTextForList(){
+        
+        var newText = ImageVideoData()
+        newText.textCustomModel.createNewTextBox(isTitle:  false)
+        newText.setTypeOfBox(type: .text)
+        self.listOfEntries.append(newText)
+    }
+    
+    func createNewVideoForList(){
+        
+        var newVideo = ImageVideoData()
+        
+        let videoArray : [String] =
+        [
+            "https://www.youtube.com/watch?v=xGmyTaCsv0c",
+            "https://www.youtube.com/watch?v=qRdzw2Osl8o",
+            "https://www.youtube.com/watch?v=I1188GO4p1E",
+            "https://www.youtube.com/watch?v=yDsMZn3olF",
+            "https://www.youtube.com/watch?v=ybYvfw4HJVQ",
+            "https://www.youtube.com/watch?v=nAchMctX4YA",
+            "https://www.youtube.com/watch?v=CwA1VWP0Ldw",
+            "https://www.youtube.com/watch?v=-TkoO8Z07hI",
+            "https://www.youtube.com/watch?v=3qwPAwahTWI",
+            "https://www.youtube.com/watch?v=EExSSotojVI",
+            "https://www.youtube.com/watch?v=tPFNnnASAJs"
+        ]
+        
+        if let randomURLString = videoArray.randomElement(), let url = URL(string: randomURLString) {
+            newVideo.videoID = url
+        } else {
+            print("Failed to create a URL in videoCreateFunction.")
+        }
+        newVideo.setTypeOfBox(type: .video)
+        self.listOfEntries.append(newVideo)
+    }
+}
+    
+
+
+
+
+
+
 /*
  URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!,
  URL(string: "https://www.youtube.com/watch?v=lmiuwcqwT_M")!,

@@ -75,14 +75,10 @@ struct CardView: View {
         ToolbarItemGroup(placement: .navigationBarTrailing) {
             Menu {
                 Button(action: {
-                    self.isEditMode
-                        .toggle()
+                    self.isEditMode.toggle()
                 }) {
-                    Label("Design Mode", systemImage: "paintpalette")
+                    Label(isEditMode ? "Exit Edit Mode" : "Edit Mode", systemImage: isEditMode ? "xmark.circle" : "square.and.pencil")
                 }
-                /*NavigationLink(destination: configurateTextObjects(titleData: $titleData.boxOne.textBoxDesignData.TextBoxDesign.title)){
-                 Label("Design Header", systemImage: "header")
-                 }*/
                 Button("Save", action: {
                     // Your save action here
                 })
