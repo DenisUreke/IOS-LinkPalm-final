@@ -65,6 +65,7 @@ struct WideBarListView: View {
                     .frame(maxWidth: .infinity, alignment: item.selectedAlignment.getAlignment)
                     .multilineTextAlignment(item.selectedTextAlignment.getTextAlignment)
                     .padding([.leading, .trailing], 10)
+                    .frame(width: (geometry.size.width - (5 * CGFloat(userDesign.listOfIcons.count - 1))) / CGFloat(userDesign.listOfIcons.count), height: 60)
             .font(.system(size: item.selectedSize, weight: item.selectedWeight.getWeight, design: item.selectedStyle.getFontStyel))
             .opacity(item.selectedFontOpacity)
             .foregroundColor(item.selectedColorFont.color)
@@ -73,6 +74,7 @@ struct WideBarListView: View {
                     radius: 2,x: 0, y: !item.shadowIsClicked ? 0 : 5)
 
         }
+        .clipped()
     }
 }
 

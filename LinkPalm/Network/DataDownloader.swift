@@ -83,13 +83,13 @@ class DownloadDataModel{
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decodedResponse = try JSONDecoder().decode(MemesResponse.self, from: data)
-            let memeModels = decodedResponse.memes.map { memeData -> MemeModel in
+            memeData = decodedResponse.memes.map { memeData -> MemeModel in
                 MemeModel(title: memeData.title, url: memeData.url)
             }
             
-            DispatchQueue.main.async {
-                self.memeData = memeModels
-            }
+            /*DispatchQueue.main.async {
+                self.printFirstEntry()
+            }*/
         } catch {
             print("Error fetching meme data: \(error)")
         }

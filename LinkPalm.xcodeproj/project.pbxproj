@@ -100,9 +100,6 @@
 		549C010E2B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
 		549C010F2B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
 		549C01102B74D2AF009223C3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C010D2B74D2AF009223C3 /* CardView.swift */; };
-		549C01122B74D48A009223C3 /* WideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01112B74D48A009223C3 /* WideBarView.swift */; };
-		549C01132B74D48A009223C3 /* WideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01112B74D48A009223C3 /* WideBarView.swift */; };
-		549C01142B74D48A009223C3 /* WideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01112B74D48A009223C3 /* WideBarView.swift */; };
 		549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01192B74DE3A009223C3 /* WideBarListView.swift */; };
 		549C011B2B74DE3A009223C3 /* WideBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01192B74DE3A009223C3 /* WideBarListView.swift */; };
 		549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01192B74DE3A009223C3 /* WideBarListView.swift */; };
@@ -121,6 +118,12 @@
 		54BA431B2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA431A2B77B4A50076E23D /* ImageConfigEnum.swift */; };
 		54BA431C2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA431A2B77B4A50076E23D /* ImageConfigEnum.swift */; };
 		54BA431D2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA431A2B77B4A50076E23D /* ImageConfigEnum.swift */; };
+		54BBE2392B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE2382B8159F1005BAC08 /* ActorDataFetcher.swift */; };
+		54BBE23A2B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE2382B8159F1005BAC08 /* ActorDataFetcher.swift */; };
+		54BBE23B2B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE2382B8159F1005BAC08 /* ActorDataFetcher.swift */; };
+		54BBE23D2B816E5F005BAC08 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE23C2B816E5F005BAC08 /* SuccessView.swift */; };
+		54BBE23E2B816E5F005BAC08 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE23C2B816E5F005BAC08 /* SuccessView.swift */; };
+		54BBE23F2B816E5F005BAC08 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BBE23C2B816E5F005BAC08 /* SuccessView.swift */; };
 		54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
 		54BD8E352B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
 		54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
@@ -215,7 +218,6 @@
 		549409532B73FCF500F9836F /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		549C010B2B74D055009223C3 /* ContainerEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerEnum.swift; sourceTree = "<group>"; };
 		549C010D2B74D2AF009223C3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		549C01112B74D48A009223C3 /* WideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarView.swift; sourceTree = "<group>"; };
 		549C01192B74DE3A009223C3 /* WideBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListView.swift; sourceTree = "<group>"; };
 		549C011D2B74DE55009223C3 /* WideBarListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListData.swift; sourceTree = "<group>"; };
 		549C01212B750311009223C3 /* TextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,8 @@
 		54BA43122B77965C0076E23D /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		54BA43162B77AB630076E23D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		54BA431A2B77B4A50076E23D /* ImageConfigEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConfigEnum.swift; sourceTree = "<group>"; };
+		54BBE2382B8159F1005BAC08 /* ActorDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDataFetcher.swift; sourceTree = "<group>"; };
+		54BBE23C2B816E5F005BAC08 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		54BD8E332B777EE700B2BC26 /* BackgroundData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundData.swift; sourceTree = "<group>"; };
 		54C181392B7E16F40055138A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54C1813D2B7E2B990055138A /* QRCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeData.swift; sourceTree = "<group>"; };
@@ -287,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				542EAC0B2B7440F90044A038 /* QScreenTxtView.swift */,
-				549C01112B74D48A009223C3 /* WideBarView.swift */,
 				549C01192B74DE3A009223C3 /* WideBarListView.swift */,
 				5432660C2B7A712F00574EF5 /* BoxView.swift */,
 			);
@@ -428,6 +431,7 @@
 				54C181392B7E16F40055138A /* MainView.swift */,
 				54C181412B7E2E3D0055138A /* ContactListView.swift */,
 				5414DE942B7E7E7D00949FCD /* ShareContactView.swift */,
+				54BBE23C2B816E5F005BAC08 /* SuccessView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -436,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				5494094F2B73F76200F9836F /* DataDownloader.swift */,
+				54BBE2382B8159F1005BAC08 /* ActorDataFetcher.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -607,7 +612,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				549C01122B74D48A009223C3 /* WideBarView.swift in Sources */,
 				543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54BA43132B77965C0076E23D /* PhotoView.swift in Sources */,
 				54C1813E2B7E2B990055138A /* QRCodeData.swift in Sources */,
@@ -648,12 +652,14 @@
 				549409412B73F37300F9836F /* ImageUrlData.swift in Sources */,
 				543266052B7A293800574EF5 /* VideoView.swift in Sources */,
 				549409542B73FCF500F9836F /* PersonModel.swift in Sources */,
+				54BBE2392B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */,
 				54C76FF32B762E03005EA680 /* TextConfigEnum.swift in Sources */,
 				549409102B73C2DB00F9836F /* Item.swift in Sources */,
 				546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5412D6962B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				5479D7002B783BED002BAD0A /* Extensions.swift in Sources */,
 				548581E42B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
+				54BBE23D2B816E5F005BAC08 /* SuccessView.swift in Sources */,
 				5494090C2B73C2DB00F9836F /* LinkPalmApp.swift in Sources */,
 				542EAC132B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54F4EF032B80E689007BEBE7 /* CardViewDesingView.swift in Sources */,
@@ -688,6 +694,7 @@
 				5479D6FD2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				5414DE962B7E7E7D00949FCD /* ShareContactView.swift in Sources */,
 				548581E12B7AC0680000BFD9 /* BoxDesignView.swift in Sources */,
+				54BBE23E2B816E5F005BAC08 /* SuccessView.swift in Sources */,
 				546A92FE2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5432660E2B7A712F00574EF5 /* BoxView.swift in Sources */,
 				5494093E2B73E7A800F9836F /* PersonData.swift in Sources */,
@@ -702,8 +709,8 @@
 				5458FBFE2B7EA23800C61404 /* CardViewBox.swift in Sources */,
 				54BA431C2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
 				549C010F2B74D2AF009223C3 /* CardView.swift in Sources */,
-				549C01132B74D48A009223C3 /* WideBarView.swift in Sources */,
 				54C1813B2B7E16F50055138A /* MainView.swift in Sources */,
+				54BBE23A2B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */,
 				542EAC142B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				54BA43182B77AB630076E23D /* ImageData.swift in Sources */,
 				543505862B7F6B640023742F /* SFSymbolData.swift in Sources */,
@@ -736,6 +743,7 @@
 				54C76FF52B762E03005EA680 /* TextConfigEnum.swift in Sources */,
 				5432660B2B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				549C011C2B74DE3A009223C3 /* WideBarListView.swift in Sources */,
+				54BBE23F2B816E5F005BAC08 /* SuccessView.swift in Sources */,
 				54C1813C2B7E16F50055138A /* MainView.swift in Sources */,
 				5494093F2B73E7A800F9836F /* PersonData.swift in Sources */,
 				543266132B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
@@ -743,11 +751,11 @@
 				54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				5479D6FE2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				549409432B73F37300F9836F /* ImageUrlData.swift in Sources */,
-				549C01142B74D48A009223C3 /* WideBarView.swift in Sources */,
 				542EAC152B7442F00044A038 /* QScreenTxtModel.swift in Sources */,
 				5494092B2B73C2E100F9836F /* LinkPalmUITestsLaunchTests.swift in Sources */,
 				549C01202B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				54C181442B7E2E3D0055138A /* ContactListView.swift in Sources */,
+				54BBE23B2B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */,
 				5412D6982B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				549409522B73F76200F9836F /* DataDownloader.swift in Sources */,
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,

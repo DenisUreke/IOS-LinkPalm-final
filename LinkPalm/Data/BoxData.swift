@@ -34,10 +34,10 @@ extension BoxData{
         self.boxDesign.background.createBackgroundData()
     }
     
-    func populateContentInBoxesImage(){
+    func populateContentInBoxesImage(meme: URL){
         
         self.imageVideoListData.createNewTitleForList()
-        self.imageVideoListData.createNewImageForList()
+        self.imageVideoListData.createNewImageForList(meme: meme)
         self.imageVideoListData.createNewTextForList()
     }
     

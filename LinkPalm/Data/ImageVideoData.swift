@@ -95,17 +95,17 @@ class ImageVideoDataList{
 
 extension ImageVideoDataList{
     
-    func createNewImageForList(){
+    func createNewImageForList(meme: URL){
         
-        var newImage = ImageVideoData()
-        newImage.imageData.createImage()
+        let newImage = ImageVideoData()
+        newImage.imageData.createImage(meme: meme)
         newImage.setTypeOfBox(type: .picturefromweb)
         self.listOfEntries.append(newImage)
     }
     
     func createNewTitleForList(){
         
-        var newTitle = ImageVideoData()
+        let newTitle = ImageVideoData()
         newTitle.textCustomModel.createNewTextBox(isTitle:  true)
         newTitle.setTypeOfBox(type: .text)
         self.listOfEntries.append(newTitle)
@@ -113,7 +113,7 @@ extension ImageVideoDataList{
     
     func createNewTextForList(){
         
-        var newText = ImageVideoData()
+        let newText = ImageVideoData()
         newText.textCustomModel.createNewTextBox(isTitle:  false)
         newText.setTypeOfBox(type: .text)
         self.listOfEntries.append(newText)
@@ -121,7 +121,7 @@ extension ImageVideoDataList{
     
     func createNewVideoForList(){
         
-        var newVideo = ImageVideoData()
+        let newVideo = ImageVideoData()
         
         let videoArray : [String] =
         [

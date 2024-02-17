@@ -28,9 +28,10 @@ class ImageData{
 
 extension ImageData{
     
-    func createImage(){
+    func createImage(meme: URL){
+        let random = Int(generateNumber(0, 1))
         
-        self.imageURL = URL(string:"https://picsum.photos/300/300.jpg")!
+        self.imageURL = random == 1 ? URL(string:"https://picsum.photos/300/300.jpg")! : meme
         self.createDesignImage()
     }
     

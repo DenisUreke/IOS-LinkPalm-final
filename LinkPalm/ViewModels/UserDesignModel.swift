@@ -49,19 +49,19 @@ extension UserDesignModel{
         self.boxFive.fillBoxDesign()
     }
     
-    func populateBoxes(){
+    func populateBoxes(meme: [URL]){
         
-        self.boxOne.populateContentInBoxesImage()
+        self.boxOne.populateContentInBoxesImage(meme: meme[0])
         self.boxTwo.populateContentInBoxesVideo()
-        self.boxThree.populateContentInBoxesImage()
+        self.boxThree.populateContentInBoxesImage(meme: meme[1])
         self.boxFour.populateContentInBoxesVideo()
-        self.boxFive.populateContentInBoxesImage()
+        self.boxFive.populateContentInBoxesImage(meme: meme[2])
     }
     
-    func createData(imageURL: String){
+    func createData(imageURL: String, meme: [URL]){
         
         self.designBox(imageURL: imageURL)
-        self.populateBoxes()
+        self.populateBoxes(meme: meme)
         
     }
 }
@@ -79,49 +79,35 @@ class UserDesignList{
 
 extension UserDesignList{
     
-    func createAndPopulateUserDesign(components: [String]){
-        
-        if checkIfContactExists(components: components){
-            return
-        }else{
-            
-            let downloader = DownloadDataModel()
-            
-            Task {
-                do {
-                    try await downloader.fetchMemeData()
-                    // Accessing the title after fetching
-                    if let firstMemeTitle = downloader.memeData.first?.url {
-                        print("Testing download meme : First Meme Title: \(firstMemeTitle)")
-                    } else {
-                        print("Meme data is empty.")
-                    }
-                    downloader.printFirstEntry()
-                } catch {
-                    print("Error fetching meme data: \(error)")
-                }
-            }
-            Task {
-                do {
-                    try await downloader.fetchPersonData()
-                    if let personDataDownload = downloader.personData {
-                        var newUser = UserDesignModel(userID: components[0], typeOfContact: components[1], personData: personDataDownload)
-                        newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "")
-                        self.userList.append(newUser)
-                        self.userList.last!.wideBarOne.wideBarListData.listOfIcons.last!.createHeaderWithName(firstName: personDataDownload.result.name.first, lastName: personDataDownload.result.name.last)
-                        self.userList.last!.wideBarTwo.wideBarListData.createButtonsForWideBar()
+    func createAndPopulate(components: [String]) {
+        Task {
+            do {
+                
+                let (person, memes) = try await fetchData()
+                
+                DispatchQueue.main.async {
+                    if memes.count >= 3 {
+                        let randomMemes = Array(memes.shuffled().prefix(3))
+                        let urls = randomMemes.compactMap { $0.url } // Extracting URLs from the selected memes
+                        // Now urls is an array of URL objects that you can pass as expected
                         
-                        print("Testing download person: Person Name: \(personDataDownload)")
-                    } else {
-                        print("Person data is empty.")
+                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[1], personData: person)
+                        newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "", meme: urls)
+                        self.userList.append(newUser)
+                        self.userList.last!.wideBarOne.wideBarListData.listOfIcons.last!.createHeaderWithName(firstName: person?.result.name.first ?? "Name Not found", lastName: person?.result.name.last ?? "Name Not Found")
+                        self.userList.last!.wideBarTwo.wideBarListData.createButtonsForWideBar()
                     }
-                } catch {
-                    print("Error fetching person data: \(error)")
+                    
+                    
+                    memes.forEach { meme in
+                        print("Meme: \(meme.title), URL: \(String(describing: meme.url))")
+                    }
                 }
+            } catch {
+                print("An error occurred: \(error)")
             }
         }
     }
-
 }
 
 
