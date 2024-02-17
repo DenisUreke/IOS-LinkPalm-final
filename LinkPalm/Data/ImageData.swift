@@ -25,3 +25,21 @@ class ImageData{
     var selectedYAxisOffset: Double = 0
     
 }
+
+extension ImageData{
+    
+    func createImage(){
+        
+        self.imageURL = URL(string:"https://picsum.photos/300/300.jpg")!
+        self.selectedContrast = 1
+        self.selectedSaturation = 1
+        self.selectedOpacity = 1
+        self.selectedRotation = 0
+        self.selectedHueRotation = 0
+        self.selectedCornerRadius = generateNumber(0, 50)
+        self.selectedScale = generateNumber(0.5, 3.0)
+        self.selectedXAxisOffset = 0
+        self.selectedYAxisOffset = 0
+    }
+    
+}

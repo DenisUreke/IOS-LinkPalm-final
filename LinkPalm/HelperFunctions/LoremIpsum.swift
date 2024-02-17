@@ -7,12 +7,12 @@
 
 import Foundation
 
-func generatePlaceholderText(wordCount: Int) -> String {
+func generatePlaceholderText(wordCount: Double) -> String {
     
     let words = ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua"]
     var placeholderText = "Lorem "
     
-    for _ in 0..<wordCount {
+    for _ in 0..<Int(wordCount)-1 {
         if let randomWord = words.randomElement() {
             placeholderText += randomWord + " "
         }

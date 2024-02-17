@@ -38,3 +38,30 @@ class TitleCustomModel{
     let textAlignmentOptions: [FontTextAlignment] = [.TextAlignmentLeft, .TextAlignmentCenter, .TextAlignmentRight]
     
 }
+
+extension TitleCustomModel{
+    
+    func CreateTitle(){
+        
+        self.text = generatePlaceholderText(wordCount: generateNumber(1, 5))
+        self.selectedSize = generateNumber(26, 50)
+        self.selectedStyle = randomFontStyle()
+        self.selectedWeight = randomWeight()
+        self.selectedColorBackground = randomStandardColor()
+        self.selectedColorBackgroundTwo = randomStandardColor()
+        self.selectedColorFont = randomStandardColor()
+        self.selectedOpacity = generateNumber(0.5, 1.0)
+        self.gradientIsClicked = Bool.random()
+        self.shadowIsClicked = Bool.random()
+        self.selectedBackgroundOpacity = generateNumber(0.1, 1.0)
+        self.selectedFontOpacity = generateNumber(0.5, 1.0)
+        self.selectedAlignment = .alignmentCenter
+        self.selectedTextAlignment = .TextAlignmentLeft
+        self.selectedBorderColor = randomStandardColor()
+        self.selectedBorderWidth = generateNumber(0, 25)
+        self.selectedCornerRadius = generateNumber(0, 25)
+        self.selectedImageCornerRadius = generateNumber(0, 25)
+        self.selectedXOffsetText = 10
+        
+    }
+}

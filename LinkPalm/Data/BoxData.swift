@@ -14,4 +14,9 @@ class BoxData{
     var boxDesign: (background: BackgroundData , text: TitleCustomModel , sfSymbol: SFSymbolData, imageVideoData: ImageVideoData ) = (BackgroundData(), TitleCustomModel(), SFSymbolData(), ImageVideoData())
     
     var imageVideoListData: ImageVideoDataList = ImageVideoDataList()
+    
+    func createRandomTitle(){
+        
+        self.imageVideoListData
+    }
 }

@@ -18,3 +18,16 @@ class SFSymbolData{
     var selectedXOffsetIcon: Double = 0
     
 }
+
+extension SFSymbolData{
+    
+    /*func createSFSymbolData(){
+        
+        self.sfIcon = randomSFSymbol()
+        self.selectedSize =
+        self.selectedColorFont =
+        self.selectedFontOpacity =
+        self.selectedXOffsetIcon =
+    }*/
+    
+}

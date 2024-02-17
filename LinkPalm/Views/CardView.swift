@@ -13,6 +13,7 @@ struct CardView: View {
     @State var test = QScreenTxtModel()
     @State var isEditMode: Bool = false
     
+    @State var testing = UserDesignList()
     @Binding var user : UserDesignModel
     @Binding var QRCodeModelList : QRCodeModel
     
@@ -28,18 +29,16 @@ struct CardView: View {
                     }
                 }else{
                     WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
+                        .frame(height: 60)
                 }
                 
                 //Box 1, 2
                 HStack(spacing: 5) {
-                    NavigationLink(destination: BoxView(titleData: $user.boxOne.imageVideoListData)){
                         CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
                         .simultaneousGesture(TapGesture().onEnded { _ in
                             textObject.backgroundColor = .red
                         })
                     QScreenTxtView(settings: $test)
-                    
-                }
             }
                 NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
                         WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
@@ -93,6 +92,12 @@ struct CardView: View {
     }
 }
 
-/*#Preview {
+/*Button(action:{
+    testing.createAndPopulateUserDesign()
+}){
+    ButtonDesign(icon: "person", title: "test", borderColor: .blue, borderThickness: 2, width: 180, height: 60)
+}
+
+#Preview {
     TemplateOneView()
 }*/

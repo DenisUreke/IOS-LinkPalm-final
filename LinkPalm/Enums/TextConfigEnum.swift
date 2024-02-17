@@ -25,7 +25,7 @@ enum FontSize: String{
     }
 }
 
-enum FontStyle: String{
+enum FontStyle: String, CaseIterable{
     case defaults = "Default"
     case monoSpaced = "MonoSpaced"
     case serif = "Serif"
@@ -42,7 +42,7 @@ enum FontStyle: String{
     }
 }
 
-enum FontWeight: String{
+enum FontWeight: String, CaseIterable{
     case regularWeight = "Regular"
     case semiBoldWeight = "Semi-Bold"
     case boldWeight = "Bold"

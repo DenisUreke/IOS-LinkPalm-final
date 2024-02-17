@@ -46,6 +46,9 @@
 		543505852B7F6B640023742F /* SFSymbolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543505842B7F6B640023742F /* SFSymbolData.swift */; };
 		543505862B7F6B640023742F /* SFSymbolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543505842B7F6B640023742F /* SFSymbolData.swift */; };
 		543505872B7F6B640023742F /* SFSymbolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543505842B7F6B640023742F /* SFSymbolData.swift */; };
+		544B245D2B80035700F81D99 /* MemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544B245C2B80035700F81D99 /* MemeData.swift */; };
+		544B245F2B80046300F81D99 /* MemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544B245E2B80046300F81D99 /* MemeModel.swift */; };
+		544B24652B8021DC00F81D99 /* SmallerFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544B24642B8021DC00F81D99 /* SmallerFunctions.swift */; };
 		5458FBFD2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
 		5458FBFE2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
 		5458FBFF2B7EA23800C61404 /* CardViewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5458FBFC2B7EA23800C61404 /* CardViewBox.swift */; };
@@ -180,6 +183,9 @@
 		543266102B7A714B00574EF5 /* ImageVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoData.swift; sourceTree = "<group>"; };
 		543266142B7A73B400574EF5 /* ImageVideoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoEnum.swift; sourceTree = "<group>"; };
 		543505842B7F6B640023742F /* SFSymbolData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolData.swift; sourceTree = "<group>"; };
+		544B245C2B80035700F81D99 /* MemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeData.swift; sourceTree = "<group>"; };
+		544B245E2B80046300F81D99 /* MemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeModel.swift; sourceTree = "<group>"; };
+		544B24642B8021DC00F81D99 /* SmallerFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallerFunctions.swift; sourceTree = "<group>"; };
 		5458FBFC2B7EA23800C61404 /* CardViewBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewBox.swift; sourceTree = "<group>"; };
 		546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignModel.swift; sourceTree = "<group>"; };
 		546A92FC2B77EA79005AD2DC /* BoxData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxData.swift; sourceTree = "<group>"; };
@@ -319,11 +325,11 @@
 			isa = PBXGroup;
 			children = (
 				54D462FA2B7CDF3B006C27F4 /* Info.plist */,
+				549409482B73F63700F9836F /* HelperFunctions */,
 				5494093B2B73C7F500F9836F /* Network */,
 				54929E822B792F9300DB1DED /* ExternalViews */,
 				5494094A2B73F66E00F9836F /* Extensions */,
 				549409492B73F65F00F9836F /* Enums */,
-				549409482B73F63700F9836F /* HelperFunctions */,
 				549409372B73C56000F9836F /* Data */,
 				549409382B73C58200F9836F /* ViewModels */,
 				542EAC0F2B7441C40044A038 /* Containers */,
@@ -370,6 +376,7 @@
 			children = (
 				5494093C2B73E7A800F9836F /* PersonData.swift */,
 				549409402B73F37300F9836F /* ImageUrlData.swift */,
+				544B245C2B80035700F81D99 /* MemeData.swift */,
 				54BD8E332B777EE700B2BC26 /* BackgroundData.swift */,
 				54BA43162B77AB630076E23D /* ImageData.swift */,
 				546A92FC2B77EA79005AD2DC /* BoxData.swift */,
@@ -387,6 +394,7 @@
 			children = (
 				549409532B73FCF500F9836F /* PersonModel.swift */,
 				542EAC072B7425780044A038 /* ImagesURLModel.swift */,
+				544B245E2B80046300F81D99 /* MemeModel.swift */,
 				5412D6952B758B9800D6AF9B /* TitleCustomModel.swift */,
 				546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */,
 			);
@@ -431,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				549409442B73F4AA00F9836F /* LoremIpsum.swift */,
+				544B24642B8021DC00F81D99 /* SmallerFunctions.swift */,
 			);
 			path = HelperFunctions;
 			sourceTree = "<group>";
@@ -604,6 +613,7 @@
 				549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				54C181422B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
+				544B24652B8021DC00F81D99 /* SmallerFunctions.swift in Sources */,
 				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
 				5432660D2B7A712F00574EF5 /* BoxView.swift in Sources */,
 				54D462EC2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */,
@@ -611,6 +621,7 @@
 				549409452B73F4AA00F9836F /* LoremIpsum.swift in Sources */,
 				542EAC172B744B120044A038 /* ContainerSuperClass.swift in Sources */,
 				54BA431B2B77B4A50076E23D /* ImageConfigEnum.swift in Sources */,
+				544B245F2B80046300F81D99 /* MemeModel.swift in Sources */,
 				546A92F92B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */,
 				543505852B7F6B640023742F /* SFSymbolData.swift in Sources */,
@@ -623,6 +634,7 @@
 				54BA43172B77AB630076E23D /* ImageData.swift in Sources */,
 				54C7CF2F2B78E92B00F29602 /* WideBarEditView.swift in Sources */,
 				543266112B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
+				544B245D2B80035700F81D99 /* MemeData.swift in Sources */,
 				54A2FC732B797C0A00C715CC /* Dumper.swift in Sources */,
 				5458FBFD2B7EA23800C61404 /* CardViewBox.swift in Sources */,
 				549C01222B750311009223C3 /* TextEditView.swift in Sources */,

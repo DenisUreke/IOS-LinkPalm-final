@@ -9,9 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    
-    @State var testing = DownloadDataModel()
-    
 
     var body: some View {
         

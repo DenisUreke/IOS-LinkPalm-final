@@ -44,7 +44,34 @@ class ImageVideoData: Identifiable{
     func setImageFromDevice(){
         self.typeOfBox = .picture
     }
+    
+    func createVideo(){
+        
+        let videoArray : [String] =
+        [
+            "https://www.youtube.com/watch?v=xGmyTaCsv0c",
+            "https://www.youtube.com/watch?v=qRdzw2Osl8o",
+            "https://www.youtube.com/watch?v=I1188GO4p1E",
+            "https://www.youtube.com/watch?v=yDsMZn3olF",
+            "https://www.youtube.com/watch?v=ybYvfw4HJVQ",
+            "https://www.youtube.com/watch?v=nAchMctX4YA",
+            "https://www.youtube.com/watch?v=CwA1VWP0Ldw",
+            "https://www.youtube.com/watch?v=-TkoO8Z07hI",
+            "https://www.youtube.com/watch?v=3qwPAwahTWI",
+            "https://www.youtube.com/watch?v=EExSSotojVI",
+            "https://www.youtube.com/watch?v=tPFNnnASAJs"
+        ]
+        
+        if let randomURLString = videoArray.randomElement(), let url = URL(string: randomURLString) {
+            self.videoID = url
+        } else {
+            print("Failed to create a URL in video.")
+        }
+        
+    }
+
 }
+
 
 @Observable
 class ImageVideoDataList{
@@ -86,6 +113,7 @@ class ImageVideoDataList{
         imageItem.typeOfBox = .picturefromweb
         
         self.listOfEntries.append(imageItem)
+        
     }
     
     var buttonsForMenu : [MenuEnum] = [.text, .image, .video, .background]
