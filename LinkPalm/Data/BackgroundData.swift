@@ -23,3 +23,16 @@ class BackgroundData {
     var selectedCornerRadius: Double = 0
     
 }
+
+extension BackgroundData {
+    
+    func createBackgroundData(){
+        self.gradientIsClicked = Bool.random()
+        self.selectedBackgroundOpacity = 1
+        self.selectedColorBackgroundOne = randomStandardColor()
+        self.selectedColorBackgroundTwo = randomStandardColor()
+        self.selectedBorderColor = randomStandardColor()
+        self.selectedBorderWidth = generateNumber(0, 20)
+        self.selectedCornerRadius = generateNumber(0, 40)
+    }
+}

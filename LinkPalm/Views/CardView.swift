@@ -18,6 +18,7 @@ struct CardView: View {
     @Binding var QRCodeModelList : QRCodeModel
     
     var body: some View {
+        
         GeometryReader { geometry in
             VStack(spacing: 5) {
                 

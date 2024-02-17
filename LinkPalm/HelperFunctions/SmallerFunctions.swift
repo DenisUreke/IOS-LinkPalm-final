@@ -11,11 +11,9 @@ import Foundation
 func generateNumber(_ min: Double,_ max: Double) -> Double {
     return Double.random(in: min...max)
 }
-//-----------------
 func returnRandomColor()-> Color{
     return StandardColors.allCases.randomElement()?.color ?? Color.black
 }
-//-----------------
 func randomFontStyle() -> FontStyle {
     return FontStyle.allCases.randomElement() ?? .defaults
 }
@@ -28,4 +26,10 @@ func randomStandardColor() -> StandardColors {
 }
 func randomSFSymbol() -> SFSymbolEnum {
     return SFSymbolEnum.allCases.randomElement() ?? .heart
+}
+func randomAlignment() -> FontAlignment {
+    return FontAlignment.allCases.randomElement() ?? .alignmentCenter
+}
+func randomTextAlignment() -> FontTextAlignment {
+    return FontTextAlignment.allCases.randomElement() ?? .TextAlignmentLeft
 }

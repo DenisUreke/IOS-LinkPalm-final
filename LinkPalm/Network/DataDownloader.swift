@@ -37,7 +37,7 @@ class DownloadDataModel{
                 self.personData = PersonDataModel(result: firstResult)
             }
         } catch {
-            print(error)
+            print("Error fetching person data: \(error)")
         }
         isLoading = false
     }
@@ -62,7 +62,7 @@ class DownloadDataModel{
                 
                 //print(feed)
             } catch {
-                print(error)
+                print("Error fetching image data: \(error)")
             }
         }
         isLoading = false

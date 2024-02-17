@@ -51,10 +51,10 @@ struct drawButtonForContactListView : View{
                 .padding(.trailing, 20)
                 .padding(.leading, -20)
             VStack(alignment: .leading){
-                Text("\(contact.firstName)")
+                Text("\(contact.personData?.result.name.first ?? "Name not found")")
                         .font(.system(size: 16))
                         .foregroundStyle(Color.black)
-                    Text("\(contact.lastName)")
+                Text("\(contact.personData?.result.name.last ?? "")")
                         .font(.system(size: 14))
                         .foregroundStyle(Color.black)
                 }

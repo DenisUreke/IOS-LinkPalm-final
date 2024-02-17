@@ -59,7 +59,7 @@ enum FontWeight: String, CaseIterable{
     }
 }
 
-enum FontTextAlignment: String{
+enum FontTextAlignment: String, CaseIterable{
     case TextAlignmentLeft = "Leading"
     case TextAlignmentCenter = "Centered"
     case TextAlignmentRight = "Trailing"
@@ -76,7 +76,7 @@ enum FontTextAlignment: String{
     }
 }
 
-enum FontAlignment: String{
+enum FontAlignment: String, CaseIterable{
     case alignmentLeft = "Left-Aligned"
     case alignmentCenter = "Centered"
     case alignmentRight = "Right-Aligned"

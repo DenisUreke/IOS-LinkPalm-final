@@ -41,10 +41,28 @@ class TitleCustomModel{
 
 extension TitleCustomModel{
     
+    func createNewTextBox(isTitle: Bool){
+        
+        isTitle ? self.CreateTitle() : self.CreateText()
+        self.createCustomDesignText()
+    }
+    
     func CreateTitle(){
         
         self.text = generatePlaceholderText(wordCount: generateNumber(1, 5))
         self.selectedSize = generateNumber(26, 50)
+    }
+    
+    func CreateText(){
+        
+        self.text = generatePlaceholderText(wordCount: generateNumber(100, 200))
+        self.selectedSize = generateNumber(16, 24)
+        self.selectedAlignment = randomAlignment()
+        self.selectedTextAlignment = randomTextAlignment()
+    }
+    
+    func createCustomDesignText(){
+        
         self.selectedStyle = randomFontStyle()
         self.selectedWeight = randomWeight()
         self.selectedColorBackground = randomStandardColor()
@@ -55,13 +73,11 @@ extension TitleCustomModel{
         self.shadowIsClicked = Bool.random()
         self.selectedBackgroundOpacity = generateNumber(0.1, 1.0)
         self.selectedFontOpacity = generateNumber(0.5, 1.0)
-        self.selectedAlignment = .alignmentCenter
-        self.selectedTextAlignment = .TextAlignmentLeft
         self.selectedBorderColor = randomStandardColor()
         self.selectedBorderWidth = generateNumber(0, 25)
         self.selectedCornerRadius = generateNumber(0, 25)
         self.selectedImageCornerRadius = generateNumber(0, 25)
         self.selectedXOffsetText = 10
-        
     }
+    
 }

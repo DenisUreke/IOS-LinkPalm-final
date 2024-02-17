@@ -21,13 +21,13 @@ class SFSymbolData{
 
 extension SFSymbolData{
     
-    /*func createSFSymbolData(){
+    func createSFSymbolData(){
         
         self.sfIcon = randomSFSymbol()
-        self.selectedSize =
-        self.selectedColorFont =
-        self.selectedFontOpacity =
-        self.selectedXOffsetIcon =
-    }*/
+        self.selectedSize = generateNumber(50, 200)
+        self.selectedColorFont = randomStandardColor()
+        self.selectedFontOpacity = generateNumber(0.1, 1.0)
+        self.selectedXOffsetIcon = generateNumber(-50, 50)
+    }
     
 }

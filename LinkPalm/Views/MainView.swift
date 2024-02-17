@@ -11,7 +11,7 @@ struct MainView: View {
     
     @State var titleData: UserDesignList = UserDesignList()
     @State var QRmodel: QRCodeModel = QRCodeModel()
-    @State var user: UserDesignModel = UserDesignModel(userID: "12345678", firstName: "Rick", lastName: "Morty")
+    @State var user: UserDesignModel = UserDesignModel(userID: "1234", typeOfContact: "person")
     
     var body: some View {
         

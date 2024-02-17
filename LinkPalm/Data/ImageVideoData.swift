@@ -44,6 +44,11 @@ class ImageVideoData: Identifiable{
     func setImageFromDevice(){
         self.typeOfBox = .picture
     }
+}
+
+extension ImageVideoData{
+    
+    
     
     func createVideo(){
         
@@ -67,7 +72,6 @@ class ImageVideoData: Identifiable{
         } else {
             print("Failed to create a URL in video.")
         }
-        
     }
 
 }

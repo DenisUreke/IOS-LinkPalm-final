@@ -16,7 +16,7 @@ struct QRScanView: View {
     var QRCodeModelList : QRCodeModel
     
 // To fake a proper API
-    var UserDesignList: UserDesignList
+    var userDesign: UserDesignList
 
     var body: some View {
         VStack {
@@ -41,7 +41,9 @@ struct QRScanView: View {
         case .success(let scanResult):
             let components = scanResult.string.split(separator: " ").map(String.init)
             QRCodeModelList.createContactAndAppend(components: components)
+            userDesign.createAndPopulateUserDesign(personID: components[0], typeOfContact: components[1])
             scannedCode = scanResult.string
+            
         case .failure(let error):
             // Handle the scanning error amybe new screen but do if time is over
             print("Scanning Error: \(error)")

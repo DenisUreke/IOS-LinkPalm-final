@@ -32,9 +32,9 @@ struct ShareContactView: View {
         case .create:
             QRCreateView(personID: user)
         case .read:
-            QRScanView(QRCodeModelList: QRmodel, UserDesignList: userList)
+            QRScanView(QRCodeModelList: QRmodel, userDesign: userList)
         case .peer:
-            QRScanView(QRCodeModelList: QRmodel, UserDesignList: userList)
+            QRScanView(QRCodeModelList: QRmodel, userDesign: userList)
         }
     }
     

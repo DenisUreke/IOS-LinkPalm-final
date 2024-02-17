@@ -44,14 +44,10 @@ class QRCodeData: Identifiable{
     var ID: String
     var internalID = UUID().uuidString
     let dateOfExchange: Date = Date()
-    var firstName: String
-    var lastName: String
     var typeOfContact: TypeOfContact = .none
     
-    init(ID: String = "1234", firstName: String = "First", lastName: String = "Second", typeOfContact: String = "person") {
+    init(ID: String = "1234", typeOfContact: String = "person") {
         self.ID = ID
-        self.firstName = firstName
-        self.lastName = lastName
         self.typeOfContact = TypeOfContact(fromString: typeOfContact)
     }
     
@@ -66,7 +62,7 @@ class QRCodeModel{
     func createContactAndAppend(components: [String]){
         
         if !listOfContacts.contains(where: { $0.ID == components[0] }) {
-            self.listOfContacts.append(QRCodeData(ID: components[0], firstName: components[1], lastName: components[2], typeOfContact: components[3]))
+            self.listOfContacts.append(QRCodeData(ID: components[0], typeOfContact: components[1]))
         } else {
             print("Contact already exists")
         }

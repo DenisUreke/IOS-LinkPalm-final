@@ -15,8 +15,4 @@ class BoxData{
     
     var imageVideoListData: ImageVideoDataList = ImageVideoDataList()
     
-    func createRandomTitle(){
-        
-        self.imageVideoListData
-    }
 }
