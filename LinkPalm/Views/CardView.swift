@@ -19,48 +19,114 @@ struct CardView: View {
     
     var body: some View {
         
-        GeometryReader { geometry in
+        GeometryReader{ geometry in
             VStack(spacing: 5) {
                 
                 //WideBar 1
                 if isEditMode{
                     NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarOne.wideBarListData)){
                         WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
-                            .frame(height: 60)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
                     }
                 }else{
                     WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
                         .frame(height: 60)
                 }
-                
-                //Box 1, 2
+                // Box 1, 2
                 HStack(spacing: 5) {
-                        CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
-                        .simultaneousGesture(TapGesture().onEnded { _ in
-                            textObject.backgroundColor = .red
-                        })
-                    QScreenTxtView(settings: $test)
-            }
-                NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
-                        WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
-                            .frame(height: 60)
-                }
-                    HStack(spacing: 5) {
-                        BoxView(titleData: $user.boxOne.imageVideoListData)
-                            .frame(width: geometry.size.width * 0.6)
-                        NavigationLink(destination: BoxDesignView(designData: $user.boxOne.imageVideoListData)){
-                            QScreenTxtView(settings: $test)
-                                .frame(width: geometry.size.width * 0.4 - 15)
+                    if isEditMode{
+                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
+                                .frame(width: (geometry.size.width * 0.6) - 15, height: (geometry.size.height * 0.25) - 15)
+                                .fixedSize()
+                                .clipped()
                         }
-                }
-                NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $user.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $user.wideBarThree.wideBarListData)){
-                        WideBarListView(userDesign: $user.wideBarThree.wideBarListData)
-                            .frame(height: 60)
                     }
-                NavigationLink(destination: CardViewDesignBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)){
-                    HStack(spacing: 5) {
-                        CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
-                            .frame(height: geometry.size.height * 0.2)
+                    else{
+                        NavigationLink(destination: BoxView(titleData: $user.boxOne.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
+                                .frame(width: (geometry.size.width * 0.6) - 15, height: (geometry.size.height * 0.25) - 15)
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                    if isEditMode{
+                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxTwo, userDesign: $user.boxTwo.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxTwo, userDesign: $user.boxTwo.imageVideoListData)
+                                .frame(width: geometry.size.width * 0.4, height: (geometry.size.height * 0.25) - 15)
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                    else{
+                        NavigationLink(destination: BoxView(titleData: $user.boxTwo.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxTwo, userDesign: $user.boxTwo.imageVideoListData)
+                                .frame(width: geometry.size.width * 0.4, height: (geometry.size.height * 0.25) - 15)
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                }
+                // WideBar 2
+                NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
+                    WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
+                        .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
+                }
+                // Box 3, 4
+                HStack(spacing: 5) {
+                    if isEditMode{
+                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxThree, userDesign: $user.boxThree.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxThree, userDesign: $user.boxThree.imageVideoListData)
+                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                    else{
+                        NavigationLink(destination: BoxView(titleData: $user.boxThree.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxThree, userDesign: $user.boxThree.imageVideoListData)
+                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                    if isEditMode{
+                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxFour, userDesign: $user.boxFour.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxFour, userDesign: $user.boxFour.imageVideoListData)
+                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                    else{
+                        NavigationLink(destination: BoxView(titleData: $user.boxFour.imageVideoListData)){
+                            CardViewBox(boxData: $user.boxFour, userDesign: $user.boxFour.imageVideoListData)
+                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
+                                .fixedSize()
+                                .clipped()
+                        }
+                    }
+                }
+                //WideBar 3
+                NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $user.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $user.wideBarThree.wideBarListData)){
+                    WideBarListView(userDesign: $user.wideBarThree.wideBarListData)
+                        .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
+                }
+                // Box 5
+                if isEditMode{
+                    NavigationLink(destination: CardViewDesignBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)){
+                        CardViewBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.25) - 15)
+                            .fixedSize()
+                            .clipped()
+                    }
+                }
+                else{
+                    NavigationLink(destination: BoxView(titleData: $user.boxFive.imageVideoListData)){
+                        CardViewBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.25) - 15)
+                            .fixedSize()
+                            .clipped()
                     }
                 }
                 

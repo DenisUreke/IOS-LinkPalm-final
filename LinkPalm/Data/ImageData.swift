@@ -12,7 +12,7 @@ import Observation
 @Observable
 class ImageData{
     
-    var imageURL: URL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bulldog_inglese.jpg")!
+    var imageURL: URL?
     var selectedBackgroundImage: Image?
     var selectedContrast: Double = 1
     var selectedSaturation: Double = 1

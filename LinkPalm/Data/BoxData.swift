@@ -27,9 +27,10 @@ extension BoxData{
     }
     
     func fillBoxDesignImageOnly(imageURL: String){
-        self.imageVideoListData.backgroundData.imageData.imageURL = URL(string: imageURL)!
-        self.imageVideoListData.backgroundData.imageData.createDesignImage()
-        self.imageVideoListData.backgroundData.imageData.selectedScale = 2
+        print("THE URL  \(imageURL)")
+        self.boxDesign.imageVideoData.imageData.imageURL = URL(string: imageURL)!
+        self.boxDesign.imageVideoData.imageData.createDesignImage()
+        self.boxDesign.imageVideoData.imageData.selectedScale = 2
     }
     
     func populateContentInBoxesImage(){

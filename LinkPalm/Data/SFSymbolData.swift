@@ -11,7 +11,7 @@ import Observation
 @Observable
 class SFSymbolData{
     
-    var sfIcon: SFSymbolEnum = .house
+    var sfIcon: SFSymbolEnum = .none
     var selectedSize: Double = 24
     var selectedColorFont: StandardColors = .black
     var selectedFontOpacity: Double = 1

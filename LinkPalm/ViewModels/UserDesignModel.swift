@@ -23,6 +23,7 @@ final class UserDesignModel: Identifiable{
     var boxTwo = BoxData()
     var boxThree = BoxData()
     var boxFour = BoxData()
+    var boxFive = BoxData()
     var wideBarOne = WideBarData()
     var wideBarTwo = WideBarData()
     var wideBarThree = WideBarData()
@@ -46,6 +47,7 @@ extension UserDesignModel{
         self.boxTwo.fillBoxDesign()
         self.boxThree.fillBoxDesignImageOnly(imageURL: "https://picsum.photos/300/300.jpg")
         self.boxFour.fillBoxDesign()
+        self.boxFive.fillBoxDesign()
     }
     
     func populateBoxes(){
@@ -54,6 +56,14 @@ extension UserDesignModel{
         self.boxTwo.populateContentInBoxesVideo()
         self.boxThree.populateContentInBoxesImage()
         self.boxFour.populateContentInBoxesVideo()
+        self.boxFive.populateContentInBoxesImage()
+    }
+    
+    func createData(imageURL: String){
+        
+        self.designBox(imageURL: imageURL)
+        self.populateBoxes()
+        
     }
 }
 
@@ -89,8 +99,7 @@ extension UserDesignList{
                 try await downloader.fetchPersonData()
                 if let personDataDownload = downloader.personData {
                     var newUser = UserDesignModel(userID: personID, typeOfContact: typeOfContact, personData: personDataDownload)
-                    newUser.populateBoxes()
-                    newUser.designBox(imageURL: newUser.personData?.result.picture.large ?? "")
+                    newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "")
                     self.userList.append(newUser)
                                 
                     print("Testing download person: Person Name: \(personDataDownload)")

@@ -11,7 +11,7 @@ import Observation
 @Observable
 class TitleCustomModel{
     
-    var text: String = "Your Text"
+    var text: String = ""
     var selectedSize: Double = 24
     var selectedStyle: FontStyle = .defaults
     var selectedWeight: FontWeight = .regularWeight

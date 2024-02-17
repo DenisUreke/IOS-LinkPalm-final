@@ -30,6 +30,9 @@ struct PhotoView: View {
                 DynamicPictureView(imageData: $designData)
                     .clipped()
             }
+            else{
+                Text("Load Image")
+            }
             Divider()
             
             ScrollView(showsIndicators: false){
@@ -111,7 +114,7 @@ struct PhotoEditingTools: View{
     
     var body: some View{
         
-        if designData.imageData.selectedBackgroundImage != nil || !designData.imageData.imageURL.absoluteString.isEmpty{
+        if designData.imageData.selectedBackgroundImage != nil || ((designData.imageData.imageURL?.absoluteString.isEmpty) == nil){
             
             SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.selectedXAxisOffset, title: EditImageString.xOffsetImage)
             SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.selectedYAxisOffset, title: EditImageString.yOffsetImage)
