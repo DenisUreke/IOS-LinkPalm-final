@@ -72,42 +72,51 @@ class UserDesignList{
     
     var userList: [UserDesignModel] = []
     
+    func checkIfContactExists(components: [String]) -> Bool{
+        return userList.contains(where: { $0.userID == components[0] })
+        
+    }
 }
 
 extension UserDesignList{
     
-    func createAndPopulateUserDesign(personID: String, typeOfContact: String){
-
-        let downloader = DownloadDataModel()
+    func createAndPopulateUserDesign(components: [String]){
         
-        Task {
-            do {
-                try await downloader.fetchMemeData()
-                // Accessing the title after fetching
-                if let firstMemeTitle = downloader.memeData.first?.url {
-                    print("Testing download meme : First Meme Title: \(firstMemeTitle)")
-                } else {
-                    print("Meme data is empty.")
+        if checkIfContactExists(components: components){
+            return
+        }else{
+            
+            let downloader = DownloadDataModel()
+            
+            Task {
+                do {
+                    try await downloader.fetchMemeData()
+                    // Accessing the title after fetching
+                    if let firstMemeTitle = downloader.memeData.first?.url {
+                        print("Testing download meme : First Meme Title: \(firstMemeTitle)")
+                    } else {
+                        print("Meme data is empty.")
+                    }
+                    downloader.printFirstEntry()
+                } catch {
+                    print("Error fetching meme data: \(error)")
                 }
-                downloader.printFirstEntry()
-            } catch {
-                print("Error fetching meme data: \(error)")
             }
-        }
-        Task {
-            do {
-                try await downloader.fetchPersonData()
-                if let personDataDownload = downloader.personData {
-                    var newUser = UserDesignModel(userID: personID, typeOfContact: typeOfContact, personData: personDataDownload)
-                    newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "")
-                    self.userList.append(newUser)
-                                
-                    print("Testing download person: Person Name: \(personDataDownload)")
-                } else {
-                    print("Person data is empty.")
+            Task {
+                do {
+                    try await downloader.fetchPersonData()
+                    if let personDataDownload = downloader.personData {
+                        var newUser = UserDesignModel(userID: components[0], typeOfContact: components[1], personData: personDataDownload)
+                        newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "")
+                        self.userList.append(newUser)
+                        
+                        print("Testing download person: Person Name: \(personDataDownload)")
+                    } else {
+                        print("Person data is empty.")
+                    }
+                } catch {
+                    print("Error fetching person data: \(error)")
                 }
-            } catch {
-                print("Error fetching person data: \(error)")
             }
         }
     }

@@ -31,6 +31,7 @@ extension BoxData{
         self.boxDesign.imageVideoData.imageData.imageURL = URL(string: imageURL)!
         self.boxDesign.imageVideoData.imageData.createDesignImage()
         self.boxDesign.imageVideoData.imageData.selectedScale = 2
+        self.boxDesign.background.createBackgroundData()
     }
     
     func populateContentInBoxesImage(){

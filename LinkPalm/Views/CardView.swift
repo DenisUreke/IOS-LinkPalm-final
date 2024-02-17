@@ -107,11 +107,6 @@ struct CardView: View {
                         }
                     }
                 }
-                //WideBar 3
-                NavigationLink(destination: isEditMode ? WideBarEditView(userDesign: $user.wideBarThree.wideBarListData) : WideBarEditView(userDesign: $user.wideBarThree.wideBarListData)){
-                    WideBarListView(userDesign: $user.wideBarThree.wideBarListData)
-                        .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
-                }
                 // Box 5
                 if isEditMode{
                     NavigationLink(destination: CardViewDesignBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)){
@@ -124,7 +119,7 @@ struct CardView: View {
                 else{
                     NavigationLink(destination: BoxView(titleData: $user.boxFive.imageVideoListData)){
                         CardViewBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.25) - 15)
+                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.35) - 20)
                             .fixedSize()
                             .clipped()
                     }

@@ -24,6 +24,8 @@ struct ContactsListView: View {
             .onDelete(perform: { indexSet in
                 indexSet.forEach { index in
                     QRList.listOfContacts.remove(at: index)
+                    designList.userList.remove(at: index)
+                    
                 }
             })
         }

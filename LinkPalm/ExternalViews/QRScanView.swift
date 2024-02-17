@@ -41,7 +41,7 @@ struct QRScanView: View {
         case .success(let scanResult):
             let components = scanResult.string.split(separator: " ").map(String.init)
             QRCodeModelList.createContactAndAppend(components: components)
-            userDesign.createAndPopulateUserDesign(personID: components[0], typeOfContact: components[1])
+            userDesign.createAndPopulateUserDesign(components: components)
             scannedCode = scanResult.string
             
         case .failure(let error):

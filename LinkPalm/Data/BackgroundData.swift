@@ -28,7 +28,7 @@ extension BackgroundData {
     
     func createBackgroundData(){
         self.gradientIsClicked = Bool.random()
-        self.selectedBackgroundOpacity = 1
+        self.selectedBackgroundOpacity = generateNumber(0.5, 1.0)
         self.selectedColorBackgroundOne = randomStandardColor()
         self.selectedColorBackgroundTwo = randomStandardColor()
         self.selectedBorderColor = randomStandardColor()
