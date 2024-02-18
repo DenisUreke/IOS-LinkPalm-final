@@ -41,7 +41,7 @@ struct CardViewDesignBox: View{
 
                 drawSettingButtonForBackground(designData: $boxData.boxDesign.background)
                 
-                NavigationLink(destination: PhotoView(designData: $boxData.boxDesign.imageVideoData)){
+                NavigationLink(destination: PhotoView(designData: $userDesign, newObject: $boxData.boxDesign.imageVideoData , isForList: false) ){
                     VStack{
                         ButtonDesign(icon: "photo", title: "Image", borderColor: .black, borderThickness: 2, width: 150, height: 50)
                     }

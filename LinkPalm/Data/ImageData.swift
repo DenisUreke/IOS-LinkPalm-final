@@ -66,6 +66,7 @@ class ImageData{
     
     func resetValues(){
         self.imageURL = nil
+        self.selectedBackgroundImage = nil
         self.isURL = false
         self.isURL = false
         self.isSaved = false

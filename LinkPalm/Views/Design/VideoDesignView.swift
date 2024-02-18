@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VideoDesignView: View {
     
+    @Binding var list: ImageVideoDataList
     @Binding var designData: ImageVideoData
     @State var enteredText: String = ""
     
@@ -16,14 +17,6 @@ struct VideoDesignView: View {
     
         VStack{
             LoadVideoView(ID: designData.videoID)
-        }
-        .onDisappear {
-            if designData.imageData.isURL{
-                designData.setTypeOfBox(type: .video)
-            }
-            else{
-                designData.setTypeOfBox(type: .picture)
-            }
         }
         
         Divider()
@@ -37,7 +30,7 @@ struct VideoDesignView: View {
          }
         
         DynamicButtonWithFunction(
-            icon: "square.and.arrow.down", title: "Save",action: {designData.setVideoUrlFromString(string: enteredText)})
+            icon: "square.and.arrow.down", title: "Save",action: {list.setVideoUrlFromString(string: enteredText, data: designData)})
         
     }
 }

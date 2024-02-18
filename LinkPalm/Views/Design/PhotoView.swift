@@ -9,8 +9,9 @@ import PhotosUI
 import SwiftUI
 
 struct PhotoView: View {
-    
-    @Binding var designData: ImageVideoData
+    @Binding var designData: ImageVideoDataList
+    @Binding var newObject: ImageVideoData
+    @State var isForList: Bool
     @State var enteredText: String = ""
     
     @State var photopickerItem: PhotosPickerItem?
@@ -19,14 +20,14 @@ struct PhotoView: View {
     var body: some View {
         
         VStack{
-            if designData.imageData.isURL {
-                DynamicPictureViewFromWeb(imageData: $designData)
+            if newObject.imageData.isURL {
+                DynamicPictureViewFromWeb(imageData: $newObject)
                     .scaleEffect(0.5)
                     .frame(maxWidth: .infinity, maxHeight: 200)
                     .clipped()
             }
-            if designData.imageData.isDevice {
-                DynamicPictureView(imageData: $designData)
+            if newObject.imageData.isDevice {
+                DynamicPictureView(imageData: $newObject)
                     .scaleEffect(0.5)
                     .frame(maxWidth: .infinity, maxHeight: 200)
                     .clipped()
@@ -37,65 +38,63 @@ struct PhotoView: View {
             Divider()
             
             ScrollView(showsIndicators: false){
-                if designData.imageData.isURL || designData.imageData.isDevice{
-                    PhotoEditingTools(designData: $designData)
+                if newObject.imageData.isURL || newObject.imageData.isDevice{
+                    PhotoEditingTools(designData: $newObject)
                 }
             }
             
-            if designData.imageData.isURL {
+            if newObject.imageData.isURL {
                     DrawTextFieldForWideBar(title: $enteredText)
             }
             
-            if designData.imageData.isDevice{
+            if newObject.imageData.isDevice{
                     PhotosPicker("Select from device", selection: $photopickerItem, matching: .images)
             }
             
             HStack{
                 HStack{
                     Button(action: {
-                        designData.imageData.isDevice.toggle()
-                        designData.imageData.isURL = false
-                        designData.imageData.isSaved = true
+                        newObject.imageData.isDevice.toggle()
+                        newObject.imageData.isURL = false
+                        newObject.imageData.isSaved = true
                     })
                     {
-                        designData.imageData.isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
+                        newObject.imageData.isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                     }
                 }
                 .padding(.trailing, -20)
                 
                 HStack{
                     Button(action: {
-                        designData.imageData.isURL.toggle()
-                        designData.imageData.isDevice = false
-                        designData.imageData.isSaved = true
+                        newObject.imageData.isURL.toggle()
+                        newObject.imageData.isDevice = false
+                        newObject.imageData.isSaved = true
                     })
                     {
-                        designData.imageData.isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
+                        newObject.imageData.isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                     }
                 }
             }
-            .onDisappear {
-                if designData.imageData.isURL{
-                    designData.setTypeOfBox(type: .picturefromweb)
-                }
-                else{
-                    designData.setTypeOfBox(type: .picture)
-                }
-            }
-            if designData.imageData.isSaved{
-                if designData.imageData.isURL || designData.imageData.isDevice{
+            if newObject.imageData.isSaved{
+                if newObject.imageData.isURL || newObject.imageData.isDevice{
                     HStack{
                         
                         Button(action:{
-                            if designData.imageData.isURL{
-                                designData.setImageUrlFromString(string: enteredText)
-                                designData.imageData.isDeletable = true
-                                designData.imageData.isSaved = false
+                            if newObject.imageData.isURL{
+                                newObject.setImageUrlFromString(string: enteredText)
+                                newObject.imageData.isDeletable = true
+                                newObject.imageData.isSaved = false
+                                if isForList{
+                                    designData.insertAndAppendInList(object: newObject, type: .picturefromweb)
+                                }
                             }
                             else{
-                                designData.setImageFromDevice()
-                                designData.imageData.isDeletable = true
-                                designData.imageData.isSaved = false
+                                newObject.setImageFromDevice()
+                                newObject.imageData.isDeletable = true
+                                newObject.imageData.isSaved = false
+                                if isForList{
+                                    designData.insertAndAppendInList(object: newObject, type: .picture)
+                                }
                             }
                         }){
                             ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
@@ -103,9 +102,9 @@ struct PhotoView: View {
                     }
                 }
             }
-            if designData.imageData.isDeletable{
+            if newObject.imageData.isDeletable{
                 Button(action:{
-                    designData.imageData.resetValues()
+                    newObject.imageData.resetValues()
                 }){
                     ButtonDesign(icon: "trash.square", title: "Delete", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                 }
@@ -116,7 +115,7 @@ struct PhotoView: View {
             Task {
                 if let loaded = try? await photopickerItem?.loadTransferable(type: Image.self) {
                     selectedImage = loaded
-                    designData.imageData.selectedBackgroundImage = selectedImage
+                    newObject.imageData.selectedBackgroundImage = selectedImage
                 } else {
                     print("Failed")
                 }

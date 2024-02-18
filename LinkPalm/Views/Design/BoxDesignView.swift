@@ -27,6 +27,7 @@ struct BoxDesignView: View {
 struct DrawMenuForBoxDesignView: View {
     
     @Binding var designData: ImageVideoDataList
+    @State var newObject: ImageVideoData = ImageVideoData()
     let title: String
     @State private var selectedOption: MenuEnum? = nil
 
@@ -37,24 +38,12 @@ struct DrawMenuForBoxDesignView: View {
                 Text(title).font(.system(size: 26, weight: .bold))
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(MenuEnum.allCases, id: \.self) { option in
-                        Button(action: {
-                            if option != .background{
-                                self.designData.addNewItemToBoxList()
-                            }
-                            self.selectedOption = option
-                        }) {
+                        NavigationLink(destination: destinationView(for: option)){
                             drawButtonForBoxDesing(selectedMenuButton: option)
                         }
                     }
                 }
                 .navigationTitle(title)
-                .background(
-                    NavigationLink(
-                        destination: destinationView(for: selectedOption),
-                        isActive: .constant(selectedOption != nil),
-                        label: EmptyView.init
-                    ).hidden()
-                )
             }
         }
     }
@@ -63,11 +52,11 @@ struct DrawMenuForBoxDesignView: View {
     private func destinationView(for option: MenuEnum?) -> some View {
         switch option {
         case .image:
-            PhotoView(designData: $designData.listOfEntries.last!)
+            PhotoView(designData: $designData, newObject: $newObject, isForList: true)
         case .text:
-            configurateTextObjects(titleData: $designData)
+            configurateTextObjects(titleData: $designData, data: $newObject)
         case .video:
-            VideoDesignView(designData: $designData.listOfEntries.last!)
+            VideoDesignView(list: $designData, designData: $newObject)
         case .background:
             BackgroundDesignView(designData: $designData.backgroundData)
         default:

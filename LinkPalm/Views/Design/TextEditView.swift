@@ -54,15 +54,16 @@ struct SelectableView<Option: RawRepresentable & Hashable, Content: View>: View 
 struct configurateTextObjects: View {
     
     @Binding var titleData : ImageVideoDataList
+    @Binding var data: ImageVideoData
     
     var text: TitleCustomModel {
-        return self.titleData.listOfEntries.last!.textCustomModel
+        return self.data.textCustomModel
     }
     var body: some View {
         VStack {
-            NavigationLink(destination: TextEditView(titleData: $titleData.listOfEntries.last!)){
+            NavigationLink(destination: TextEditView(titleData: $data)){
                 
-                configurateTextObjectsPreview(titleData: $titleData)
+                configurateTextObjectsPreview(titleData: $titleData, data: $data.textCustomModel)
             }
             .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
             Divider()
@@ -70,13 +71,13 @@ struct configurateTextObjects: View {
             
             ScrollView(showsIndicators: false){
                 
-                configurateTextObjectsFontStyling(titleData: $titleData.listOfEntries.last!.textCustomModel)
+                configurateTextObjectsFontStyling(titleData: $data.textCustomModel )
                 Divider()
-                configurateTextObjectsBackGround(titleData: $titleData.listOfEntries.last!.textCustomModel)
+                configurateTextObjectsBackGround(titleData: $data.textCustomModel)
                 Divider()
-                configurateTextObjectsFontColor(titleData: $titleData.listOfEntries.last!.textCustomModel)
+                configurateTextObjectsFontColor(titleData: $data.textCustomModel)
                 Divider()
-                configurateTextObjectsBorderDesign(titleData: $titleData.listOfEntries.last!.textCustomModel)
+                configurateTextObjectsBorderDesign(titleData: $data.textCustomModel)
                 Spacer()
                 
             }
@@ -85,7 +86,7 @@ struct configurateTextObjects: View {
             Divider()
                 .padding(1)
             NavigationLink(destination: BoxView(titleData: $titleData)) {
-                DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.listOfEntries.last!.setTypeOfBox(type: ImageVideoEnum.text) })
+                DynamicButtonWithFunction(icon: "square.and.arrow.down", title: "Save", action: { titleData.setTextAndAppendtoList(object: data)})
             }
             .padding()
         }
@@ -97,25 +98,23 @@ struct configurateTextObjects: View {
 struct configurateTextObjectsPreview: View {
     
     @Binding var titleData : ImageVideoDataList
+    @Binding var data: TitleCustomModel
     
-    var text: TitleCustomModel {
-        return self.titleData.listOfEntries.last!.textCustomModel
-    }
     
     var body: some View{
         
         ZStack{
             VStack{
-                Text("\(titleData.listOfEntries.last!.textCustomModel.text)")
-                    .frame(maxWidth: .infinity, alignment: text.selectedAlignment.getAlignment)
+                Text("\(data.text )")
+                    .frame(maxWidth: .infinity, alignment: data.selectedAlignment.getAlignment)
             }
-            .font(.system(size: text.selectedSize, weight: text.selectedWeight.getWeight, design: text.selectedStyle.getFontStyel))
-            .opacity(text.selectedFontOpacity)
-            .foregroundColor(text.selectedColorFont.color)
+            .font(.system(size: data.selectedSize, weight: data.selectedWeight.getWeight, design: data.selectedStyle.getFontStyel))
+            .opacity(data.selectedFontOpacity)
+            .foregroundColor(data.selectedColorFont.color)
             .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
-            .shadow(color: !text.shadowIsClicked ? .clear : .gray,
-                    radius: 2,x: 0, y: !text.shadowIsClicked ? 0 : 5)
-            .border(text.selectedBorderColor.color, width: text.selectedBorderWidth)
+            .shadow(color: !data.shadowIsClicked ? .clear : .gray,
+                    radius: 2,x: 0, y: !data.shadowIsClicked ? 0 : 5)
+            .border(data.selectedBorderColor.color, width: data.selectedBorderWidth)
         }
     }
     

@@ -8,3 +8,5 @@ ask about dynamic button with function
 
 
 in BoxDesignView what a better option would be for dynamic buttons
+
+in boxDesignView why adding onDissapear removes the other views?

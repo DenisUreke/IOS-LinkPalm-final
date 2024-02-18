@@ -107,7 +107,7 @@ enum ViewState {
     case viewD
 }
 
-struct DynamicButtonForEditing: View {
+/*struct DynamicButtonForEditing: View {
     
     @Binding var data: ImageVideoData
     @State private var currentState: ViewState = .viewD
@@ -148,7 +148,7 @@ struct DynamicButtonForEditing: View {
             EmptyView() // Placeholder for a default or empty state view
         }
     }
-}
+}*/
 
 /*
  if let specificItem = list.listOfEntries.firstIndex(where: id == entry.id){

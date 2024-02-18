@@ -42,27 +42,3 @@ func fetchData() async throws -> (PersonDataModel?, [MemeModel]) {
 
     return (person, memes)
 }
-
-/*
- struct ContentView: View {
-     @State private var person: PersonDataModel?
-     @State private var memes: [MemeModel] = []
-
-     var body: some View {
-         // Your view content
-         Text("Hello, world!")
-             .padding()
-             .onAppear {
-                 Task {
-                     do {
-                         let (fetchedPerson, fetchedMemes) = try await fetchData()
-                         self.person = fetchedPerson
-                         self.memes = fetchedMemes
-                     } catch {
-                         print("An error occurred: \(error)")
-                     }
-                 }
-             }
-     }
- }
- */

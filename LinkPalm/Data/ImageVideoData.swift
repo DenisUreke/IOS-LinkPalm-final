@@ -46,18 +46,10 @@ class ImageVideoData: Identifiable{
         }
     }
     
-    func setVideoUrlFromString(string: String) {
-        if let url = URL(string: string) {
-            self.videoID = url
-            self.typeOfBox = .video
-        } else {
-            return
-        }
-    }
-    
     func setImageFromDevice(){
         self.typeOfBox = .picture
     }
+    
 }
 
 @Observable
@@ -79,6 +71,26 @@ class ImageVideoDataList{
     
     func addNewItemToBoxList() {
         self.listOfEntries.append(ImageVideoData())
+    }
+    
+    func insertAndAppendInList(object: ImageVideoData, type: ImageVideoEnum){
+        object.typeOfBox = type
+        self.listOfEntries.append(object)
+    }
+    
+    func setVideoUrlFromString(string: String, data: ImageVideoData) {
+        if let url = URL(string: string) {
+            data.videoID = url
+            data.typeOfBox = .video
+            self.listOfEntries.append(data)
+        } else {
+            return
+        }
+    }
+    
+    func setTextAndAppendtoList(object: ImageVideoData){
+        object.typeOfBox = .text
+        self.listOfEntries.append(object)
     }
 }
 
