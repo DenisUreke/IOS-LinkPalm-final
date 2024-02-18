@@ -26,12 +26,5 @@ struct WebView: UIViewRepresentable {
     }
 }
 
-/*
- first ensure background processing and fetch is enabled
- ensure all the following actions are called on webview
-      webView.uiDelegate = self     webView.allowsBackForwardNavigationGestures = true     webView.allowsLinkPreview = true     webView.navigationDelegate = self
- then u are good to go
- */
-
 
 //WebView(url: "https://www.google.com/")

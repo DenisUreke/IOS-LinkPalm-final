@@ -12,9 +12,6 @@ struct PhotoView: View {
     
     @Binding var designData: ImageVideoData
     @State var enteredText: String = ""
-    @State var isURL = false
-    @State var isDevice = false
-    @State var openSave = false
     
     @State var photopickerItem: PhotosPickerItem?
     @State var selectedImage: Image?
@@ -22,12 +19,16 @@ struct PhotoView: View {
     var body: some View {
         
         VStack{
-            if isURL {
+            if designData.imageData.isURL {
                 DynamicPictureViewFromWeb(imageData: $designData)
+                    .scaleEffect(0.5)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
                     .clipped()
             }
-            if isDevice {
+            if designData.imageData.isDevice {
                 DynamicPictureView(imageData: $designData)
+                    .scaleEffect(0.5)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
                     .clipped()
             }
             else{
@@ -36,61 +37,77 @@ struct PhotoView: View {
             Divider()
             
             ScrollView(showsIndicators: false){
-                if isURL || isDevice{
+                if designData.imageData.isURL || designData.imageData.isDevice{
                     PhotoEditingTools(designData: $designData)
                 }
             }
             
-            if isURL {
+            if designData.imageData.isURL {
                     DrawTextFieldForWideBar(title: $enteredText)
             }
             
-            if isDevice{
+            if designData.imageData.isDevice{
                     PhotosPicker("Select from device", selection: $photopickerItem, matching: .images)
             }
             
             HStack{
                 HStack{
                     Button(action: {
-                        isDevice.toggle()
-                        isURL = false
-                        openSave = true
+                        designData.imageData.isDevice.toggle()
+                        designData.imageData.isURL = false
+                        designData.imageData.isSaved = true
                     })
                     {
-                        isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
+                        designData.imageData.isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                     }
                 }
                 .padding(.trailing, -20)
                 
                 HStack{
                     Button(action: {
-                        isURL.toggle()
-                        isDevice = false
-                        openSave = true
+                        designData.imageData.isURL.toggle()
+                        designData.imageData.isDevice = false
+                        designData.imageData.isSaved = true
                     })
                     {
-                        isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
+                        designData.imageData.isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                     }
                 }
             }
-            if openSave{
-                if isURL || isDevice{
+            .onDisappear {
+                if designData.imageData.isURL{
+                    designData.setTypeOfBox(type: .picturefromweb)
+                }
+                else{
+                    designData.setTypeOfBox(type: .picture)
+                }
+            }
+            if designData.imageData.isSaved{
+                if designData.imageData.isURL || designData.imageData.isDevice{
                     HStack{
                         
                         Button(action:{
-                            if isURL{
+                            if designData.imageData.isURL{
                                 designData.setImageUrlFromString(string: enteredText)
-                                openSave = false
+                                designData.imageData.isDeletable = true
+                                designData.imageData.isSaved = false
                             }
                             else{
                                 designData.setImageFromDevice()
-                                openSave = false
+                                designData.imageData.isDeletable = true
+                                designData.imageData.isSaved = false
                             }
                         }){
                             ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                         }
-                        
                     }
+                }
+            }
+            if designData.imageData.isDeletable{
+                Button(action:{
+                    designData.imageData.resetValues()
+                }){
+                    ButtonDesign(icon: "trash.square", title: "Delete", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                 }
             }
         }
@@ -149,7 +166,7 @@ struct PhotoEditingTools: View{
             
             Divider()
             
-            SliderDoubleView(minValue: 0, maxValue: 50, objectToChange: $designData.textCustomModel.selectedImageCornerRadius, title: EditImageString.imageCornerRadius)
+            SliderDoubleView(minValue: 0, maxValue: 300, objectToChange: $designData.textCustomModel.selectedImageCornerRadius, title: EditImageString.imageCornerRadius)
             
             
         }

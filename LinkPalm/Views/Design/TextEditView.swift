@@ -65,7 +65,6 @@ struct configurateTextObjects: View {
                 configurateTextObjectsPreview(titleData: $titleData)
             }
             .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
-            
             Divider()
                 .padding(1)
             
@@ -82,6 +81,7 @@ struct configurateTextObjects: View {
                 
             }
             
+            
             Divider()
                 .padding(1)
             NavigationLink(destination: BoxView(titleData: $titleData)) {
@@ -91,6 +91,7 @@ struct configurateTextObjects: View {
         }
         
     }
+    
 }
 
 struct configurateTextObjectsPreview: View {

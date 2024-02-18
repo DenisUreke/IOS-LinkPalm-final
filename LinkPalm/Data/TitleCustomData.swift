@@ -57,7 +57,7 @@ class TitleCustomModel{
          selectedBorderColor: StandardColors = .black,
          selectedBorderWidth: Double = 0,
          selectedCornerRadius: Double = 0,
-         selectedImageCornerRadius: Double = 0,
+         selectedImageCornerRadius: Double = 8,
          selectedXOffsetText: Double = 0) {
         
         self.text = text

@@ -26,6 +26,10 @@ class ImageData{
     var selectedScale: Double
     var selectedXAxisOffset: Double
     var selectedYAxisOffset: Double
+    var isURL: Bool
+    var isDevice: Bool
+    var isSaved: Bool
+    var isDeletable: Bool
     
     init(imageURL: URL? = nil,
          selectedBackgroundImage: Image? = nil,
@@ -37,7 +41,11 @@ class ImageData{
          selectedCornerRadius: Double = 0,
          selectedScale: Double = 1,
          selectedXAxisOffset: Double = 0,
-         selectedYAxisOffset: Double = 0) {
+         selectedYAxisOffset: Double = 0,
+         isURL: Bool = false,
+         isDevice: Bool = false,
+         isSaved: Bool = false,
+         isDeletable: Bool = false) {
         
         self.imageURL = imageURL
         self.selectedBackgroundImage = selectedBackgroundImage
@@ -50,6 +58,18 @@ class ImageData{
         self.selectedScale = selectedScale
         self.selectedXAxisOffset = selectedXAxisOffset
         self.selectedYAxisOffset = selectedYAxisOffset
+        self.isURL = isURL
+        self.isDevice = isDevice
+        self.isSaved = isSaved
+        self.isDeletable = isDeletable
+    }
+    
+    func resetValues(){
+        self.imageURL = nil
+        self.isURL = false
+        self.isURL = false
+        self.isSaved = false
+        self.isDeletable = false
     }
     
 }

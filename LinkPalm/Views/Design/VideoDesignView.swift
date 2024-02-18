@@ -14,8 +14,17 @@ struct VideoDesignView: View {
     
     var body: some View{
     
-        
-        LoadVideoView(ID: designData.videoID)
+        VStack{
+            LoadVideoView(ID: designData.videoID)
+        }
+        .onDisappear {
+            if designData.imageData.isURL{
+                designData.setTypeOfBox(type: .video)
+            }
+            else{
+                designData.setTypeOfBox(type: .picture)
+            }
+        }
         
         Divider()
         

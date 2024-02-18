@@ -29,18 +29,7 @@ struct BoxView: View {
                 ButtonDesign(icon: "plus.app", title: "Add", borderColor: .black, borderThickness: 2, width: 180, height: 50)
             }
         }
-        
-        /*NavigationLink(destination: BoxDesignView(designData: $titleData)){
-
-                Text("Edit")
-                    .frame(width: 200)
-                    .font(.system(size: 18))
-                    .foregroundColor(Color.white)
-                    .padding(8)
-                    .background(Color.blue)
-                    .border(.black, width: 1)
-                    .cornerRadius(10)
-        }*/
+    
     }
     private func drawToolBar()-> some ToolbarContent{
         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -201,69 +190,6 @@ struct DynamicViewText: View {
         //}
     }
 }
-
-struct DynamicPictureView: View {
-    
-    @Binding var imageData : ImageVideoData
-
-    var body: some View {
-        if let image = imageData.imageData.selectedBackgroundImage{
-            image
-                .resizable()
-                .scaledToFit()
-                .scaleEffect(imageData.imageData.selectedScale)
-                .offset(x: imageData.imageData.selectedXAxisOffset, y: imageData.imageData.selectedYAxisOffset)
-                .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius))
-                .frame(maxWidth: .infinity)
-                .rotationEffect(.degrees(imageData.imageData.selectedRotation))
-                .hueRotation(.degrees(imageData.imageData.selectedHueRotation))
-                .opacity(imageData.imageData.selectedOpacity)
-                .saturation(imageData.imageData.selectedSaturation)
-                .contrast(imageData.imageData.selectedContrast)
-                .border(imageData.textCustomModel.selectedBorderColor.color, width: imageData.textCustomModel.selectedBorderWidth)
-                .overlay(
-                    RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius)
-                        .stroke(imageData.textCustomModel.selectedBorderColor.color, lineWidth: imageData.textCustomModel.selectedBorderWidth)
-                )
-                .clipped()
-        }else{Text("Could not find Image")}
-    }
-}
-
-struct DynamicPictureViewFromWeb: View {
-    
-    @Binding var imageData: ImageVideoData
- 
-    var body: some View {
-        AsyncImage(url: imageData.imageData.imageURL) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .scaleEffect(imageData.imageData.selectedScale)
-                    .offset(x: imageData.imageData.selectedXAxisOffset, y: imageData.imageData.selectedYAxisOffset)
-                    .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius))
-                    .frame(maxWidth: .infinity)
-                    .rotationEffect(.degrees(imageData.imageData.selectedRotation))
-                    .hueRotation(.degrees(imageData.imageData.selectedHueRotation))
-                    .opacity(imageData.imageData.selectedOpacity)
-                    .saturation(imageData.imageData.selectedSaturation)
-                    .contrast(imageData.imageData.selectedContrast)
-                    .border(imageData.textCustomModel.selectedBorderColor.color, width: imageData.textCustomModel.selectedBorderWidth)
-                    .cornerRadius(imageData.textCustomModel.selectedCornerRadius)
-                    .clipped()
-            case .failure:
-                Text("Unable to load image")
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
-}
-
 
 
 
