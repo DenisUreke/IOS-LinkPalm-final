@@ -9,8 +9,11 @@
 
 import CodeScanner
 import SwiftUI
+import SwiftData
 
 struct QRScanView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query private var qrUsersList: [QRCodeData]
     @State private var isPresentingScanner = false
     @State private var scannedCode: String?
     var QRCodeModelList : QRCodeModel
@@ -39,7 +42,9 @@ struct QRScanView: View {
         switch result {
         case .success(let scanResult):
             let components = scanResult.string.split(separator: " ").map(String.init)
-            QRCodeModelList.createContactAndAppend(components: components)
+            let QRModel = QRCodeData(component: components)
+                modelContext.insert(QRModel)
+            
             if userDesign.checkIfContactExists(components: components){
                 scannedCode = "Contact already exists"
                 return

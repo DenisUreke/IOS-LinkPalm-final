@@ -15,6 +15,6 @@ struct LinkPalmApp: App {
         WindowGroup {
             ContentView()
         }
-        //.modelContainer(for: UserDesignModel.self)
+        .modelContainer(for: QRCodeData.self)
     }
 }

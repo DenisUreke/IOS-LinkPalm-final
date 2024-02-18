@@ -8,6 +8,11 @@
   &lt;string&gt;_nearby-devices._upd&lt;/string&gt;
  &lt;/array&gt;</key>
 	<string></string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_exchange._tcp</string>
+		<string>_exchange._udp</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

@@ -104,7 +104,7 @@ extension UserDesignList{
                         let urls = randomMemes.compactMap { $0.url } // Extracting URLs from the selected memes
                         // Now urls is an array of URL objects that you can pass as expected
                         
-                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[1], personData: person)
+                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[3], personData: person)
                         newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "", meme: urls)
                         self.userList.append(newUser)
                         self.userList.last!.wideBarOne.wideBarListData.listOfIcons.last!.createHeaderWithName(firstName: person?.result.name.first ?? "Name Not found", lastName: person?.result.name.last ?? "Name Not Found")

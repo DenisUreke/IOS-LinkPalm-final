@@ -20,7 +20,6 @@ actor DataFetcher {
             throw error
         }
     }
-
     func fetchMemeData() async throws {
         do {
             try await downloader.fetchMemeData()

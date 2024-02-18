@@ -7,8 +7,9 @@
 
 import Foundation
 import Observation
+import SwiftData
 
-enum TypeOfContact {
+enum TypeOfContact: Codable, Hashable {
     case person, item, company, none
 
     init(fromString string: String) {
@@ -38,17 +39,31 @@ enum TypeOfContact {
     }
 }
 
-@Observable
-class QRCodeData: Identifiable{
+//@Observable
+@Model
+final class QRCodeData: Identifiable{
     
-    var ID: String
-    var internalID = UUID().uuidString
-    let dateOfExchange: Date = Date()
-    var typeOfContact: TypeOfContact = .none
+    var internalID: String
+    let dateOfExchange: Date
+    let firstName: String
+    let lastName: String
+    var typeOfContact: String = "person"
     
-    init(ID: String = "1234", typeOfContact: String = "person") {
-        self.ID = ID
-        self.typeOfContact = TypeOfContact(fromString: typeOfContact)
+    init(component: [String]) {
+        self.internalID = component[0]
+        self.firstName = component[1]
+        self.lastName = component[2]
+        self.typeOfContact = component[3]
+        self.dateOfExchange = Date()
+    }
+    
+
+    init(internalID: String, firstName: String, lastName: String, typeOfContact: String, dateOfExchange: Date = Date()) {
+        self.internalID = internalID
+        self.firstName = firstName
+        self.lastName = lastName
+        self.typeOfContact = typeOfContact
+        self.dateOfExchange = dateOfExchange
     }
     
     
@@ -57,16 +72,20 @@ class QRCodeData: Identifiable{
 @Observable
 class QRCodeModel{
     
-    var listOfContacts : [QRCodeData] = [QRCodeData()]
+    var listOfContacts: [QRCodeData]
     
-    func createContactAndAppend(components: [String]){
+    init(listOfContacts: [QRCodeData] = []) {
+        self.listOfContacts = listOfContacts
+    }
+    
+    /*func createContactAndAppend(components: [String]){
         
-        if !listOfContacts.contains(where: { $0.ID == components[0] }) {
-            self.listOfContacts.append(QRCodeData(ID: components[0], typeOfContact: components[1]))
+        if !listOfContacts.contains(where: { $0.internalID == components[0] }) {
+            self.listOfContacts.append(QRCodeData(internalID: components[0], typeOfContact: components[1]))
         } else {
             print("Contact already exists")
         }
         
-    }
+    }*/
     
 }

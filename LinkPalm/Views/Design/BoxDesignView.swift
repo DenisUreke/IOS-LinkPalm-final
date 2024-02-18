@@ -154,7 +154,7 @@ struct ButtonDesign: View {
                                 .stroke(Color.black, lineWidth: 1)))
                 .shadow(color: .gray, radius: 10, x: 0, y: 4)
             Text(title)
-                .frame(width: 50)
+                .frame(width: 70)
                 .font(.system(size: 16))
                 .foregroundStyle(Color.black)
                 .offset(x: -10)

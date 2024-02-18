@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SuccessView: View {
+    //@Environment(\.modelContext) var modelContext
     @Binding var userList: UserDesignList
+    //@Query private var qrUsersList: [QRCodeData]
     let message: String
     
 
@@ -36,6 +39,7 @@ struct SuccessView: View {
                                         .fill(Color.gray.opacity(0.3)) // Example background color with slight transparency
                                         .frame(width: 260, height: 340) // Slightly larger than the image
                                  )
+                                 .shadow(color: .gray, radius: 10, x: 0, y: 4)
                         
                         Text("\(userList.userList.last?.personData?.result.name.first ?? "") \(userList.userList.last?.personData?.result.name.last ?? "")")
                             .font(.title)
@@ -43,7 +47,7 @@ struct SuccessView: View {
                         Spacer()
                         
                         NavigationLink(destination: CardView(user: $userList.userList.last!)){
-                            ButtonDesign(icon: "house", title: "See Card", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+                            ButtonDesign(icon: "person.crop.circle", title: "See Card", borderColor: .black, borderThickness: 2, width: 220, height: 50)
                         }
                         case .failure(_):
                             Image(systemName: "photo")

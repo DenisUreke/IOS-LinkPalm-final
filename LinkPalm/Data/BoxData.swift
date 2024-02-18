@@ -39,7 +39,7 @@ extension BoxData{
         print("THE URL  \(imageURL)")
         self.boxDesign.imageVideoData.imageData.imageURL = URL(string: imageURL)!
         self.boxDesign.imageVideoData.imageData.createDesignImage()
-        self.boxDesign.imageVideoData.imageData.selectedScale = 2
+        self.boxDesign.imageVideoData.imageData.selectedScale = 1
         self.boxDesign.background.createBackgroundData()
     }
     
