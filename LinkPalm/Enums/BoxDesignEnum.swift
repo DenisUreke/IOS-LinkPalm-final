@@ -13,7 +13,7 @@ enum BoxDesignStatus{
     case currentlyEditing
 }
 
-enum MenuEnum: String, CaseIterable{
+enum MenuEnum: String, CaseIterable, Codable, Hashable{
     
     case text = "Text"
     case image = "Image"
@@ -35,7 +35,7 @@ enum MenuEnum: String, CaseIterable{
     
 }
 
-enum MainMenuEnum: String, CaseIterable{
+enum MainMenuEnum: String, CaseIterable, Codable, Hashable{
     
     case person = "Contacts"
     case share = "Share Contact"
@@ -53,7 +53,7 @@ enum MainMenuEnum: String, CaseIterable{
     }
 }
 
-enum ShareContactEnum: String, CaseIterable{
+enum ShareContactEnum: String, CaseIterable, Codable, Hashable{
     
     case create = "Create QR"
     case read = "Read QR"

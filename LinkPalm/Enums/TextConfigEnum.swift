@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum FontSize: String{
+enum FontSize: String, Codable, Hashable{
     case title1 = "Small"
     case title2 = "Medium"
     case title3 = "Large"
@@ -25,7 +25,7 @@ enum FontSize: String{
     }
 }
 
-enum FontStyle: String, CaseIterable{
+enum FontStyle: String, CaseIterable, Codable, Hashable{
     case defaults = "Default"
     case monoSpaced = "MonoSpaced"
     case serif = "Serif"
@@ -42,7 +42,7 @@ enum FontStyle: String, CaseIterable{
     }
 }
 
-enum FontWeight: String, CaseIterable{
+enum FontWeight: String, CaseIterable, Codable, Hashable{
     case regularWeight = "Regular"
     case semiBoldWeight = "Semi-Bold"
     case boldWeight = "Bold"
@@ -59,7 +59,7 @@ enum FontWeight: String, CaseIterable{
     }
 }
 
-enum FontTextAlignment: String, CaseIterable{
+enum FontTextAlignment: String, CaseIterable, Codable, Hashable{
     case TextAlignmentLeft = "Leading"
     case TextAlignmentCenter = "Centered"
     case TextAlignmentRight = "Trailing"
@@ -76,7 +76,7 @@ enum FontTextAlignment: String, CaseIterable{
     }
 }
 
-enum FontAlignment: String, CaseIterable{
+enum FontAlignment: String, CaseIterable, Codable, Hashable{
     case alignmentLeft = "Left-Aligned"
     case alignmentCenter = "Centered"
     case alignmentRight = "Right-Aligned"
@@ -93,7 +93,7 @@ enum FontAlignment: String, CaseIterable{
     }
 }
 
-enum headerTitleString: String{
+enum headerTitleString: String, Codable, Hashable{
     
     case fontSize = "Font-Size"
     case fontWeight = "Weight"

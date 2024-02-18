@@ -7,13 +7,22 @@
 
 import Foundation
 import Observation
+import SwiftData
 
 @Observable
+//@Model
 class BoxData{
     
-    var boxDesign: (background: BackgroundData , text: TitleCustomModel , sfSymbol: SFSymbolData, imageVideoData: ImageVideoData ) = (BackgroundData(), TitleCustomModel(), SFSymbolData(), ImageVideoData())
+    var boxDesign: (background: BackgroundData, text: TitleCustomModel, sfSymbol: SFSymbolData, imageVideoData: ImageVideoData)
     
-    var imageVideoListData: ImageVideoDataList = ImageVideoDataList()
+    var imageVideoListData: ImageVideoDataList
+    
+    init(boxDesign: (background: BackgroundData, text: TitleCustomModel, sfSymbol: SFSymbolData, imageVideoData: ImageVideoData) = (BackgroundData(), TitleCustomModel(), SFSymbolData(), ImageVideoData()),
+         imageVideoListData: ImageVideoDataList = ImageVideoDataList()) {
+        
+        self.boxDesign = boxDesign
+        self.imageVideoListData = imageVideoListData
+    }
     
 }
 

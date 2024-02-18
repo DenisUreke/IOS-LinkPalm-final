@@ -8,16 +8,30 @@
 import Foundation
 import Observation
 import SwiftUI
+import SwiftData
 
 @Observable
+//@Model
 class ImageVideoData: Identifiable{
     
     let id = UUID().uuidString
-    var videoID: URL = URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!
-    var webAdress: String = ""
-    var imageData: ImageData = ImageData()
-    var typeOfBox: ImageVideoEnum = ImageVideoEnum.none // Decides what View to be called from the list writer
-    var textCustomModel: TitleCustomModel = TitleCustomModel()
+    var videoID: URL
+    var webAdress: String
+    var imageData: ImageData
+    var typeOfBox: ImageVideoEnum // Decides what View to be called from the list writer
+    var textCustomModel: TitleCustomModel
+    
+    init(videoID: URL = URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!,
+         webAdress: String = "",
+         imageData: ImageData = ImageData(),
+         typeOfBox: ImageVideoEnum = .none,
+         textCustomModel: TitleCustomModel = TitleCustomModel()) {
+        self.videoID = videoID
+        self.webAdress = webAdress
+        self.imageData = imageData
+        self.typeOfBox = typeOfBox
+        self.textCustomModel = textCustomModel
+    }
     
     func setTypeOfBox(type: ImageVideoEnum){
         self.typeOfBox = type
@@ -47,50 +61,25 @@ class ImageVideoData: Identifiable{
 }
 
 @Observable
+//@Model
 class ImageVideoDataList{
     
-    var backgroundData: BackgroundData = BackgroundData()
-    var listOfEntries: [ImageVideoData] = [ImageVideoData()]
-    
-    init() {
-        // Example URLs - replace these with actual URLs you want to use
-        /*let videoURLs = [
-            URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!,
-            URL(string: "https://www.youtube.com/watch?v=lmiuwcqwT_M")!
-        ]
-        
-        self.listOfEntries = videoURLs.map { url in
-            let item = ImageVideoData()
-            item.videoID = url
-            item.typeOfBox = .video // Set the typeOfBox property to .video
-            // Set other properties as needed
-            return item
-        }
-        
-        // Create an additional entry for type .text
-        let textItem = ImageVideoData()
-        textItem.typeOfBox = .text // Set the typeOfBox property to .text
-        // Set other properties specific to the text entry as needed
-        // For example, setting up a default or specific text, URL, etc.
-        // textItem.webAddress = "https://example.com"
-        // textItem.textCustomModel.text = "Example Text Content"
+    var backgroundData: BackgroundData
+    var listOfEntries: [ImageVideoData]
+    var buttonsForMenu: MenuEnum
 
-        // Append the text entry to the listOfEntries
-        self.listOfEntries.append(textItem)
+    init(backgroundData: BackgroundData = BackgroundData(),
+         listOfEntries: [ImageVideoData] = [],
+         buttonsForMenu: MenuEnum = .background) {
         
-        let imageItem = ImageVideoData()
-        imageItem.typeOfBox = .picturefromweb
-        
-        self.listOfEntries.append(imageItem)*/
-        
+        self.backgroundData = backgroundData
+        self.listOfEntries = listOfEntries
+        self.buttonsForMenu = buttonsForMenu
     }
     
-    var buttonsForMenu : [MenuEnum] = [.text, .image, .video, .background]
-    
-    func addNewItemToBoxList(){
+    func addNewItemToBoxList() {
         self.listOfEntries.append(ImageVideoData())
     }
-    
 }
 
 extension ImageVideoDataList{

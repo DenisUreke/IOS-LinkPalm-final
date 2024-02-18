@@ -10,32 +10,46 @@ import Observation
 import SwiftUI
 import SwiftData
 
-
-
 //@Model
 @Observable
 final class UserDesignModel: Identifiable{
     
-    let ID = UUID().uuidString
-    let userID : String
-    
-    var boxOne = BoxData()
-    var boxTwo = BoxData()
-    var boxThree = BoxData()
-    var boxFour = BoxData()
-    var boxFive = BoxData()
-    var wideBarOne = WideBarData()
-    var wideBarTwo = WideBarData()
-    var typeOfContact : String
-    var personData : PersonDataModel?
-    
-    init(userID: String, typeOfContact: String, personData: PersonDataModel? = nil) {
-        
-        self.userID = userID
-        self.typeOfContact = typeOfContact
-        self.personData = personData
-    }
-    
+     let ID: String
+     let userID: String
+     
+     var boxOne: BoxData
+     var boxTwo: BoxData
+     var boxThree: BoxData
+     var boxFour: BoxData
+     var boxFive: BoxData
+     var wideBarOne: WideBarData
+     var wideBarTwo: WideBarData
+     var typeOfContact: String
+     var personData: PersonDataModel?
+     
+     init(userID: String,
+          typeOfContact: String,
+          boxOne: BoxData = BoxData(),
+          boxTwo: BoxData = BoxData(),
+          boxThree: BoxData = BoxData(),
+          boxFour: BoxData = BoxData(),
+          boxFive: BoxData = BoxData(),
+          wideBarOne: WideBarData = WideBarData(),
+          wideBarTwo: WideBarData = WideBarData(),
+          personData: PersonDataModel? = nil) {
+         
+         self.ID = UUID().uuidString
+         self.userID = userID
+         self.typeOfContact = typeOfContact
+         self.boxOne = boxOne
+         self.boxTwo = boxTwo
+         self.boxThree = boxThree
+         self.boxFour = boxFour
+         self.boxFive = boxFive
+         self.wideBarOne = wideBarOne
+         self.wideBarTwo = wideBarTwo
+         self.personData = personData
+     }
 }
 
 extension UserDesignModel{
@@ -73,7 +87,6 @@ class UserDesignList{
     
     func checkIfContactExists(components: [String]) -> Bool{
         return userList.contains(where: { $0.userID == components[0] })
-        
     }
 }
 

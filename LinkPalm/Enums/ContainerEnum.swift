@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 //---- Type of Container
-enum TypeOfContainer{
+enum TypeOfContainer: Codable, Hashable{
     
     case text
     case image
@@ -19,14 +19,14 @@ enum TypeOfContainer{
 
 //---- Type of WideBar
 
-enum TypeOfWideBar{
+enum TypeOfWideBar: Codable, Hashable{
     case normal
     case list
 }
 
 //---- Color for both fonts and background
 
-enum StandardColors: CaseIterable {
+enum StandardColors: CaseIterable, Codable, Hashable {
     case black, white, gray, red, green, blue
     case orange, yellow, pink, purple, teal
     case indigo, mint, brown, clear

@@ -7,10 +7,16 @@
 
 import Foundation
 import Observation
+import SwiftData
 
 
 @Observable
+//@Model
 class WideBarData{
     
     var wideBarListData = WideBarListData()
+    
+    init(wideBarListData: WideBarListData = WideBarListData()){
+        self.wideBarListData = wideBarListData
+    }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SFSymbolEnum: String, CaseIterable {
+enum SFSymbolEnum: String, CaseIterable, Codable, Hashable {
     case house = "house"
     case heart = "heart"
     case person = "person"
@@ -40,7 +40,7 @@ enum SFSymbolEnum: String, CaseIterable {
     case none = ""
 }
 
-enum Emojis: String, CaseIterable {
+enum Emojis: String, CaseIterable, Hashable, Codable {
     case smile = "😀"
     case laugh = "😂"
     case heart = "❤️"

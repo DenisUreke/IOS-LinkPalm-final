@@ -19,8 +19,10 @@ struct QRScanView: View {
     var body: some View {
         VStack {
             if let scannedCode = scannedCode {
-                SuccessView(userList: $userDesign)
+                SuccessView(userList: $userDesign, message: scannedCode)
             } else {
+                Text("\(scannedCode ?? "")")
+                    .font(.system(size: 36))
                 ButtonDesign(icon: "qrcode.viewfinder", title: "Scan", borderColor: .black, borderThickness: 2, width: 180, height:50)
                     .onTapGesture {
                         isPresentingScanner = true
@@ -38,11 +40,16 @@ struct QRScanView: View {
         case .success(let scanResult):
             let components = scanResult.string.split(separator: " ").map(String.init)
             QRCodeModelList.createContactAndAppend(components: components)
-            userDesign.createAndPopulate(components: components)
-            scannedCode = scanResult.string
+            if userDesign.checkIfContactExists(components: components){
+                scannedCode = "Contact already exists"
+                return
+            }else{
+                userDesign.createAndPopulate(components: components)
+                scannedCode = "New Contact Added"
+            }
             
         case .failure(let error):
-            // Handle the scanning error amybe new screen but do if time is over
+            scannedCode = "Error \(error)"
             print("Scanning Error: \(error)")
         }
     }

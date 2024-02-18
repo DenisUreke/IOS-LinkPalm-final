@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ImageVideoEnum: String{
+enum ImageVideoEnum: String, CaseIterable, Codable, Hashable{
     case none = "A"
     case video = "B"
     case picture = "C"

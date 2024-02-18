@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum EditImageString: String{
+enum EditImageString: String, Codable, Hashable{
     
     case saturation = "Saturation"
     case contrast = "Contrast"
@@ -25,7 +25,7 @@ enum EditImageString: String{
     case xOffsetImage = "Image X-axis"
 }
 
-enum PhotoPickerChoice: Identifiable{
+enum PhotoPickerChoice: Identifiable, Codable, Hashable{
     
     case nothingClicked
     case ImageClicked

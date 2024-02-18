@@ -11,6 +11,7 @@ struct BoxDesignView: View {
     
     @Binding var designData : ImageVideoDataList
     @State var choice = MenuEnum.image
+    @State var navigate : Bool = false
     
     var body: some View {
         VStack() {
@@ -27,6 +28,8 @@ struct DrawMenuForBoxDesignView: View {
     
     @Binding var designData: ImageVideoDataList
     let title: String
+    @State private var selectedOption: MenuEnum? = nil
+
 
     var body: some View {
         NavigationView {
@@ -34,21 +37,30 @@ struct DrawMenuForBoxDesignView: View {
                 Text(title).font(.system(size: 26, weight: .bold))
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(MenuEnum.allCases, id: \.self) { option in
-                        NavigationLink(destination: destinationView(for: option)) {
+                        Button(action: {
+                            if option != .background{
+                                self.designData.addNewItemToBoxList()
+                            }
+                            self.selectedOption = option
+                        }) {
                             drawButtonForBoxDesing(selectedMenuButton: option)
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            self.designData.addNewItemToBoxList()
-                        })
                     }
                 }
+                .navigationTitle(title)
+                .background(
+                    NavigationLink(
+                        destination: destinationView(for: selectedOption),
+                        isActive: .constant(selectedOption != nil),
+                        label: EmptyView.init
+                    ).hidden()
+                )
             }
-            .navigationBarTitle(title, displayMode: .inline)
         }
-        
     }
+
     @ViewBuilder
-    private func destinationView(for option: MenuEnum) -> some View {
+    private func destinationView(for option: MenuEnum?) -> some View {
         switch option {
         case .image:
             PhotoView(designData: $designData.listOfEntries.last!)
@@ -58,8 +70,11 @@ struct DrawMenuForBoxDesignView: View {
             VideoDesignView(designData: $designData.listOfEntries.last!)
         case .background:
             BackgroundDesignView(designData: $designData.backgroundData)
+        default:
+            EmptyView()
         }
     }
+    
 }
 
 struct drawButtonForBoxDesing : View{

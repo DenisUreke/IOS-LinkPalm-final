@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SuccessView: View {
     @Binding var userList: UserDesignList
+    let message: String
     
 
     var body: some View {
@@ -16,7 +17,7 @@ struct SuccessView: View {
             
             if let urlString = userList.userList.last?.personData?.result.picture.large,
                let url = URL(string: urlString) {
-                Text("New Contact Added")
+                Text("\(message)")
                     .padding(.bottom, 100)
                     .font(.largeTitle)
                 AsyncImage(url: url) { phase in

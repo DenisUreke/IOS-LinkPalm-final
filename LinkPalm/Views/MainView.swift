@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
-    
+    //@Environment(\.modelContext) var modelContext
+    //@Query private var savedUser: [UserDesignModel]
     @State var titleData: UserDesignList = UserDesignList()
     @State var QRmodel: QRCodeModel = QRCodeModel()
     @State var user: UserDesignModel = UserDesignModel(userID: "1234", typeOfContact: "person")

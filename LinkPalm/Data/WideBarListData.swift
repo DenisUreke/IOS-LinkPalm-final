@@ -8,44 +8,97 @@
 import Foundation
 import Observation
 import SwiftUI
+import SwiftData
 
+//@Model
 @Observable
 class WideBarListDataicons: Identifiable{
     
-    let id = UUID().uuidString
-    var sfIcon: SFSymbolEnum = .none
-    var isWebLink: Bool = false
-    var isVideoLink: Bool = false
-    var webAddress: String = ""
-    var iconSize: Double = 24
-    var iconColor: StandardColors = .black
-    var iconOpacity: Double = 1
-    var backgroundColor: StandardColors = .gray
-    var backgroundColorTwo: StandardColors = .clear
-    var backgroundOpacity: Double = 1
-    var gradientIsClicked: Bool = false
-    var text: String = ""
+    let id: String
+    var sfIcon: SFSymbolEnum
+    var isWebLink: Bool
+    var isVideoLink: Bool
+    var webAddress: String
+    var iconSize: Double
+    var iconColor: StandardColors
+    var iconOpacity: Double
+    var backgroundColor: StandardColors
+    var backgroundColorTwo: StandardColors
+    var backgroundOpacity: Double
+    var gradientIsClicked: Bool
+    var text: String
     
-    var selectedSize: Double = 24
-    var selectedStyle: FontStyle = .defaults
-    var selectedWeight: FontWeight = .regularWeight
-    var selectedColorBackground: StandardColors = .clear
-    var selectedColorBackgroundTwo: StandardColors = .clear
-    var selectedColorFont: StandardColors = .black
-    var selectedOpacity: Double = 1
-    var shadowIsClicked = false
-    var selectedFontOpacity: Double = 1
-    var selectedAlignment: FontAlignment = .alignmentCenter
-    var selectedTextAlignment: FontTextAlignment = .TextAlignmentLeft
+    var selectedSize: Double
+    var selectedStyle: FontStyle
+    var selectedWeight: FontWeight
+    var selectedColorBackground: StandardColors
+    var selectedColorBackgroundTwo: StandardColors
+    var selectedColorFont: StandardColors
+    var selectedOpacity: Double
+    var shadowIsClicked: Bool
+    var selectedFontOpacity: Double
+    var selectedAlignment: FontAlignment
+    var selectedTextAlignment: FontTextAlignment
     
-    let sizeOptions: [FontSize] = [.title1, .title2, .title3]
-    let styleOptions: [FontStyle] = [.defaults, .monoSpaced, .serif]
-    let weightOptions: [FontWeight] = [.regularWeight, .semiBoldWeight, .boldWeight]
-    let alignmentOptions: [FontAlignment] = [.alignmentCenter, .alignmentLeft, .alignmentRight]
-    let textAlignmentOptions: [FontTextAlignment] = [.TextAlignmentLeft, .TextAlignmentCenter, .TextAlignmentRight]
+    let sizeOptions = [FontSize.title1, .title2, .title3]
+    let styleOptions = [FontStyle.defaults, .monoSpaced, .serif]
+    let weightOptions = [FontWeight.regularWeight, .semiBoldWeight, .boldWeight]
+    let alignmentOptions = [FontAlignment.alignmentCenter, .alignmentLeft, .alignmentRight]
+    let textAlignmentOptions = [FontTextAlignment.TextAlignmentLeft, .TextAlignmentCenter, .TextAlignmentRight]
+
+    init(sfIcon: SFSymbolEnum = .none,
+         isWebLink: Bool = false,
+         isVideoLink: Bool = false,
+         webAddress: String = "",
+         iconSize: Double = 24,
+         iconColor: StandardColors = .black,
+         iconOpacity: Double = 1,
+         backgroundColor: StandardColors = .gray,
+         backgroundColorTwo: StandardColors = .clear,
+         backgroundOpacity: Double = 1,
+         gradientIsClicked: Bool = false,
+         text: String = "",
+         selectedSize: Double = 24,
+         selectedStyle: FontStyle = .defaults,
+         selectedWeight: FontWeight = .regularWeight,
+         selectedColorBackground: StandardColors = .clear,
+         selectedColorBackgroundTwo: StandardColors = .clear,
+         selectedColorFont: StandardColors = .black,
+         selectedOpacity: Double = 1,
+         shadowIsClicked: Bool = false,
+         selectedFontOpacity: Double = 1,
+         selectedAlignment: FontAlignment = .alignmentCenter,
+         selectedTextAlignment: FontTextAlignment = .TextAlignmentLeft) {
+        
+        self.id = UUID().uuidString
+        self.sfIcon = sfIcon
+        self.isWebLink = isWebLink
+        self.isVideoLink = isVideoLink
+        self.webAddress = webAddress
+        self.iconSize = iconSize
+        self.iconColor = iconColor
+        self.iconOpacity = iconOpacity
+        self.backgroundColor = backgroundColor
+        self.backgroundColorTwo = backgroundColorTwo
+        self.backgroundOpacity = backgroundOpacity
+        self.gradientIsClicked = gradientIsClicked
+        self.text = text
+        self.selectedSize = selectedSize
+        self.selectedStyle = selectedStyle
+        self.selectedWeight = selectedWeight
+        self.selectedColorBackground = selectedColorBackground
+        self.selectedColorBackgroundTwo = selectedColorBackgroundTwo
+        self.selectedColorFont = selectedColorFont
+        self.selectedOpacity = selectedOpacity
+        self.shadowIsClicked = shadowIsClicked
+        self.selectedFontOpacity = selectedFontOpacity
+        self.selectedAlignment = selectedAlignment
+        self.selectedTextAlignment = selectedTextAlignment
+    }
 
     init(copying icon: WideBarListDataicons) {
         
+        self.id = UUID().uuidString
         self.sfIcon = icon.sfIcon
         self.isWebLink = false
         self.webAddress = ""
@@ -57,6 +110,7 @@ class WideBarListDataicons: Identifiable{
         self.backgroundOpacity = icon.backgroundOpacity
         self.gradientIsClicked = icon.gradientIsClicked
         self.text = icon.text
+        self.isVideoLink = false
         
         self.selectedSize = icon.selectedSize
         self.selectedStyle = icon.selectedStyle
@@ -71,7 +125,6 @@ class WideBarListDataicons: Identifiable{
         self.selectedTextAlignment = icon.selectedTextAlignment
     }
 
-    init() { }
 }
 
 extension WideBarListDataicons{
@@ -161,12 +214,19 @@ extension WideBarListDataicons{
     
 }
 
+
+//@Model
 @Observable
 class WideBarListData: Identifiable{
     
-    var buttonCount: Int = 1
+    var id = UUID()
+    var buttonCount: Int
+    var listOfIcons: [WideBarListDataicons]
     
-        var listOfIcons: [WideBarListDataicons] = [WideBarListDataicons()]
+    init(buttonCount: Int = 1, listOfIcons: [WideBarListDataicons] = [WideBarListDataicons()]) {
+        self.buttonCount = buttonCount
+        self.listOfIcons = listOfIcons
+    }
     
     func addNewButtonToWideList(){
         

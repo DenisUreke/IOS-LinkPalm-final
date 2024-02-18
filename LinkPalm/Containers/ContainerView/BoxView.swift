@@ -68,8 +68,10 @@ struct ImageVideoListView: View {
                 VStack{
                     getDynamicView(imageVideoData: $list.listOfEntries[index], type: entry.typeOfBox)
                         .background(list.backgroundData.gradientIsClicked ? Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]).opacity(list.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]).opacity(list.backgroundData.selectedBackgroundOpacity) )
-                    
-                    if isEditMode && list.listOfEntries.count >= 2{
+                
+                    }
+                if isEditMode{
+                    HStack{
                         Button(action: {
                             if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
                                 list.listOfEntries.remove(at: atIndex)
@@ -78,9 +80,12 @@ struct ImageVideoListView: View {
                         {
                             ButtonDesign(icon: "trash.square", title: "Delete", borderColor: .black, borderThickness: 2, width: 180, height: 50)
                         }
+                        
+                        /*if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
+                            Text("TESTING!!!! \(list.listOfEntries[atIndex].textCustomModel.selectedSize)")
+                            DynamicButtonForEditing(data: $list.listOfEntries[atIndex])
+                        }*/
                     }
-                    
-                    //DynamicButtonForEditing(list: $list, current: $list.listOfEntries[index])
                 }
             }
             .listRowBackground(list.backgroundData.selectedColorBackgroundOne.color)
@@ -115,8 +120,7 @@ enum ViewState {
 
 struct DynamicButtonForEditing: View {
     
-    @Binding var list: ImageVideoDataList
-    @Binding var current: ImageVideoData
+    @Binding var data: ImageVideoData
     @State private var currentState: ViewState = .viewD
     
     var body: some View {
@@ -124,7 +128,8 @@ struct DynamicButtonForEditing: View {
         VStack {
 
             Button(action: {
-                switch current.typeOfBox {
+                
+                switch data.typeOfBox {
                 case .none:
                     currentState = .viewD
                 case .picture, .picturefromweb:
@@ -134,26 +139,24 @@ struct DynamicButtonForEditing: View {
                 case .video:
                     currentState = .viewC
                 }
-            })
-            {
+            }) {
                 ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2, width: 180, height:50)
             }
-            Text("\(current.typeOfBox.rawValue)")
             getView(for: currentState)
         }
     }
     
     @ViewBuilder
-    func getView(for state: ViewState) -> some View {
+    private func getView(for state: ViewState) -> some View {
         switch state {
         case .viewA:
-            PhotoView(designData: $current)
+            PhotoView(designData: $data)
         case .viewB:
-            Text("View B") // Replace with your actual view
+            Text("Text Editing View") // Placeholder for your text editing view
         case .viewC:
-            VideoDesignView(designData: $current)
+            VideoDesignView(designData: $data)
         case .viewD:
-            Text("View D") // Assume a new case for `.none`
+            EmptyView() // Placeholder for a default or empty state view
         }
     }
 }
