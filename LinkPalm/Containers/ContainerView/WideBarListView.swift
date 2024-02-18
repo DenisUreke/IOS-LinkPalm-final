@@ -16,6 +16,7 @@ struct WideBarListView: View {
     @Binding var userDesign: WideBarListData
     @State private var webURL: WebURL? = nil
     @State private var videoURL: WebURL? = nil
+    @Binding var isEditMode : Bool
 
     var body: some View {
         GeometryReader { geometry in
@@ -24,15 +25,25 @@ struct WideBarListView: View {
                     ForEach(userDesign.listOfIcons) { item in
                         // Conditional rendering based on isWebLink
                         if item.isWebLink {
-                            Button(action: {
-                                self.webURL = WebURL(urlString: item.webAddress)
-                            }) {
+                            if !isEditMode{
+                                Button(action: {
+                                    self.webURL = WebURL(urlString: item.webAddress)
+                                }) {
+                                    imageContent(for: item, in: geometry)
+                                }
+                            }
+                            else{
                                 imageContent(for: item, in: geometry)
                             }
                         }else if item.isVideoLink {
-                            Button(action: {
-                                self.videoURL = WebURL(urlString: item.webAddress)
-                            }) {
+                            if !isEditMode{
+                                Button(action: {
+                                    self.videoURL = WebURL(urlString: item.webAddress)
+                                }) {
+                                    imageContent(for: item, in: geometry)
+                                }
+                            }
+                            else{
                                 imageContent(for: item, in: geometry)
                             }
                         }else {

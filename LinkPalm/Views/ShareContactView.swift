@@ -10,7 +10,7 @@ import SwiftUI
 struct ShareContactView: View {
 
     var user: UserDesignModel
-    var userList: UserDesignList
+    @Binding var userList: UserDesignList
     var QRmodel: QRCodeModel
     
     var body: some View {
@@ -32,9 +32,9 @@ struct ShareContactView: View {
         case .create:
             QRCreateView(personID: user)
         case .read:
-            QRScanView(QRCodeModelList: QRmodel, userDesign: userList)
+            QRScanView(QRCodeModelList: QRmodel, userDesign: $userList)
         case .peer:
-            QRScanView(QRCodeModelList: QRmodel, userDesign: userList)
+            QRScanView(QRCodeModelList: QRmodel, userDesign: $userList)
         }
     }
     

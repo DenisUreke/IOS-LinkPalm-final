@@ -12,10 +12,11 @@ struct WideBarEditView: View {
     @Binding var userDesign : WideBarListData
     @State var choiceClicked : WideListViewEnumChoice = .none
     @State var isIcon: Bool = true
+    @State var isEditMode: Bool = true
     
     var body: some View {
         VStack{
-            WideBarListView(userDesign: $userDesign)
+            WideBarListView(userDesign: $userDesign, isEditMode: $isEditMode)
                 .frame(height: 65)
             
             WideBarEditViewAddRemoveButton(userDesign: $userDesign)

@@ -14,14 +14,12 @@ struct QRScanView: View {
     @State private var isPresentingScanner = false
     @State private var scannedCode: String?
     var QRCodeModelList : QRCodeModel
-    
-// To fake a proper API
-    var userDesign: UserDesignList
+    @Binding var userDesign: UserDesignList
 
     var body: some View {
         VStack {
             if let scannedCode = scannedCode {
-                Text("Scanned code: \(scannedCode)")
+                SuccessView(userList: $userDesign)
             } else {
                 ButtonDesign(icon: "qrcode.viewfinder", title: "Scan", borderColor: .black, borderThickness: 2, width: 180, height:50)
                     .onTapGesture {

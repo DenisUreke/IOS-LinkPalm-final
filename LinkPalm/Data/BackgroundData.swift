@@ -20,7 +20,7 @@ class BackgroundData {
     var selectedBorderColor: StandardColors = .black
     var selectedBorderWidth: Double = 0
     var imageData = ImageData()
-    var selectedCornerRadius: Double = 0
+    var selectedCornerRadius: Double = 8
     
 }
 

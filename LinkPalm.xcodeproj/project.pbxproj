@@ -127,6 +127,9 @@
 		54BD8E342B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
 		54BD8E352B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
 		54BD8E362B777EE700B2BC26 /* BackgroundData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD8E332B777EE700B2BC26 /* BackgroundData.swift */; };
+		54BF3CBA2B82123E00E30AAC /* CardViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BF3CB92B82123E00E30AAC /* CardViewEnum.swift */; };
+		54BF3CBB2B82123E00E30AAC /* CardViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BF3CB92B82123E00E30AAC /* CardViewEnum.swift */; };
+		54BF3CBC2B82123E00E30AAC /* CardViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BF3CB92B82123E00E30AAC /* CardViewEnum.swift */; };
 		54C1813A2B7E16F50055138A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181392B7E16F40055138A /* MainView.swift */; };
 		54C1813B2B7E16F50055138A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181392B7E16F40055138A /* MainView.swift */; };
 		54C1813C2B7E16F50055138A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C181392B7E16F40055138A /* MainView.swift */; };
@@ -230,6 +233,7 @@
 		54BBE2382B8159F1005BAC08 /* ActorDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDataFetcher.swift; sourceTree = "<group>"; };
 		54BBE23C2B816E5F005BAC08 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		54BD8E332B777EE700B2BC26 /* BackgroundData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundData.swift; sourceTree = "<group>"; };
+		54BF3CB92B82123E00E30AAC /* CardViewEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewEnum.swift; sourceTree = "<group>"; };
 		54C181392B7E16F40055138A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		54C1813D2B7E2B990055138A /* QRCodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeData.swift; sourceTree = "<group>"; };
 		54C181412B7E2E3D0055138A /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
@@ -464,6 +468,7 @@
 				543266082B7A453200574EF5 /* WideListViewEnum.swift */,
 				543266142B7A73B400574EF5 /* ImageVideoEnum.swift */,
 				548581E32B7AD8380000BFD9 /* BoxDesignEnum.swift */,
+				54BF3CB92B82123E00E30AAC /* CardViewEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -651,6 +656,7 @@
 				543266152B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
 				549409412B73F37300F9836F /* ImageUrlData.swift in Sources */,
 				543266052B7A293800574EF5 /* VideoView.swift in Sources */,
+				54BF3CBA2B82123E00E30AAC /* CardViewEnum.swift in Sources */,
 				549409542B73FCF500F9836F /* PersonModel.swift in Sources */,
 				54BBE2392B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */,
 				54C76FF32B762E03005EA680 /* TextConfigEnum.swift in Sources */,
@@ -701,6 +707,7 @@
 				54BA43142B77965C0076E23D /* PhotoView.swift in Sources */,
 				546A92FA2B77E9BC005AD2DC /* UserDesignModel.swift in Sources */,
 				54C76FF42B762E03005EA680 /* TextConfigEnum.swift in Sources */,
+				54BF3CBB2B82123E00E30AAC /* CardViewEnum.swift in Sources */,
 				543266162B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
 				548581E52B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				549409422B73F37300F9836F /* ImageUrlData.swift in Sources */,
@@ -758,6 +765,7 @@
 				54BBE23B2B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */,
 				5412D6982B758B9800D6AF9B /* TitleCustomModel.swift in Sources */,
 				549409522B73F76200F9836F /* DataDownloader.swift in Sources */,
+				54BF3CBC2B82123E00E30AAC /* CardViewEnum.swift in Sources */,
 				549409292B73C2E100F9836F /* LinkPalmUITests.swift in Sources */,
 				54D462F92B7CDD9C006C27F4 /* QRScanView.swift in Sources */,
 				543266172B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,

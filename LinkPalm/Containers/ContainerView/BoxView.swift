@@ -10,15 +10,25 @@ import SwiftUI
 struct BoxView: View {
     
     @Binding var titleData : ImageVideoDataList
+    @State var isEditMode : Bool = false
     
     var body: some View {
         VStack(spacing: 0){
-            ImageVideoListView(list: $titleData)
+            ImageVideoListView(list: $titleData, isEditMode: $isEditMode)
         }
         .padding(.horizontal, -20) 
         .border(titleData.backgroundData.selectedBorderColor.color, width: titleData.backgroundData.selectedBorderWidth)
         .background(titleData.backgroundData.gradientIsClicked ? Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundTwo.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundOne.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) )
         .cornerRadius(titleData.backgroundData.selectedCornerRadius)
+        .toolbar {
+            drawToolBar()
+        }
+        
+        if isEditMode{
+            NavigationLink(destination: BoxDesignView(designData: $titleData)){
+                ButtonDesign(icon: "plus.app", title: "Add", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+            }
+        }
         
         /*NavigationLink(destination: BoxDesignView(designData: $titleData)){
 
@@ -32,11 +42,25 @@ struct BoxView: View {
                     .cornerRadius(10)
         }*/
     }
+    private func drawToolBar()-> some ToolbarContent{
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+            Menu {
+                Button(action: {
+                    self.isEditMode.toggle()
+                }) {
+                    Label(isEditMode ? "Exit Edit Mode" : "Edit Mode", systemImage: isEditMode ? "xmark.circle" : "square.and.pencil")
+                }
+            } label: {
+                Label("Menu", systemImage: "line.3.horizontal")
+            }
+        }
+    }
 }
 
 struct ImageVideoListView: View {
     
     @Binding var list : ImageVideoDataList
+    @Binding var isEditMode : Bool
     
     var body: some View {
         List {
@@ -45,14 +69,16 @@ struct ImageVideoListView: View {
                     getDynamicView(imageVideoData: $list.listOfEntries[index], type: entry.typeOfBox)
                         .background(list.backgroundData.gradientIsClicked ? Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]).opacity(list.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]).opacity(list.backgroundData.selectedBackgroundOpacity) )
                     
-                    /*Button(action: {
-                        if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
-                            list.listOfEntries.remove(at: atIndex)
+                    if isEditMode && list.listOfEntries.count >= 2{
+                        Button(action: {
+                            if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
+                                list.listOfEntries.remove(at: atIndex)
+                            }
+                        })
+                        {
+                            ButtonDesign(icon: "trash.square", title: "Delete", borderColor: .black, borderThickness: 2, width: 180, height: 50)
                         }
-                    })
-                    {
-                        ButtonDesign(icon: "trash.square", title: "Delete", borderColor: .black, borderThickness: 2)
-                    }*/
+                    }
                     
                     //DynamicButtonForEditing(list: $list, current: $list.listOfEntries[index])
                 }
@@ -204,7 +230,7 @@ struct DynamicPictureView: View {
 struct DynamicPictureViewFromWeb: View {
     
     @Binding var imageData: ImageVideoData
-
+ 
     var body: some View {
         AsyncImage(url: imageData.imageData.imageURL) { phase in
             switch phase {

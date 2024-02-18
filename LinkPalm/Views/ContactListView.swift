@@ -15,7 +15,7 @@ struct ContactsListView: View {
     var body: some View {
         List {
             ForEach(designList.userList.indices, id: \.self) { index in
-                NavigationLink(destination: CardView(user: $designList.userList[index], QRCodeModelList: $QRList)) {
+                NavigationLink(destination: CardView(user: $designList.userList[index])) {
                     drawButtonForContactListView(contact: designList.userList[index])
                         .padding(.vertical, -12)
                 }

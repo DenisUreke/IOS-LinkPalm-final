@@ -9,13 +9,8 @@ import SwiftUI
 
 struct CardView: View {
     
-    @State var textObject = QScreenTxtModel()
-    @State var test = QScreenTxtModel()
     @State var isEditMode: Bool = false
-    
-    @State var testing = UserDesignList()
     @Binding var user : UserDesignModel
-    @Binding var QRCodeModelList : QRCodeModel
     
     var body: some View {
         
@@ -24,119 +19,53 @@ struct CardView: View {
                 
                 //WideBar 1
                 if isEditMode{
-                    NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarOne.wideBarListData)){
-                        WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1))
-                            .fixedSize()
-                            .clipped()
-                    }
+                    openView(.widebar, boxData: nil, imageVideoList: nil, wideBarListData: $user.wideBarOne.wideBarListData, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.1, hTwo: 5)
                 }else{
-                    WideBarListView(userDesign: $user.wideBarOne.wideBarListData)
-                        .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1))
-                        .fixedSize()
-                        .clipped()
+                    
+                    openView(.cleanWideBar, boxData: nil, imageVideoList: nil, wideBarListData: $user.wideBarOne.wideBarListData, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.1, hTwo: 5)
                 }
                 // Box 1, 2
                 HStack(spacing: 5) {
                     if isEditMode{
-                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
-                                .frame(width: (geometry.size.width * 0.6) - 15, height: (geometry.size.height * 0.25) - 15)
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.cardView, boxData: $user.boxOne, imageVideoList: $user.boxOne.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.6, wTwo: 15, hOne: 0.25, hTwo: 15)
                     }
                     else{
-                        NavigationLink(destination: BoxView(titleData: $user.boxOne.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxOne, userDesign: $user.boxOne.imageVideoListData)
-                                .frame(width: (geometry.size.width * 0.6) - 15, height: (geometry.size.height * 0.25) - 15)
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.box, boxData: $user.boxOne, imageVideoList: $user.boxOne.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.6, wTwo: 15, hOne: 0.25, hTwo: 15)
                     }
                     if isEditMode{
-                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxTwo, userDesign: $user.boxTwo.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxTwo, userDesign: $user.boxTwo.imageVideoListData)
-                                .frame(width: geometry.size.width * 0.4, height: (geometry.size.height * 0.25) - 15)
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.cardView, boxData: $user.boxTwo, imageVideoList: $user.boxTwo.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.4, wTwo: 0, hOne: 0.25, hTwo: 15)
                     }
                     else{
-                        NavigationLink(destination: BoxView(titleData: $user.boxTwo.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxTwo, userDesign: $user.boxTwo.imageVideoListData)
-                                .frame(width: geometry.size.width * 0.4, height: (geometry.size.height * 0.25) - 15)
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.box, boxData: $user.boxTwo, imageVideoList: $user.boxTwo.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.4, wTwo: 0, hOne: 0.25, hTwo: 15)
                     }
                 }
                 // WideBar 2
                 if isEditMode{
-                    NavigationLink(destination: WideBarEditView(userDesign: $user.wideBarTwo.wideBarListData)){
-                        WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
-                            .fixedSize()
-                            .clipped()
-                    }
+                    openView(.widebar, boxData: nil, imageVideoList: nil, wideBarListData: $user.wideBarTwo.wideBarListData, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.1, hTwo: 5)
                 }else{
-                    WideBarListView(userDesign: $user.wideBarTwo.wideBarListData)
-                        .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.1) - 5)
-                        .fixedSize()
-                        .clipped()
+                    openView(.cleanWideBar, boxData: nil, imageVideoList: nil, wideBarListData: $user.wideBarTwo.wideBarListData, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.1, hTwo: 5)
                 }
-                
                 // Box 3, 4
                 HStack(spacing: 5) {
                     if isEditMode{
-                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxThree, userDesign: $user.boxThree.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxThree, userDesign: $user.boxThree.imageVideoListData)
-                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.cardView, boxData: $user.boxThree, imageVideoList: $user.boxThree.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.5, wTwo: 7.5, hOne: 0.25, hTwo: 15)
                     }
                     else{
-                        NavigationLink(destination: BoxView(titleData: $user.boxThree.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxThree, userDesign: $user.boxThree.imageVideoListData)
-                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.box, boxData: $user.boxThree, imageVideoList: $user.boxThree.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.5, wTwo: 7.5, hOne: 0.25, hTwo: 15)
                     }
                     if isEditMode{
-                        NavigationLink(destination: CardViewDesignBox(boxData: $user.boxFour, userDesign: $user.boxFour.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxFour, userDesign: $user.boxFour.imageVideoListData)
-                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.cardView, boxData: $user.boxFour, imageVideoList: $user.boxFour.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.5, wTwo: 7.5, hOne: 0.25, hTwo: 15)
                     }
                     else{
-                        NavigationLink(destination: BoxView(titleData: $user.boxFour.imageVideoListData)){
-                            CardViewBox(boxData: $user.boxFour, userDesign: $user.boxFour.imageVideoListData)
-                                .frame(width: (geometry.size.width * 0.5) - 7.5, height: (geometry.size.height * 0.25) - 15 )
-                                .fixedSize()
-                                .clipped()
-                        }
+                        openView(.box, boxData: $user.boxFour, imageVideoList: $user.boxFour.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.5, wTwo: 7.5, hOne: 0.25, hTwo: 15)
                     }
                 }
                 // Box 5
                 if isEditMode{
-                    NavigationLink(destination: CardViewDesignBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)){
-                        CardViewBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.35) - 20)
-                            .fixedSize()
-                            .clipped()
-                    }
+                    openView(.cardView, boxData: $user.boxFive, imageVideoList: $user.boxFive.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.35, hTwo: 20)
                 }
                 else{
-                    NavigationLink(destination: BoxView(titleData: $user.boxFive.imageVideoListData)){
-                        CardViewBox(boxData: $user.boxFive, userDesign: $user.boxFive.imageVideoListData)
-                            .frame(width: (geometry.size.width * 1) - 10, height: (geometry.size.height * 0.35) - 20)
-                            .fixedSize()
-                            .clipped()
-                    }
+                    openView(.box, boxData: $user.boxFive, imageVideoList: $user.boxFive.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.35, hTwo: 20)
                 }
                 
             }
@@ -146,6 +75,38 @@ struct CardView: View {
             .padding(5)
         }
     }
+    private func openView(_ type: CardViewEnum, boxData: Binding<BoxData>?, imageVideoList: Binding<ImageVideoDataList>?, wideBarListData: Binding<WideBarListData>?, isEditMode: Binding<Bool>, geometry: GeometryProxy, wOne: Double, wTwo: Double, hOne: Double, hTwo: Double) -> AnyView{
+        
+        switch type {
+        case .box:
+            return AnyView( NavigationLink(destination: BoxView(titleData: imageVideoList!)){
+                CardViewBox(boxData: boxData!, userDesign: imageVideoList!)
+                    .frame(width: (geometry.size.width * wOne) - wTwo, height: (geometry.size.height * hOne) - hTwo)
+                    .fixedSize()
+                    .clipped()
+            })
+        case .widebar:
+            return AnyView(NavigationLink(destination: WideBarEditView(userDesign: wideBarListData!)){
+                WideBarListView(userDesign: wideBarListData!, isEditMode: isEditMode)
+                    .frame(width: (geometry.size.width * wOne) - wTwo, height: (geometry.size.height * hOne) - hTwo)
+                    .fixedSize()
+                    .clipped()
+            })
+        case .cardView:
+            return AnyView(NavigationLink(destination: CardViewDesignBox(boxData: boxData!, userDesign: imageVideoList!)){
+                CardViewBox(boxData: boxData!, userDesign: imageVideoList!)
+                    .frame(width: (geometry.size.width * wOne) - wTwo, height: (geometry.size.height * hOne) - hTwo)
+                    .fixedSize()
+                    .clipped()
+            })
+        case .cleanWideBar:
+            return AnyView(WideBarListView(userDesign: wideBarListData!, isEditMode: isEditMode)
+                .frame(width: (geometry.size.width * wOne) - wTwo, height: (geometry.size.height * hOne) - hTwo)
+                .fixedSize()
+                .clipped()
+        )}
+    }
+    
     private func drawToolBar()-> some ToolbarContent{
         ToolbarItemGroup(placement: .navigationBarTrailing) {
             Menu {
@@ -154,22 +115,9 @@ struct CardView: View {
                 }) {
                     Label(isEditMode ? "Exit Edit Mode" : "Edit Mode", systemImage: isEditMode ? "xmark.circle" : "square.and.pencil")
                 }
-                Button("Save", action: {
-                    // Your save action here
-                })
             } label: {
                 Label("Menu", systemImage: "line.3.horizontal")
             }
         }
     }
 }
-
-/*Button(action:{
-    testing.createAndPopulateUserDesign()
-}){
-    ButtonDesign(icon: "person", title: "test", borderColor: .blue, borderThickness: 2, width: 180, height: 60)
-}
-
-#Preview {
-    TemplateOneView()
-}*/

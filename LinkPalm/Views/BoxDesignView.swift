@@ -153,6 +153,7 @@ struct ButtonDesign: View {
                 .frame(width: 50)
                 .font(.system(size: 16))
                 .foregroundStyle(Color.black)
+                .offset(x: -10)
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 10)
