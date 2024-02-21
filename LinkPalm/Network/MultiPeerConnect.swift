@@ -9,12 +9,6 @@ import MultipeerConnectivity
 import Observation
 import os
 
-enum PasswordMatch{
-    case none
-    case match
-    case nomatch
-}
-
 @Observable
 class ExchangeSession: NSObject, ObservableObject {
     
@@ -24,7 +18,7 @@ class ExchangeSession: NSObject, ObservableObject {
     let serviceBrowser: MCNearbyServiceBrowser
     let session: MCSession
     var password: String
-    var passwordsMatch: PasswordMatch = .none
+    var passwordsDoNotMatch: Bool = false
     var connectedPeers: [MCPeerID] = []
     var userID: String = ""
     var scannedCode: String?
@@ -68,6 +62,10 @@ class ExchangeSession: NSObject, ObservableObject {
                 print("Error for sending: \(error)")
             }
         }
+    }
+    func resetpasswordsDoNotMatch(newPassword: String){
+        self.password = newPassword
+        self.passwordsDoNotMatch = false
     }
 }
 
@@ -131,7 +129,7 @@ extension ExchangeSession: MCSessionDelegate {
                         }
                     }
                     else{
-                        self.passwordsMatch = .nomatch
+                        self.passwordsDoNotMatch = true
                     }
                 }
             }
