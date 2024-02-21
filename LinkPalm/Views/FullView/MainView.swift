@@ -31,13 +31,13 @@ struct MainView: View {
         switch menu {
         case .person:
             ContactsListView(QRList: $QRmodel, designList: $titleData)
-                .navigationTitle("contacts")
+                .navigationTitle("Contacts")
         case .share:
             ShareContactView(user: user, userList: $titleData, QRmodel: QRmodel)
-                .navigationTitle("share contact")
+                .navigationTitle("Share Contact")
         case .yourProfile:
             CardView(user: $user)
-                .navigationTitle("your profile")
+                .navigationTitle("\(user.personData?.result.name.first ?? "User") \(user.personData?.result.name.last ?? "")")
         }
     }
 }

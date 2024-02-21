@@ -9,37 +9,39 @@ import SwiftUI
 
 struct WideBarEditView: View {
     
-    @Binding var userDesign : WideBarListData
-    @State var choiceClicked : WideListViewEnumChoice = .none
+    @Binding var userDesign: WideBarListData
+    @State var choiceClicked: WideListViewEnumChoice = .none
     @State var isIcon: Bool = true
     @State var isEditMode: Bool = true
+    @State var index: Int = 0
     
     var body: some View {
         VStack{
-            WideBarListView(userDesign: $userDesign, isEditMode: $isEditMode)
+            
+            WideBarListViewForEdit(userDesign: $userDesign, indexOfButton: $index)
                 .frame(height: 65)
             
-            WideBarEditViewAddRemoveButton(userDesign: $userDesign)
+            WideBarEditViewAddRemoveButton(userDesign: $userDesign, index: $index)
             
             ScrollView(showsIndicators: false){
                 
                 drawToggleButtons(icon: "popcorn.circle", icon2: "textformat", title: "Icons", title2: "Text", toggleBool: $isIcon)
                 
                 if isIcon{
-                    WideBarEditViewIconChoice(userDesign: $userDesign)
+                    WideBarEditViewIconChoice(userDesign: $userDesign, index: $index)
                 }else{
-                    DrawTextFieldForWideBar(title: $userDesign.listOfIcons.last!.text)
-                    configureWideBarTextObjects(titleData: $userDesign.listOfIcons.last!)
+                    DrawTextFieldForWideBar(title: $userDesign.listOfIcons[index].text)
+                    configureWideBarTextObjects(titleData: $userDesign.listOfIcons[index])
                 }
                 Divider()
-                WideBarEditViewBackGroundChoice(userDesign: $userDesign)
+                WideBarEditViewBackGroundChoice(userDesign: $userDesign, index: $index)
                 Divider()
-                if userDesign.checkIfLinkExists(){  WideBarEditClearButton(userDesign: $userDesign, choiceClicked: $choiceClicked)
+                if userDesign.checkIfLinkExists(){  WideBarEditClearButton(userDesign: $userDesign, choiceClicked: $choiceClicked, index: $index)
                     Divider()
                 }
-                WideBarEditSetWebAddress(userDesign: $userDesign, choiceClicked: $choiceClicked)
+                WideBarEditSetWebAddress(userDesign: $userDesign, choiceClicked: $choiceClicked, index: $index)
                 Divider()
-                WideBarEditSetVideoAddress(userDesign: $userDesign, choiceClicked: $choiceClicked)
+                WideBarEditSetVideoAddress(userDesign: $userDesign, choiceClicked: $choiceClicked, index: $index)
             }
         }
         .padding()
@@ -75,19 +77,29 @@ struct drawToggleButtons: View{
 
 struct WideBarEditViewAddRemoveButton: View{
     
-    @Binding var userDesign : WideBarListData
+    @Binding var userDesign: WideBarListData
+    @Binding var index: Int
     
     var body: some View {
         
         Divider()
         
         HStack{
-            Button(action: {userDesign.addNewButtonToWideList()}){
+            Button(action: {
+                index = userDesign.returnCorrectIndexAfterAdding()
+            }
+            ){
                 Image(systemName: "plus.square")
                     .font(.system(size: 36))
                     .foregroundColor(Color.black)
             }
-            Button(action: {userDesign.removeButtonFromWideList()}){
+            Button(action: {
+                if userDesign.buttonCount > 1{
+                    index = userDesign.buttonCount - 2
+                    userDesign.removeButtonFromWideList()
+                }
+            }
+            ){
                 Image(systemName: "minus.square")
                     .font(.system(size: 36))
                     .foregroundColor(Color.black)
@@ -100,42 +112,44 @@ struct WideBarEditViewAddRemoveButton: View{
 struct WideBarEditViewIconChoice: View{
     
     @Binding var userDesign : WideBarListData
+    @Binding var index: Int
     
     var body: some View {
         
-        DrawSFSymbolsChoices(selectedSFSymbol: $userDesign.listOfIcons.last!.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
+        DrawSFSymbolsChoices(selectedSFSymbol: $userDesign.listOfIcons[index].sfIcon , title: headerTitleString.sfSymbolList.rawValue)
         Text(headerTitleString.iconSize.rawValue)
             .font(.system(size: 26, weight: .bold))
-        Slider(value: $userDesign.listOfIcons.last!.iconSize, in: 10...36 )
+        Slider(value: $userDesign.listOfIcons[index].iconSize, in: 10...36 )
         
-        DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons.last!.iconColor, title: headerTitleString.iconColor.rawValue)
+        DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons[index].iconColor, title: headerTitleString.iconColor.rawValue)
         
-        Slider(value: $userDesign.listOfIcons.last!.iconOpacity, in: 0...1 )
+        Slider(value: $userDesign.listOfIcons[index].iconOpacity, in: 0...1 )
     }
 }
 
 struct WideBarEditViewBackGroundChoice: View{
     
     @Binding var userDesign : WideBarListData
+    @Binding var index: Int
     
     var body: some View {
         
-        DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons.last!.backgroundColor, title: headerTitleString.backgroundColor.rawValue)
+        DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons[index].backgroundColor, title: headerTitleString.backgroundColor.rawValue)
         
-        if userDesign.listOfIcons.last!.gradientIsClicked {
-            DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons.last!.backgroundColorTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
+        if userDesign.listOfIcons[index].gradientIsClicked {
+            DrawColorPaletteBox(selectedColor: $userDesign.listOfIcons[index].backgroundColorTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
         }
         VStack{
             Text("Gradient")
-            Image(systemName: !userDesign.listOfIcons.last!.gradientIsClicked ? "square" : "square.fill")
+            Image(systemName: !userDesign.listOfIcons[index].gradientIsClicked ? "square" : "square.fill")
                 .font(.system(size: 18))
         }
         .onTapGesture {
-            userDesign.listOfIcons.last!.gradientIsClicked.toggle()
+            userDesign.listOfIcons[index].gradientIsClicked.toggle()
         }
         
         VStack {
-            Slider(value: $userDesign.listOfIcons.last!.backgroundOpacity, in: 0...1)
+            Slider(value: $userDesign.listOfIcons[index].backgroundOpacity, in: 0...1)
                 .padding()
         }
     }
@@ -145,13 +159,14 @@ struct WideBarEditSetWebAddress: View {
     
     @Binding var userDesign : WideBarListData
     @Binding var choiceClicked : WideListViewEnumChoice
+    @Binding var index: Int
     
     var body: some View {
         
         if choiceClicked == .none{
             VStack{
                 Text("Website")
-                Image(systemName: !userDesign.listOfIcons.last!.isWebLink  ? "square" : "square.fill")
+                Image(systemName: !userDesign.listOfIcons[index].isWebLink  ? "square" : "square.fill")
                     .font(.system(size: 18))
             }
             .onTapGesture {
@@ -160,15 +175,15 @@ struct WideBarEditSetWebAddress: View {
         }
         if choiceClicked == .website{
             HStack {
-                TextField("Web Address", text: $userDesign.listOfIcons.last!.webAddress)
+                TextField("Web Address", text: $userDesign.listOfIcons[index].webAddress)
                     .padding()
                     .border(Color.gray)
                     .accentColor(.gray)
                     .foregroundColor(Color.black)
             }
             Button(action: {
-                userDesign.listOfIcons.last!.isVideoLink = false 
-                userDesign.listOfIcons.last!.isWebLink = true
+                userDesign.listOfIcons[index].isVideoLink = false
+                userDesign.listOfIcons[index].isWebLink = true
                 choiceClicked = .none
             }){
                 ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2, width: 150, height:50)
@@ -182,13 +197,14 @@ struct WideBarEditSetVideoAddress: View {
     
     @Binding var userDesign : WideBarListData
     @Binding var choiceClicked : WideListViewEnumChoice
+    @Binding var index : Int
     
     var body: some View {
         
         if choiceClicked == .none{
             VStack{
                 Text("Video")
-                Image(systemName: !userDesign.listOfIcons.last!.isVideoLink  ? "square" : "square.fill")
+                Image(systemName: !userDesign.listOfIcons[index].isVideoLink  ? "square" : "square.fill")
                     .font(.system(size: 18))
             }
             .onTapGesture {
@@ -204,8 +220,8 @@ struct WideBarEditSetVideoAddress: View {
                     .foregroundColor(Color.black)
             }
             Button(action: {
-                userDesign.listOfIcons.last!.isWebLink = false
-                userDesign.listOfIcons.last!.isVideoLink = true
+                userDesign.listOfIcons[index].isWebLink = false
+                userDesign.listOfIcons[index].isVideoLink = true
                 choiceClicked = .none
             }){
                 ButtonDesign(icon: "square.and.arrow.down", title: "Save", borderColor: Color.black, borderThickness: 2, width: 150, height:50)
@@ -218,11 +234,12 @@ struct WideBarEditClearButton: View {
     
     @Binding var userDesign : WideBarListData
     @Binding var choiceClicked : WideListViewEnumChoice
+    @Binding var index: Int
     
     var body: some View {
         
         Button(action: {
-            userDesign.resetAdressValues()
+            userDesign.resetAdressValues(index: index)
             choiceClicked = .none
         }){
             ButtonDesign(icon: "clear", title: "Clear links", borderColor: Color.black, borderThickness: 2, width: 180, height:50)

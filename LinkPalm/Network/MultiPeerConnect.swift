@@ -45,7 +45,9 @@ class ExchangeSession: NSObject, ObservableObject {
         serviceAdvertiser.stopAdvertisingPeer()
         serviceBrowser.stopBrowsingForPeers()
     }
-    
+}
+
+extension ExchangeSession{
     //
     func send(userID: String, firstName: String, lastName: String, typeOfContact: String, password: String) {
         
@@ -89,17 +91,7 @@ class ExchangeSession: NSObject, ObservableObject {
         self.password = newPassword
         self.passwordsDoNotMatch = false
     }
-}
-
-extension ExchangeSession: MCNearbyServiceAdvertiserDelegate {
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-    }
-
-    // Accept invitiation
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        
-        invitationHandler(true, session)//<----------------------
-    }
+    
 }
 
 extension ExchangeSession: MCNearbyServiceBrowserDelegate {
@@ -116,15 +108,24 @@ extension ExchangeSession: MCNearbyServiceBrowserDelegate {
     }
 }
 
+extension ExchangeSession: MCNearbyServiceAdvertiserDelegate {
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
+    }
+
+    // Accept invitiation
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        
+        invitationHandler(true, session)//<----------------------
+    }
+}
 extension ExchangeSession: MCSessionDelegate {
+    
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         
         DispatchQueue.main.async {
             self.connectedPeers = session.connectedPeers
         }
     }
-
-    // Data recieved <-------------------
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
@@ -166,14 +167,15 @@ extension ExchangeSession: MCSessionDelegate {
             print("Received data is not a valid userID")
         }
     }
-
-    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-    }
-
+    
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
     }
 
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
     }
+
+    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    }
+
 }
 

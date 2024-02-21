@@ -100,6 +100,12 @@
 		549C01202B74DE55009223C3 /* WideBarListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C011D2B74DE55009223C3 /* WideBarListData.swift */; };
 		549C01222B750311009223C3 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01212B750311009223C3 /* TextEditView.swift */; };
 		54A2FC732B797C0A00C715CC /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2FC722B797C0A00C715CC /* Dumper.swift */; };
+		54A9CF132B8632B2004931A4 /* UserDesignListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */; };
+		54A9CF142B8632B2004931A4 /* UserDesignListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */; };
+		54A9CF152B8632B2004931A4 /* UserDesignListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */; };
+		54A9CF172B86333E004931A4 /* ImageVideoDataListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF162B86333E004931A4 /* ImageVideoDataListData.swift */; };
+		54A9CF182B86333E004931A4 /* ImageVideoDataListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF162B86333E004931A4 /* ImageVideoDataListData.swift */; };
+		54A9CF192B86333E004931A4 /* ImageVideoDataListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF162B86333E004931A4 /* ImageVideoDataListData.swift */; };
 		54BA43112B7784D00076E23D /* BackgroundEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA43102B7784D00076E23D /* BackgroundEditView.swift */; };
 		54BA43132B77965C0076E23D /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA43122B77965C0076E23D /* PhotoView.swift */; };
 		54BA43172B77AB630076E23D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA43162B77AB630076E23D /* ImageData.swift */; };
@@ -219,6 +225,8 @@
 		549C01212B750311009223C3 /* TextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
 		54A2FC712B7977B500C715CC /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		54A2FC722B797C0A00C715CC /* Dumper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumper.swift; sourceTree = "<group>"; };
+		54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignListModel.swift; sourceTree = "<group>"; };
+		54A9CF162B86333E004931A4 /* ImageVideoDataListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoDataListData.swift; sourceTree = "<group>"; };
 		54BA43102B7784D00076E23D /* BackgroundEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEditView.swift; sourceTree = "<group>"; };
 		54BA43122B77965C0076E23D /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		54BA43162B77AB630076E23D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
@@ -269,7 +277,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		540B53552B82668400BC79B3 /* ViewOnly */ = {
+		540B53552B82668400BC79B3 /* FullView */ = {
 			isa = PBXGroup;
 			children = (
 				54C181392B7E16F40055138A /* MainView.swift */,
@@ -277,12 +285,8 @@
 				5414DE942B7E7E7D00949FCD /* ShareContactView.swift */,
 				549C010D2B74D2AF009223C3 /* CardView.swift */,
 				5432660C2B7A712F00574EF5 /* BoxView.swift */,
-				54BBE23C2B816E5F005BAC08 /* SuccessView.swift */,
-				5458FBFC2B7EA23800C61404 /* CardViewBox.swift */,
-				54D4C2482B85463500025D50 /* MultiPeerCodeView.swift */,
-				54D4C24C2B85467400025D50 /* MultiPeerView.swift */,
 			);
-			path = ViewOnly;
+			path = FullView;
 			sourceTree = "<group>";
 		};
 		540B53562B82669700BC79B3 /* Design */ = {
@@ -300,15 +304,16 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
-		542EAC112B7442140044A038 /* ContainerView */ = {
+		542EAC112B7442140044A038 /* PartialView */ = {
 			isa = PBXGroup;
 			children = (
 				549C01192B74DE3A009223C3 /* WideBarListView.swift */,
+				5458FBFC2B7EA23800C61404 /* CardViewBox.swift */,
 			);
-			path = ContainerView;
+			path = PartialView;
 			sourceTree = "<group>";
 		};
-		54929E822B792F9300DB1DED /* ExternalViews */ = {
+		54929E822B792F9300DB1DED /* FunctionalityView */ = {
 			isa = PBXGroup;
 			children = (
 				54929E832B792FAE00DB1DED /* WebView.swift */,
@@ -317,8 +322,11 @@
 				540B535B2B82683200BC79B3 /* WebImageView.swift */,
 				54D462EF2B7CD456006C27F4 /* QRCreateView.swift */,
 				54D462F62B7CDD9C006C27F4 /* QRScanView.swift */,
+				54D4C2482B85463500025D50 /* MultiPeerCodeView.swift */,
+				54D4C24C2B85467400025D50 /* MultiPeerView.swift */,
+				54BBE23C2B816E5F005BAC08 /* SuccessView.swift */,
 			);
-			path = ExternalViews;
+			path = FunctionalityView;
 			sourceTree = "<group>";
 		};
 		549408FF2B73C2DB00F9836F = {
@@ -349,7 +357,7 @@
 				549409492B73F65F00F9836F /* Enums */,
 				549409482B73F63700F9836F /* HelperFunctions */,
 				5494093B2B73C7F500F9836F /* Network */,
-				54929E822B792F9300DB1DED /* ExternalViews */,
+				54929E822B792F9300DB1DED /* FunctionalityView */,
 				549409372B73C56000F9836F /* Data */,
 				549409382B73C58200F9836F /* ViewModels */,
 				5494093A2B73C5A900F9836F /* Views */,
@@ -403,6 +411,7 @@
 				543266102B7A714B00574EF5 /* ImageVideoData.swift */,
 				54C1813D2B7E2B990055138A /* QRCodeData.swift */,
 				543505842B7F6B640023742F /* SFSymbolData.swift */,
+				54A9CF162B86333E004931A4 /* ImageVideoDataListData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 				542EAC072B7425780044A038 /* ImagesURLModel.swift */,
 				544B245E2B80046300F81D99 /* MemeModel.swift */,
 				546A92F82B77E9BC005AD2DC /* UserDesignModel.swift */,
+				54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -421,9 +431,9 @@
 		5494093A2B73C5A900F9836F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				542EAC112B7442140044A038 /* ContainerView */,
 				540B53562B82669700BC79B3 /* Design */,
-				540B53552B82668400BC79B3 /* ViewOnly */,
+				542EAC112B7442140044A038 /* PartialView */,
+				540B53552B82668400BC79B3 /* FullView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -618,6 +628,7 @@
 				54C1813A2B7E16F50055138A /* MainView.swift in Sources */,
 				549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				54C181422B7E2E3D0055138A /* ContactListView.swift in Sources */,
+				54A9CF172B86333E004931A4 /* ImageVideoDataListData.swift in Sources */,
 				5494090E2B73C2DB00F9836F /* ContentView.swift in Sources */,
 				544B24652B8021DC00F81D99 /* SmallerFunctions.swift in Sources */,
 				5479D6FC2B783B7E002BAD0A /* SFSymbolEnum.swift in Sources */,
@@ -652,6 +663,7 @@
 				54C76FF32B762E03005EA680 /* TextConfigEnum.swift in Sources */,
 				546A92FD2B77EA79005AD2DC /* BoxData.swift in Sources */,
 				5412D6962B758B9800D6AF9B /* TitleCustomData.swift in Sources */,
+				54A9CF132B8632B2004931A4 /* UserDesignListModel.swift in Sources */,
 				5479D7002B783BED002BAD0A /* Extensions.swift in Sources */,
 				548581E42B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				54BBE23D2B816E5F005BAC08 /* SuccessView.swift in Sources */,
@@ -671,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5479D7012B783BED002BAD0A /* Extensions.swift in Sources */,
+				54A9CF182B86333E004931A4 /* ImageVideoDataListData.swift in Sources */,
 				543266062B7A293800574EF5 /* VideoView.swift in Sources */,
 				543266122B7A714B00574EF5 /* ImageVideoData.swift in Sources */,
 				549409552B73FCF500F9836F /* PersonModel.swift in Sources */,
@@ -696,6 +709,7 @@
 				543266162B7A73B400574EF5 /* ImageVideoEnum.swift in Sources */,
 				548581E52B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				549409422B73F37300F9836F /* ImageUrlData.swift in Sources */,
+				54A9CF142B8632B2004931A4 /* UserDesignListModel.swift in Sources */,
 				549C011F2B74DE55009223C3 /* WideBarListData.swift in Sources */,
 				5494091F2B73C2E100F9836F /* LinkPalmTests.swift in Sources */,
 				5458FBFE2B7EA23800C61404 /* CardViewBox.swift in Sources */,
@@ -747,6 +761,7 @@
 				54D4C24F2B85467400025D50 /* MultiPeerView.swift in Sources */,
 				5494092B2B73C2E100F9836F /* LinkPalmUITestsLaunchTests.swift in Sources */,
 				549C01202B74DE55009223C3 /* WideBarListData.swift in Sources */,
+				54A9CF152B8632B2004931A4 /* UserDesignListModel.swift in Sources */,
 				54C181442B7E2E3D0055138A /* ContactListView.swift in Sources */,
 				54BBE23B2B8159F1005BAC08 /* ActorDataFetcher.swift in Sources */,
 				5412D6982B758B9800D6AF9B /* TitleCustomData.swift in Sources */,
@@ -758,6 +773,7 @@
 				548581E62B7AD8380000BFD9 /* BoxDesignEnum.swift in Sources */,
 				5458FBFF2B7EA23800C61404 /* CardViewBox.swift in Sources */,
 				543505872B7F6B640023742F /* SFSymbolData.swift in Sources */,
+				54A9CF192B86333E004931A4 /* ImageVideoDataListData.swift in Sources */,
 				54BA43192B77AB630076E23D /* ImageData.swift in Sources */,
 				5479D7022B783BED002BAD0A /* Extensions.swift in Sources */,
 				5414DE972B7E7E7D00949FCD /* ShareContactView.swift in Sources */,

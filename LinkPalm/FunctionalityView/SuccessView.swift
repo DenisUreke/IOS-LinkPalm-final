@@ -9,9 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SuccessView: View {
-    //@Environment(\.modelContext) var modelContext
     @Binding var userList: UserDesignList
-    //@Query private var qrUsersList: [QRCodeData]
     let message: String
     
 
@@ -49,6 +47,7 @@ struct SuccessView: View {
                         NavigationLink(destination: CardView(user: $userList.userList.last!)){
                             ButtonDesign(icon: "person.crop.circle", title: "See Card", borderColor: .black, borderThickness: 2, width: 220, height: 50)
                         }
+                        /*.navigationTitle("\(userList.userList.last?.personData?.result.name.first ?? "") \(userList.userList.last?.personData?.result.name.last ?? "")")*/
                         case .failure(_):
                             Image(systemName: "photo")
                                 .frame(width: 200, height: 200) // Adjusted for consistency

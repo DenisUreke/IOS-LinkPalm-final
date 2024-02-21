@@ -219,34 +219,45 @@ extension WideBarListDataicons{
 @Observable
 class WideBarListData: Identifiable{
     
-    var id = UUID()
-    var buttonCount: Int
+    var id = UUID().uuidString
     var listOfIcons: [WideBarListDataicons]
+    var buttonCount: Int
     
     init(buttonCount: Int = 1, listOfIcons: [WideBarListDataicons] = [WideBarListDataicons()]) {
-        self.buttonCount = buttonCount
         self.listOfIcons = listOfIcons
+        self.buttonCount = buttonCount
     }
     
     func addNewButtonToWideList(){
-        
-        if buttonCount < 8, let lastButton = listOfIcons.last {
-            let newButton = WideBarListDataicons(copying: lastButton)
-            listOfIcons.append(newButton)
-            buttonCount += 1
+        if self.buttonCount < 8{
+            if let lastButton = listOfIcons.last{
+                let newButton = WideBarListDataicons(copying: lastButton)
+                self.listOfIcons.append(newButton)
+                self.buttonCount += 1
+                print("ButtonCount ", buttonCount)
+            }
         }
+    }
+    
+    func returnCorrectIndexAfterAdding() -> Int{
+        self.addNewButtonToWideList()
+        let currentIndex = self.buttonCount - 1
+        print("Current Index", currentIndex)
+        return currentIndex
     }
     
     func removeButtonFromWideList(){
-        if buttonCount > 1{ listOfIcons.removeLast()
-            buttonCount -= 1
+        if self.buttonCount > 1{
+            self.listOfIcons.removeLast()
+            self.buttonCount -= 1
+            print("ButtonCount ", buttonCount)
         }
     }
     
-    func resetAdressValues(){
-        self.listOfIcons.last!.isWebLink = false
-        self.listOfIcons.last!.isVideoLink = false
-        self.listOfIcons.last!.webAddress = ""
+    func resetAdressValues(index: Int){
+        self.listOfIcons[index].isWebLink = false
+        self.listOfIcons[index].isVideoLink = false
+        self.listOfIcons[index].webAddress = ""
     }
     
     func checkIfLinkExists() -> Bool{

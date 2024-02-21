@@ -71,7 +71,7 @@ struct ImageVideoListView: View {
                         }
                         
                         /*if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
-                            Text("TESTING!!!! \(list.listOfEntries[atIndex].textCustomModel.selectedSize)")
+                            Text("index value on edit \(atIndex)")
                             DynamicButtonForEditing(data: $list.listOfEntries[atIndex])
                         }*/
                     }
@@ -82,8 +82,6 @@ struct ImageVideoListView: View {
     }
     
 }
-
-
 func getDynamicView(imageVideoData: Binding<ImageVideoData>, type: ImageVideoEnum) -> some View {
     
     switch type {
@@ -107,9 +105,10 @@ enum ViewState {
     case viewD
 }
 
-/*struct DynamicButtonForEditing: View {
+struct DynamicButtonForEditing: View {
     
     @Binding var data: ImageVideoData
+    @Binding var dataList: ImageVideoDataList
     @State private var currentState: ViewState = .viewD
     
     var body: some View {
@@ -139,16 +138,16 @@ enum ViewState {
     private func getView(for state: ViewState) -> some View {
         switch state {
         case .viewA:
-            PhotoView(designData: $data)
+            PhotoView(designData: $dataList, newObject: $data, isForList: true)
         case .viewB:
-            Text("Text Editing View") // Placeholder for your text editing view
+            configurateTextObjects(titleData: $dataList , data: $data)
         case .viewC:
-            VideoDesignView(designData: $data)
+            VideoDesignView(list: $dataList, designData: $data)
         case .viewD:
             EmptyView() // Placeholder for a default or empty state view
         }
     }
-}*/
+}
 
 /*
  if let specificItem = list.listOfEntries.firstIndex(where: id == entry.id){

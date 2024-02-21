@@ -23,6 +23,7 @@ struct QRScanView: View {
         VStack {
             if let scannedCode = scannedCode {
                 SuccessView(userList: $userDesign, message: scannedCode)
+                    .navigationTitle("\(scannedCode)")
             } else {
                 Text("\(scannedCode ?? "")")
                     .font(.system(size: 36))
