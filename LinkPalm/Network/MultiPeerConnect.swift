@@ -20,9 +20,10 @@ class ExchangeSession: NSObject, ObservableObject {
     var password: String
     var passwordsDoNotMatch: Bool = false
     var connectedPeers: [MCPeerID] = []
-    var userID: String = ""
+    var userID: String = "" // check this later
     var scannedCode: String?
     var userList: UserDesignList
+    var messageSent: String = ""
     
     init(password: String, userList: UserDesignList) {
         self.userList = userList
@@ -46,11 +47,14 @@ class ExchangeSession: NSObject, ObservableObject {
     }
     
     //
-    func send(userID: String) {
-        print("Sending userID: \(userID) to \(self.session.connectedPeers.count) peers")
+    func send(userID: String, firstName: String, lastName: String, typeOfContact: String, password: String) {
+        
         self.userID = userID
+        
+        self.messageSent = "\(userID) \(firstName) \(lastName) \(typeOfContact) \(password)"
+        print(messageSent)
 
-        guard let data = userID.data(using: .utf8) else {
+        guard let data = messageSent.data(using: .utf8) else {
             print("Failed to convert userID to Data")
             return
         }
@@ -63,6 +67,24 @@ class ExchangeSession: NSObject, ObservableObject {
             }
         }
     }
+    func sendError(errorMessage: String) {
+        
+        let message = errorMessage
+
+        guard let data = message.data(using: .utf8) else {
+            print("Failed to convert userID to Data")
+            return
+        }
+
+        if !session.connectedPeers.isEmpty {
+            do {
+                try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+            } catch {
+                print("Error for sending: \(error)")
+            }
+        }
+    }
+    
     func resetpasswordsDoNotMatch(newPassword: String){
         self.password = newPassword
         self.passwordsDoNotMatch = false
@@ -113,19 +135,26 @@ extension ExchangeSession: MCSessionDelegate {
                 if let receivedString = String(data: data, encoding: .utf8) {
                     
                     let components = receivedString.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
-                    
-                    let recievedPassword = components[4]
-                    let recievedUserID = components[0]
-                    
-                    if recievedPassword == self.password{
-                        self.userID = recievedUserID
-                        if self.userList.checkIfContactExists(components: components){
-                            self.scannedCode = "Contact already exists"
-                            return
+                 
+                    if components.count > 1{
+                        let recievedPassword = components[4]
+                        let recievedUserID = components[0]
+                        
+                        if recievedPassword == self.password{
+                            self.userID = recievedUserID
+                            if self.userList.checkIfContactExists(components: components){
+                                self.scannedCode = "Contact already exists"
+                                return
+                            }
+                            else{
+                                self.userList.createAndPopulate(components: components)
+                                self.scannedCode = "New Contact Added"
+                            }
                         }
                         else{
-                            self.userList.createAndPopulate(components: components)
-                            self.scannedCode = "New Contact Added"
+                            print("Entered the last area in > 1")
+                            self.sendError(errorMessage: "Error")
+                            self.passwordsDoNotMatch = true
                         }
                     }
                     else{

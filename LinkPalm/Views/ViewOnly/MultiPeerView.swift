@@ -11,10 +11,9 @@ struct MultiPeerView: View {
     
     @Binding var userList: UserDesignList
     var QRmodel: QRCodeModel
-    var password: String = ""
+    @State var password: String = ""
     var session: ExchangeSession
     var userID: String
-    var message: String = ""
     
     
     init(userList: Binding<UserDesignList>, QRmodel: QRCodeModel, password: String, userID: String) {
@@ -23,7 +22,6 @@ struct MultiPeerView: View {
         self.password = password
         self.session = ExchangeSession(password: password, userList: userList.wrappedValue)
         self.userID = userID
-        self.message = "\(userID) John Doe person \(password)"
     }
 
     var body: some View {
@@ -41,19 +39,20 @@ struct MultiPeerView: View {
                          text: "Passwords Do Not Match\nPlease enter correct one",
                          action: { newPassword in
                              session.resetpasswordsDoNotMatch(newPassword: newPassword)
-                         }
+                         }, password: $password
                      )
             }
             
             Spacer()
             
             Button(action: {
-                session.send(userID: message)
+                session.send(userID: userID, firstName: "John", lastName: "Doe", typeOfContact: "person", password: password)
             }){
                 ButtonDesign(icon: "iphone.gen1.radiowaves.left.and.right", title: "Share Contact", borderColor: .black, borderThickness: 2, width: 240, height: 80)
             }
         .onDisappear{
             session.passwordsDoNotMatch = false
+            session.scannedCode = nil
         }
         .padding()
     }
@@ -80,7 +79,8 @@ struct MultiPeerView: View {
 struct PopUpErrorViewForMultiPeer: View {
     let text: String
     var action: (String) -> Void
-    @State var selectedPassword: String = ""
+    @State private var selectedPassword: String = ""
+    @Binding var password: String
     
     var body: some View {
         VStack {
@@ -89,23 +89,28 @@ struct PopUpErrorViewForMultiPeer: View {
                 .frame(width: 300, height: 200)
                 .shadow(radius: 5)
                 .overlay(
-                    Text(text)
-                        .foregroundColor(.red)
+                    VStack {
+                        Text(text)
+                            .foregroundColor(.red)
+                            .padding(.top)
+
+                        TextField("Enter password", text: $selectedPassword)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(5)
+                            
+                        Button(action: {
+                            password = selectedPassword
+                            action(selectedPassword)
+                        }) {
+                            ButtonDesign(icon: "x.square", title: "OK", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+                        }
+                        .padding(.top)
+                    }
+                    .padding()
                 )
-            TextField("Enter password", text: $selectedPassword)
-                .keyboardType(.numberPad)
-                .multilineTextAlignment(.center)
-                .onReceive(selectedPassword.publisher.collect()) {
-                    selectedPassword = String($0).filter { "0123456789".contains($0) }
-                }
-                .padding(.horizontal)
-            
-            Button(action:{
-                action(selectedPassword)
-            })
-            {
-                ButtonDesign(icon: "x.square", title: "OK", borderColor: .black, borderThickness: 2, width: 180, height: 50)
-            }
         }
     }
 }
