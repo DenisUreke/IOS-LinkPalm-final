@@ -33,7 +33,7 @@ enum SFSymbolEnum: String, CaseIterable, Codable, Hashable {
     case flame = "flame"
     case cloud = "cloud"
     case snow = "snow"
-    case tornado = "tornado"
+    case icloud = "icloud"
     case paperclip = "paperclip"
     case thermometer = "thermometer"
     case umbrella = "umbrella"
