@@ -18,11 +18,19 @@ struct QRCreateView: View {
     let imageFilter = CIFilter.qrCodeGenerator()
     
     var body: some View {
-        Image(uiImage: generateQRCode(from: "\(personID.ID) \(personID.typeOfContact)"))
-            .interpolation(.none)
-            .resizable()
-            .scaledToFit()
-            .frame(width: 200, height: 200)
+        ZStack{
+            BackgroundColorView()
+            Image(uiImage: generateQRCode(from: "\(personID.ID) John Doe \(personID.typeOfContact)"))
+                .interpolation(.none)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .padding()
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                .offset(y: -130)
+        }
     }
     
     func generateQRCode(from string: String) -> UIImage {

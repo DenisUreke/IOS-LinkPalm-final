@@ -26,6 +26,7 @@ class ImageData{
     var selectedScale: Double
     var selectedXAxisOffset: Double
     var selectedYAxisOffset: Double
+    var scaledToFill: Bool
     var isURL: Bool
     var isDevice: Bool
     var isSaved: Bool
@@ -42,6 +43,7 @@ class ImageData{
          selectedScale: Double = 1,
          selectedXAxisOffset: Double = 0,
          selectedYAxisOffset: Double = 0,
+         scaledToFill: Bool = false,
          isURL: Bool = false,
          isDevice: Bool = false,
          isSaved: Bool = false,
@@ -58,43 +60,10 @@ class ImageData{
         self.selectedScale = selectedScale
         self.selectedXAxisOffset = selectedXAxisOffset
         self.selectedYAxisOffset = selectedYAxisOffset
+        self.scaledToFill = scaledToFill
         self.isURL = isURL
         self.isDevice = isDevice
         self.isSaved = isSaved
         self.isDeletable = isDeletable
     }
-    
-    func resetValues(){
-        self.imageURL = nil
-        self.selectedBackgroundImage = nil
-        self.isURL = false
-        self.isURL = false
-        self.isSaved = false
-        self.isDeletable = false
-    }
-    
-}
-
-extension ImageData{
-    
-    func createImage(meme: URL){
-        let random = Int(generateNumber(0, 1))
-        
-        self.imageURL = random == 1 ? URL(string:"https://picsum.photos/300/300.jpg")! : meme
-        self.createDesignImage()
-    }
-    
-    func createDesignImage(){
-        
-        self.selectedContrast = 1
-        self.selectedSaturation = 1
-        self.selectedOpacity = 1
-        self.selectedRotation = 0
-        self.selectedHueRotation = 0
-        self.selectedCornerRadius = generateNumber(0, 50)
-        self.selectedScale = generateNumber(0.5, 3.0)
-        self.selectedXAxisOffset = 0
-        self.selectedYAxisOffset = 0
-    }
-    
 }

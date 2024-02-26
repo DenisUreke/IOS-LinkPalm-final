@@ -20,13 +20,13 @@ struct PhotoView: View {
     var body: some View {
         
         VStack{
-            if newObject.imageData.isURL {
+            if newObject.imageData.data.isURL {
                 DynamicPictureViewFromWeb(imageData: $newObject)
                     .scaleEffect(0.5)
                     .frame(maxWidth: .infinity, maxHeight: 200)
                     .clipped()
             }
-            if newObject.imageData.isDevice {
+            if newObject.imageData.data.isDevice {
                 DynamicPictureView(imageData: $newObject)
                     .scaleEffect(0.5)
                     .frame(maxWidth: .infinity, maxHeight: 200)
@@ -38,60 +38,64 @@ struct PhotoView: View {
             Divider()
             
             ScrollView(showsIndicators: false){
-                if newObject.imageData.isURL || newObject.imageData.isDevice{
+                if newObject.imageData.data.isURL || newObject.imageData.data.isDevice{
                     PhotoEditingTools(designData: $newObject)
                 }
             }
             
-            if newObject.imageData.isURL {
+            if newObject.imageData.data.isURL {
                     DrawTextFieldForWideBar(title: $enteredText)
             }
             
-            if newObject.imageData.isDevice{
+            if newObject.imageData.data.isDevice{
                     PhotosPicker("Select from device", selection: $photopickerItem, matching: .images)
             }
             
             HStack{
+                Spacer()
                 HStack{
                     Button(action: {
-                        newObject.imageData.isDevice.toggle()
-                        newObject.imageData.isURL = false
-                        newObject.imageData.isSaved = true
+                        newObject.imageData.data.isDevice.toggle()
+                        newObject.imageData.data.isURL = false
+                        newObject.imageData.data.isSaved = true
                     })
                     {
-                        newObject.imageData.isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
+                        newObject.imageData.data.isDevice ? ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "square.and.arrow.up", title: "Device", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                     }
                 }
+                .padding(.leading, 10)
                 .padding(.trailing, -20)
                 
                 HStack{
                     Button(action: {
-                        newObject.imageData.isURL.toggle()
-                        newObject.imageData.isDevice = false
-                        newObject.imageData.isSaved = true
+                        newObject.imageData.data.isURL.toggle()
+                        newObject.imageData.data.isDevice = false
+                        newObject.imageData.data.isSaved = true
                     })
                     {
-                        newObject.imageData.isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
+                        newObject.imageData.data.isURL ? ButtonDesign(icon: "globe", title: "URL", borderColor: Color.blue, borderThickness: 5, width: 180, height:50) : ButtonDesign(icon: "globe", title: "URL", borderColor: Color.black, borderThickness: 2, width: 180, height:50)
                     }
                 }
+                .padding(.leading, -20)
+                .padding(.trailing, 20)
             }
-            if newObject.imageData.isSaved{
-                if newObject.imageData.isURL || newObject.imageData.isDevice{
+            if newObject.imageData.data.isSaved{
+                if newObject.imageData.data.isURL || newObject.imageData.data.isDevice{
                     HStack{
                         
                         Button(action:{
-                            if newObject.imageData.isURL{
+                            if newObject.imageData.data.isURL{
                                 newObject.setImageUrlFromString(string: enteredText)
-                                newObject.imageData.isDeletable = true
-                                newObject.imageData.isSaved = false
+                                newObject.imageData.data.isDeletable = true
+                                newObject.imageData.data.isSaved = false
                                 if isForList{
                                     designData.insertAndAppendInList(object: newObject, type: .picturefromweb)
                                 }
                             }
                             else{
                                 newObject.setImageFromDevice()
-                                newObject.imageData.isDeletable = true
-                                newObject.imageData.isSaved = false
+                                newObject.imageData.data.isDeletable = true
+                                newObject.imageData.data.isSaved = false
                                 if isForList{
                                     designData.insertAndAppendInList(object: newObject, type: .picture)
                                 }
@@ -102,7 +106,7 @@ struct PhotoView: View {
                     }
                 }
             }
-            if newObject.imageData.isDeletable{
+            if newObject.imageData.data.isDeletable{
                 Button(action:{
                     newObject.imageData.resetValues()
                 }){
@@ -115,7 +119,7 @@ struct PhotoView: View {
             Task {
                 if let loaded = try? await photopickerItem?.loadTransferable(type: Image.self) {
                     selectedImage = loaded
-                    newObject.imageData.selectedBackgroundImage = selectedImage
+                    newObject.imageData.data.selectedBackgroundImage = selectedImage
                 } else {
                     print("Failed")
                 }
@@ -130,34 +134,43 @@ struct PhotoEditingTools: View{
     
     var body: some View{
         
-        if designData.imageData.selectedBackgroundImage != nil || ((designData.imageData.imageURL?.absoluteString.isEmpty) == nil){
+        if designData.imageData.data.selectedBackgroundImage != nil || ((designData.imageData.data.imageURL?.absoluteString.isEmpty) == nil){
             
-            SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.selectedXAxisOffset, title: EditImageString.xOffsetImage)
-            SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.selectedYAxisOffset, title: EditImageString.yOffsetImage)
+            VStack{
+                Text("Scale To Fill")
+                Image(systemName: !designData.imageData.data.scaledToFill ? "square" : "square.fill")
+                    .font(.system(size: 18))
+            }
+            .onTapGesture {
+                designData.imageData.data.scaledToFill.toggle()
+            }
             
-            Divider()
-            
-            SliderDoubleView(minValue: 0, maxValue: 3, objectToChange: $designData.imageData.selectedScale, title: EditImageString.imageScale)
-            
-            Divider()
-            
-            SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.selectedContrast, title: EditImageString.contrast)
-            
-            Divider()
-            
-            SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.selectedSaturation, title: EditImageString.saturation)
+            SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.data.selectedXAxisOffset, title: EditImageString.xOffsetImage)
+            SliderDoubleView(minValue: -200, maxValue: 200, objectToChange: $designData.imageData.data.selectedYAxisOffset, title: EditImageString.yOffsetImage)
             
             Divider()
             
-            SliderDoubleView(minValue: 0, maxValue: 360, objectToChange: $designData.imageData.selectedRotation, title: EditImageString.rotation)
+            SliderDoubleView(minValue: 0, maxValue: 3, objectToChange: $designData.imageData.data.selectedScale, title: EditImageString.imageScale)
+            
+            Divider()
+            
+            SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.data.selectedContrast, title: EditImageString.contrast)
+            
+            Divider()
+            
+            SliderDoubleView(minValue: 0, maxValue: 10, objectToChange: $designData.imageData.data.selectedSaturation, title: EditImageString.saturation)
+            
+            Divider()
+            
+            SliderDoubleView(minValue: 0, maxValue: 360, objectToChange: $designData.imageData.data.selectedRotation, title: EditImageString.rotation)
             
             Divider()
 
-            SliderDoubleView(minValue: 0, maxValue: 360, objectToChange: $designData.imageData.selectedHueRotation, title: EditImageString.hueRotation)
+            SliderDoubleView(minValue: 0, maxValue: 360, objectToChange: $designData.imageData.data.selectedHueRotation, title: EditImageString.hueRotation)
             
             Divider()
             
-            SliderDoubleView(minValue: 0, maxValue: 1, objectToChange: $designData.imageData.selectedOpacity, title: EditImageString.opacity)
+            SliderDoubleView(minValue: 0, maxValue: 1, objectToChange: $designData.imageData.data.selectedOpacity, title: EditImageString.opacity)
             
             Divider()
             
@@ -165,7 +178,7 @@ struct PhotoEditingTools: View{
             
             Divider()
             
-            SliderDoubleView(minValue: 0, maxValue: 300, objectToChange: $designData.textCustomModel.selectedImageCornerRadius, title: EditImageString.imageCornerRadius)
+            SliderDoubleView(minValue: 0, maxValue: 300, objectToChange: $designData.textCustomModel.data.selectedImageCornerRadius, title: EditImageString.imageCornerRadius)
             
             
         }

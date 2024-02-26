@@ -23,3 +23,16 @@ extension View {
         }
     }
 }
+
+extension View {
+    @ViewBuilder
+    func conditionalScaledToFill(apply: Bool) -> some View {
+        if apply {
+            self
+                .scaledToFill()
+        }else{
+            self
+                //.scaledToFit()
+        }
+    }
+}

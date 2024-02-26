@@ -1,6 +1,4 @@
-Fix Image scale
 
-Why text wont scale
 
 How to check current loction in navigationStack
 
@@ -9,4 +7,8 @@ ask about dynamic button with function
 
 in BoxDesignView what a better option would be for dynamic buttons
 
-in boxDesignView why adding onDissapear removes the other views?
+
+ask about typofcontact and if it is allowed to do it like this
+
+
+ASK why i cant use SWIFT data in peer, when initialised password is wrong!!!

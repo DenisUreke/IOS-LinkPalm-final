@@ -13,7 +13,7 @@ enum BoxDesignStatus{
     case currentlyEditing
 }
 
-enum MenuEnum: String, CaseIterable, Codable, Hashable{
+enum MenuEnum: String, CaseIterable, Codable, Hashable, MenuButtonRepresentable{
     
     case text = "Text"
     case image = "Image"
@@ -32,14 +32,16 @@ enum MenuEnum: String, CaseIterable, Codable, Hashable{
             return "photo.on.rectangle"
         }
     }
-    
+    var displayName: String {
+        return self.rawValue
+    }
 }
 
-enum MainMenuEnum: String, CaseIterable, Codable, Hashable{
+enum MainMenuEnum: String, CaseIterable, Codable, Hashable, MenuButtonRepresentable{
     
     case person = "Contacts"
-    case share = "Share Contact"
-    case yourProfile = "Your Profile"
+    case share = "Exchange"
+    case yourProfile = "Profile"
     
     var sfSymbol : String{
         switch self{
@@ -51,9 +53,12 @@ enum MainMenuEnum: String, CaseIterable, Codable, Hashable{
             return "square.and.pencil"
         }
     }
+    var displayName: String {
+        return self.rawValue
+    }
 }
 
-enum ShareContactEnum: String, CaseIterable, Codable, Hashable{
+enum ShareContactEnum: String, CaseIterable, Codable, Hashable, MenuButtonRepresentable{
     
     case create = "Create QR"
     case read = "Read QR"
@@ -68,5 +73,9 @@ enum ShareContactEnum: String, CaseIterable, Codable, Hashable{
         case.peer:
             return "iphone.gen1.radiowaves.left.and.right"
         }
+    }
+    
+    var displayName: String {
+        return self.rawValue
     }
 }

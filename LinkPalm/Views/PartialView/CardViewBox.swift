@@ -17,19 +17,20 @@ struct CardViewBox: View {
     var body: some View {
         ZStack {
 
-            DrawBackGroundForBoxDesign(backgroundDesign: $boxData.boxDesign.background)
-            
+            DrawBackGroundForBoxDesign(backgroundDesign: $boxData.boxDesign.background.data)
             
             if boxData.boxDesign.imageVideoData.typeOfBox == ImageVideoEnum.picture {DynamicPictureView(imageData: $boxData.boxDesign.imageVideoData)
             }
-            if let url = boxData.boxDesign.imageVideoData.imageData.imageURL, !url.path.isEmpty {
+            if let url = boxData.boxDesign.imageVideoData.imageData.data.imageURL, !url.path.isEmpty {
                 DynamicPictureViewFromWeb(imageData: $boxData.boxDesign.imageVideoData)
             }
-            DrawSFSymbolForDesingBox(sfSymbolData: $boxData.boxDesign.sfSymbol)
+            DrawSFSymbolForDesingBox(sfSymbolData: $boxData.boxDesign.sfSymbol.data)
             
             DynamicViewText(titleData: $boxData.boxDesign.text)
         }
         .clipped()
+        .cornerRadius(8)
+        .padding(0)
     }
 }
 

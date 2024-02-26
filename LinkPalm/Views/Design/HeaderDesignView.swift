@@ -1,14 +1,15 @@
 //
-//  CardViewDesingView.swift
+//  HeaderDesignView.swift
 //  LinkPalm
 //
-//  Created by Denis Ureke on 2024-02-17.
+//  Created by Denis Ureke on 2024-02-24.
 //
 
 import SwiftUI
 
-struct CardViewDesignBox: View{
+struct DesignHeaderForCardView: View {
     
+    @Binding var userName: String
     @Binding var boxData: BoxData
     @Binding var userDesign: ImageVideoDataList
     @State var isIcon: Bool = true
@@ -24,9 +25,7 @@ struct CardViewDesignBox: View{
             
             ScrollView(showsIndicators: false){
                 if !isIcon{
-                    DrawTextFieldForWideBar(title: $boxData.boxDesign.text.data.text)
-                    SliderDoubleView(minValue: 0, maxValue: 200, objectToChange: $boxData.boxDesign.text.data.selectedXOffsetText, title: EditImageString.xOffset)
-                    configurateTextObjectsFontStyling(titleData: $boxData.boxDesign.text)
+                    drawTextfieldForDesign(selectedName: $userName)
                     configurateTextObjectsFontColor(titleData: $boxData.boxDesign.text)
                 }else{
                     DrawSFSymbolsChoices(selectedSFSymbol: $boxData.boxDesign.sfSymbol.data.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
@@ -51,5 +50,25 @@ struct CardViewDesignBox: View{
         .padding()
     }
     
+}
+
+struct drawTextfieldForDesign: View {
+    
+    @Binding var selectedName: String
+    
+    var body: some View{
+        
+        TextField("Enter Name", text: $selectedName)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
+            .frame(width: 300, height: 40)
+            .background(Color.white)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            .padding(30)
+    }
     
 }

@@ -21,7 +21,7 @@ class BackgroundData {
     var selectedColorBackgroundTwo: StandardColors
     var selectedBorderColor: StandardColors
     var selectedBorderWidth: Double
-    var imageData: ImageData
+    var imageData: ImageModel
     var selectedCornerRadius: Double
     
     init(gradientIsClicked: Bool = false,
@@ -30,7 +30,7 @@ class BackgroundData {
          selectedColorBackgroundTwo: StandardColors = .clear,
          selectedBorderColor: StandardColors = .black,
          selectedBorderWidth: Double = 0,
-         imageData: ImageData = ImageData(),
+         imageData: ImageModel = ImageModel(),
          selectedCornerRadius: Double = 8) {
         
         self.gradientIsClicked = gradientIsClicked
@@ -43,17 +43,4 @@ class BackgroundData {
         self.selectedCornerRadius = selectedCornerRadius
     }
     
-}
-
-extension BackgroundData {
-    
-    func createBackgroundData(){
-        self.gradientIsClicked = Bool.random()
-        self.selectedBackgroundOpacity = generateNumber(0.5, 1.0)
-        self.selectedColorBackgroundOne = randomStandardColor()
-        self.selectedColorBackgroundTwo = randomStandardColor()
-        self.selectedBorderColor = randomStandardColor()
-        self.selectedBorderWidth = generateNumber(0, 20)
-        self.selectedCornerRadius = generateNumber(0, 40)
-    }
 }

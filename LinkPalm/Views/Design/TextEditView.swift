@@ -14,7 +14,7 @@ struct TextEditView: View {
     var body: some View {
         
             VStack {
-                TextEditor(text: $titleData.textCustomModel.text)
+                TextEditor(text: $titleData.textCustomModel.data.text)
              .padding()
              .border(Color.gray)
              }
@@ -65,7 +65,7 @@ struct configurateTextObjects: View {
                 
                 configurateTextObjectsPreview(titleData: $titleData, data: $data.textCustomModel)
             }
-            .background(text.gradientIsClicked ? Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackgroundTwo.color]).opacity(text.selectedBackgroundOpacity) : Gradient(colors: [text.selectedColorBackground.color, text.selectedColorBackground.color]).opacity(text.selectedBackgroundOpacity) )
+            .background(text.data.gradientIsClicked ? Gradient(colors: [text.data.selectedColorBackground.color, text.data.selectedColorBackgroundTwo.color]).opacity(text.data.selectedBackgroundOpacity) : Gradient(colors: [text.data.selectedColorBackground.color, text.data.selectedColorBackground.color]).opacity(text.data.selectedBackgroundOpacity) )
             Divider()
                 .padding(1)
             
@@ -105,16 +105,16 @@ struct configurateTextObjectsPreview: View {
         
         ZStack{
             VStack{
-                Text("\(data.text )")
-                    .frame(maxWidth: .infinity, alignment: data.selectedAlignment.getAlignment)
+                Text("\(data.data.text )")
+                    .frame(maxWidth: .infinity, alignment: data.data.selectedAlignment.getAlignment)
             }
-            .font(.system(size: data.selectedSize, weight: data.selectedWeight.getWeight, design: data.selectedStyle.getFontStyel))
-            .opacity(data.selectedFontOpacity)
-            .foregroundColor(data.selectedColorFont.color)
+            .font(.system(size: data.data.selectedSize, weight: data.data.selectedWeight.getWeight, design: data.data.selectedStyle.getFontStyel))
+            .opacity(data.data.selectedFontOpacity)
+            .foregroundColor(data.data.selectedColorFont.color)
             .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
-            .shadow(color: !data.shadowIsClicked ? .clear : .gray,
-                    radius: 2,x: 0, y: !data.shadowIsClicked ? 0 : 5)
-            .border(data.selectedBorderColor.color, width: data.selectedBorderWidth)
+            .shadow(color: !data.data.shadowIsClicked ? .clear : .gray,
+                    radius: 2,x: 0, y: !data.data.shadowIsClicked ? 0 : 5)
+            .border(data.data.selectedBorderColor.color, width: data.data.selectedBorderWidth)
         }
     }
     
@@ -126,29 +126,29 @@ struct configurateTextObjectsFontStyling: View{
     
     var body: some View {
         
-        SliderDoubleView(minValue: 0, maxValue: 60, objectToChange: $titleData.selectedSize, title: EditImageString.fontSize)
+        SliderDoubleView(minValue: 0, maxValue: 60, objectToChange: $titleData.data.selectedSize, title: EditImageString.fontSize)
         
         Divider()
         
-        SelectableView(title: headerTitleString.alignment.rawValue, options: titleData.alignmentOptions, selectedOption: $titleData.selectedAlignment) { option in
+        SelectableView(title: headerTitleString.alignment.rawValue, options: titleData.data.alignmentOptions, selectedOption: $titleData.data.selectedAlignment) { option in
             Text(option.rawValue)
                 .frame(width: 200)
         }
         Divider()
         //
-        SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.textAlignmentOptions, selectedOption: $titleData.selectedTextAlignment) { option in
+        SelectableView(title: headerTitleString.textAlignment.rawValue, options: titleData.data.textAlignmentOptions, selectedOption: $titleData.data.selectedTextAlignment) { option in
             Text(option.rawValue)
                 .frame(width: 200)
         }
         Divider()
         //
-        SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.styleOptions, selectedOption: $titleData.selectedStyle) { option in
+        SelectableView(title: headerTitleString.fontStyle.rawValue, options: titleData.data.styleOptions, selectedOption: $titleData.data.selectedStyle) { option in
             Text(option.rawValue)
                 .frame(width: 200)
         }
         Divider()
         
-        SelectableView(title: headerTitleString.fontWeight.rawValue, options: titleData.weightOptions, selectedOption: $titleData.selectedWeight) { option in
+        SelectableView(title: headerTitleString.fontWeight.rawValue, options: titleData.data.weightOptions, selectedOption: $titleData.data.selectedWeight) { option in
             Text(option.rawValue)
                 .frame(width: 200)
         }
@@ -162,20 +162,20 @@ struct configurateTextObjectsBackGround: View{
     
     var body: some View {
         
-        DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackground, title: headerTitleString.backgroundColor.rawValue)
+        DrawColorPaletteBox(selectedColor: $titleData.data.selectedColorBackground, title: headerTitleString.backgroundColor.rawValue)
         VStack{
             Text("Gradient")
-            Image(systemName: !titleData.gradientIsClicked ? "square" : "square.fill")
+            Image(systemName: !titleData.data.gradientIsClicked ? "square" : "square.fill")
                 .font(.system(size: 18))
         }
         .onTapGesture {
-            titleData.gradientIsClicked.toggle()
+            titleData.data.gradientIsClicked.toggle()
         }
-        if titleData.gradientIsClicked {
-            DrawColorPaletteBox(selectedColor: $titleData.selectedColorBackgroundTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
+        if titleData.data.gradientIsClicked {
+            DrawColorPaletteBox(selectedColor: $titleData.data.selectedColorBackgroundTwo, title: headerTitleString.backgroundColorsRadient.rawValue)
         }
         VStack {
-            Slider(value: $titleData.selectedBackgroundOpacity, in: 0...1)
+            Slider(value: $titleData.data.selectedBackgroundOpacity, in: 0...1)
                 .padding()
         }
     }
@@ -187,17 +187,17 @@ struct configurateTextObjectsFontColor: View{
     
     var body: some View {
         
-        DrawColorPaletteBox(selectedColor: $titleData.selectedColorFont, title: headerTitleString.fontColor.rawValue)
+        DrawColorPaletteBox(selectedColor: $titleData.data.selectedColorFont, title: headerTitleString.fontColor.rawValue)
         VStack{
             Text("Shadow")
-            Image(systemName: !titleData.shadowIsClicked ? "square" : "square.fill")
+            Image(systemName: !titleData.data.shadowIsClicked ? "square" : "square.fill")
                 .font(.system(size: 18))
         }
         .onTapGesture {
-            titleData.shadowIsClicked.toggle()
+            titleData.data.shadowIsClicked.toggle()
         }
         VStack {
-            Slider(value: $titleData.selectedFontOpacity, in: 0...1)
+            Slider(value: $titleData.data.selectedFontOpacity, in: 0...1)
         }
     }
 }
@@ -208,10 +208,10 @@ struct configurateTextObjectsBorderDesign: View{
     
     var body: some View {
         
-        DrawColorPaletteBox(selectedColor: $titleData.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
-        Slider(value: $titleData.selectedBorderWidth, in: 0...20)
+        DrawColorPaletteBox(selectedColor: $titleData.data.selectedBorderColor, title: headerTitleString.setBorderColor.rawValue)
+        Slider(value: $titleData.data.selectedBorderWidth, in: 0...20)
         
-        SliderDoubleView(minValue: 0, maxValue: 50, objectToChange: $titleData.selectedCornerRadius, title: EditImageString.cornerRadius)
+        SliderDoubleView(minValue: 0, maxValue: 50, objectToChange: $titleData.data.selectedCornerRadius, title: EditImageString.cornerRadius)
         
     }
 }

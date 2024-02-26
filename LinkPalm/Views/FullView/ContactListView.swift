@@ -6,41 +6,106 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContactsListView: View {
     
-    @Binding var QRList: QRCodeModel
+    @Environment(\.modelContext) var modelContext
+    @Query private var qrUsersList: [QRCodeData]
+    
     @Binding var designList: UserDesignList
+    @State var filter : TypeOfContact = .none
     
     var body: some View {
-        List {
-            ForEach(designList.userList.indices, id: \.self) { index in
-                NavigationLink(destination: CardView(user: $designList.userList[index])) {
-                    drawButtonForContactListView(contact: designList.userList[index])
-                        .padding(.vertical, -12)
+        
+        ZStack{
+            BackgroundColorView()
+            
+            VStack{
+                List {
+                    ForEach(designList.userList.indices, id: \.self) { index in
+                        if filter == designList.userList[index].typeOfContact || filter == .none{
+                            NavigationLink(destination: CardView(user: $designList.userList[index])) {
+                                drawButtonForContactListView(contact: designList.userList[index])
+                                    .padding(.vertical, -12)
+                            }
+                            .listRowBackground(Color.clear)
+                        }
+                    }
+                    .onDelete(perform: { indexSet in
+                        indexSet.forEach { index in
+                            modelContext.delete(qrUsersList[index])
+                            designList.userList.remove(at: index)
+                        }
+                    })
                 }
-                .listRowBackground(Color.clear)
+                .scrollContentBackground(.hidden)
+                
+                Spacer()
+                drawButtonForSorting(filter: $filter)
+                    .padding(.bottom, 20)
             }
-            .onDelete(perform: { indexSet in
-                indexSet.forEach { index in
-                    QRList.listOfContacts.remove(at: index)
-                    designList.userList.remove(at: index)
-                    
-                }
-            })
         }
+    }
+}
+
+
+struct drawButtonForSorting: View{
+    
+    @Binding var filter : TypeOfContact
+    
+    var body: some View{
+
+            HStack(spacing: 10){
+                ForEach(TypeOfContact.allCases, id: \.self) { type in
+                    Button(action:{
+                        filter = type
+                    })
+                    {
+                        buttonDesignForSorting(icon: type.asIcon)
+                    }
+                }
+            }
+    }
+}
+
+struct buttonDesignForSorting: View{
+    var icon : String
+    
+    var body: some View{
+        
+        Image(systemName: icon )
+            .foregroundColor(.blue)
+            .font(.title)
+            .frame(width: 35, height: 35)
+            .background(
+                RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                    .fill(Color.white)
+                    .frame(width: 55, height: 55)
+                    .overlay(
+                        RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                            .stroke(Color.black, lineWidth: 1)))
+            .shadow(color: .gray, radius: 10, x: 0, y: 4)
+            .padding(.trailing, 15)
+            .padding(.leading, 15)
     }
 }
 
 struct drawButtonForContactListView : View{
     
     let contact : UserDesignModel
+    var userDetails: (firstName: String, lastName: String, imageURL: String, typeOfContactSymbol: String)
+    
+    init(contact: UserDesignModel) {
+        self.contact = contact
+        self.userDetails = contact.returnCorrectValuesAccordingToEnum(data: contact, typeOfContact: contact.typeOfContact)
+    }
     
     var body: some View {
+        
         HStack{
-            
-            if let urlString = contact.personData?.result.picture.thumbnail, let url = URL(string: urlString) {
-                AsyncImage(url: url)
+            if !userDetails.imageURL.isEmpty {
+                AsyncImage(url: URL(string: userDetails.imageURL))
                     .frame(width: 40, height: 40)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     .background(
@@ -70,27 +135,37 @@ struct drawButtonForContactListView : View{
                     .padding(.leading, -20)
             }
             VStack(alignment: .leading){
-                Text("\(contact.personData?.result.name.first ?? "Name not found")")
+                if contact.typeOfContact == .person{
+                    Text("\(userDetails.firstName )")
                         .font(.system(size: 16))
                         .foregroundStyle(Color.black)
-                Text("\(contact.personData?.result.name.last ?? "")")
+                    Text("\(userDetails.lastName)")
                         .font(.system(size: 14))
                         .foregroundStyle(Color.black)
                 }
+                else{
+                    Text("\(userDetails.firstName )")
+                        .font(.system(size: 16))
+                        .foregroundStyle(Color.black)
+                }
+            }
             Spacer()
+            Image(systemName: "\(userDetails.typeOfContactSymbol)")
+                .foregroundColor(Color.blue)
+                .font(.system(size: 28))
+                .offset(x: 30)
         }
         .padding(.horizontal, 30)
         .padding(.vertical, 10)
         .background(
             RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
-                .fill(Color.gray.opacity(0.1))
+                .fill(Color.white)
                 .frame(width: 330, height: 80)
                 .overlay(
                     RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                         .stroke(Color.black, lineWidth: 1)))
         .padding()
     }
-    
 }
 
 /*#Preview {

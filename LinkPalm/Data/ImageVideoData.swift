@@ -17,13 +17,13 @@ class ImageVideoData: Identifiable{
     let id = UUID().uuidString
     var videoID: URL
     var webAdress: String
-    var imageData: ImageData
+    var imageData: ImageModel
     var typeOfBox: ImageVideoEnum // Decides what View to be called from the list writer
     var textCustomModel: TitleCustomModel
     
     init(videoID: URL = URL(string: "https://www.youtube.com/watch?v=3uEbkUmS29A")!,
          webAdress: String = "",
-         imageData: ImageData = ImageData(),
+         imageData: ImageModel = ImageModel(),
          typeOfBox: ImageVideoEnum = .none,
          textCustomModel: TitleCustomModel = TitleCustomModel()) {
         self.videoID = videoID
@@ -39,7 +39,7 @@ class ImageVideoData: Identifiable{
     
     func setImageUrlFromString(string: String) {
         if let url = URL(string: string) {
-            self.imageData.imageURL = url
+            self.imageData.data.imageURL = url
             self.typeOfBox = .picturefromweb
         } else {
             return

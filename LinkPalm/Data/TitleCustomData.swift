@@ -11,7 +11,7 @@ import SwiftData
 
 @Observable
 //@Model
-class TitleCustomModel{
+class TitleCustomData{
     
     let id = UUID().uuidString
     var text: String
@@ -79,49 +79,6 @@ class TitleCustomModel{
         self.selectedCornerRadius = selectedCornerRadius
         self.selectedImageCornerRadius = selectedImageCornerRadius
         self.selectedXOffsetText = selectedXOffsetText
-    }
-    
-}
-
-extension TitleCustomModel{
-    
-    func createNewTextBox(isTitle: Bool){
-        
-        isTitle ? self.CreateTitle() : self.CreateText()
-        self.createCustomDesignText()
-    }
-    
-    func CreateTitle(){
-        
-        self.text = generatePlaceholderText(wordCount: generateNumber(1, 5))
-        self.selectedSize = generateNumber(26, 50)
-    }
-    
-    func CreateText(){
-        
-        self.text = generatePlaceholderText(wordCount: generateNumber(100, 200))
-        self.selectedSize = generateNumber(16, 24)
-        self.selectedAlignment = randomAlignment()
-        self.selectedTextAlignment = randomTextAlignment()
-    }
-    
-    func createCustomDesignText(){
-        
-        self.selectedStyle = randomFontStyle()
-        self.selectedWeight = randomWeight()
-        self.selectedColorBackground = randomStandardColor()
-        self.selectedColorBackgroundTwo = randomStandardColor()
-        self.selectedColorFont = randomStandardColor()
-        self.selectedOpacity = generateNumber(0.5, 1.0)
-        self.gradientIsClicked = Bool.random()
-        self.shadowIsClicked = Bool.random()
-        self.selectedBackgroundOpacity = generateNumber(0.1, 1.0)
-        self.selectedFontOpacity = generateNumber(0.5, 1.0)
-        self.selectedBorderColor = randomStandardColor()
-        self.selectedBorderWidth = generateNumber(0, 25)
-        self.selectedCornerRadius = generateNumber(0, 25)
-        self.selectedImageCornerRadius = generateNumber(0, 25)
-        self.selectedXOffsetText = 10
     }
     
 }

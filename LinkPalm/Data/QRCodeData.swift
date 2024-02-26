@@ -9,36 +9,6 @@ import Foundation
 import Observation
 import SwiftData
 
-enum TypeOfContact: Codable, Hashable {
-    case person, item, company, none
-
-    init(fromString string: String) {
-        switch string {
-        case "person":
-            self = .person
-        case "item":
-            self = .item
-        case "company":
-            self = .company
-        default:
-            self = .none
-        }
-    }
-    var asString: String{
-        switch self{
-        case .company:
-            return "company"
-        case .item:
-            return "item"
-        case .person:
-            return "person"
-        case .none:
-            return "none"
-            
-        }
-    }
-}
-
 //@Observable
 @Model
 final class QRCodeData: Identifiable{

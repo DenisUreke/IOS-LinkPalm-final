@@ -24,6 +24,7 @@ class ExchangeSession: NSObject, ObservableObject {
     var scannedCode: String?
     var userList: UserDesignList
     var messageSent: String = ""
+    var components : [String] = []
     
     init(password: String, userList: UserDesignList) {
         self.userList = userList
@@ -129,27 +130,39 @@ extension ExchangeSession: MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
-        if let receivedUserID = String(data: data, encoding: .utf8) {
+        if let _ = String(data: data, encoding: .utf8) {
             
             DispatchQueue.main.async {
             
                 if let receivedString = String(data: data, encoding: .utf8) {
-                    
-                    let components = receivedString.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
+                    print(receivedString)
+                    self.components = receivedString.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
                  
-                    if components.count > 1{
-                        let recievedPassword = components[4]
-                        let recievedUserID = components[0]
+                    if self.components.count > 1{
+                        print(self.components[1])
+                        let recievedPassword = self.components[4]
+                        let recievedUserID = self.components[0]
                         
                         if recievedPassword == self.password{
                             self.userID = recievedUserID
-                            if self.userList.checkIfContactExists(components: components){
+                            if self.userList.checkIfContactExists(components: self.components){
                                 self.scannedCode = "Contact already exists"
                                 return
                             }
                             else{
-                                self.userList.createAndPopulate(components: components)
-                                self.scannedCode = "New Contact Added"
+                                
+                                if self.components[3] == "person"{
+                                    self.userList.createAndPopulate(components: self.components)
+                                    self.scannedCode = "New Contact Added"
+                                }
+                                else if self.components[3] == "item"{
+                                    self.userList.createAndPopulate(components: self.components)
+                                    self.scannedCode = "New Product Added"
+                                }
+                                else {
+                                    self.userList.createAndPopulate(components: self.components)
+                                    self.scannedCode = "New Company Added"
+                                }
                             }
                         }
                         else{

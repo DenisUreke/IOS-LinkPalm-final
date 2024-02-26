@@ -14,25 +14,27 @@ import SwiftData
 struct QRScanView: View {
     @Environment(\.modelContext) var modelContext
     @Query private var qrUsersList: [QRCodeData]
-    @State private var isPresentingScanner = false
+    @State private var isPresentingScanner = true
     @State private var scannedCode: String?
     var QRCodeModelList : QRCodeModel
     @Binding var userDesign: UserDesignList
 
     var body: some View {
-        VStack {
-            if let scannedCode = scannedCode {
-                SuccessView(userList: $userDesign, message: scannedCode)
-                    .navigationTitle("\(scannedCode)")
-            } else {
-                Text("\(scannedCode ?? "")")
-                    .font(.system(size: 36))
-                ButtonDesign(icon: "qrcode.viewfinder", title: "Scan", borderColor: .black, borderThickness: 2, width: 180, height:50)
-                    .onTapGesture {
-                        isPresentingScanner = true
-                    }
-                .sheet(isPresented: $isPresentingScanner) {
-                    CodeScannerView(codeTypes: [.qr], completion: handleScan)
+        ZStack{
+            BackgroundColorView()
+            VStack {
+                if let scannedCode = scannedCode {
+                    SuccessView(userList: $userDesign, message: scannedCode)
+                } else {
+                    Text("\(scannedCode ?? "")")
+                        .font(.system(size: 36))
+                    DrawDynamicButton(selectedMenuButton: ShareContactEnum.read)
+                        .onTapGesture {
+                            isPresentingScanner = true
+                        }
+                        .sheet(isPresented: $isPresentingScanner) {
+                            CodeScannerView(codeTypes: [.qr], completion: handleScan)
+                        }
                 }
             }
         }
@@ -47,11 +49,21 @@ struct QRScanView: View {
                 modelContext.insert(QRModel)
             
             if userDesign.checkIfContactExists(components: components){
-                scannedCode = "Contact already exists"
+                scannedCode = "Entry already exists"
                 return
             }else{
-                userDesign.createAndPopulate(components: components)
-                scannedCode = "New Contact Added"
+                if components[3] == "person"{
+                    userDesign.createAndPopulate(components: components)
+                    scannedCode = "New Contact Added"
+                }
+                else if components[3] == "item"{
+                    userDesign.createAndPopulate(components: components)
+                    scannedCode = "New Product Added"
+                }
+                else {
+                    userDesign.createAndPopulate(components: components)
+                    scannedCode = "New Company Added"
+                }
             }
             
         case .failure(let error):

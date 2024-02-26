@@ -6,56 +6,67 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MultiPeerView: View {
     
+    @Environment(\.modelContext) var modelContext
+    //@Query private var qrUsersList: [QRCodeData]
+    @State var password: String
     @Binding var userList: UserDesignList
-    var QRmodel: QRCodeModel
-    @State var password: String = ""
     var session: ExchangeSession
     var userID: String
     
     
-    init(userList: Binding<UserDesignList>, QRmodel: QRCodeModel, password: String, userID: String) {
+    init(userList: Binding<UserDesignList>, password: String, userID: String) {
         self._userList = userList
-        self.QRmodel = QRmodel
         self.password = password
-        self.session = ExchangeSession(password: password, userList: userList.wrappedValue)
         self.userID = userID
+        self.session = ExchangeSession(password: password, userList: userList.wrappedValue)
     }
 
     var body: some View {
         
-        if session.scannedCode == nil{
-            usersLogged()
+        ZStack{
+            BackgroundColorView()
+            VStack{
+                if session.scannedCode == nil{
+                    usersLogged()
+                }
+                
+                if let scannedCode = session.scannedCode {
+                    SuccessView(userList: $userList, message: scannedCode)
+                }
+                
+                if session.passwordsDoNotMatch{
+                    PopUpErrorViewForMultiPeer(
+                        text: "Passwords Do Not Match",
+                        action: { newPassword in
+                            session.resetpasswordsDoNotMatch(newPassword: newPassword)
+                        }, password: $password
+                    )
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    session.send(userID: userID, firstName: "John", lastName: "Doe", typeOfContact: "person", password: password)
+                }){
+                    DrawDynamicButton(selectedMenuButton: ButtonEnum.share)            }
+                .onDisappear{
+                    session.passwordsDoNotMatch = false
+                    session.scannedCode = nil
+                }
+                .padding()
+                .onChange(of: session.scannedCode, initial: (session.scannedCode != nil)) { previousValue, currentValue in
+                    if currentValue != nil && currentValue != "Contact already exists" {
+                        self.updateDataBase()
+                    }
+                }
+            }
         }
-        
-            if let scannedCode = session.scannedCode {
-                SuccessView(userList: $userList, message: scannedCode)
-            }
-            
-            if session.passwordsDoNotMatch{
-                PopUpErrorViewForMultiPeer(
-                         text: "Passwords Do Not Match\nPlease enter correct one",
-                         action: { newPassword in
-                             session.resetpasswordsDoNotMatch(newPassword: newPassword)
-                         }, password: $password
-                     )
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                session.send(userID: userID, firstName: "John", lastName: "Doe", typeOfContact: "person", password: password)
-            }){
-                ButtonDesign(icon: "iphone.gen1.radiowaves.left.and.right", title: "Share Contact", borderColor: .black, borderThickness: 2, width: 240, height: 80)
-            }
-        .onDisappear{
-            session.passwordsDoNotMatch = false
-            session.scannedCode = nil
-        }
-        .padding()
     }
+    
     
     func usersLogged() -> some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -70,6 +81,10 @@ struct MultiPeerView: View {
         .padding()
         .background(RoundedRectangle(cornerRadius: 10).fill(Color(.systemBackground)).shadow(radius: 5))
         .padding()
+    }
+    func updateDataBase(){
+        let QRModel = QRCodeData(component: session.components)
+        //modelContext.insert(QRModel)
     }
 }
 
@@ -86,56 +101,34 @@ struct PopUpErrorViewForMultiPeer: View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .frame(width: 300, height: 200)
+                .frame(width: 360, height: 240)
                 .shadow(radius: 5)
                 .overlay(
-                    VStack {
+                    VStack(spacing: 10) {
+                        Spacer()
                         Text(text)
                             .foregroundColor(.red)
-                            .padding(.top)
-
-                        TextField("Enter password", text: $selectedPassword)
-                            .keyboardType(.numberPad)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(5)
-                            
+                        
+                        drawTextfieldForPeer(selectedPassword: $selectedPassword)
+                            .padding(.top, -25)
+                        
                         Button(action: {
                             password = selectedPassword
                             action(selectedPassword)
                         }) {
-                            ButtonDesign(icon: "x.square", title: "OK", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+                            DrawDynamicButton(selectedMenuButton: ButtonEnum.ok)
+                                .scaleEffect(0.6)
                         }
-                        .padding(.top)
+                        .padding(.top, -30)
+                        .padding(.bottom, -40)
+                        Spacer()
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding()
                 )
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.clear)
     }
-}
-
-struct PopUpErrorViewWithFunction: View {
-    let text: String
-    var action: () -> Void
     
-    var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .frame(width: 300, height: 200)
-                .shadow(radius: 5)
-                .overlay(
-                    Text(text)
-                        .foregroundColor(.red)
-                )
-            
-            Button(action:{
-                action()
-            })
-            {
-                ButtonDesign(icon: "x.square", title: "OK", borderColor: .black, borderThickness: 2, width: 180, height: 50)
-            }
-        }
-    }
 }

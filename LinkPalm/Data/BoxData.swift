@@ -13,11 +13,11 @@ import SwiftData
 //@Model
 class BoxData{
     
-    var boxDesign: (background: BackgroundData, text: TitleCustomModel, sfSymbol: SFSymbolData, imageVideoData: ImageVideoData)
+    var boxDesign: (background: BackGroundModel, text: TitleCustomModel, sfSymbol: SFSymbolModel, imageVideoData: ImageVideoData)
     
     var imageVideoListData: ImageVideoDataList
     
-    init(boxDesign: (background: BackgroundData, text: TitleCustomModel, sfSymbol: SFSymbolData, imageVideoData: ImageVideoData) = (BackgroundData(), TitleCustomModel(), SFSymbolData(), ImageVideoData()),
+    init(boxDesign: (background: BackGroundModel, text: TitleCustomModel, sfSymbol: SFSymbolModel, imageVideoData: ImageVideoData) = (BackGroundModel(), TitleCustomModel(), SFSymbolModel(), ImageVideoData()),
          imageVideoListData: ImageVideoDataList = ImageVideoDataList()) {
         
         self.boxDesign = boxDesign
@@ -36,10 +36,9 @@ extension BoxData{
     }
     
     func fillBoxDesignImageOnly(imageURL: String){
-        print("THE URL  \(imageURL)")
-        self.boxDesign.imageVideoData.imageData.imageURL = URL(string: imageURL)!
+        self.boxDesign.imageVideoData.imageData.data.imageURL = URL(string: imageURL)!
         self.boxDesign.imageVideoData.imageData.createDesignImage()
-        self.boxDesign.imageVideoData.imageData.selectedScale = 1
+        self.boxDesign.imageVideoData.imageData.data.selectedScale = 1
         self.boxDesign.background.createBackgroundData()
     }
     
@@ -56,4 +55,5 @@ extension BoxData{
         self.imageVideoListData.createNewVideoForList()
         self.imageVideoListData.createNewTextForList()
     }
+    
 }

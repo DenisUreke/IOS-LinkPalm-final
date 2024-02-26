@@ -10,6 +10,7 @@ import Foundation
 actor DataFetcher {
     var personData: PersonDataModel?
     var memeData: [MemeModel] = []
+    var productData: [ProductModel] = []
     private let downloader = DownloadDataModel()
 
     func fetchPersonData() async throws {
@@ -28,9 +29,18 @@ actor DataFetcher {
             throw error
         }
     }
+    
+    func fetchProductData() async throws {
+        do {
+            try await downloader.fetchProductData()
+            self.productData = downloader.productData
+        } catch {
+            throw error
+        }
+    }
 }
 
-func fetchData() async throws -> (PersonDataModel?, [MemeModel]) {
+func fetchData() async throws -> (PersonDataModel?, [MemeModel], [ProductModel]) {
     let dataFetcher = DataFetcher()
 
     try await dataFetcher.fetchPersonData()
@@ -38,6 +48,9 @@ func fetchData() async throws -> (PersonDataModel?, [MemeModel]) {
 
     try await dataFetcher.fetchMemeData()
     let memes = await dataFetcher.memeData
+    
+    try await dataFetcher.fetchProductData()
+    let products = await dataFetcher.productData
 
-    return (person, memes)
+    return (person, memes, products)
 }

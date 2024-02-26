@@ -11,46 +11,58 @@ import SwiftData
 struct SuccessView: View {
     @Binding var userList: UserDesignList
     let message: String
+    let userDetails: (firstName: String, lastName: String, imageURL: String)
+    
+    init(userList: Binding<UserDesignList>, message: String) {
+        self._userList = userList
+        self.message = message
+        if let lastUser = userList.wrappedValue.userList.last {
+            self.userDetails = userList.wrappedValue.returnCorrectValuesAccordingToEnum(data: lastUser, typeOfContact: lastUser.typeOfContact)
+        } else {
+            self.userDetails = ("John", "Doe", "DefaultImageURL")
+        }
+    }
     
 
     var body: some View {
         VStack {
             
-            if let urlString = userList.userList.last?.personData?.result.picture.large,
-               let url = URL(string: urlString) {
+            if !userDetails.imageURL.isEmpty {
                 Text("\(message)")
                     .padding(.bottom, 100)
                     .font(.largeTitle)
-                AsyncImage(url: url) { phase in
+                AsyncImage(url: URL(string: userDetails.imageURL)) { phase in
                     switch phase {
                         case .success(let image):
                             image.resizable()
                                  .aspectRatio(contentMode: .fill)
-                                 .frame(width: 200, height: 200) // Doubled the image size
+                                 .frame(width: 200, height: 200)
                                  .clipShape(Circle())
                                  .overlay(
-                                    Circle().stroke(Color.white, lineWidth: 4) // Adds a white border with a line width of 4
+                                    Circle().stroke(Color.white, lineWidth: 4)
                                  )
                                  .offset(y: -40)
                                  .background(
-                                    RoundedRectangle(cornerRadius: 10) // Larger corner radius for the background
-                                        .fill(Color.gray.opacity(0.3)) // Example background color with slight transparency
-                                        .frame(width: 260, height: 340) // Slightly larger than the image
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.white)
+                                        .frame(width: 260, height: 340)
                                  )
                                  .shadow(color: .gray, radius: 10, x: 0, y: 4)
                         
-                        Text("\(userList.userList.last?.personData?.result.name.first ?? "") \(userList.userList.last?.personData?.result.name.last ?? "")")
+                        Text("\(userDetails.firstName) \(userDetails.lastName)")
+                            .lineLimit(1)
                             .font(.title)
+                            .frame(width: 200)
+                            .minimumScaleFactor(0.5)
                         
                         Spacer()
                         
                         NavigationLink(destination: CardView(user: $userList.userList.last!)){
-                            ButtonDesign(icon: "person.crop.circle", title: "See Card", borderColor: .black, borderThickness: 2, width: 220, height: 50)
+                            ButtonDesign(icon: "person.crop.circle", title: "See Card", borderColor: .black, borderThickness: 2, width: 180, height: 50)
                         }
-                        /*.navigationTitle("\(userList.userList.last?.personData?.result.name.first ?? "") \(userList.userList.last?.personData?.result.name.last ?? "")")*/
                         case .failure(_):
                             Image(systemName: "photo")
-                                .frame(width: 200, height: 200) // Adjusted for consistency
+                                .frame(width: 200, height: 200)
                                 .foregroundColor(.gray)
                         case .empty:
                             ProgressView()
@@ -62,6 +74,5 @@ struct SuccessView: View {
                 ProgressView()
             }
         }
-        // Removed the frame and clipShape from VStack as they are no longer needed
     }
 }

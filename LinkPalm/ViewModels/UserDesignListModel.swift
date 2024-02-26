@@ -25,19 +25,18 @@ extension UserDesignList{
         Task {
             do {
                 
-                let (person, memes) = try await fetchData()
+                let (person, memes, products) = try await fetchData()
                 
                 DispatchQueue.main.async {
                     if memes.count >= 3 {
                         let randomMemes = Array(memes.shuffled().prefix(3))
-                        let urls = randomMemes.compactMap { $0.url } // Extracting URLs from the selected memes
-                        // Now urls is an array of URL objects that you can pass as expected
+                        let urls = randomMemes.compactMap { $0.url }
+                        let randomProduct = products.randomElement()
                         
-                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[3], personData: person)
-                        newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "", meme: urls)
+                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[3], personData: person, productData: randomProduct)
+                        newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "", meme: urls, productImageURL: randomProduct?.images.first! ?? "https://picsum.photos/300/300.jpg", typeOfContact: newUser.typeOfContact, user: newUser)
                         self.userList.append(newUser)
-                        self.userList.last!.wideBarOne.wideBarListData.listOfIcons.last!.createHeaderWithName(firstName: person?.result.name.first ?? "Name Not found", lastName: person?.result.name.last ?? "Name Not Found")
-                        self.userList.last!.wideBarTwo.wideBarListData.createButtonsForWideBar()
+                        self.userList.last!.wideBarOne.wideBarListData.createButtonsForWideBar()
                     }
                     
                     
@@ -49,5 +48,32 @@ extension UserDesignList{
                 print("An error occurred: \(error)")
             }
         }
+    }
+    
+    func returnCorrectValuesAccordingToEnum(data: UserDesignModel, typeOfContact: TypeOfContact) -> (firstName: String, lastName: String, imageURL: String) {
+        
+        var firstName : String = ""
+        var lastName : String = ""
+        var imageURL : String = ""
+        
+        if typeOfContact == .person{
+            firstName = data.personData?.result.name.first ?? "John"
+            lastName = data.personData?.result.name.last ?? "Doe"
+            imageURL = data.personData?.result.picture.large ?? ""
+        }
+        
+        if typeOfContact == .item{
+            firstName = data.productData?.title ?? "Some Product"
+            lastName = ""
+            imageURL = data.productData?.images.first! ?? ""
+        }
+        
+        if typeOfContact == .company{
+            firstName = data.productData?.brand ?? "Some Company"
+            lastName = ""
+            imageURL = data.productData?.images.first! ?? ""
+        }
+        
+        return (firstName, lastName, imageURL)
     }
 }

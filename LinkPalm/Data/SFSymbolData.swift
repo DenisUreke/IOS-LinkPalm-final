@@ -34,15 +34,21 @@ class SFSymbolData{
     
 }
 
-extension SFSymbolData{
+class SFSymbolModel{
+    
+    var data : SFSymbolData
+    
+    init(data: SFSymbolData = SFSymbolData()){
+        self.data = data
+    }
     
     func createSFSymbolData(){
         
-        self.sfIcon = randomSFSymbol()
-        self.selectedSize = generateNumber(50, 200)
-        self.selectedColorFont = randomStandardColor()
-        self.selectedFontOpacity = generateNumber(0.1, 1.0)
-        self.selectedXOffsetIcon = generateNumber(-50, 50)
+        self.data.sfIcon = randomSFSymbol()
+        self.data.selectedSize = generateNumber(50, 200)
+        self.data.selectedColorFont = randomStandardColor()
+        self.data.selectedFontOpacity = generateNumber(0.1, 1.0)
+        self.data.selectedXOffsetIcon = generateNumber(-50, 50)
     }
-    
 }
+

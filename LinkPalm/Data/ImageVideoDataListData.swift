@@ -50,6 +50,14 @@ class ImageVideoDataList{
         object.typeOfBox = .text
         self.listOfEntries.append(object)
     }
+    
+    func findIndexOfObject(sentiID : String) -> Int {
+        if let index = self.listOfEntries.firstIndex(where: { $0.id == sentiID }) {
+            return index
+        } else {
+            return 0
+        }
+    }
 }
 
 extension ImageVideoDataList{

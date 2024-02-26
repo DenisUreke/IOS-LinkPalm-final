@@ -12,25 +12,26 @@ struct DynamicPictureView: View {
     @Binding var imageData : ImageVideoData
 
     var body: some View {
-        if let image = imageData.imageData.selectedBackgroundImage{
+        if let image = imageData.imageData.data.selectedBackgroundImage{
             image
                 .resizable()
-                .scaledToFit()
-                .scaleEffect(imageData.imageData.selectedScale)
-                .offset(x: imageData.imageData.selectedXAxisOffset, y: imageData.imageData.selectedYAxisOffset)
-                .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius))
+                .cornerRadius(8)
+                .padding(0)
+                .scaleEffect(imageData.imageData.data.selectedScale)
+                .offset(x: imageData.imageData.data.selectedXAxisOffset, y: imageData.imageData.data.selectedYAxisOffset)
+                .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.data.selectedImageCornerRadius))
                 .frame(maxWidth: .infinity)
-                .rotationEffect(.degrees(imageData.imageData.selectedRotation))
-                .hueRotation(.degrees(imageData.imageData.selectedHueRotation))
-                .opacity(imageData.imageData.selectedOpacity)
-                .saturation(imageData.imageData.selectedSaturation)
-                .contrast(imageData.imageData.selectedContrast)
-                .border(imageData.textCustomModel.selectedBorderColor.color, width: imageData.textCustomModel.selectedBorderWidth)
+                .rotationEffect(.degrees(imageData.imageData.data.selectedRotation))
+                .hueRotation(.degrees(imageData.imageData.data.selectedHueRotation))
+                .opacity(imageData.imageData.data.selectedOpacity)
+                .saturation(imageData.imageData.data.selectedSaturation)
+                .contrast(imageData.imageData.data.selectedContrast)
+                .border(imageData.textCustomModel.data.selectedBorderColor.color, width: imageData.textCustomModel.data.selectedBorderWidth)
                 .overlay(
-                    RoundedRectangle(cornerRadius: imageData.textCustomModel.selectedImageCornerRadius)
-                        .stroke(imageData.textCustomModel.selectedBorderColor.color, lineWidth: imageData.textCustomModel.selectedBorderWidth)
+                    RoundedRectangle(cornerRadius: imageData.textCustomModel.data.selectedImageCornerRadius)
+                        .stroke(imageData.textCustomModel.data.selectedBorderColor.color, lineWidth: imageData.textCustomModel.data.selectedBorderWidth)
                 )
-                .scaledToFill()
+                .conditionalScaledToFill(apply: imageData.imageData.data.scaledToFill)
                 .clipped()
         }else{
             Text("Could not find Image")

@@ -13,20 +13,26 @@ struct BoxView: View {
     @State var isEditMode : Bool = false
     
     var body: some View {
-        VStack(spacing: 0){
-            ImageVideoListView(list: $titleData, isEditMode: $isEditMode)
-        }
-        .padding(.horizontal, -20) 
-        .border(titleData.backgroundData.selectedBorderColor.color, width: titleData.backgroundData.selectedBorderWidth)
-        .background(titleData.backgroundData.gradientIsClicked ? Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundTwo.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundOne.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) )
-        .cornerRadius(titleData.backgroundData.selectedCornerRadius)
-        .toolbar {
-            drawToolBar()
+        
+        ZStack {
+            Color(titleData.backgroundData.selectedColorBackgroundOne.color)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 0){
+                ImageVideoListView(list: $titleData)
+            }
+            .padding(.horizontal, -20)
+            .border(titleData.backgroundData.selectedBorderColor.color, width: titleData.backgroundData.selectedBorderWidth)
+            .background(titleData.backgroundData.gradientIsClicked ? Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundTwo.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [titleData.backgroundData.selectedColorBackgroundOne.color, titleData.backgroundData.selectedColorBackgroundOne.color]).opacity(titleData.backgroundData.selectedBackgroundOpacity) )
+            .cornerRadius(titleData.backgroundData.selectedCornerRadius)
+            .toolbar {
+                drawToolBar()
+            }
         }
         
         if isEditMode{
             NavigationLink(destination: BoxDesignView(designData: $titleData)){
-                ButtonDesign(icon: "plus.app", title: "Add", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+                DrawDynamicButton(selectedMenuButton: ButtonEnum.add)
             }
         }
     
@@ -48,40 +54,45 @@ struct BoxView: View {
 
 struct ImageVideoListView: View {
     
-    @Binding var list : ImageVideoDataList
-    @Binding var isEditMode : Bool
+    @Binding var list: ImageVideoDataList
+    @State var idOfEditingItem: String?
+    @State var navigate: Bool = false
     
     var body: some View {
         List {
-            ForEach(Array(list.listOfEntries.enumerated()), id: \.element.id) { index, entry in
-                VStack{
-                    getDynamicView(imageVideoData: $list.listOfEntries[index], type: entry.typeOfBox)
-                        .background(list.backgroundData.gradientIsClicked ? Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]).opacity(list.backgroundData.selectedBackgroundOpacity) : Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]).opacity(list.backgroundData.selectedBackgroundOpacity) )
-                
-                    }
-                if isEditMode{
-                    HStack{
-                        Button(action: {
-                            if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
-                                list.listOfEntries.remove(at: atIndex)
-                            }
-                        })
-                        {
-                            ButtonDesign(icon: "trash.square", title: "Delete", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+            ForEach($list.listOfEntries, id: \.id) { $entry in
+                VStack {
+                    getDynamicView(imageVideoData: $entry, type: entry.typeOfBox)
+                        .background(list.backgroundData.gradientIsClicked ? LinearGradient(gradient: Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundTwo.color]), startPoint: .top, endPoint: .bottom).opacity(list.backgroundData.selectedBackgroundOpacity) : LinearGradient(gradient: Gradient(colors: [list.backgroundData.selectedColorBackgroundOne.color, list.backgroundData.selectedColorBackgroundOne.color]), startPoint: .top, endPoint: .bottom).opacity(list.backgroundData.selectedBackgroundOpacity))
+                }
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button(role: .destructive) {
+                        if let index = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
+                            list.listOfEntries.remove(at: index)
                         }
-                        
-                        /*if let atIndex = list.listOfEntries.firstIndex(where: { $0.id == entry.id }) {
-                            Text("index value on edit \(atIndex)")
-                            DynamicButtonForEditing(data: $list.listOfEntries[atIndex])
-                        }*/
+                    } label: {
+                        Label("Delete", systemImage: "trash")
                     }
+                    Button {
+                        idOfEditingItem = entry.id
+                        navigate = true
+                    } label: {
+                        Label("Edit", systemImage: "square.and.pencil")
+                    }
+                    .tint(.blue)
                 }
             }
-            .listRowBackground(list.backgroundData.selectedColorBackgroundOne.color)
+        }
+        .navigationDestination(isPresented: $navigate) {
+            if let id = idOfEditingItem, let index = list.listOfEntries.firstIndex(where: { $0.id == id }) {
+                DynamicView(data: $list.listOfEntries[index], dataList: $list)
+            } else {
+                Text("Item not found or was deleted.") // change this to something smarter later
+            }
         }
     }
-    
 }
+
 func getDynamicView(imageVideoData: Binding<ImageVideoData>, type: ImageVideoEnum) -> some View {
     
     switch type {
@@ -98,68 +109,61 @@ func getDynamicView(imageVideoData: Binding<ImageVideoData>, type: ImageVideoEnu
     }
 }
 
-enum ViewState {
-    case viewA
-    case viewB
-    case viewC
-    case viewD
-}
-
 struct DynamicButtonForEditing: View {
     
     @Binding var data: ImageVideoData
     @Binding var dataList: ImageVideoDataList
-    @State private var currentState: ViewState = .viewD
     
     var body: some View {
         
-        VStack {
-
-            Button(action: {
-                
-                switch data.typeOfBox {
-                case .none:
-                    currentState = .viewD
-                case .picture, .picturefromweb:
-                    currentState = .viewA
-                case .text:
-                    currentState = .viewB
-                case .video:
-                    currentState = .viewC
-                }
-            }) {
-                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2, width: 180, height:50)
+        switch data.typeOfBox {
+        case .picture, .picturefromweb:
+            NavigationLink {
+                PhotoView(designData: $dataList, newObject: $data, isForList: true)
+            } label: {
+                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2, width: 180, height: 50)
             }
-            getView(for: currentState)
+        case .text:
+            NavigationLink {
+                configurateTextObjects(titleData: $dataList, data: $data)
+            } label: {
+                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+            }
+        case .video:
+            NavigationLink {
+                VideoDesignView(list: $dataList, designData: $data)
+            } label: {
+                ButtonDesign(icon: "square.and.pencil", title: "Edit", borderColor: .black, borderThickness: 2, width: 180, height: 50)
+            }
+        case .none:
+            EmptyView()
         }
-    }
-    
-    @ViewBuilder
-    private func getView(for state: ViewState) -> some View {
-        switch state {
-        case .viewA:
-            PhotoView(designData: $dataList, newObject: $data, isForList: true)
-        case .viewB:
-            configurateTextObjects(titleData: $dataList , data: $data)
-        case .viewC:
-            VideoDesignView(list: $dataList, designData: $data)
-        case .viewD:
-            EmptyView() // Placeholder for a default or empty state view
-        }
+        
     }
 }
 
-/*
- if let specificItem = list.listOfEntries.firstIndex(where: id == entry.id){
-     // Use `specificItem`
- }
- 
- Button("Button \(entry.id)") {
-     // Action for the button, possibly navigating or performing an operation with entry.id
-     print("Button tapped for item with ID: \(entry.id)")
- }
- */
+struct DynamicView: View {
+    
+    @Binding var data: ImageVideoData
+    @Binding var dataList: ImageVideoDataList
 
+    @ViewBuilder var editingView: some View {
+        switch data.typeOfBox {
+        case .picture, .picturefromweb:
+            PhotoView(designData: $dataList, newObject: $data, isForList: true)
+        case .text:
+            configurateTextObjects(titleData: $dataList, data: $data)
+        case .video:
+            VideoDesignView(list: $dataList, designData: $data)
+        case .none:
+            EmptyView()
+        }
+    }
+    
+    var body: some View {
+        editingView
+    }
+}
 
 struct DynamicViewText: View {
     
@@ -169,23 +173,23 @@ struct DynamicViewText: View {
         
         //ScrollView{
             VStack{
-                Text("\(titleData.text)")
-                    .frame(maxWidth: .infinity, alignment: titleData.selectedAlignment.getAlignment)
-                    .multilineTextAlignment(titleData.selectedTextAlignment.getTextAlignment)
+                Text("\(titleData.data.text)")
+                    .frame(maxWidth: .infinity, alignment: titleData.data.selectedAlignment.getAlignment)
+                    .multilineTextAlignment(titleData.data.selectedTextAlignment.getTextAlignment)
                     .padding([.leading, .trailing], 10)
                 Spacer()
             }
-            .font(.system(size: titleData.selectedSize, weight: titleData.selectedWeight.getWeight, design: titleData.selectedStyle.getFontStyel))
-            .opacity(titleData.selectedFontOpacity)
-            .offset(y: titleData.selectedXOffsetText)
-            .foregroundColor(titleData.selectedColorFont.color)
+            .font(.system(size: titleData.data.selectedSize, weight: titleData.data.selectedWeight.getWeight, design: titleData.data.selectedStyle.getFontStyel))
+            .opacity(titleData.data.selectedFontOpacity)
+            .offset(y: titleData.data.selectedXOffsetText)
+            .foregroundColor(titleData.data.selectedColorFont.color)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .shadow(color: !titleData.shadowIsClicked ? .clear : .gray,
-                    radius: 2,x: 0, y: !titleData.shadowIsClicked ? 0 : 5)
-            .border(titleData.selectedBorderColor.color, width: titleData.selectedBorderWidth)
+            .shadow(color: !titleData.data.shadowIsClicked ? .clear : .gray,
+                    radius: 2,x: 0, y: !titleData.data.shadowIsClicked ? 0 : 5)
+            .border(titleData.data.selectedBorderColor.color, width: titleData.data.selectedBorderWidth)
             
-            .background(titleData.gradientIsClicked ? Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackgroundTwo.color]).opacity(titleData.selectedBackgroundOpacity) : Gradient(colors: [titleData.selectedColorBackground.color, titleData.selectedColorBackground.color]).opacity(titleData.selectedBackgroundOpacity) )
-            .cornerRadius(titleData.selectedCornerRadius)
+            .background(titleData.data.gradientIsClicked ? Gradient(colors: [titleData.data.selectedColorBackground.color, titleData.data.selectedColorBackgroundTwo.color]).opacity(titleData.data.selectedBackgroundOpacity) : Gradient(colors: [titleData.data.selectedColorBackground.color, titleData.data.selectedColorBackground.color]).opacity(titleData.data.selectedBackgroundOpacity) )
+            .cornerRadius(titleData.data.selectedCornerRadius)
         //}
     }
 }
