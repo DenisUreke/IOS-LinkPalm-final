@@ -11,18 +11,18 @@ import SwiftData
 struct MultiPeerView: View {
     
     @Environment(\.modelContext) var modelContext
-    //@Query private var qrUsersList: [QRCodeData]
-    @State var password: String
+    @Query private var qrUsersList: [QRCodeData]
+    @Binding var password: String
     @Binding var userList: UserDesignList
     var session: ExchangeSession
     var userID: String
     
     
-    init(userList: Binding<UserDesignList>, password: String, userID: String) {
+    init(userList: Binding<UserDesignList>, password: Binding<String>, userID: String) {
         self._userList = userList
-        self.password = password
+        self._password = password
         self.userID = userID
-        self.session = ExchangeSession(password: password, userList: userList.wrappedValue)
+        self.session = ExchangeSession(password: password.wrappedValue, userList: userList.wrappedValue)
     }
 
     var body: some View {

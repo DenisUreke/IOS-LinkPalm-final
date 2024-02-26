@@ -8,6 +8,7 @@
 import MultipeerConnectivity
 import Observation
 import os
+import SwiftUI
 
 @Observable
 class ExchangeSession: NSObject, ObservableObject {
@@ -166,7 +167,6 @@ extension ExchangeSession: MCSessionDelegate {
                             }
                         }
                         else{
-                            print("Entered the last area in > 1")
                             self.sendError(errorMessage: "Error")
                             self.passwordsDoNotMatch = true
                         }

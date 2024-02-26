@@ -22,7 +22,7 @@ struct MultiPeerCodeView: View {
                 drawTextfieldForPeer(selectedPassword: $selectedPassword)
                 
                 VStack{
-                    NavigationLink(destination: MultiPeerView(userList: $userList, password: selectedPassword, userID: user.userID)) {
+                    NavigationLink(destination: MultiPeerView(userList: $userList, password: $selectedPassword, userID: user.userID)) {
                         DrawDynamicButton(selectedMenuButton: ShareContactEnum.peer)
                     }
                 }

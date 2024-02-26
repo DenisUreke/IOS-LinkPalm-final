@@ -55,6 +55,7 @@
 		549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01192B74DE3A009223C3 /* WideBarListView.swift */; };
 		549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C011D2B74DE55009223C3 /* WideBarListData.swift */; };
 		549C01222B750311009223C3 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01212B750311009223C3 /* TextEditView.swift */; };
+		54A003142B8CA41D0062DB30 /* UserDesignUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A003132B8CA41D0062DB30 /* UserDesignUnitTest.swift */; };
 		54A2FC732B797C0A00C715CC /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2FC722B797C0A00C715CC /* Dumper.swift */; };
 		54A617F02B8917390054AE3C /* TypeOfContactEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A617EF2B8917390054AE3C /* TypeOfContactEnum.swift */; };
 		54A9CF132B8632B2004931A4 /* UserDesignListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */; };
@@ -157,6 +158,7 @@
 		549C01192B74DE3A009223C3 /* WideBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListView.swift; sourceTree = "<group>"; };
 		549C011D2B74DE55009223C3 /* WideBarListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListData.swift; sourceTree = "<group>"; };
 		549C01212B750311009223C3 /* TextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
+		54A003132B8CA41D0062DB30 /* UserDesignUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignUnitTest.swift; sourceTree = "<group>"; };
 		54A2FC712B7977B500C715CC /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		54A2FC722B797C0A00C715CC /* Dumper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumper.swift; sourceTree = "<group>"; };
 		54A617EF2B8917390054AE3C /* TypeOfContactEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfContactEnum.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				5494091E2B73C2E100F9836F /* LinkPalmTests.swift */,
+				54A003132B8CA41D0062DB30 /* UserDesignUnitTest.swift */,
 			);
 			path = LinkPalmTests;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 			files = (
 				54C1813F2B7E2B990055138A /* QRCodeData.swift in Sources */,
 				5494091F2B73C2E100F9836F /* LinkPalmTests.swift in Sources */,
+				54A003142B8CA41D0062DB30 /* UserDesignUnitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

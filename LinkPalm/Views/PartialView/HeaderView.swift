@@ -25,21 +25,6 @@ struct HeaderForCardView: View{
             }
             
             DrawSFSymbolForDesingBox(sfSymbolData: $boxData.boxDesign.sfSymbol.data)
-            
-            
-            HStack{
-                Text("\(user.userName) \(user.userLastName)")
-                    .font(.title)
-                    .lineLimit(1)
-                    .frame(width: 280, alignment: .leading)
-                    .minimumScaleFactor(0.3)
-                    .foregroundColor(boxData.boxDesign.text.data.selectedColorFont.color)
-                    .padding(.leading, 15)
-                Spacer()
-                buttonDesignForSorting(icon: user.typeOfContact.asIcon)
-                    .scaleEffect(0.7)
-            }
-            .offset(y: 110)
         }
     }
 }
