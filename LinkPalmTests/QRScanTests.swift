@@ -109,7 +109,7 @@ final class QRScaneTests: XCTestCase {
         }
     }
     
-    // important code-breaking test
+    // important code-breaking test =)
     func testIfEnumRocks() throws {
         
         enum EnumRocks: String{
