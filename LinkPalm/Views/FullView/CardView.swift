@@ -19,7 +19,7 @@ struct CardView: View {
             VStack{
                 if isEditMode{
                     
-                    NavigationLink(destination: DesignHeaderForCardView(typeOfContact: $user.typeOfContact ,city: $user.city, country: $user.country, userName: $user.userName, boxData: $user.headerData, userDesign: $user.headerData.imageVideoListData)){
+                    NavigationLink(destination: DesignHeaderForCardView(user: $user, boxData: $user.headerData, userDesign: $user.headerData.imageVideoListData)){
                         HeaderForCardView(boxData: $user.headerData, userDesign: $user.headerData.imageVideoListData, user: $user)
                             .frame(maxWidth: .infinity, maxHeight: 580)
                             .edgesIgnoringSafeArea(.all)

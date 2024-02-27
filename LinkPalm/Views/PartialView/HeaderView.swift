@@ -54,7 +54,7 @@ struct headerInfo: View {
                     .padding(.leading, 15)
                     .padding(.top, -15)
             }else{
-                Text("\(user.productData?.brand ?? "NewBrand")")
+                Text("\(user.brand)")
                     .font(.title3)
                     .lineLimit(1)
                     .frame(width: 280, alignment: .leading)

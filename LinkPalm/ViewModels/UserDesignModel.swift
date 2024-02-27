@@ -20,6 +20,7 @@ final class UserDesignModel: Identifiable{
     var userLastName: String
     var city: String
     var country: String
+    var brand: String
     var isEditable: Bool
     
     var headerData: BoxData
@@ -37,6 +38,7 @@ final class UserDesignModel: Identifiable{
          userLastName: String = "",
          city: String = "",
          country: String = "",
+         brand: String = "",
          isEditable: Bool = false,
          headerData: BoxData = BoxData(),
          boxOne: BoxData = BoxData(),
@@ -52,6 +54,7 @@ final class UserDesignModel: Identifiable{
         self.userLastName = userLastName
         self.city = city
         self.country = country
+        self.brand = brand
         self.isEditable = isEditable
         self.headerData = headerData
         self.typeOfContact = TypeOfContact.from(string: typeOfContact)
@@ -114,6 +117,8 @@ extension UserDesignModel{
             self.headerData.boxDesign.imageVideoData.imageData.data.imageURL = URL(string: user.productData?.images.first! ?? "https://picsum.photos/300/300.jpg")
             self.city = user.productData?.brand ?? "Unknown Brand"
             self.country = user.personData?.result.location.country ?? "Sweden"
+            self.brand = user.productData?.brand ?? "Unknown Brand"
+            
         }
         else if typeOfContact == .company
         {

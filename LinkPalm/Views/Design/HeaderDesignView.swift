@@ -9,10 +9,7 @@ import SwiftUI
 
 struct DesignHeaderForCardView: View {
 
-    @Binding var typeOfContact: TypeOfContact
-    @Binding var city: String
-    @Binding var country: String
-    @Binding var userName: String
+    @Binding var user: UserDesignModel
     @Binding var boxData: BoxData
     @Binding var userDesign: ImageVideoDataList
     @State var isIcon: Bool = true
@@ -30,26 +27,28 @@ struct DesignHeaderForCardView: View {
                 if !isIcon{
                     HStack(spacing: -25){
                         DrawDynamicButton(selectedMenuButton: ButtonEnum.person)
-                            .scaleEffect(typeOfContact == .person ? 0.7 : 0.5)
+                            .scaleEffect(user.typeOfContact == .person ? 0.7 : 0.5)
                             .onTapGesture {
-                                typeOfContact = .person
+                                user.typeOfContact = .person
                             }
                         DrawDynamicButton(selectedMenuButton: ButtonEnum.item)
-                            .scaleEffect(typeOfContact == .item ? 0.7 : 0.5)
+                            .scaleEffect(user.typeOfContact == .item ? 0.7 : 0.5)
                             .onTapGesture {
-                                typeOfContact = .item
+                                user.typeOfContact = .item
                             }
                         DrawDynamicButton(selectedMenuButton: ButtonEnum.company)
-                            .scaleEffect(typeOfContact == .company ? 0.7 : 0.5)
+                            .scaleEffect(user.typeOfContact == .company ? 0.7 : 0.5)
                             .onTapGesture {
-                                typeOfContact = .company
+                                user.typeOfContact = .company
                             }
                     }
                     .padding(.bottom, -40)
                     VStack(spacing: -50){
-                        drawTextfieldForDesign(selectedName: $userName, defaultText: "Enter Name" )
-                        drawTextfieldForDesign(selectedName: $city, defaultText: "Enter City" )
-                        drawTextfieldForDesign(selectedName: $country, defaultText: "Enter Country" )
+                        drawTextfieldForDesign(selectedName: $user.userName, defaultText: "Enter Name" )
+                        drawTextfieldForDesign(selectedName: $user.city, defaultText: "Enter City" )
+                        drawTextfieldForDesign(selectedName: $user.country, defaultText: "Enter Country" )
+                        drawTextfieldForDesign(selectedName: $user.brand, defaultText: "Enter Brand" )
+                        
                     }
                 }else{
                     DrawSFSymbolsChoices(selectedSFSymbol: $boxData.boxDesign.sfSymbol.data.sfIcon , title: headerTitleString.sfSymbolList.rawValue)
