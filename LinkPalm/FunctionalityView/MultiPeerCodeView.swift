@@ -10,7 +10,6 @@ import SwiftUI
 struct MultiPeerCodeView: View {
     var user: UserDesignModel
     @Binding var userList: UserDesignList
-    var QRmodel: QRCodeModel
     
     @State var selectedPassword: String = ""
 

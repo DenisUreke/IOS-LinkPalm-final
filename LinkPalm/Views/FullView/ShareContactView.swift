@@ -11,7 +11,6 @@ struct ShareContactView: View {
 
     var user: UserDesignModel
     @Binding var userList: UserDesignList
-    var QRmodel: QRCodeModel
     
     var body: some View {
         ZStack{
@@ -34,9 +33,9 @@ struct ShareContactView: View {
         case .create:
             QRCreateView(personID: user)
         case .read:
-            QRScanView(QRCodeModelList: QRmodel, userDesign: $userList)
+            QRScanView(userDesign: $userList)
         case .peer:
-            MultiPeerCodeView(user: user, userList: $userList, QRmodel: QRmodel)
+            MultiPeerCodeView(user: user, userList: $userList)
         }
     }
     

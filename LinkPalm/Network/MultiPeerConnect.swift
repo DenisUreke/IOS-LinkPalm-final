@@ -152,17 +152,20 @@ extension ExchangeSession: MCSessionDelegate {
                             }
                             else{
                                 
-                                if self.components[3] == "person"{
+                                if self.components[3].lowercased() == "person"{
                                     self.userList.createAndPopulate(components: self.components)
                                     self.scannedCode = "New Contact Added"
                                 }
-                                else if self.components[3] == "item"{
+                                else if self.components[3].lowercased() == "item"{
                                     self.userList.createAndPopulate(components: self.components)
                                     self.scannedCode = "New Product Added"
                                 }
-                                else {
+                                else if self.components[3].lowercased() == "company" {
                                     self.userList.createAndPopulate(components: self.components)
                                     self.scannedCode = "New Company Added"
+                                }
+                                else{
+                                    self.scannedCode = "Invalid Contact Data"
                                 }
                             }
                         }

@@ -55,7 +55,7 @@
 		549C011A2B74DE3A009223C3 /* WideBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01192B74DE3A009223C3 /* WideBarListView.swift */; };
 		549C011E2B74DE55009223C3 /* WideBarListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C011D2B74DE55009223C3 /* WideBarListData.swift */; };
 		549C01222B750311009223C3 /* TextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549C01212B750311009223C3 /* TextEditView.swift */; };
-		54A003142B8CA41D0062DB30 /* UserDesignUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A003132B8CA41D0062DB30 /* UserDesignUnitTest.swift */; };
+		54A003142B8CA41D0062DB30 /* UserDesignUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A003132B8CA41D0062DB30 /* UserDesignUnitTests.swift */; };
 		54A2FC732B797C0A00C715CC /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2FC722B797C0A00C715CC /* Dumper.swift */; };
 		54A617F02B8917390054AE3C /* TypeOfContactEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A617EF2B8917390054AE3C /* TypeOfContactEnum.swift */; };
 		54A9CF132B8632B2004931A4 /* UserDesignListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A9CF122B8632B2004931A4 /* UserDesignListModel.swift */; };
@@ -79,6 +79,9 @@
 		54C76FF32B762E03005EA680 /* TextConfigEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C76FF22B762E03005EA680 /* TextConfigEnum.swift */; };
 		54C7CF2F2B78E92B00F29602 /* WideBarEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7CF2E2B78E92B00F29602 /* WideBarEditView.swift */; };
 		54C7CF312B78EE2C00F29602 /* WideBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C7CF302B78EE2C00F29602 /* WideBarData.swift */; };
+		54C8EE412B8DEB7F009D83CE /* UserListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8EE402B8DEB7F009D83CE /* UserListTests.swift */; };
+		54C8EE432B8DF234009D83CE /* PeerToPeerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8EE422B8DF234009D83CE /* PeerToPeerTests.swift */; };
+		54C8EE452B8E0CBD009D83CE /* QRScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C8EE442B8E0CBD009D83CE /* QRScanTests.swift */; };
 		54D462EC2B7CC087006C27F4 /* BackgroundDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */; };
 		54D462F02B7CD456006C27F4 /* QRCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D462EF2B7CD456006C27F4 /* QRCreateView.swift */; };
 		54D462F52B7CDADA006C27F4 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 54D462F42B7CDADA006C27F4 /* CodeScanner */; };
@@ -158,7 +161,7 @@
 		549C01192B74DE3A009223C3 /* WideBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListView.swift; sourceTree = "<group>"; };
 		549C011D2B74DE55009223C3 /* WideBarListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarListData.swift; sourceTree = "<group>"; };
 		549C01212B750311009223C3 /* TextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditView.swift; sourceTree = "<group>"; };
-		54A003132B8CA41D0062DB30 /* UserDesignUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignUnitTest.swift; sourceTree = "<group>"; };
+		54A003132B8CA41D0062DB30 /* UserDesignUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDesignUnitTests.swift; sourceTree = "<group>"; };
 		54A2FC712B7977B500C715CC /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		54A2FC722B797C0A00C715CC /* Dumper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumper.swift; sourceTree = "<group>"; };
 		54A617EF2B8917390054AE3C /* TypeOfContactEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfContactEnum.swift; sourceTree = "<group>"; };
@@ -181,6 +184,9 @@
 		54C76FF22B762E03005EA680 /* TextConfigEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConfigEnum.swift; sourceTree = "<group>"; };
 		54C7CF2E2B78E92B00F29602 /* WideBarEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarEditView.swift; sourceTree = "<group>"; };
 		54C7CF302B78EE2C00F29602 /* WideBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideBarData.swift; sourceTree = "<group>"; };
+		54C8EE402B8DEB7F009D83CE /* UserListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTests.swift; sourceTree = "<group>"; };
+		54C8EE422B8DF234009D83CE /* PeerToPeerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerToPeerTests.swift; sourceTree = "<group>"; };
+		54C8EE442B8E0CBD009D83CE /* QRScanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanTests.swift; sourceTree = "<group>"; };
 		54D462EB2B7CC087006C27F4 /* BackgroundDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDesignView.swift; sourceTree = "<group>"; };
 		54D462EF2B7CD456006C27F4 /* QRCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCreateView.swift; sourceTree = "<group>"; };
 		54D462F62B7CDD9C006C27F4 /* QRScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanView.swift; sourceTree = "<group>"; };
@@ -327,7 +333,10 @@
 			isa = PBXGroup;
 			children = (
 				5494091E2B73C2E100F9836F /* LinkPalmTests.swift */,
-				54A003132B8CA41D0062DB30 /* UserDesignUnitTest.swift */,
+				54A003132B8CA41D0062DB30 /* UserDesignUnitTests.swift */,
+				54C8EE402B8DEB7F009D83CE /* UserListTests.swift */,
+				54C8EE422B8DF234009D83CE /* PeerToPeerTests.swift */,
+				54C8EE442B8E0CBD009D83CE /* QRScanTests.swift */,
 			);
 			path = LinkPalmTests;
 			sourceTree = "<group>";
@@ -647,9 +656,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C8EE432B8DF234009D83CE /* PeerToPeerTests.swift in Sources */,
+				54C8EE412B8DEB7F009D83CE /* UserListTests.swift in Sources */,
 				54C1813F2B7E2B990055138A /* QRCodeData.swift in Sources */,
+				54C8EE452B8E0CBD009D83CE /* QRScanTests.swift in Sources */,
 				5494091F2B73C2E100F9836F /* LinkPalmTests.swift in Sources */,
-				54A003142B8CA41D0062DB30 /* UserDesignUnitTest.swift in Sources */,
+				54A003142B8CA41D0062DB30 /* UserDesignUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,8 +24,6 @@ final class UserDesignModel: Identifiable{
      var boxOne: BoxData
      var boxTwo: BoxData
      var boxThree: BoxData
-     var boxFour: BoxData
-     var boxFive: BoxData
      var wideBarOne: WideBarData
      var typeOfContact: TypeOfContact
      var personData: PersonDataModel?
@@ -40,8 +38,6 @@ final class UserDesignModel: Identifiable{
           boxOne: BoxData = BoxData(),
           boxTwo: BoxData = BoxData(),
           boxThree: BoxData = BoxData(),
-          boxFour: BoxData = BoxData(),
-          boxFive: BoxData = BoxData(),
           wideBarOne: WideBarData = WideBarData(),
           personData: PersonDataModel? = nil,
           productData: ProductModel? = nil) {
@@ -56,8 +52,6 @@ final class UserDesignModel: Identifiable{
          self.boxOne = boxOne
          self.boxTwo = boxTwo
          self.boxThree = boxThree
-         self.boxFour = boxFour
-         self.boxFive = boxFive
          self.wideBarOne = wideBarOne
          self.personData = personData
          self.productData = productData
@@ -88,8 +82,6 @@ extension UserDesignModel{
         }
         self.boxTwo.fillBoxDesign()
         self.boxThree.fillBoxDesignImageOnly(imageURL: "https://picsum.photos/300/300.jpg")
-        self.boxFour.fillBoxDesign()
-        self.boxFive.fillBoxDesign()
     }
     
     func populateBoxes(meme: [URL]){
@@ -97,8 +89,6 @@ extension UserDesignModel{
         self.boxOne.populateContentInBoxesImage(meme: meme[0])
         self.boxTwo.populateContentInBoxesVideo()
         self.boxThree.populateContentInBoxesImage(meme: meme[1])
-        self.boxFour.populateContentInBoxesVideo()
-        self.boxFive.populateContentInBoxesImage(meme: meme[2])
     }
     
     func createHeaderWithName(user: UserDesignModel, typeOfContact: TypeOfContact){

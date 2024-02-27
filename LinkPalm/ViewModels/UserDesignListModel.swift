@@ -33,7 +33,7 @@ extension UserDesignList{
                         let urls = randomMemes.compactMap { $0.url }
                         let randomProduct = products.randomElement()
                         
-                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[3], personData: person, productData: randomProduct)
+                        let newUser = UserDesignModel(userID: components[0], typeOfContact: components[3].lowercased(), personData: person, productData: randomProduct)
                         newUser.createData(imageURL: newUser.personData?.result.picture.large ?? "", meme: urls, productImageURL: randomProduct?.images.first! ?? "https://picsum.photos/300/300.jpg", typeOfContact: newUser.typeOfContact, user: newUser)
                         self.userList.append(newUser)
                         self.userList.last!.wideBarOne.wideBarListData.createButtonsForWideBar()

@@ -42,7 +42,7 @@ struct CardView: View {
                 HStack{
                     headerInfo(user: $user)
                 }
-                .offset(y: -180)
+                .offset(y: -170)
                 
                 multipleBoxView(isEditMode: $isEditMode, user: $user)
                     .frame(height: 500)
@@ -121,18 +121,18 @@ struct multipleBoxView: View{
                             openView(.box, boxData: $user.boxTwo, imageVideoList: $user.boxTwo.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 0.5, wTwo: 7.5, hOne: 0.3, hTwo: 15)
                         }
                     }
-                    // WideBar 2
+                    // WideBar
                     if isEditMode{
                         openView(.widebar, boxData: nil, imageVideoList: nil, wideBarListData: $user.wideBarOne.wideBarListData, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.13, hTwo: 5)
                     }else{
                         openView(.cleanWideBar, boxData: nil, imageVideoList: nil, wideBarListData: $user.wideBarOne.wideBarListData, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.13, hTwo: 5)
                     }
-                    // Box 5
+                    // Box 3
                     if isEditMode{
-                        openView(.cardView, boxData: $user.boxFive, imageVideoList: $user.boxFive.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.4, hTwo: 20)
+                        openView(.cardView, boxData: $user.boxThree, imageVideoList: $user.boxThree.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.35, hTwo: 20)
                     }
                     else{
-                        openView(.box, boxData: $user.boxFive, imageVideoList: $user.boxFive.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.4, hTwo: 20)
+                        openView(.box, boxData: $user.boxThree, imageVideoList: $user.boxThree.imageVideoListData, wideBarListData: nil, isEditMode: $isEditMode, geometry: geometry, wOne: 1, wTwo: 10, hOne: 0.35, hTwo: 20)
                     }
                     
                 }

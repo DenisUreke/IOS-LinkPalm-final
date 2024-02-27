@@ -69,12 +69,12 @@ struct MultiPeerView: View {
     
     
     func usersLogged() -> some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .center, spacing: 5) {
             Text("Users connected")
                 .font(.headline)
                 .foregroundColor(.primary)
             
-            Text(session.connectedPeers.map(\.displayName).joined(separator: ", "))
+            Text("\(session.connectedPeers.count)")
                 .font(.body)
                 .foregroundColor(.secondary)
         }
@@ -84,7 +84,7 @@ struct MultiPeerView: View {
     }
     func updateDataBase(){
         let QRModel = QRCodeData(component: session.components)
-        //modelContext.insert(QRModel)
+        modelContext.insert(QRModel)
     }
 }
 

@@ -23,7 +23,6 @@ struct SuccessView: View {
         }
     }
     
-
     var body: some View {
         VStack {
             

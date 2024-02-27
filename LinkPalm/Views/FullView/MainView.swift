@@ -10,7 +10,6 @@ import SwiftData
 
 struct MainView: View {
     @State var titleData: UserDesignList = UserDesignList()
-    @State var QRmodel: QRCodeModel = QRCodeModel()
     @State var user: UserDesignModel = UserDesignModel(userID: "1234", typeOfContact: "person", isEditable: true)
     
     var body: some View {
@@ -35,7 +34,7 @@ struct MainView: View {
             ContactsListView(designList: $titleData)
                 .navigationTitle("Contacts")
         case .share:
-            ShareContactView(user: user, userList: $titleData, QRmodel: QRmodel)
+            ShareContactView(user: user, userList: $titleData)
                 .navigationTitle("Share Contact")
         case .yourProfile:
             CardView(user: $user)

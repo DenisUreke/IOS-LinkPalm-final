@@ -35,27 +35,4 @@ final class QRCodeData: Identifiable{
         self.typeOfContact = typeOfContact
         self.dateOfExchange = dateOfExchange
     }
-    
-    
-}
-
-@Observable
-class QRCodeModel{
-    
-    var listOfContacts: [QRCodeData]
-    
-    init(listOfContacts: [QRCodeData] = []) {
-        self.listOfContacts = listOfContacts
-    }
-    
-    /*func createContactAndAppend(components: [String]){
-        
-        if !listOfContacts.contains(where: { $0.internalID == components[0] }) {
-            self.listOfContacts.append(QRCodeData(internalID: components[0], typeOfContact: components[1]))
-        } else {
-            print("Contact already exists")
-        }
-        
-    }*/
-    
 }

@@ -16,7 +16,6 @@ struct QRScanView: View {
     @Query private var qrUsersList: [QRCodeData]
     @State private var isPresentingScanner = true
     @State private var scannedCode: String?
-    var QRCodeModelList : QRCodeModel
     @Binding var userDesign: UserDesignList
 
     var body: some View {
@@ -45,32 +44,48 @@ struct QRScanView: View {
         switch result {
         case .success(let scanResult):
             let components = scanResult.string.split(separator: " ").map(String.init)
-            let QRModel = QRCodeData(component: components)
+            
+            if components.count == 4{
+                
+                let QRModel = QRCodeData(component: components)
                 modelContext.insert(QRModel)
-            
-            if userDesign.checkIfContactExists(components: components){
-                scannedCode = "Entry already exists"
-                return
-            }else{
-                if components[3] == "person"{
-                    userDesign.createAndPopulate(components: components)
-                    scannedCode = "New Contact Added"
-                }
-                else if components[3] == "item"{
-                    userDesign.createAndPopulate(components: components)
-                    scannedCode = "New Product Added"
-                }
-                else {
-                    userDesign.createAndPopulate(components: components)
-                    scannedCode = "New Company Added"
-                }
-            }
-            
+                
+                scannedCode = checkQRCode(userDesign: userDesign, components: components)
+                
+            }            
         case .failure(let error):
             scannedCode = "Error \(error)"
             print("Scanning Error: \(error)")
         }
     }
+}
+
+func checkQRCode(userDesign: UserDesignList, components: [String]) -> String{
+    
+    var returnMessage: String  = ""
+    
+    if userDesign.checkIfContactExists(components: components){
+        returnMessage = "Entry already exists"
+    }else
+    {
+        if components[3].lowercased() == "person"{
+            userDesign.createAndPopulate(components: components)
+            returnMessage = "New Contact Added"
+        }
+        else if components[3].lowercased() == "item"{
+            userDesign.createAndPopulate(components: components)
+            returnMessage = "New Product Added"
+        }
+        else if components[3].lowercased() == "company" {
+            userDesign.createAndPopulate(components: components)
+            returnMessage = "New Company Added"
+        }
+        else {
+            returnMessage = "Invalid Contact Data"
+        }
+    }
+    return returnMessage
+    
 }
 
 /*#Preview {
