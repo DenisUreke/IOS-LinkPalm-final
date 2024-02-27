@@ -17,6 +17,7 @@ struct DynamicPictureView: View {
                 .resizable()
                 .cornerRadius(8)
                 .padding(0)
+                .clipped()
                 .scaleEffect(imageData.imageData.data.selectedScale)
                 .offset(x: imageData.imageData.data.selectedXAxisOffset, y: imageData.imageData.data.selectedYAxisOffset)
                 .clipShape(RoundedRectangle(cornerRadius: imageData.textCustomModel.data.selectedImageCornerRadius))
@@ -32,7 +33,6 @@ struct DynamicPictureView: View {
                         .stroke(imageData.textCustomModel.data.selectedBorderColor.color, lineWidth: imageData.textCustomModel.data.selectedBorderWidth)
                 )
                 .conditionalScaledToFill(apply: imageData.imageData.data.scaledToFill)
-                .clipped()
         }else{
             Text("Could not find Image")
                 .font(.system(size: 40))

@@ -14,48 +14,54 @@ import SwiftData
 @Observable
 final class UserDesignModel: Identifiable{
     
-     let ID: String
-     let userID: String
-     var userName: String
-     var userLastName: String
-     var isEditable: Bool
-     
-     var headerData: BoxData
-     var boxOne: BoxData
-     var boxTwo: BoxData
-     var boxThree: BoxData
-     var wideBarOne: WideBarData
-     var typeOfContact: TypeOfContact
-     var personData: PersonDataModel?
-     var productData: ProductModel?
-     
-     init(userID: String,
-          typeOfContact: String,
-          userName: String = "",
-          userLastName: String = "",
-          isEditable: Bool = false,
-          headerData: BoxData = BoxData(),
-          boxOne: BoxData = BoxData(),
-          boxTwo: BoxData = BoxData(),
-          boxThree: BoxData = BoxData(),
-          wideBarOne: WideBarData = WideBarData(),
-          personData: PersonDataModel? = nil,
-          productData: ProductModel? = nil) {
-         
-         self.ID = UUID().uuidString
-         self.userID = userID
-         self.userName = userName
-         self.userLastName = userLastName
-         self.isEditable = isEditable
-         self.headerData = headerData
-         self.typeOfContact = TypeOfContact.from(string: typeOfContact)
-         self.boxOne = boxOne
-         self.boxTwo = boxTwo
-         self.boxThree = boxThree
-         self.wideBarOne = wideBarOne
-         self.personData = personData
-         self.productData = productData
-     }
+    let ID: String
+    let userID: String
+    var userName: String
+    var userLastName: String
+    var city: String
+    var country: String
+    var isEditable: Bool
+    
+    var headerData: BoxData
+    var boxOne: BoxData
+    var boxTwo: BoxData
+    var boxThree: BoxData
+    var wideBarOne: WideBarData
+    var typeOfContact: TypeOfContact
+    var personData: PersonDataModel?
+    var productData: ProductModel?
+    
+    init(userID: String,
+         typeOfContact: String,
+         userName: String = "",
+         userLastName: String = "",
+         city: String = "",
+         country: String = "",
+         isEditable: Bool = false,
+         headerData: BoxData = BoxData(),
+         boxOne: BoxData = BoxData(),
+         boxTwo: BoxData = BoxData(),
+         boxThree: BoxData = BoxData(),
+         wideBarOne: WideBarData = WideBarData(),
+         personData: PersonDataModel? = nil,
+         productData: ProductModel? = nil) {
+        
+        self.ID = UUID().uuidString
+        self.userID = userID
+        self.userName = userName
+        self.userLastName = userLastName
+        self.city = city
+        self.country = country
+        self.isEditable = isEditable
+        self.headerData = headerData
+        self.typeOfContact = TypeOfContact.from(string: typeOfContact)
+        self.boxOne = boxOne
+        self.boxTwo = boxTwo
+        self.boxThree = boxThree
+        self.wideBarOne = wideBarOne
+        self.personData = personData
+        self.productData = productData
+    }
 }
 
 extension UserDesignModel{
@@ -98,18 +104,26 @@ extension UserDesignModel{
             self.userName = user.personData?.result.name.first ?? "John"
             self.userLastName = user.personData?.result.name.last ?? "Doe"
             self.headerData.boxDesign.imageVideoData.imageData.data.imageURL = URL(string: user.personData?.result.picture.large ?? "https://picsum.photos/300/300.jpg")
+            
+            self.city = user.personData?.result.location.city ?? "Jönköping"
+            self.country = user.personData?.result.location.country ?? "Sweden"
         }
         else if typeOfContact == .item
         {
             self.userName = user.productData?.title ?? "Product"
             self.headerData.boxDesign.imageVideoData.imageData.data.imageURL = URL(string: user.productData?.images.first! ?? "https://picsum.photos/300/300.jpg")
+            self.city = user.productData?.brand ?? "Unknown Brand"
+            self.country = user.personData?.result.location.country ?? "Sweden"
         }
         else if typeOfContact == .company
         {
             self.userName = user.productData?.brand ?? "Brand"
             self.headerData.boxDesign.imageVideoData.imageData.data.imageURL = URL(string: user.productData?.images.first! ?? "https://picsum.photos/300/300.jpg")
+            self.city = user.personData?.result.location.city ?? "Jönköping"
+            self.country = user.personData?.result.location.country ?? "Sweden"
         }
-        user.headerData.boxDesign.text.data.selectedColorFont = randomStandardColor()
+        
+        
     
     }
 

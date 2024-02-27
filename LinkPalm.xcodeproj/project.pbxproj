@@ -63,6 +63,7 @@
 		54B5DA822B8A689500199171 /* ButtonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5DA812B8A689500199171 /* ButtonEnum.swift */; };
 		54B5DA862B8A73EA00199171 /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5DA852B8A73EA00199171 /* BackgroundColorView.swift */; };
 		54B5DA8A2B8A752400199171 /* DynamicButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B5DA892B8A752400199171 /* DynamicButtonView.swift */; };
+		54B9CE4F2B8E4A8800B12FAF /* DynamicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B9CE4E2B8E4A8800B12FAF /* DynamicTextView.swift */; };
 		54BA43112B7784D00076E23D /* BackgroundEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA43102B7784D00076E23D /* BackgroundEditView.swift */; };
 		54BA43132B77965C0076E23D /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA43122B77965C0076E23D /* PhotoView.swift */; };
 		54BA43172B77AB630076E23D /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BA43162B77AB630076E23D /* ImageData.swift */; };
@@ -170,6 +171,7 @@
 		54B5DA812B8A689500199171 /* ButtonEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonEnum.swift; sourceTree = "<group>"; };
 		54B5DA852B8A73EA00199171 /* BackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
 		54B5DA892B8A752400199171 /* DynamicButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicButtonView.swift; sourceTree = "<group>"; };
+		54B9CE4E2B8E4A8800B12FAF /* DynamicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextView.swift; sourceTree = "<group>"; };
 		54BA43102B7784D00076E23D /* BackgroundEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEditView.swift; sourceTree = "<group>"; };
 		54BA43122B77965C0076E23D /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		54BA43162B77AB630076E23D /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				543266042B7A293800574EF5 /* VideoView.swift */,
 				540B53572B82681A00BC79B3 /* ImageView.swift */,
 				540B535B2B82683200BC79B3 /* WebImageView.swift */,
+				54B9CE4E2B8E4A8800B12FAF /* DynamicTextView.swift */,
 				54D462EF2B7CD456006C27F4 /* QRCreateView.swift */,
 				54D462F62B7CDD9C006C27F4 /* QRScanView.swift */,
 				54D4C2482B85463500025D50 /* MultiPeerCodeView.swift */,
@@ -578,6 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B9CE4F2B8E4A8800B12FAF /* DynamicTextView.swift in Sources */,
 				543266092B7A453200574EF5 /* WideListViewEnum.swift in Sources */,
 				54BA43132B77965C0076E23D /* PhotoView.swift in Sources */,
 				54C1813E2B7E2B990055138A /* QRCodeData.swift in Sources */,

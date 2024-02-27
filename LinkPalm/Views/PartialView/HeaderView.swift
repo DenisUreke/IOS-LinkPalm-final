@@ -28,3 +28,45 @@ struct HeaderForCardView: View{
         }
     }
 }
+
+struct headerInfo: View {
+    @Binding var user : UserDesignModel
+    
+    var body: some View{
+        
+        VStack{
+            Text("\(user.userName) \(user.userLastName)")
+                .font(.title2)
+                .fontWeight(.bold)
+                .lineLimit(1)
+                .frame(width: 280, alignment: .leading)
+                .minimumScaleFactor(0.3)
+                .foregroundColor(Color.black)
+                .padding(.leading, 15)
+            
+            if user.typeOfContact != .item{
+                Text("\(user.city), \(user.country)")
+                    .font(.title3)
+                    .lineLimit(1)
+                    .frame(width: 280, alignment: .leading)
+                    .minimumScaleFactor(0.3)
+                    .foregroundColor(Color.gray)
+                    .padding(.leading, 15)
+                    .padding(.top, -15)
+            }else{
+                Text("\(user.productData?.brand ?? "NewBrand")")
+                    .font(.title3)
+                    .lineLimit(1)
+                    .frame(width: 280, alignment: .leading)
+                    .minimumScaleFactor(0.3)
+                    .foregroundColor(Color.gray)
+                    .padding(.leading, 15)
+                    .padding(.top, -15)
+            }
+        }
+        Spacer()
+        buttonDesignForSorting(icon: user.typeOfContact.asIcon)
+            .scaleEffect(0.7)
+        
+    }
+}
