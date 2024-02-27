@@ -109,5 +109,28 @@ final class QRScaneTests: XCTestCase {
         }
     }
     
+    // important code-breaking test
+    func testIfEnumRocks() throws {
+        
+        enum EnumRocks: String{
+            case itRocks = "Rocks"
+            case itReallyRocks = "ReallyRocks"
+            case itSuperRocks = "ReallyReallyRocks"
+            
+            var getDoesItRock: String{
+                switch self{
+                case .itRocks:
+                    return "It Rocks"
+                case .itReallyRocks:
+                    return "It Really Rocks"
+                case .itSuperRocks:
+                    return "It Really Super Rocks!"
+                }
+            }
+        }
+        let theEnum : EnumRocks = .itSuperRocks
+        XCTAssertEqual(theEnum.getDoesItRock, "It Really Super Rocks!")
+    }
     
 }
+    
